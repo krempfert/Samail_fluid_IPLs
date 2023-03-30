@@ -1,0 +1,70 @@
+---
+---
+---
+title: "Data Examples"
+subtitle: "Demonstrates data tables and Excel export and import"
+author: "AUTHORS"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document: 
+    df_print: paged # omit to disable paged data table output
+    css: stylesheet.css # omit if no need for custom stylesheet
+    number_sections: yes # change to no for unnumbered sections
+    toc: yes # change to no to disable table of contents
+    toc_float: true # change to false to keep toc at the top
+    toc_depth: 3 # change to specify which headings to include in toc
+    code_folding: show # change to hide to hide code by default
+editor_options:
+  chunk_output_type: console # change to inline to show output inline
+---
+
+```{r install, eval=FALSE}
+# run this block once in RStudio to install all packages required for this example
+install.packages("tidyverse") # tidyverse data and plotting tools
+install.packages("readxl") # reading excel files
+install.packages("openxlsx") # writing excel files
+```
+
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+# load libraries
+library(tidyverse) 
+
+# source all relevant scripting files
+source(file.path("scripts", "table_functions.R"))
+
+# global knitting options for automatic saving of all plots as .png and .pdf
+knitr::opts_chunk$set(
+  dev = c("png", "pdf"), fig.keep = "all",
+  dev.args = list(pdf = list(encoding = "WinAnsi", useDingbats = FALSE)),
+  fig.path = file.path("plots", paste0(gsub("\\.[Rr]md", "", knitr::current_input()), "_"))
+)
+```
+
+# Data Table
+
+```{r}
+# show a data table (this miles-per-gallon dataset is included with ggplot2) 
+# in paged view
+mpg
+```
+
+```{r}
+# or a subset in full view
+mpg %>% head() %>% knitr::kable()
+```
+
+# Export Data
+
+```{r}
+# export the data table to excel
+mpg %>% export_to_excel(file = "output/mpg_dataset.xlsx")
+```
+
+# Re-import the Data
+
+
+```{r}
+# re-import from Excel
+mpg <- readxl::read_excel("output/mpg_dataset.xlsx")
+```

@@ -1,0 +1,63 @@
+---
+title: "Project name"
+subtitle: "Log: [docs.Rmd](docs.html)"
+author: "Author: "
+output:
+  html_document: 
+    number_sections: yes
+    toc: yes
+    toc_float: true
+    toc_depth: 3
+editor_options:
+  chunk_output_type: console
+---
+
+<!-- change background color of active menu items so links are still visible -->
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  background-color: #B8B9BA;
+}
+</style>
+
+# Notebooks
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+# knitting options
+knitr::opts_knit$set(root.dir = "..")
+
+# output folders
+docs_folder <- "docs"
+
+# hash info file
+hash_file <- file.path(docs_folder, ".docs_hash.csv")
+```
+
+
+```{r, results='asis', echo=FALSE}
+if (file.exists(hash_file)) {
+  docs_files <- 
+    read_csv(hash_file, col_types = "ccccccc") %>% 
+    mutate(
+      source_copy = str_remove(source_copy, fixed(file.path(docs_folder, ""))),
+      doc_file = str_remove(doc_file, fixed(file.path(docs_folder, ""))),
+      last_success = ifelse(
+        is.na(last_success), 
+        "This notebook has not yet been rendered succesfully!", 
+        sprintf("<font color = 'green'>This notebook was rendered successfully on %s.</font>", last_success)),
+      last_fail = ifelse(
+        !is.na(last_fail), 
+        sprintf("<font color = 'red'>This notebook failed to render at the latest attempt on %s (see <a href='docs.html'>rendering log</a> for details).</font>", last_fail),
+        ""
+      )
+    )
+   docs_files %>% 
+    with(sprintf("## [%s](%s) (<a href=\"%s\" download=\"%s\">source</a>)\n\n%s\n\n%s", 
+                 stringr::str_replace_all(source_file, "_", " "), doc_file, 
+                 source_copy, source_file, last_success, last_fail)) %>% 
+    cat(sep = "\n\n")
+} else {
+  cat("No documents available yet.")
+}
+```

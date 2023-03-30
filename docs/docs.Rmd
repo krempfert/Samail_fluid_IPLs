@@ -1,0 +1,232 @@
+---
+title: "`docs` generation log"
+output: 
+  html_document:
+    toc: yes
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+# knitting options
+knitr::opts_chunk$set(comment = "")
+knitr::opts_knit$set(root.dir = "..")
+
+# flag whether to always regenerate all reports even if they have not changed
+always_regenerate <- FALSE
+
+# set if a python virtual environment should be activated for jupyter notebooks
+py_venv <- NULL # e.g. py_venv <- "my_env"
+
+# output folders
+docs_folder <- "docs"
+rmd_docs_folder <- file.path(docs_folder, "rmarkdown")
+nb_docs_folder <- file.path(docs_folder, "jupyter")
+
+# file extensions
+rmd_ext <- c("Rmd", "rmd")
+nb_ext <- c("ipynb")
+
+# hash info file
+hash_file <- file.path(docs_folder, ".docs_hash.csv")
+```
+
+# file list
+
+```{r "find files"}
+# looking non-recursively, only top level folder
+rmd_files <- tibble(
+  type = "RMarkdown", 
+  target_folder = rmd_docs_folder,
+  source_file = list.files(
+    path = ".", 
+    pattern = sprintf("(%s)$", paste(rmd_ext, collapse = "|")))
+)
+nb_files <- tibble(
+  type = "Jupyter NB", 
+  target_folder = nb_docs_folder,
+  source_file = list.files(
+    path = ".", 
+    pattern = sprintf("(%s)$", paste(nb_ext, collapse = "|")))
+)
+docs_files <- 
+  bind_rows(rmd_files, nb_files) %>% 
+  mutate(
+    source_copy = file.path(target_folder, source_file),
+    source_file_hash = tools::md5sum(source_file),
+    doc_file = str_replace(source_copy, "\\.[^.]+$", ".html")
+  ) %>% 
+  # exclude template files
+  filter(!source_file %in% c("template.Rmd", "template.ipynb"))
+
+# docs hash
+if (file.exists(hash_file)) {
+  docs_hash <- read_csv(hash_file, col_types = "ccccccc")
+} else {
+  docs_hash <- tibble(
+    type = character(),
+    source_file = character(),
+    source_copy = character(),
+    source_file_hash = character(),
+    doc_file = character(),
+    last_success = character(),
+    last_fail = character()
+  )
+} 
+
+# files with hash
+docs_files <- 
+  docs_files %>% 
+  left_join(
+    rename(docs_hash, existing_source_file_hash = source_file_hash), 
+    by = c("source_file", "source_copy", "doc_file", "type")
+  ) %>% 
+  mutate(
+    # generate if
+    # a) the file is new
+    # b) the source file has changed
+    # c) it has failed on the last attempt
+    # d) it has never been succesfully generated
+    # e) the file does not exist although it should be there
+    generate = 
+      always_regenerate | 
+      is.na(existing_source_file_hash) | 
+      !map2_lgl(source_file_hash, existing_source_file_hash, identical) |
+      !is.na(last_fail) |
+      is.na(last_success) |
+      !file.exists(doc_file)
+  ) %>% 
+  select(-existing_source_file_hash)
+
+# file info
+docs_files %>% select(-target_folder) %>% knitr::kable()
+```
+
+```{r "render files", warning=FALSE, results="asis"}
+timestamp <- Sys.time() %>% format("%Y-%m-%d %H:%M:%S %Z")
+
+# find system command
+# @param cmd - can be a vector of alternative commands, will return the first valid one it finds, errors if none are valid
+find_cmd <- function(cmd) {
+  cmds <- Sys.which(cmd)
+  cmds <- cmds[cmds != ""]
+  if (length(cmds) == 0) 
+    stop("cannot find path to cmd '", paste(cmd, collapse = "' or '"), "'", call. = FALSE)
+  return(cmds[1])
+}
+
+# rendering functions return system2 captured output
+render_rmd <- function(source_file, doc_file) {
+  # works more reliably as an external command instead of triggering from within this knit itself
+  cmd <- find_cmd(c("Rscript", "Rscript.exe"))
+  args <- sprintf("-e \"rmarkdown::render('%s', output_file = '%s', output_format = 'html_document')\"", source_file, doc_file)
+  suppressWarnings(system2(cmd, args = args, stdout = TRUE, stderr = TRUE))
+}   
+
+render_nb <- function(source_file, target_folder) {
+  # does not seem to be a way to specify doc_file directly
+  nbconvert_arg <- 
+    sprintf("nbconvert --to html --execute \"%s\" --output-dir \"%s\"", 
+            source_file, target_folder)
+  jupyter_cmd <- find_cmd(c("jupyter", "jupyter.exe"))
+  if (!is.null(py_venv)) {
+    # not soure how to deal with this on Windows since source is a script, not an OS command...
+    cmd <- "source"
+    args <- sprintf("activate %s && %s %s", py_venv, jupyter_cmd, nbconvert_arg)
+  } else {
+    cmd <- jupyter_cmd
+    args <- nbconvert_arg
+  }
+  suppressWarnings(system2(cmd, args = args, stdout = TRUE, stderr = TRUE))
+}
+render_file <- function(generate, type, source_file, source_copy, target_folder, doc_file) {
+  
+  if (!generate) {
+    cat("<h1>", source_file, " (NC)</h1>\n")
+    message("source file has not changed, docs file will not be re-generated (delete file in docs folder to force re-generation)")
+    return(NA)
+  }
+  
+  # copy source file with extra md header to account for jekyll
+  # stripping it out when generating the github page
+  if (file.exists(source_copy)) file.remove(source_copy)
+  write("---\n---", file = source_copy)
+  file.append(source_copy, source_file)
+  
+  # render
+  if (type == "RMarkdown")
+    out <- render_rmd(source_file = source_file, doc_file = doc_file)
+  else if (type == "Jupyter NB")
+    out <- render_nb(source_file = source_file, target_folder = target_folder)
+  else
+    stop("unknown file type ", type)
+  success <- is.null(attr(out, "status")) & file.exists(doc_file)
+  
+  # info
+  if (success) cat("<h1>", source_file, " (OK)</h1>\n")
+  else cat("<h1>", source_file, " (ERROR)</h1>\n")
+  if (length(out) > 0) message(paste(out, collapse = "\n"))
+  
+  # file missing message
+  if (!file.exists(doc_file)) 
+    message("File did not get created successfully.")
+  
+  return(success)
+}
+
+# render all
+rendered_doc_files <- docs_files %>% 
+  mutate(success = pmap_lgl(
+    list(
+      generate = generate,
+      type = type,
+      source_file = source_file,
+      source_copy = source_copy,
+      target_folder = target_folder,
+      doc_file = doc_file
+    ),
+    render_file
+  ))
+```
+
+# summary
+
+```{r}
+summary <- rendered_doc_files %>% 
+  mutate(
+    last_success = case_when(
+      generate & success ~ timestamp, 
+      TRUE ~ last_success),
+    last_fail = case_when(
+      generate & success ~ NA_character_,
+      generate & !success ~ timestamp,
+      TRUE ~ last_fail)
+  ) %>% 
+  select(-target_folder)
+write_csv(select(summary, -generate, -success), path = hash_file)
+summary %>% knitr::kable()
+```
+
+# index
+
+```{r}
+if (any(summary$generate) || !file.exists(file.path(docs_folder, "index.html"))) {
+  out <- render_rmd(
+    source_file = file.path(docs_folder, "index.Rmd"), 
+    doc_file = file.path("index.html")
+  )
+  success <- is.null(attr(out, "status"))
+  if (success) 
+    message("index updated successfully")
+  else
+    message("something went wrong updating the index, please render index.Rmd manually")
+} else {
+  message("No files (re)generated, index stays the same.")
+}
+```
+

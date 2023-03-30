@@ -1,0 +1,151 @@
+---
+---
+---
+title: "Plotting Example"
+subtitle: "Demonstrates latex math and plotting"
+author: "AUTHORS"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document: 
+    df_print: paged # omit to disable paged data table output
+    css: stylesheet.css # omit if no need for custom stylesheet
+    number_sections: yes # change to no for unnumbered sections
+    toc: yes # change to no to disable table of contents
+    toc_float: true # change to false to keep toc at the top
+    toc_depth: 3 # change to specify which headings to include in toc
+    code_folding: show # change to hide to hide code by default
+editor_options:
+  chunk_output_type: console # change to inline to show output inline
+---
+
+```{r install, eval=FALSE}
+# run this block once in RStudio to install all packages required for this example
+install.packages("tidyverse") # tidyverse data and plotting tools
+install.packages("latex2exp") # rendering latex equations in plots
+```
+
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+# load libraries
+library(tidyverse) 
+library(latex2exp)
+
+# source all relevant scripting files
+source(file.path("scripts", "plotting_functions.R"))
+source(file.path("scripts", "table_functions.R"))
+
+# global knitting options for automatic saving of all plots as .png and .pdf
+knitr::opts_chunk$set(
+  dev = c("png", "pdf"), fig.keep = "all",
+  dev.args = list(pdf = list(encoding = "WinAnsi", useDingbats = FALSE)),
+  fig.path = file.path("plots", paste0(gsub("\\.[Rr]md", "", knitr::current_input()), "_"))
+)
+```
+
+# $\LaTeX$ Math
+
+This is just markdown that can include latex math.
+
+$$
+\begin{align}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{align}
+$$
+
+# Simple Plot
+
+```{r "simple_plot", fig.width = 8, fig.height = 6}
+# generate a simple plot with ggplot2
+p1 <- mpg %>% 
+  ggplot() +
+  aes(x = hwy, y = cty, color = drv) + 
+  geom_point()
+p1
+```
+
+# Polished Plots
+
+## Latex labels
+
+```{r "polished_plot_w_latex_labels", warning=FALSE, fig.width = 6, fig.height = 8}
+# generate a more polished plot
+p2 <- mpg %>% 
+  # upgrade the color scale to include some latex symbols
+  mutate(
+    latex_drv = 
+      # turn into ordered variable (factor) that keeps the order
+      as_factor(drv) %>% fct_inorder() %>% 
+      # introduce latex substitutions
+      fct_recode(
+        "$\\left(\\frac{\\textbf{rear drv}}{\\beta^2}\\right)$" = "r",
+        "$\\int_{\\infinity}\\sqrt[2]_{\\textbf{front drv}}$" = "f")
+  ) %>% 
+  # start the plot
+  ggplot() + 
+  aes(x = hwy, y = cty, color = latex_drv) + 
+  geom_point() +
+  # add latex to color, facet and axis labels
+  scale_color_discrete(labels = latex_labeller) +
+  facet_wrap(~latex_drv, labeller = latex_labeller, ncol = 1) +
+  labs(x = TeX("my x axis $\\delta^{42}X\\,\\[\U2030\\]$")) + 
+  # use theme_figure from the plotting_functions.R
+  theme_figure(text_size = 16)
+p2
+```
+
+## Regression labels
+
+```{r "polished_plot_w_regression_labels", warning=FALSE, fig.width = 6, fig.height = 8}
+p3 <- p2 +
+  # add regression
+  geom_smooth(method = lm, formula = y ~ x, linetype = 2) +
+  # add regression label to previous plot
+  geom_text(
+    data = function(df) {
+      df %>%
+        group_by(latex_drv) %>%
+        generate_regression_fit_label(
+          formula = cty ~ hwy,
+          func = lm,
+          include_r2 = TRUE
+        ) %>%
+        filter(!has_error)
+    },
+    mapping = aes(color = NULL, label = expr_label, x = -Inf, y = Inf),
+    hjust = -0.1, vjust = 1.3, parse = TRUE, size = 4, show.legend = FALSE
+  ) 
+p3
+```
+
+## Log axis formatting
+
+```{r "polished_plot_w_formatted_log_axis", warning=FALSE, fig.width = 8, fig.height = 4}
+diamonds %>%
+  slice_sample(n = 1000) %>%
+  ggplot() +
+  aes(x = carat, y = price, color = cut) +
+  geom_point() + 
+  scale_y_continuous(labels = parsed_sci_format(signif = 2)) +
+  theme_figure(text_size = 16)
+```
+
+## Y axis break
+
+```{r "polished_plot_w_y_axis_break", warning=FALSE, fig.width = 8, fig.height = 4}
+p <- diamonds %>%
+  slice_sample(n = 1000) %>%
+  ggplot() +
+  aes(x = carat, y = price, color = cut) +
+  geom_point() + 
+  theme_figure(text_size = 16, legend = FALSE)
+
+plot_with_y_gap(
+  pb = p, pb_ylim = c(0, 1100), pb_breaks = c(0, 250, 500, 750, 1000),
+  pt = p, pt_ylim = c(9000, 16000), pt_breaks = c(10000, 12500, 15000),
+  pb_gap_marker_offset = 0.02, pt_gap_marker_offset = 0.03, 
+  pb_gap_marker_width = 0.25, pt_gap_marker_width = 0.2
+)
+```
+

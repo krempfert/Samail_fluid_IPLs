@@ -1,0 +1,6 @@
+# GIT ignore commands for the fig_output directory
+# by default, nothing from this directory is ever added to github
+*
+
+# if you want to ADD any particular file to GitHub anyways, list it here (1 file per line) starting with !
+!example_file_to_add.png
