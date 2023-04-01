@@ -1,0 +1,220 @@
+---
+title: "IPO optimization"
+subtitle: "Fluid samples + .1, 1 ng standards"
+author: "Kaitlin Rempfert"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document: 
+    df_print: paged 
+    css: stylesheet.css 
+    number_sections: yes 
+    toc: yes 
+    toc_float: true 
+    toc_depth: 3 
+    code_folding: show 
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+#load required packages
+library(tidyverse)
+library(tools)
+library(MSnbase)
+library(IPO)
+library(xcms)
+library(CAMERA)
+library(rsm)
+        
+#load in functions
+source(file.path("scripts", "lipid_scripts.R"))
+```
+
+
+# Load in raw mzXML files (Note: files too big for Github repo; need to download from Metabolights, convert to mzxml, and then load from the folder below)
+```{r}
+#load test files (all fluid samples + .1 and 1 ng standard reps)
+mzXMLdirs = "data/raw/IPO"
+mzXMLfiles_test = list.files(mzXMLdirs, recursive = TRUE, full.names = TRUE)
+
+# will use IPO to optimize settings for method = centWave
+
+# define ranges of parameters to be tested
+# if single value is specified for a parameter, or centWave default is used, that parameter will not be optimized
+
+peakpickingParameters <- getDefaultXcmsSetStartingParams('centWave')
+peakpickingParameters$min_peakwidth <- c(10,20) # centerpoint is 15
+peakpickingParameters$max_peakwidth <- c(20,60) # centerpoint is 40
+peakpickingParameters$ppm <- 2.5 # want to set this low to avoid peak data insertion errors from centWave; IPO wants to use something like 5.5 ppm if you allow it to "optimize," but this is too high
+peakpickingParameters$prefilter <- 3 # a very long optimization routine settled on a value of 2.4
+peakpickingParameters$value_of_prefilter <- c(1000,20000) #centerpoint 10000
+peakpickingParameters$snthresh <- 10
+peakpickingParameters$noise <- c(100,500)
+peakpickingParameters$mzdiff <- c(-.001,.02)
+
+
+resultPeakpicking <- optimizeXcmsSet(files= mzXMLfiles_test, nSlaves = 4,
+                                     params=peakpickingParameters, subdir= "IPO_new")
+saveRDS(resultPeakpicking, "resultPeakpicking.RDS")
+optimizedXcmsSetObject <- resultPeakpicking$best_settings$xset
+
+################# Export IPO starting value(s) and optimal settings for each parameter to .csv #############
+
+# generate unique timestamp for filename so we don't overwrite any existing output
+
+output_DTG = format(Sys.time(), "%Y-%m-%dT%X%z") # return current time in a good format
+output_DTG = gsub(" ", "_", output_DTG) # replace any spaces
+output_DTG = gsub(":", "-", output_DTG) # replaces any colons with dashes (Mac compatibility)
+
+# write 3-column table to .csv using write.table()
+
+write.table(cbind(sort(rownames(as.matrix(peakpickingParameters))),
+                  as.character(resultPeakpicking$best_settings$parameters[sort(names(resultPeakpicking$best_settings$parameters))]),
+                  as.character(peakpickingParameters[sort(rownames(as.matrix(peakpickingParameters)))])),
+            file = paste("IPO_centWaveparamfits_",output_DTG,".csv",sep=""),
+            col.names = c("centWave_parameter","IPO_optim_value","Starting_value(s)"),
+            row.names = FALSE,
+            sep=",")
+
+
+#load parameters from IPO optimization for peak picking
+centWprams.from.file = read.csv("IPO_centWaveparamfits_2020-09-23T6-03-00_AM-0600.csv",colClasses = "character")
+
+centW.min_peakwidth = as.numeric(centWprams.from.file[centWprams.from.file[,1]=="min_peakwidth",2])
+centW.max_peakwidth = as.numeric(centWprams.from.file[centWprams.from.file[,1]=="max_peakwidth",2])
+centW.ppm = as.numeric(centWprams.from.file[centWprams.from.file[,1]=="ppm",2])
+centW.mzdiff = as.numeric(centWprams.from.file[centWprams.from.file[,1]=="mzdiff",2])
+centW.snthresh = as.numeric(centWprams.from.file[centWprams.from.file[,1]=="snthresh",2])
+centW.prefilter = c(as.numeric(centWprams.from.file[centWprams.from.file[,1]=="prefilter",2]),as.numeric(centWprams.from.file[centWprams.from.file[,1]=="value_of_prefilter",2]))
+centW.noise = as.numeric(centWprams.from.file[centWprams.from.file[,1]=="noise",2])
+
+
+# specify some additional settings we wish to keep constant, regardless of where the parameters above were obtained
+centW.fitgauss = FALSE
+centW.sleep = 1
+centW.mzCenterFun = c("wMean")
+centW.verbose.columns = TRUE
+centW.integrate = 1
+centW.profparam = list(step=0.001) #setting this very low, per Jan Stanstrup; low setting uses more memory but helps avoid the situation where mass accuracy eclipses the actual width of the m/z windows used to define each peak (a real possibility with Orbitrap data; see http://metabolomics-forum.com/viewtopic.php?f=8&t=598#p1853); changed to .01 from .001 
+centW.nSlaves = 2 # if you have r package "snow" installed, can set to number of cores you wish to make use of
+
+
+#run optimized peak-picking on test dataset
+xset_centWave_test = xcmsSet(mzXMLfiles_test,
+                        method = "centWave",
+                        profparam = centW.profparam,
+                        ppm = centW.ppm,
+                        peakwidth = c(centW.min_peakwidth,centW.max_peakwidth),
+                        fitgauss = centW.fitgauss,
+                        noise = centW.noise,
+                        mzdiff = centW.mzdiff,
+                        verbose.columns = centW.verbose.columns,
+                        snthresh = centW.snthresh,
+                        integrate = centW.integrate,
+                        prefilter = centW.prefilter,
+                        mzCenterFun = centW.mzCenterFun,
+                        #sleep = centW.sleep
+                        nSlaves = centW.nSlaves
+)
+
+
+####optimize alignment and grouping #####
+retcorGroupParameters = getDefaultRetGroupStartingParams(retcorMethod="loess") # get defaults
+
+# set some parameter ranges invididually for group.density
+retcorGroupParameters$bw = c(2,45)
+retcorGroupParameters$minfrac = .2
+retcorGroupParameters$minsamp = 1
+retcorGroupParameters$mzwid = c(0.001,0.035)
+#retcorGroupParameters$profStep = c(0.002,1)
+
+
+#run optimization
+resultRetcorGroup = optimizeRetGroup(xset=xset_centWave_test, params=retcorGroupParameters,
+                                     nSlaves=2, subdir="IPO_RetcorGroups_loess_test")
+saveRDS(resultRetcorGroup, "resultRetcorGroup_loess.RDS")
+
+resultRetcorGroup <- readRDS("resultRetcorGroup_loess.RDS")
+
+retcorGroup.exportmat = cbind(sort(rownames(as.matrix(retcorGroupParameters))),
+                              as.character(resultRetcorGroup$best_settings[-length(resultRetcorGroup$best_settings)][sort(names(resultRetcorGroup$best_settings[-length(resultRetcorGroup$best_settings)]))]),
+                              as.character(retcorGroupParameters[sort(rownames(as.matrix(retcorGroupParameters)))]))
+
+retcorGroup.exportmat = rbind(retcorGroup.exportmat,c("center",resultRetcorGroup$best_settings$center,"NA"))
+timestamp.now = print(genTimeStamp())
+
+write.table(retcorGroup.exportmat,
+            file = paste("IPO_retcorGroupparamfits_",timestamp.now,".csv",sep=""),
+            col.names = c("retcor_or_group_parameter","IPO_optim_value","Starting_value(s)"),
+            row.names = FALSE,
+            sep=",")
+
+
+
+
+density.bw = resultRetcorGroup$best_settings$bw
+density.max = resultRetcorGroup$best_settings$max
+density.minfrac = resultRetcorGroup$best_settings$minfrac
+density.minsamp = resultRetcorGroup$best_settings$minsamp
+density.mzwid = resultRetcorGroup$best_settings$mzwid
+density.sleep = 0 
+
+  
+loess.missing = resultRetcorGroup$best_settings$missing
+loess.extra = resultRetcorGroup$best_settings$extra
+loess.span = resultRetcorGroup$best_settings$span
+loess.family = resultRetcorGroup$best_settings$family
+  
+
+  xset_cw_gr = group(xset_centWave,
+                          method = "density",
+                          bw = 15,
+                          minfrac = density.minfrac,
+                          minsamp = density.minsamp,
+                          mzwid = density.mzwid,
+                          max = density.max,
+                          sleep = density.sleep
+  )
+  
+xset_cw_ret = retcor(xset_cw_gr,
+                                  method = "obiwarp",
+                                  plottype = "deviation",
+                                  profStep = .1, #.002
+                                  center =  21,
+                                  response = obiwarp.response,
+                                  distFunc = obiwarp.distFunc,
+                                  gapInit = obiwarp.gapInit,
+                                  gapExtend = obiwarp.gapInit,
+                                  factorDiag = obiwarp.factorDiag,
+                                  factorGap = obiwarp.factorGap,
+                                  localAlignment = obiwarp.localAlignment,
+                                  initPenalty = 0
+  )  
+
+xset_cw_ret = retcor(xset_cw_gr,
+                     method = "loess",
+                     plottype = "mdevden",
+                     missing = loess.missing,
+                     extra = loess.extra,
+                     smooth = "loess",
+                     span = loess.span,
+                     family = loess.family,
+                     col = NULL,
+                     ty = NULL
+)
+  
+  
+xset_cw_ret_gr = group(xset_cw_ret,
+                         method = "density",
+                         bw = density.bw,
+                         minfrac = density.minfrac,
+                         minsamp = density.minsamp,
+                         mzwid = density.mzwid,
+                         max = density.max,
+                         sleep = density.sleep
+  )
+  
+saveRDS(xset_cw_ret_gr, "resultRetcor_Group_loess.RDS")  
+```
+

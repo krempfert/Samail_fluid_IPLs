@@ -1,3 +1,0 @@
-type,source_file,source_copy,source_file_hash,doc_file,last_success,last_fail
-RMarkdown,data_examples.Rmd,docs/rmarkdown/data_examples.Rmd,570ff839411eb93e49e3fab08cd4c905,docs/rmarkdown/data_examples.html,2021-09-28 21:32:01 MDT,NA
-RMarkdown,plotting_examples.Rmd,docs/rmarkdown/plotting_examples.Rmd,74141a861320a5b6cd74bf5aa3635b32,docs/rmarkdown/plotting_examples.html,2021-09-28 21:32:01 MDT,NA

@@ -1,0 +1,505 @@
+mass,id,diagnostic,type2,type1
+60.02058578,FA 2:0,FA 2:0,fatty_acid,nl
+76.0155004,FA 2:0 +1O,FA 2:0 +1O,fatty_acid,nl
+92.01041502,FA 2:0 +2O,FA 2:0 +2O,fatty_acid,nl
+108.0053296,FA 2:0 +3O,FA 2:0 +3O,fatty_acid,nl
+58.0049357,FA 2:1,FA 2:1,fatty_acid,nl
+73.99985032,FA 2:1 +1O,FA 2:1 +1O,fatty_acid,nl
+89.99476494,FA 2:1 +2O,FA 2:1 +2O,fatty_acid,nl
+105.9896796,FA 2:1 +3O,FA 2:1 +3O,fatty_acid,nl
+74.03623586,FA 3:0,FA 3:0,fatty_acid,nl
+90.03115048,FA 3:0 +1O,FA 3:0 +1O,fatty_acid,nl
+106.0260651,FA 3:0 +2O,FA 3:0 +2O,fatty_acid,nl
+122.0209797,FA 3:0 +3O,FA 3:0 +3O,fatty_acid,nl
+72.02058578,FA 3:1,FA 3:1,fatty_acid,nl
+88.0155004,FA 3:1 +1O,FA 3:1 +1O,fatty_acid,nl
+104.010415,FA 3:1 +2O,FA 3:1 +2O,fatty_acid,nl
+120.0053296,FA 3:1 +3O,FA 3:1 +3O,fatty_acid,nl
+88.05188594,FA 4:0,FA 4:0,fatty_acid,nl
+104.0468006,FA 4:0 +1O,FA 4:0 +1O,fatty_acid,nl
+120.0417152,FA 4:0 +2O,FA 4:0 +2O,fatty_acid,nl
+136.0366298,FA 4:0 +3O,FA 4:0 +3O,fatty_acid,nl
+86.03623586,FA 4:1,FA 4:1,fatty_acid,nl
+102.0311505,FA 4:1 +1O,FA 4:1 +1O,fatty_acid,nl
+118.0260651,FA 4:1 +2O,FA 4:1 +2O,fatty_acid,nl
+134.0209797,FA 4:1 +3O,FA 4:1 +3O,fatty_acid,nl
+102.067536,FA 5:0,FA 5:0,fatty_acid,nl
+118.0624506,FA 5:0 +1O,FA 5:0 +1O,fatty_acid,nl
+134.0573653,FA 5:0 +2O,FA 5:0 +2O,fatty_acid,nl
+150.0522799,FA 5:0 +3O,FA 5:0 +3O,fatty_acid,nl
+100.0518859,FA 5:1,FA 5:1,fatty_acid,nl
+116.0468006,FA 5:1 +1O,FA 5:1 +1O,fatty_acid,nl
+132.0417152,FA 5:1 +2O,FA 5:1 +2O,fatty_acid,nl
+148.0366298,FA 5:1 +3O,FA 5:1 +3O,fatty_acid,nl
+116.0831861,FA 6:0,FA 6:0,fatty_acid,nl
+132.0781007,FA 6:0 +1O,FA 6:0 +1O,fatty_acid,nl
+148.0730153,FA 6:0 +2O,FA 6:0 +2O,fatty_acid,nl
+164.06793,FA 6:0 +3O,FA 6:0 +3O,fatty_acid,nl
+114.067536,FA 6:1,FA 6:1,fatty_acid,nl
+130.0624506,FA 6:1 +1O,FA 6:1 +1O,fatty_acid,nl
+146.0573653,FA 6:1 +2O,FA 6:1 +2O,fatty_acid,nl
+162.0522799,FA 6:1 +3O,FA 6:1 +3O,fatty_acid,nl
+130.0988362,FA 7:0,FA 7:0,fatty_acid,nl
+146.0937508,FA 7:0 +1O,FA 7:0 +1O,fatty_acid,nl
+162.0886654,FA 7:0 +2O,FA 7:0 +2O,fatty_acid,nl
+178.08358,FA 7:0 +3O,FA 7:0 +3O,fatty_acid,nl
+128.0831861,FA 7:1,FA 7:1,fatty_acid,nl
+144.0781007,FA 7:1 +1O,FA 7:1 +1O,fatty_acid,nl
+160.0730153,FA 7:1 +2O,FA 7:1 +2O,fatty_acid,nl
+176.06793,FA 7:1 +3O,FA 7:1 +3O,fatty_acid,nl
+126.067536,FA 7:2,FA 7:2,fatty_acid,nl
+142.0624506,FA 7:2 +1O,FA 7:2 +1O,fatty_acid,nl
+158.0573653,FA 7:2 +2O,FA 7:2 +2O,fatty_acid,nl
+174.0522799,FA 7:2 +3O,FA 7:2 +3O,fatty_acid,nl
+144.1144863,FA 8:0,FA 8:0,fatty_acid,nl
+160.1094009,FA 8:0 +1O,FA 8:0 +1O,fatty_acid,nl
+176.1043155,FA 8:0 +2O,FA 8:0 +2O,fatty_acid,nl
+192.0992301,FA 8:0 +3O,FA 8:0 +3O,fatty_acid,nl
+142.0988362,FA 8:1,FA 8:1,fatty_acid,nl
+158.0937508,FA 8:1 +1O,FA 8:1 +1O,fatty_acid,nl
+174.0886654,FA 8:1 +2O,FA 8:1 +2O,fatty_acid,nl
+190.08358,FA 8:1 +3O,FA 8:1 +3O,fatty_acid,nl
+140.0831861,FA 8:2,FA 8:2,fatty_acid,nl
+156.0781007,FA 8:2 +1O,FA 8:2 +1O,fatty_acid,nl
+172.0730153,FA 8:2 +2O,FA 8:2 +2O,fatty_acid,nl
+188.06793,FA 8:2 +3O,FA 8:2 +3O,fatty_acid,nl
+158.1301363,FA 9:0,FA 9:0,fatty_acid,nl
+174.125051,FA 9:0 +1O,FA 9:0 +1O,fatty_acid,nl
+190.1199656,FA 9:0 +2O,FA 9:0 +2O,fatty_acid,nl
+206.1148802,FA 9:0 +3O,FA 9:0 +3O,fatty_acid,nl
+156.1144863,FA 9:1,FA 9:1,fatty_acid,nl
+172.1094009,FA 9:1 +1O,FA 9:1 +1O,fatty_acid,nl
+188.1043155,FA 9:1 +2O,FA 9:1 +2O,fatty_acid,nl
+204.0992301,FA 9:1 +3O,FA 9:1 +3O,fatty_acid,nl
+154.0988362,FA 9:2,FA 9:2,fatty_acid,nl
+170.0937508,FA 9:2 +1O,FA 9:2 +1O,fatty_acid,nl
+186.0886654,FA 9:2 +2O,FA 9:2 +2O,fatty_acid,nl
+202.08358,FA 9:2 +3O,FA 9:2 +3O,fatty_acid,nl
+168.1144863,FA 10:2,FA 10:2,fatty_acid,nl
+184.1094009,FA 10:2 +1O,FA 10:2 +1O,fatty_acid,nl
+200.1043155,FA 10:2 +2O,FA 10:2 +2O,fatty_acid,nl
+216.0992301,FA 10:2 +3O,FA 10:2 +3O,fatty_acid,nl
+186.1614365,FA 11:0,FA 11:0,fatty_acid,nl
+202.1563511,FA 11:0 +1O,FA 11:0 +1O,fatty_acid,nl
+218.1512657,FA 11:0 +2O,FA 11:0 +2O,fatty_acid,nl
+234.1461804,FA 11:0 +3O,FA 11:0 +3O,fatty_acid,nl
+184.1457864,FA 11:1,FA 11:1,fatty_acid,nl
+200.140701,FA 11:1 +1O,FA 11:1 +1O,fatty_acid,nl
+216.1356157,FA 11:1 +2O,FA 11:1 +2O,fatty_acid,nl
+232.1305303,FA 11:1 +3O,FA 11:1 +3O,fatty_acid,nl
+182.1301363,FA 11:2,FA 11:2,fatty_acid,nl
+198.125051,FA 11:2 +1O,FA 11:2 +1O,fatty_acid,nl
+214.1199656,FA 11:2 +2O,FA 11:2 +2O,fatty_acid,nl
+230.1148802,FA 11:2 +3O,FA 11:2 +3O,fatty_acid,nl
+200.1770866,FA 12:0,FA 12:0,fatty_acid,nl
+216.1720012,FA 12:0 +1O,FA 12:0 +1O,fatty_acid,nl
+232.1669158,FA 12:0 +2O,FA 12:0 +2O,fatty_acid,nl
+248.1618304,FA 12:0 +3O,FA 12:0 +3O,fatty_acid,nl
+198.1614365,FA 12:1,FA 12:1,fatty_acid,nl
+214.1563511,FA 12:1 +1O,FA 12:1 +1O,fatty_acid,nl
+230.1512657,FA 12:1 +2O,FA 12:1 +2O,fatty_acid,nl
+246.1461804,FA 12:1 +3O,FA 12:1 +3O,fatty_acid,nl
+196.1457864,FA 12:2,FA 12:2,fatty_acid,nl
+212.140701,FA 12:2 +1O,FA 12:2 +1O,fatty_acid,nl
+228.1356157,FA 12:2 +2O,FA 12:2 +2O,fatty_acid,nl
+244.1305303,FA 12:2 +3O,FA 12:2 +3O,fatty_acid,nl
+194.1301363,FA 12:3,FA 12:3,fatty_acid,nl
+210.125051,FA 12:3 +1O,FA 12:3 +1O,fatty_acid,nl
+226.1199656,FA 12:3 +2O,FA 12:3 +2O,fatty_acid,nl
+242.1148802,FA 12:3 +3O,FA 12:3 +3O,fatty_acid,nl
+214.1927367,FA 13:0,FA 13:0,fatty_acid,nl
+230.1876513,FA 13:0 +1O,FA 13:0 +1O,fatty_acid,nl
+246.1825659,FA 13:0 +2O,FA 13:0 +2O,fatty_acid,nl
+262.1774805,FA 13:0 +3O,FA 13:0 +3O,fatty_acid,nl
+212.1770866,FA 13:1,FA 13:1,fatty_acid,nl
+228.1720012,FA 13:1 +1O,FA 13:1 +1O,fatty_acid,nl
+244.1669158,FA 13:1 +2O,FA 13:1 +2O,fatty_acid,nl
+260.1618304,FA 13:1 +3O,FA 13:1 +3O,fatty_acid,nl
+210.1614365,FA 13:2,FA 13:2,fatty_acid,nl
+226.1563511,FA 13:2 +1O,FA 13:2 +1O,fatty_acid,nl
+242.1512657,FA 13:2 +2O,FA 13:2 +2O,fatty_acid,nl
+258.1461804,FA 13:2 +3O,FA 13:2 +3O,fatty_acid,nl
+208.1457864,FA 13:3,FA 13:3,fatty_acid,nl
+224.140701,FA 13:3 +1O,FA 13:3 +1O,fatty_acid,nl
+240.1356157,FA 13:3 +2O,FA 13:3 +2O,fatty_acid,nl
+256.1305303,FA 13:3 +3O,FA 13:3 +3O,fatty_acid,nl
+228.2083867,FA 14:0,FA 14:0,fatty_acid,nl
+244.2033014,FA 14:0 +1O,FA 14:0 +1O,fatty_acid,nl
+260.198216,FA 14:0 +2O,FA 14:0 +2O,fatty_acid,nl
+276.1931306,FA 14:0 +3O,FA 14:0 +3O,fatty_acid,nl
+226.1927367,FA 14:1,FA 14:1,fatty_acid,nl
+242.1876513,FA 14:1 +1O,FA 14:1 +1O,fatty_acid,nl
+258.1825659,FA 14:1 +2O,FA 14:1 +2O,fatty_acid,nl
+274.1774805,FA 14:1 +3O,FA 14:1 +3O,fatty_acid,nl
+224.1770866,FA 14:2,FA 14:2,fatty_acid,nl
+240.1720012,FA 14:2 +1O,FA 14:2 +1O,fatty_acid,nl
+256.1669158,FA 14:2 +2O,FA 14:2 +2O,fatty_acid,nl
+272.1618304,FA 14:2 +3O,FA 14:2 +3O,fatty_acid,nl
+222.1614365,FA 14:3,FA 14:3,fatty_acid,nl
+238.1563511,FA 14:3 +1O,FA 14:3 +1O,fatty_acid,nl
+254.1512657,FA 14:3 +2O,FA 14:3 +2O,fatty_acid,nl
+270.1461804,FA 14:3 +3O,FA 14:3 +3O,fatty_acid,nl
+242.2240368,FA 15:0,FA 15:0,fatty_acid,nl
+258.2189514,FA 15:0 +1O,FA 15:0 +1O,fatty_acid,nl
+274.2138661,FA 15:0 +2O,FA 15:0 +2O,fatty_acid,nl
+290.2087807,FA 15:0 +3O,FA 15:0 +3O,fatty_acid,nl
+240.2083867,FA 15:1,FA 15:1,fatty_acid,nl
+256.2033014,FA 15:1 +1O,FA 15:1 +1O,fatty_acid,nl
+272.198216,FA 15:1 +2O,FA 15:1 +2O,fatty_acid,nl
+288.1931306,FA 15:1 +3O,FA 15:1 +3O,fatty_acid,nl
+238.1927367,FA 15:2,FA 15:2,fatty_acid,nl
+254.1876513,FA 15:2 +1O,FA 15:2 +1O,fatty_acid,nl
+270.1825659,FA 15:2 +2O,FA 15:2 +2O,fatty_acid,nl
+286.1774805,FA 15:2 +3O,FA 15:2 +3O,fatty_acid,nl
+236.1770866,FA 15:3,FA 15:3,fatty_acid,nl
+252.1720012,FA 15:3 +1O,FA 15:3 +1O,fatty_acid,nl
+268.1669158,FA 15:3 +2O,FA 15:3 +2O,fatty_acid,nl
+284.1618304,FA 15:3 +3O,FA 15:3 +3O,fatty_acid,nl
+256.2396869,FA 16:0,FA 16:0,fatty_acid,nl
+272.2346015,FA 16:0 +1O,FA 16:0 +1O,fatty_acid,nl
+288.2295161,FA 16:0 +2O,FA 16:0 +2O,fatty_acid,nl
+304.2244308,FA 16:0 +3O,FA 16:0 +3O,fatty_acid,nl
+254.2240368,FA 16:1,FA 16:1,fatty_acid,nl
+270.2189514,FA 16:1 +1O,FA 16:1 +1O,fatty_acid,nl
+286.2138661,FA 16:1 +2O,FA 16:1 +2O,fatty_acid,nl
+302.2087807,FA 16:1 +3O,FA 16:1 +3O,fatty_acid,nl
+252.2083867,FA 16:2,FA 16:2,fatty_acid,nl
+268.2033014,FA 16:2 +1O,FA 16:2 +1O,fatty_acid,nl
+284.198216,FA 16:2 +2O,FA 16:2 +2O,fatty_acid,nl
+300.1931306,FA 16:2 +3O,FA 16:2 +3O,fatty_acid,nl
+250.1927367,FA 16:3,FA 16:3,fatty_acid,nl
+266.1876513,FA 16:3 +1O,FA 16:3 +1O,fatty_acid,nl
+282.1825659,FA 16:3 +2O,FA 16:3 +2O,fatty_acid,nl
+298.1774805,FA 16:3 +3O,FA 16:3 +3O,fatty_acid,nl
+270.255337,FA 17:0,FA 17:0,fatty_acid,nl
+286.2502516,FA 17:0 +1O,FA 17:0 +1O,fatty_acid,nl
+302.2451662,FA 17:0 +2O,FA 17:0 +2O,fatty_acid,nl
+318.2400808,FA 17:0 +3O,FA 17:0 +3O,fatty_acid,nl
+268.2396869,FA 17:1,FA 17:1,fatty_acid,nl
+284.2346015,FA 17:1 +1O,FA 17:1 +1O,fatty_acid,nl
+300.2295161,FA 17:1 +2O,FA 17:1 +2O,fatty_acid,nl
+316.2244308,FA 17:1 +3O,FA 17:1 +3O,fatty_acid,nl
+266.2240368,FA 17:2,FA 17:2,fatty_acid,nl
+282.2189514,FA 17:2 +1O,FA 17:2 +1O,fatty_acid,nl
+298.2138661,FA 17:2 +2O,FA 17:2 +2O,fatty_acid,nl
+314.2087807,FA 17:2 +3O,FA 17:2 +3O,fatty_acid,nl
+264.2083867,FA 17:3,FA 17:3,fatty_acid,nl
+280.2033014,FA 17:3 +1O,FA 17:3 +1O,fatty_acid,nl
+296.198216,FA 17:3 +2O,FA 17:3 +2O,fatty_acid,nl
+312.1931306,FA 17:3 +3O,FA 17:3 +3O,fatty_acid,nl
+262.1927367,FA 17:4,FA 17:4,fatty_acid,nl
+278.1876513,FA 17:4 +1O,FA 17:4 +1O,fatty_acid,nl
+294.1825659,FA 17:4 +2O,FA 17:4 +2O,fatty_acid,nl
+310.1774805,FA 17:4 +3O,FA 17:4 +3O,fatty_acid,nl
+284.2709871,FA 18:0,FA 18:0,fatty_acid,nl
+300.2659017,FA 18:0 +1O,FA 18:0 +1O,fatty_acid,nl
+316.2608163,FA 18:0 +2O,FA 18:0 +2O,fatty_acid,nl
+332.2557309,FA 18:0 +3O,FA 18:0 +3O,fatty_acid,nl
+282.255337,FA 18:1,FA 18:1,fatty_acid,nl
+298.2502516,FA 18:1 +1O,FA 18:1 +1O,fatty_acid,nl
+314.2451662,FA 18:1 +2O,FA 18:1 +2O,fatty_acid,nl
+330.2400808,FA 18:1 +3O,FA 18:1 +3O,fatty_acid,nl
+280.2396869,FA 18:2,FA 18:2,fatty_acid,nl
+296.2346015,FA 18:2 +1O,FA 18:2 +1O,fatty_acid,nl
+312.2295161,FA 18:2 +2O,FA 18:2 +2O,fatty_acid,nl
+328.2244308,FA 18:2 +3O,FA 18:2 +3O,fatty_acid,nl
+278.2240368,FA 18:3,FA 18:3,fatty_acid,nl
+294.2189514,FA 18:3 +1O,FA 18:3 +1O,fatty_acid,nl
+310.2138661,FA 18:3 +2O,FA 18:3 +2O,fatty_acid,nl
+326.2087807,FA 18:3 +3O,FA 18:3 +3O,fatty_acid,nl
+276.2083867,FA 18:4,FA 18:4,fatty_acid,nl
+292.2033014,FA 18:4 +1O,FA 18:4 +1O,fatty_acid,nl
+308.198216,FA 18:4 +2O,FA 18:4 +2O,fatty_acid,nl
+324.1931306,FA 18:4 +3O,FA 18:4 +3O,fatty_acid,nl
+298.2866371,FA 19:0,FA 19:0,fatty_acid,nl
+314.2815518,FA 19:0 +1O,FA 19:0 +1O,fatty_acid,nl
+330.2764664,FA 19:0 +2O,FA 19:0 +2O,fatty_acid,nl
+346.271381,FA 19:0 +3O,FA 19:0 +3O,fatty_acid,nl
+296.2709871,FA 19:1,FA 19:1,fatty_acid,nl
+312.2659017,FA 19:1 +1O,FA 19:1 +1O,fatty_acid,nl
+328.2608163,FA 19:1 +2O,FA 19:1 +2O,fatty_acid,nl
+344.2557309,FA 19:1 +3O,FA 19:1 +3O,fatty_acid,nl
+294.255337,FA 19:2,FA 19:2,fatty_acid,nl
+310.2502516,FA 19:2 +1O,FA 19:2 +1O,fatty_acid,nl
+326.2451662,FA 19:2 +2O,FA 19:2 +2O,fatty_acid,nl
+342.2400808,FA 19:2 +3O,FA 19:2 +3O,fatty_acid,nl
+292.2396869,FA 19:3,FA 19:3,fatty_acid,nl
+308.2346015,FA 19:3 +1O,FA 19:3 +1O,fatty_acid,nl
+324.2295161,FA 19:3 +2O,FA 19:3 +2O,fatty_acid,nl
+340.2244308,FA 19:3 +3O,FA 19:3 +3O,fatty_acid,nl
+290.2240368,FA 19:4,FA 19:4,fatty_acid,nl
+306.2189514,FA 19:4 +1O,FA 19:4 +1O,fatty_acid,nl
+322.2138661,FA 19:4 +2O,FA 19:4 +2O,fatty_acid,nl
+338.2087807,FA 19:4 +3O,FA 19:4 +3O,fatty_acid,nl
+312.3022872,FA 20:0,FA 20:0,fatty_acid,nl
+328.2972018,FA 20:0 +1O,FA 20:0 +1O,fatty_acid,nl
+344.2921165,FA 20:0 +2O,FA 20:0 +2O,fatty_acid,nl
+360.2870311,FA 20:0 +3O,FA 20:0 +3O,fatty_acid,nl
+310.2866371,FA 20:1,FA 20:1,fatty_acid,nl
+326.2815518,FA 20:1 +1O,FA 20:1 +1O,fatty_acid,nl
+342.2764664,FA 20:1 +2O,FA 20:1 +2O,fatty_acid,nl
+358.271381,FA 20:1 +3O,FA 20:1 +3O,fatty_acid,nl
+308.2709871,FA 20:2,FA 20:2,fatty_acid,nl
+324.2659017,FA 20:2 +1O,FA 20:2 +1O,fatty_acid,nl
+340.2608163,FA 20:2 +2O,FA 20:2 +2O,fatty_acid,nl
+356.2557309,FA 20:2 +3O,FA 20:2 +3O,fatty_acid,nl
+306.255337,FA 20:3,FA 20:3,fatty_acid,nl
+322.2502516,FA 20:3 +1O,FA 20:3 +1O,fatty_acid,nl
+338.2451662,FA 20:3 +2O,FA 20:3 +2O,fatty_acid,nl
+354.2400808,FA 20:3 +3O,FA 20:3 +3O,fatty_acid,nl
+304.2396869,FA 20:4,FA 20:4,fatty_acid,nl
+320.2346015,FA 20:4 +1O,FA 20:4 +1O,fatty_acid,nl
+336.2295161,FA 20:4 +2O,FA 20:4 +2O,fatty_acid,nl
+352.2244308,FA 20:4 +3O,FA 20:4 +3O,fatty_acid,nl
+326.3179373,FA 21:0,FA 21:0,fatty_acid,nl
+342.3128519,FA 21:0 +1O,FA 21:0 +1O,fatty_acid,nl
+358.3077665,FA 21:0 +2O,FA 21:0 +2O,fatty_acid,nl
+374.3026812,FA 21:0 +3O,FA 21:0 +3O,fatty_acid,nl
+324.3022872,FA 21:1,FA 21:1,fatty_acid,nl
+340.2972018,FA 21:1 +1O,FA 21:1 +1O,fatty_acid,nl
+356.2921165,FA 21:1 +2O,FA 21:1 +2O,fatty_acid,nl
+372.2870311,FA 21:1 +3O,FA 21:1 +3O,fatty_acid,nl
+322.2866371,FA 21:2,FA 21:2,fatty_acid,nl
+338.2815518,FA 21:2 +1O,FA 21:2 +1O,fatty_acid,nl
+354.2764664,FA 21:2 +2O,FA 21:2 +2O,fatty_acid,nl
+370.271381,FA 21:2 +3O,FA 21:2 +3O,fatty_acid,nl
+320.2709871,FA 21:3,FA 21:3,fatty_acid,nl
+336.2659017,FA 21:3 +1O,FA 21:3 +1O,fatty_acid,nl
+352.2608163,FA 21:3 +2O,FA 21:3 +2O,fatty_acid,nl
+368.2557309,FA 21:3 +3O,FA 21:3 +3O,fatty_acid,nl
+318.255337,FA 21:4,FA 21:4,fatty_acid,nl
+334.2502516,FA 21:4 +1O,FA 21:4 +1O,fatty_acid,nl
+350.2451662,FA 21:4 +2O,FA 21:4 +2O,fatty_acid,nl
+366.2400808,FA 21:4 +3O,FA 21:4 +3O,fatty_acid,nl
+340.3335874,FA 22:0,FA 22:0,fatty_acid,nl
+356.328502,FA 22:0 +1O,FA 22:0 +1O,fatty_acid,nl
+372.3234166,FA 22:0 +2O,FA 22:0 +2O,fatty_acid,nl
+388.3183312,FA 22:0 +3O,FA 22:0 +3O,fatty_acid,nl
+338.3179373,FA 22:1,FA 22:1,fatty_acid,nl
+354.3128519,FA 22:1 +1O,FA 22:1 +1O,fatty_acid,nl
+370.3077665,FA 22:1 +2O,FA 22:1 +2O,fatty_acid,nl
+386.3026812,FA 22:1 +3O,FA 22:1 +3O,fatty_acid,nl
+336.3022872,FA 22:2,FA 22:2,fatty_acid,nl
+352.2972018,FA 22:2 +1O,FA 22:2 +1O,fatty_acid,nl
+368.2921165,FA 22:2 +2O,FA 22:2 +2O,fatty_acid,nl
+384.2870311,FA 22:2 +3O,FA 22:2 +3O,fatty_acid,nl
+334.2866371,FA 22:3,FA 22:3,fatty_acid,nl
+350.2815518,FA 22:3 +1O,FA 22:3 +1O,fatty_acid,nl
+366.2764664,FA 22:3 +2O,FA 22:3 +2O,fatty_acid,nl
+382.271381,FA 22:3 +3O,FA 22:3 +3O,fatty_acid,nl
+332.2709871,FA 22:4,FA 22:4,fatty_acid,nl
+348.2659017,FA 22:4 +1O,FA 22:4 +1O,fatty_acid,nl
+364.2608163,FA 22:4 +2O,FA 22:4 +2O,fatty_acid,nl
+380.2557309,FA 22:4 +3O,FA 22:4 +3O,fatty_acid,nl
+330.255337,FA 22:5,FA 22:5,fatty_acid,nl
+346.2502516,FA 22:5 +1O,FA 22:5 +1O,fatty_acid,nl
+362.2451662,FA 22:5 +2O,FA 22:5 +2O,fatty_acid,nl
+378.2400808,FA 22:5 +3O,FA 22:5 +3O,fatty_acid,nl
+354.3492375,FA 23:0,FA 23:0,fatty_acid,nl
+370.3441521,FA 23:0 +1O,FA 23:0 +1O,fatty_acid,nl
+386.3390667,FA 23:0 +2O,FA 23:0 +2O,fatty_acid,nl
+402.3339813,FA 23:0 +3O,FA 23:0 +3O,fatty_acid,nl
+352.3335874,FA 23:1,FA 23:1,fatty_acid,nl
+368.328502,FA 23:1 +1O,FA 23:1 +1O,fatty_acid,nl
+384.3234166,FA 23:1 +2O,FA 23:1 +2O,fatty_acid,nl
+400.3183312,FA 23:1 +3O,FA 23:1 +3O,fatty_acid,nl
+350.3179373,FA 23:2,FA 23:2,fatty_acid,nl
+366.3128519,FA 23:2 +1O,FA 23:2 +1O,fatty_acid,nl
+382.3077665,FA 23:2 +2O,FA 23:2 +2O,fatty_acid,nl
+398.3026812,FA 23:2 +3O,FA 23:2 +3O,fatty_acid,nl
+348.3022872,FA 23:3,FA 23:3,fatty_acid,nl
+364.2972018,FA 23:3 +1O,FA 23:3 +1O,fatty_acid,nl
+380.2921165,FA 23:3 +2O,FA 23:3 +2O,fatty_acid,nl
+396.2870311,FA 23:3 +3O,FA 23:3 +3O,fatty_acid,nl
+346.2866371,FA 23:4,FA 23:4,fatty_acid,nl
+362.2815518,FA 23:4 +1O,FA 23:4 +1O,fatty_acid,nl
+378.2764664,FA 23:4 +2O,FA 23:4 +2O,fatty_acid,nl
+394.271381,FA 23:4 +3O,FA 23:4 +3O,fatty_acid,nl
+344.2709871,FA 23:5,FA 23:5,fatty_acid,nl
+360.2659017,FA 23:5 +1O,FA 23:5 +1O,fatty_acid,nl
+376.2608163,FA 23:5 +2O,FA 23:5 +2O,fatty_acid,nl
+392.2557309,FA 23:5 +3O,FA 23:5 +3O,fatty_acid,nl
+368.3648875,FA 24:0,FA 24:0,fatty_acid,nl
+384.3598022,FA 24:0 +1O,FA 24:0 +1O,fatty_acid,nl
+400.3547168,FA 24:0 +2O,FA 24:0 +2O,fatty_acid,nl
+416.3496314,FA 24:0 +3O,FA 24:0 +3O,fatty_acid,nl
+366.3492375,FA 24:1,FA 24:1,fatty_acid,nl
+382.3441521,FA 24:1 +1O,FA 24:1 +1O,fatty_acid,nl
+398.3390667,FA 24:1 +2O,FA 24:1 +2O,fatty_acid,nl
+414.3339813,FA 24:1 +3O,FA 24:1 +3O,fatty_acid,nl
+364.3335874,FA 24:2,FA 24:2,fatty_acid,nl
+380.328502,FA 24:2 +1O,FA 24:2 +1O,fatty_acid,nl
+396.3234166,FA 24:2 +2O,FA 24:2 +2O,fatty_acid,nl
+412.3183312,FA 24:2 +3O,FA 24:2 +3O,fatty_acid,nl
+362.3179373,FA 24:3,FA 24:3,fatty_acid,nl
+378.3128519,FA 24:3 +1O,FA 24:3 +1O,fatty_acid,nl
+394.3077665,FA 24:3 +2O,FA 24:3 +2O,fatty_acid,nl
+410.3026812,FA 24:3 +3O,FA 24:3 +3O,fatty_acid,nl
+360.3022872,FA 24:4,FA 24:4,fatty_acid,nl
+376.2972018,FA 24:4 +1O,FA 24:4 +1O,fatty_acid,nl
+392.2921165,FA 24:4 +2O,FA 24:4 +2O,fatty_acid,nl
+408.2870311,FA 24:4 +3O,FA 24:4 +3O,fatty_acid,nl
+358.2866371,FA 24:5,FA 24:5,fatty_acid,nl
+374.2815518,FA 24:5 +1O,FA 24:5 +1O,fatty_acid,nl
+390.2764664,FA 24:5 +2O,FA 24:5 +2O,fatty_acid,nl
+406.271381,FA 24:5 +3O,FA 24:5 +3O,fatty_acid,nl
+382.3805376,FA 25:0,FA 25:0,fatty_acid,nl
+398.3754522,FA 25:0 +1O,FA 25:0 +1O,fatty_acid,nl
+414.3703669,FA 25:0 +2O,FA 25:0 +2O,fatty_acid,nl
+430.3652815,FA 25:0 +3O,FA 25:0 +3O,fatty_acid,nl
+380.3648875,FA 25:1,FA 25:1,fatty_acid,nl
+396.3598022,FA 25:1 +1O,FA 25:1 +1O,fatty_acid,nl
+412.3547168,FA 25:1 +2O,FA 25:1 +2O,fatty_acid,nl
+428.3496314,FA 25:1 +3O,FA 25:1 +3O,fatty_acid,nl
+378.3492375,FA 25:2,FA 25:2,fatty_acid,nl
+394.3441521,FA 25:2 +1O,FA 25:2 +1O,fatty_acid,nl
+410.3390667,FA 25:2 +2O,FA 25:2 +2O,fatty_acid,nl
+426.3339813,FA 25:2 +3O,FA 25:2 +3O,fatty_acid,nl
+376.3335874,FA 25:3,FA 25:3,fatty_acid,nl
+392.328502,FA 25:3 +1O,FA 25:3 +1O,fatty_acid,nl
+408.3234166,FA 25:3 +2O,FA 25:3 +2O,fatty_acid,nl
+424.3183312,FA 25:3 +3O,FA 25:3 +3O,fatty_acid,nl
+374.3179373,FA 25:4,FA 25:4,fatty_acid,nl
+390.3128519,FA 25:4 +1O,FA 25:4 +1O,fatty_acid,nl
+406.3077665,FA 25:4 +2O,FA 25:4 +2O,fatty_acid,nl
+422.3026812,FA 25:4 +3O,FA 25:4 +3O,fatty_acid,nl
+372.3022872,FA 25:5,FA 25:5,fatty_acid,nl
+388.2972018,FA 25:5 +1O,FA 25:5 +1O,fatty_acid,nl
+404.2921165,FA 25:5 +2O,FA 25:5 +2O,fatty_acid,nl
+420.2870311,FA 25:5 +3O,FA 25:5 +3O,fatty_acid,nl
+396.3961877,FA 26:0,FA 26:0,fatty_acid,nl
+412.3911023,FA 26:0 +1O,FA 26:0 +1O,fatty_acid,nl
+428.3860169,FA 26:0 +2O,FA 26:0 +2O,fatty_acid,nl
+444.3809316,FA 26:0 +3O,FA 26:0 +3O,fatty_acid,nl
+394.3805376,FA 26:1,FA 26:1,fatty_acid,nl
+410.3754522,FA 26:1 +1O,FA 26:1 +1O,fatty_acid,nl
+426.3703669,FA 26:1 +2O,FA 26:1 +2O,fatty_acid,nl
+442.3652815,FA 26:1 +3O,FA 26:1 +3O,fatty_acid,nl
+392.3648875,FA 26:2,FA 26:2,fatty_acid,nl
+408.3598022,FA 26:2 +1O,FA 26:2 +1O,fatty_acid,nl
+424.3547168,FA 26:2 +2O,FA 26:2 +2O,fatty_acid,nl
+440.3496314,FA 26:2 +3O,FA 26:2 +3O,fatty_acid,nl
+390.3492375,FA 26:3,FA 26:3,fatty_acid,nl
+406.3441521,FA 26:3 +1O,FA 26:3 +1O,fatty_acid,nl
+422.3390667,FA 26:3 +2O,FA 26:3 +2O,fatty_acid,nl
+438.3339813,FA 26:3 +3O,FA 26:3 +3O,fatty_acid,nl
+388.3335874,FA 26:4,FA 26:4,fatty_acid,nl
+404.328502,FA 26:4 +1O,FA 26:4 +1O,fatty_acid,nl
+420.3234166,FA 26:4 +2O,FA 26:4 +2O,fatty_acid,nl
+436.3183312,FA 26:4 +3O,FA 26:4 +3O,fatty_acid,nl
+386.3179373,FA 26:5,FA 26:5,fatty_acid,nl
+402.3128519,FA 26:5 +1O,FA 26:5 +1O,fatty_acid,nl
+418.3077665,FA 26:5 +2O,FA 26:5 +2O,fatty_acid,nl
+434.3026812,FA 26:5 +3O,FA 26:5 +3O,fatty_acid,nl
+410.4118378,FA 27:0,FA 27:0,fatty_acid,nl
+426.4067524,FA 27:0 +1O,FA 27:0 +1O,fatty_acid,nl
+442.401667,FA 27:0 +2O,FA 27:0 +2O,fatty_acid,nl
+458.3965816,FA 27:0 +3O,FA 27:0 +3O,fatty_acid,nl
+408.3961877,FA 27:1,FA 27:1,fatty_acid,nl
+424.3911023,FA 27:1 +1O,FA 27:1 +1O,fatty_acid,nl
+440.3860169,FA 27:1 +2O,FA 27:1 +2O,fatty_acid,nl
+456.3809316,FA 27:1 +3O,FA 27:1 +3O,fatty_acid,nl
+406.3805376,FA 27:2,FA 27:2,fatty_acid,nl
+422.3754522,FA 27:2 +1O,FA 27:2 +1O,fatty_acid,nl
+438.3703669,FA 27:2 +2O,FA 27:2 +2O,fatty_acid,nl
+454.3652815,FA 27:2 +3O,FA 27:2 +3O,fatty_acid,nl
+404.3648875,FA 27:3,FA 27:3,fatty_acid,nl
+420.3598022,FA 27:3 +1O,FA 27:3 +1O,fatty_acid,nl
+436.3547168,FA 27:3 +2O,FA 27:3 +2O,fatty_acid,nl
+452.3496314,FA 27:3 +3O,FA 27:3 +3O,fatty_acid,nl
+402.3492375,FA 27:4,FA 27:4,fatty_acid,nl
+418.3441521,FA 27:4 +1O,FA 27:4 +1O,fatty_acid,nl
+434.3390667,FA 27:4 +2O,FA 27:4 +2O,fatty_acid,nl
+450.3339813,FA 27:4 +3O,FA 27:4 +3O,fatty_acid,nl
+400.3335874,FA 27:5,FA 27:5,fatty_acid,nl
+416.328502,FA 27:5 +1O,FA 27:5 +1O,fatty_acid,nl
+432.3234166,FA 27:5 +2O,FA 27:5 +2O,fatty_acid,nl
+448.3183312,FA 27:5 +3O,FA 27:5 +3O,fatty_acid,nl
+398.3179373,FA 27:6,FA 27:6,fatty_acid,nl
+414.3128519,FA 27:6 +1O,FA 27:6 +1O,fatty_acid,nl
+430.3077665,FA 27:6 +2O,FA 27:6 +2O,fatty_acid,nl
+446.3026812,FA 27:6 +3O,FA 27:6 +3O,fatty_acid,nl
+424.4274879,FA 28:0,FA 28:0,fatty_acid,nl
+440.4224025,FA 28:0 +1O,FA 28:0 +1O,fatty_acid,nl
+456.4173171,FA 28:0 +2O,FA 28:0 +2O,fatty_acid,nl
+472.4122317,FA 28:0 +3O,FA 28:0 +3O,fatty_acid,nl
+422.4118378,FA 28:1,FA 28:1,fatty_acid,nl
+438.4067524,FA 28:1 +1O,FA 28:1 +1O,fatty_acid,nl
+454.401667,FA 28:1 +2O,FA 28:1 +2O,fatty_acid,nl
+470.3965816,FA 28:1 +3O,FA 28:1 +3O,fatty_acid,nl
+420.3961877,FA 28:2,FA 28:2,fatty_acid,nl
+436.3911023,FA 28:2 +1O,FA 28:2 +1O,fatty_acid,nl
+452.3860169,FA 28:2 +2O,FA 28:2 +2O,fatty_acid,nl
+468.3809316,FA 28:2 +3O,FA 28:2 +3O,fatty_acid,nl
+418.3805376,FA 28:3,FA 28:3,fatty_acid,nl
+434.3754522,FA 28:3 +1O,FA 28:3 +1O,fatty_acid,nl
+450.3703669,FA 28:3 +2O,FA 28:3 +2O,fatty_acid,nl
+466.3652815,FA 28:3 +3O,FA 28:3 +3O,fatty_acid,nl
+416.3648875,FA 28:4,FA 28:4,fatty_acid,nl
+432.3598022,FA 28:4 +1O,FA 28:4 +1O,fatty_acid,nl
+448.3547168,FA 28:4 +2O,FA 28:4 +2O,fatty_acid,nl
+464.3496314,FA 28:4 +3O,FA 28:4 +3O,fatty_acid,nl
+414.3492375,FA 28:5,FA 28:5,fatty_acid,nl
+430.3441521,FA 28:5 +1O,FA 28:5 +1O,fatty_acid,nl
+446.3390667,FA 28:5 +2O,FA 28:5 +2O,fatty_acid,nl
+462.3339813,FA 28:5 +3O,FA 28:5 +3O,fatty_acid,nl
+412.3335874,FA 28:6,FA 28:6,fatty_acid,nl
+428.328502,FA 28:6 +1O,FA 28:6 +1O,fatty_acid,nl
+444.3234166,FA 28:6 +2O,FA 28:6 +2O,fatty_acid,nl
+460.3183312,FA 28:6 +3O,FA 28:6 +3O,fatty_acid,nl
+438.4431379,FA 29:0,FA 29:0,fatty_acid,nl
+454.4380526,FA 29:0 +1O,FA 29:0 +1O,fatty_acid,nl
+470.4329672,FA 29:0 +2O,FA 29:0 +2O,fatty_acid,nl
+486.4278818,FA 29:0 +3O,FA 29:0 +3O,fatty_acid,nl
+436.4274879,FA 29:1,FA 29:1,fatty_acid,nl
+452.4224025,FA 29:1 +1O,FA 29:1 +1O,fatty_acid,nl
+468.4173171,FA 29:1 +2O,FA 29:1 +2O,fatty_acid,nl
+484.4122317,FA 29:1 +3O,FA 29:1 +3O,fatty_acid,nl
+434.4118378,FA 29:2,FA 29:2,fatty_acid,nl
+450.4067524,FA 29:2 +1O,FA 29:2 +1O,fatty_acid,nl
+466.401667,FA 29:2 +2O,FA 29:2 +2O,fatty_acid,nl
+482.3965816,FA 29:2 +3O,FA 29:2 +3O,fatty_acid,nl
+432.3961877,FA 29:3,FA 29:3,fatty_acid,nl
+448.3911023,FA 29:3 +1O,FA 29:3 +1O,fatty_acid,nl
+464.3860169,FA 29:3 +2O,FA 29:3 +2O,fatty_acid,nl
+480.3809316,FA 29:3 +3O,FA 29:3 +3O,fatty_acid,nl
+430.3805376,FA 29:4,FA 29:4,fatty_acid,nl
+446.3754522,FA 29:4 +1O,FA 29:4 +1O,fatty_acid,nl
+462.3703669,FA 29:4 +2O,FA 29:4 +2O,fatty_acid,nl
+478.3652815,FA 29:4 +3O,FA 29:4 +3O,fatty_acid,nl
+428.3648875,FA 29:5,FA 29:5,fatty_acid,nl
+444.3598022,FA 29:5 +1O,FA 29:5 +1O,fatty_acid,nl
+460.3547168,FA 29:5 +2O,FA 29:5 +2O,fatty_acid,nl
+476.3496314,FA 29:5 +3O,FA 29:5 +3O,fatty_acid,nl
+426.3492375,FA 29:6,FA 29:6,fatty_acid,nl
+442.3441521,FA 29:6 +1O,FA 29:6 +1O,fatty_acid,nl
+458.3390667,FA 29:6 +2O,FA 29:6 +2O,fatty_acid,nl
+474.3339813,FA 29:6 +3O,FA 29:6 +3O,fatty_acid,nl
+452.458788,FA 30:0,FA 30:0,fatty_acid,nl
+468.4537026,FA 30:0 +1O,FA 30:0 +1O,fatty_acid,nl
+484.4486173,FA 30:0 +2O,FA 30:0 +2O,fatty_acid,nl
+500.4435319,FA 30:0 +3O,FA 30:0 +3O,fatty_acid,nl
+450.4431379,FA 30:1,FA 30:1,fatty_acid,nl
+466.4380526,FA 30:1 +1O,FA 30:1 +1O,fatty_acid,nl
+482.4329672,FA 30:1 +2O,FA 30:1 +2O,fatty_acid,nl
+498.4278818,FA 30:1 +3O,FA 30:1 +3O,fatty_acid,nl
+448.4274879,FA 30:2,FA 30:2,fatty_acid,nl
+464.4224025,FA 30:2 +1O,FA 30:2 +1O,fatty_acid,nl
+480.4173171,FA 30:2 +2O,FA 30:2 +2O,fatty_acid,nl
+496.4122317,FA 30:2 +3O,FA 30:2 +3O,fatty_acid,nl
+446.4118378,FA 30:3,FA 30:3,fatty_acid,nl
+462.4067524,FA 30:3 +1O,FA 30:3 +1O,fatty_acid,nl
+478.401667,FA 30:3 +2O,FA 30:3 +2O,fatty_acid,nl
+494.3965816,FA 30:3 +3O,FA 30:3 +3O,fatty_acid,nl
+444.3961877,FA 30:4,FA 30:4,fatty_acid,nl
+460.3911023,FA 30:4 +1O,FA 30:4 +1O,fatty_acid,nl
+476.3860169,FA 30:4 +2O,FA 30:4 +2O,fatty_acid,nl
+492.3809316,FA 30:4 +3O,FA 30:4 +3O,fatty_acid,nl
+442.3805376,FA 30:5,FA 30:5,fatty_acid,nl
+458.3754522,FA 30:5 +1O,FA 30:5 +1O,fatty_acid,nl
+474.3703669,FA 30:5 +2O,FA 30:5 +2O,fatty_acid,nl
+490.3652815,FA 30:5 +3O,FA 30:5 +3O,fatty_acid,nl
+440.3648875,FA 30:6,FA 30:6,fatty_acid,nl
+456.3598022,FA 30:6 +1O,FA 30:6 +1O,fatty_acid,nl
+472.3547168,FA 30:6 +2O,FA 30:6 +2O,fatty_acid,nl
+488.3496314,FA 30:6 +3O,FA 30:6 +3O,fatty_acid,nl

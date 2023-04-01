@@ -1,0 +1,377 @@
+---
+title: "31 IPL Calibration"
+subtitle: "Standard Curve 9/18/20"
+author: "Kaitlin Rempfert"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document: 
+    df_print: paged 
+    css: stylesheet.css 
+    number_sections: yes 
+    toc: yes 
+    toc_float: true 
+    toc_depth: 3 
+    code_folding: show 
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+# load required packages
+
+library(MetaboAnalystR)
+library(tidyverse)
+library(ggplot2)
+library(ggpmisc)
+library(tools)
+library(LOBSTAHS)
+library(MSnbase)
+library(sqldf)
+library(xcms)
+library(CAMERA)
+library(rsm)
+        
+#load in functions
+source(file.path("scripts", "lipid_scripts.R"))
+```
+
+
+# Load in raw mzXML files (Note: files too big for Github repo; need to download from Metabolights, convert to mzxml, and then load from the folder below)
+```{r warning=FALSE}
+# specify directories subordinate to the working directory in which the .mzXML files for xcms can be found; per xcms documentation, use subdirectories within these to divide files according to treatment/primary environmental variable and file names to indicate timepoint/secondary environmental variable (e.g., depth)
+
+mzXMLdirs = "data/raw/calibration_9_18_20/mzXML_pos"
+
+# specify which of the directories above you wish to analyze this time through
+chosenFileSubset = "data/raw/calibration_9_18_20/mzXML_pos"
+
+
+mzXMLfiles.raw = list.files(chosenFileSubset, recursive = TRUE, full.names = TRUE)
+
+# provide some feedback to user
+print(paste0("Loaded ", length(mzXMLfiles.raw)," mzXML files. These files contain ",subset.polarity," ion mode data. Raw dataset consists of:"))
+
+print(mzXMLfiles.raw)
+
+if (exists("excluded.mzXMLfiles") & length("excluded.mzXMLfiles")>0) {
+
+  excludedfiles = getFNmatches(IDnumlist = excluded.mzXMLfiles, filelist = mzXMLfiles.raw) # index files to be excluded
+
+  print(paste0("The following files will be excluded from processing based on user's input:"))
+  print(mzXMLfiles.raw[excludedfiles])
+
+  mzXMLfiles = mzXMLfiles.raw[-excludedfiles] # exclude the files from mzXMLfiles
+
+} else {
+
+  mzXMLfiles = mzXMLfiles.raw
+
+}
+```
+
+## Load Phenodata
+```{r warning=FALSE}
+
+#make dataframe of phenodata
+label <- c ("ng_01", "ng_01", "ng_01", "ng_1","ng_1", "ng_1","ng_25", "ng_25", "ng_25", "ng_5", "ng_5", "ng_5", "ng1", "ng1", "ng1")
+standards_pd <- data.frame(sample_name = sub(basename(mzXMLfiles), pattern = ".mzXML", replacement = "", fixed = TRUE), sample_group = label, group_for_grouping = "standards", stringsAsFactors = FALSE)
+
+#read in centroided mzXML files for all runs in standard series
+standards_raw <- readMSData(mzXMLfiles, pdata = new("NAnnotatedDataFrame", standards_pd), msLevel. = 1, centroided = TRUE, mode = "onDisk")
+```
+
+
+# Examine Raw Data
+
+## Total Ion Chromatogram
+```{r warning=FALSE}
+#Plot up total ion chromatograms
+
+#get base peak chromatograms from the raw, centroided data
+standards_tis <- chromatogram(standards_raw, aggregationFun = "sum")
+
+#assign colors based on label
+group_colors <- paste0(RColorBrewer::brewer.pal(5, "Spectral"))
+names(group_colors)<- c("ng_01", "ng_1", "ng_25", "ng_5", "ng1")
+
+#plot base peak chromatograms
+plot(standards_tis,  col = group_colors[standards_raw$sample_group])
+legend("topright", legend = c("ng_01", "ng_1", "ng_25", "ng_5", "ng1"), fill = group_colors)
+```
+
+## Base Peak Chromatograms
+```{r warning=FALSE}
+#Plot up base peak chromatograms
+
+#get base peak chromatograms from the raw, centroided data
+standards_bpis <- chromatogram(standards_raw, aggregationFun = "max")
+
+#plot base peak chromatograms
+plot(standards_bpis, col = group_colors[standards_raw$sample_group])
+legend("topright", legend = c("blank", "ng_001", "ng_01", "ng_1", "ng_25", "ng_5", "ng1"), fill = group_colors)
+```
+
+## Total Ion Current
+```{r warning=FALSE}
+#Plot up total ion current by file
+
+#extract total ion current for each file
+standards_tc <- split(tic(standards_raw), f = fromFile(standards_raw))
+#plot
+boxplot(standards_tc, ylab = "intensity", col = group_colors[standards_raw$sample_group], main = "Total Ion Current")
+legend("topright", legend = c("blank", "ng_001", "ng_01", "ng_1", "ng_25", "ng_5", "ng1"), fill = group_colors)
+```
+
+## Plot up raw Extracted Ion Chromatograms (EICs) for each standard
+```{r warning=FALSE, cache=TRUE}
+#read in database table of masses of most prominent adduct for each standard
+db <- readxl::read_xlsx("data/standards/37_IPL_standards.xlsx", sheet = 3)
+
+raw_XIC_plot_standards(standards = db, raw = standards_raw)
+```
+
+
+# Peak picking
+
+## Run CentWave algorithm to pick peaks
+```{r warning=FALSE}
+#pick peaking with centWave algorithm
+cwp1 <- CentWaveParam(
+                        ppm = centW.ppm,
+                        peakwidth = c(centW.min_peakwidth,centW.max_peakwidth),
+                        fitgauss = centW.fitgauss,
+                        noise = centW.noise,
+                        mzdiff = centW.mzdiff,
+                        verboseColumns = centW.verbose.columns,
+                        snthresh = centW.snthresh,
+                        integrate = centW.integrate,
+                        prefilter = centW.prefilter,
+                        firstBaselineCheck = TRUE,
+                        mzCenterFun = centW.mzCenterFun
+)
+
+standards_data <- findChromPeaks(standards_raw, param = cwp, return.type = "XCMSnExp", BPPARAM = bpparam())
+```
+
+## Examine Picked Peaks
+```{r}
+#plot extracted chromatograms of picked peaks for standards
+XIC_plot_standards(standards = db, data = standards_data)
+```
+
+
+# Peak Alignment and Grouping
+```{r warning=FALSE}
+pdp <- PeakDensityParam(
+                sampleGroups = standards_data$group_for_grouping,
+                bw = density.bw,
+                minFraction = density.minfrac,
+                minSamples = density.minsamp,
+                binSize = density.mzwid,
+                maxFeatures = density.max
+)
+
+standards_data <- groupChromPeaks(standards_data, param = pdp)
+
+#chromatographic alignment (retention time correction)
+pgp <- PeakGroupsParam(
+  minFraction = density.minfrac,
+  extraPeaks = loess.extra,
+  smooth = "loess",
+  span = loess.span,
+  family = loess.family
+)
+
+standards_data<-adjustRtime(standards_data, param = pgp)
+
+#perform grouping again
+standards_data <- groupChromPeaks(standards_data, param = pdp)
+
+#visualize alignment 
+plotAdjustedRtime(standards_data, col = group_colors[standards_data$sample_group],
+                  peakGroupsCol = "grey", peakGroupsPch = 1)
+
+#QC on picked peaks- is intensity normalized?
+boxplot(featureValues(standards_data, value="into") +1, 
+        log="y", las=2, col = group_colors[standards_data$sample_group], ylab = "intensity")
+```
+
+
+# Fill Peaks 
+```{r warning=FALSE}
+#fill peaks
+fpp <- FillChromPeaksParam(ppm = 5,expandRt = .1)
+standards_data = fillChromPeaks(standards_data, param = fpp)
+```
+
+
+# Isotope Annotation in CAMERA
+```{r warning=FALSE}
+#Applying CAMERA to identify isotopic peaks, create xsAnnotate object, and create CAMERA pseudospectra using correlation of xcms peak groups between and within samples. These pseudospectra are the groups within which the adduct hierarchy and retention time screening criteria will be applied using LOBSTAHS
+
+#need to convert MSnExp to an xset for import into CAMERA; need to manually bring over sample names and groups
+standards_xset <- as(standards_data, "xcmsSet")
+sampnames(standards_xset) <- pData(standards_data)$sample_name
+sampclass(standards_xset) <- pData(standards_data)$group_for_grouping
+
+
+#fillPeaks on xset to remove NAs for CAMERA
+standards_xset2 <- fillPeaks(standards_xset)
+
+# first, a necessary workaround to avoid a import error; see https://support.bioconductor.org/p/69414/
+imports = parent.env(getNamespace("CAMERA"
+                                  ))
+unlockBinding("groups", imports)
+imports[["groups"]] = xcms::groups
+lockBinding("groups", imports)
+
+# create annotated xset using wrapper annotate(), allowing us to perform all CAMERA tasks at once
+
+standards_xset_a  <- annotate(standards_xset2,
+
+                  quick=FALSE, # set to FALSE because we want to run groupCorr; will also cause CAMERA to run adduct annotation. while LOBSTAHS will do its own adduct identification later, it doesn't hurt to do this now if it lets CAMERA create better pseudospectra
+                  sample= NA, # use all samples
+                  nSlaves=4, # use 4 sockets
+
+                  # group FWHM settings
+                  # using defaults for now
+
+                  sigma=6,
+                  perfwhm=0.6,
+
+                  # groupCorr settings
+                  # using defaults for now
+
+                  cor_eic_th=0.75,
+                  graphMethod="hcs",
+                  pval=0.05,
+                  calcCiS=TRUE,
+                  calcIso=TRUE,
+                  calcCaS=FALSE, # weird results with this set to TRUE
+
+                  # findIsotopes settings
+
+                  maxcharge=4,
+                  maxiso=4,
+                  minfrac=0.25, # 0.25?
+
+                  # adduct annotation settings
+
+                  psg_list=NULL,
+                  rules=NULL,
+                  polarity=subset.polarity,
+                  multiplier=3,
+                  max_peaks=100,
+
+                  # common to multiple tasks
+
+                  intval="into",
+                  ppm=2.5,
+                  mzabs=0.0015
+
+                  )
+
+cleanParallel(standards_xset_a) # kill sockets
+
+#remove NAs from groupInfo
+#xset_a@groupInfo[is.na(xset_a@groupInfo)] <- 0
+
+print(standards_xset_a)
+saveRDS(standards_xset_a, "output/calibration/9_18_20_37IPLs_xset_a.RDS")
+```
+
+
+# LOBSTAHS database screening
+```{r warning=FALSE}
+LOBdb_31std = generateLOBdbase(polarity = "positive", gen.csv = TRUE, component.defs = "LOBSTAHS_db_generation/31_IPL_stds/LOBSTAHS_componentCompTable_31stds.csv", AIH.defs = "LOBSTAHS_db_generation/31_IPL_stds/LOBSTAHS_adductHierarchies_31stds.csv",  acyl.ranges = NULL, oxy.ranges = NULL)
+
+standards_xset_a <- readRDS("data/calibration/9_18_20_37IPLs_xset_a.RDS")
+
+#load in LOBSTAHS database
+LOBdbase_31std <- loadLOBdbase("LOBSTAHS_db_generation/31_IPL_stds/LOBSTAHS_lipid-oxy_DB_pos_2023-03-30T13-28-03-0700.csv", polarity = "positive")
+
+#screen annotated dataset against 32 std database
+LOBset_31std <- doLOBscreen(standards_xset_a, polarity = "positive", database = LOBdbase_31std, remove.iso = TRUE, rt.restrict = TRUE, rt.windows = "LOBSTAHS_db_generation/31_IPL_stds/LOBSTAHS_rt.windows_31stds.csv", exclude.oddFA = FALSE, match.ppm = 5, retain.unidentified = FALSE)
+
+#diagnostics of screening;35 IDs
+LOBscreen_diagnostics(LOBset_31std)
+
+#get peaklist
+peaklist <- getLOBpeaklist(LOBset_31std, include.iso = TRUE, include.unidentified = TRUE, gen.csv = FALSE)
+
+as_tibble(peaklist)
+```
+
+
+# Concentration Calibration Curves
+```{r warning= FALSE}
+#manually remove duplicated peak assignments by retention time 
+peaklist_filt <- peaklist %>% filter(!(match_ID %in% c("8", "30", "36", "37", "38")))
+
+#select necessary columns from LOBSTAHS peaklist
+positions <- c(2, 13:27)
+standards <- peaklist_filt %>% select(positions) 
+
+#summarize (sum multiple peaks of same standard)
+standards_summary <- standards %>% group_by(compound_name) %>% summarize_each(funs(sum))
+#transpose 
+conc <- standards_summary %>% select(-compound_name) %>% t() %>% as.data.frame()
+#make standard names the column names
+colnames(conc) <- standards_summary$compound_name
+#make sample names a column instead of the rownames
+conc <- conc %>% rownames_to_column(var = "id")
+#pull out QEF number and concentrations from id
+conc <- conc %>% mutate(
+  QEF = str_extract(id, ".+?(?=_)"),
+  conc = str_extract(id, "(?<=37_).+?(?=ng)")
+)
+#delete id column
+conc$conc <- as.numeric(sub("_", ".", conc$conc))
+conc <- conc %>% select(-id) 
+#10 uL std injected; convert conc in ng/uL to ng on column
+conc <- conc %>% mutate(
+  conc = conc * 10
+) 
+
+#reshape dataframe for plotting
+conc_reshape <- reshape2::melt(conc, id = c("QEF", "conc"), variable.name = "standard", value.name = "area")  
+conc_reshape$area <- as.numeric(conc_reshape$area)
+conc_reshape$conc <- as.numeric(conc_reshape$conc)
+
+#replace 0's from filling to NAs
+conc_reshape <- conc_reshape %>% mutate_if(is.numeric, funs(ifelse(. == 0, NA, .)))
+#conc_reshape <- conc_reshape %>% filter(area != "NA")
+
+
+#plot standard curves with second order polynomial regressions for each standard
+conc_plot <- conc_reshape %>% ggplot(
+  aes(x= conc, y= area, color = as.factor(conc), group = standard)) +
+    geom_point() +
+    facet_wrap(vars(standard), scales = "free_y") +
+    geom_smooth(aes(linetype = "linear fit"), method = "lm", formula = y ~ x + 0, se = FALSE, show.legend = TRUE) +
+   stat_poly_eq(formula = y ~ x + 0, 
+                aes(label = paste(..eq.label.., sep = "~~~")), size = rel(2.5), parse = TRUE, label.y = 1.0) +
+   stat_poly_eq(formula = y ~ x + 0, 
+                aes(label = paste(..rr.label.., sep = "~~~")), size = rel(2.5), parse = TRUE, label.y = .9) +
+    geom_hline(aes(linetype = "area minimum for sample processing", yintercept = 50000)) +
+    scale_x_continuous() +
+    scale_y_continuous() +
+    theme(axis.text.x = element_text(angle=90, hjust=1)) +
+    labs(color = "ng standard on column", title = "Calibration Curves for IPL standards", x= "ng standard on column", y= "integrated peak area", linetype = NULL)
+conc_plot
+
+#calculate models for each standard 
+linear_models_9_18_20 <- conc_reshape %>% 
+  select(-QEF) %>% 
+  group_by(standard) %>%
+  nest() %>%
+  mutate(
+    fit = map(data, ~lm(area ~ conc + 0, data = .x)),
+    summary = map(fit, broom::glance),
+    tidied = map(fit, broom::tidy)) %>%
+  unnest(tidied)
+
+saveRDS(linear_models_9_18_20, "output/calibration/response_factors_9_18_20.RDS")
+#need to use package investr to use inverse estimation?
+```

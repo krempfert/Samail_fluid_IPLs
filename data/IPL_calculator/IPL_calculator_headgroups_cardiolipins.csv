@@ -1,0 +1,5 @@
+HG_name,HG_abbrv,HG_mass,HG_formula,Adduct_hierarchy
+Phosphatidylglycerolphosphate_glycerophosphate,PGPGP,369.96199,C6H15N0O12P3S0,PGPGP
+Diphosphatidylglycerol,DPG,217.97453,C3H8N0O7P2S0,DPG
+glycosyl diphosphatidylglycerol,G_DPG,,C9H18N0O12P2S0,MG-DPG
+serine diphosphatidylglycerol,Ser_DPG,,C6H13N1O9P2S0,Ser-DPG

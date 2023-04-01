@@ -1,0 +1,510 @@
+mtc,id,diagnostic,type2,type1
+78.96,PO3-,background,hg,frag
+152.99,glycerol-phosphate,background,hg,frag
+79.96,HPO3-,background,hg,frag
+96.96,H2PO4,background,hg,frag
+171.06,glycerol-phosphate,background,hg,frag
+59.01275578,FA 2:0,FA 2:0,fatty_acid,frag
+75.0076704,FA 2:0 +1O,FA 2:0 +1O,fatty_acid,frag
+91.00258502,FA 2:0 +2O,FA 2:0 +2O,fatty_acid,frag
+106.9974996,FA 2:0 +3O,FA 2:0 +3O,fatty_acid,frag
+56.9971057,FA 2:1,FA 2:1,fatty_acid,frag
+72.99202032,FA 2:1 +1O,FA 2:1 +1O,fatty_acid,frag
+88.98693494,FA 2:1 +2O,FA 2:1 +2O,fatty_acid,frag
+104.9818496,FA 2:1 +3O,FA 2:1 +3O,fatty_acid,frag
+73.02840586,FA 3:0,FA 3:0,fatty_acid,frag
+89.02332048,FA 3:0 +1O,FA 3:0 +1O,fatty_acid,frag
+105.0182351,FA 3:0 +2O,FA 3:0 +2O,fatty_acid,frag
+121.0131497,FA 3:0 +3O,FA 3:0 +3O,fatty_acid,frag
+71.01275578,FA 3:1,FA 3:1,fatty_acid,frag
+87.0076704,FA 3:1 +1O,FA 3:1 +1O,fatty_acid,frag
+103.002585,FA 3:1 +2O,FA 3:1 +2O,fatty_acid,frag
+118.9974996,FA 3:1 +3O,FA 3:1 +3O,fatty_acid,frag
+87.04405594,FA 4:0,FA 4:0,fatty_acid,frag
+103.0389706,FA 4:0 +1O,FA 4:0 +1O,fatty_acid,frag
+119.0338852,FA 4:0 +2O,FA 4:0 +2O,fatty_acid,frag
+135.0287998,FA 4:0 +3O,FA 4:0 +3O,fatty_acid,frag
+85.02840586,FA 4:1,FA 4:1,fatty_acid,frag
+101.0233205,FA 4:1 +1O,FA 4:1 +1O,fatty_acid,frag
+117.0182351,FA 4:1 +2O,FA 4:1 +2O,fatty_acid,frag
+133.0131497,FA 4:1 +3O,FA 4:1 +3O,fatty_acid,frag
+101.059706,FA 5:0,FA 5:0,fatty_acid,frag
+117.0546206,FA 5:0 +1O,FA 5:0 +1O,fatty_acid,frag
+133.0495353,FA 5:0 +2O,FA 5:0 +2O,fatty_acid,frag
+149.0444499,FA 5:0 +3O,FA 5:0 +3O,fatty_acid,frag
+99.04405594,FA 5:1,FA 5:1,fatty_acid,frag
+115.0389706,FA 5:1 +1O,FA 5:1 +1O,fatty_acid,frag
+131.0338852,FA 5:1 +2O,FA 5:1 +2O,fatty_acid,frag
+147.0287998,FA 5:1 +3O,FA 5:1 +3O,fatty_acid,frag
+115.0753561,FA 6:0,FA 6:0,fatty_acid,frag
+131.0702707,FA 6:0 +1O,FA 6:0 +1O,fatty_acid,frag
+147.0651853,FA 6:0 +2O,FA 6:0 +2O,fatty_acid,frag
+163.0601,FA 6:0 +3O,FA 6:0 +3O,fatty_acid,frag
+113.059706,FA 6:1,FA 6:1,fatty_acid,frag
+129.0546206,FA 6:1 +1O,FA 6:1 +1O,fatty_acid,frag
+145.0495353,FA 6:1 +2O,FA 6:1 +2O,fatty_acid,frag
+161.0444499,FA 6:1 +3O,FA 6:1 +3O,fatty_acid,frag
+129.0910062,FA 7:0,FA 7:0,fatty_acid,frag
+145.0859208,FA 7:0 +1O,FA 7:0 +1O,fatty_acid,frag
+161.0808354,FA 7:0 +2O,FA 7:0 +2O,fatty_acid,frag
+177.07575,FA 7:0 +3O,FA 7:0 +3O,fatty_acid,frag
+127.0753561,FA 7:1,FA 7:1,fatty_acid,frag
+143.0702707,FA 7:1 +1O,FA 7:1 +1O,fatty_acid,frag
+159.0651853,FA 7:1 +2O,FA 7:1 +2O,fatty_acid,frag
+175.0601,FA 7:1 +3O,FA 7:1 +3O,fatty_acid,frag
+125.059706,FA 7:2,FA 7:2,fatty_acid,frag
+141.0546206,FA 7:2 +1O,FA 7:2 +1O,fatty_acid,frag
+157.0495353,FA 7:2 +2O,FA 7:2 +2O,fatty_acid,frag
+173.0444499,FA 7:2 +3O,FA 7:2 +3O,fatty_acid,frag
+143.1066563,FA 8:0,FA 8:0,fatty_acid,frag
+159.1015709,FA 8:0 +1O,FA 8:0 +1O,fatty_acid,frag
+175.0964855,FA 8:0 +2O,FA 8:0 +2O,fatty_acid,frag
+191.0914001,FA 8:0 +3O,FA 8:0 +3O,fatty_acid,frag
+141.0910062,FA 8:1,FA 8:1,fatty_acid,frag
+157.0859208,FA 8:1 +1O,FA 8:1 +1O,fatty_acid,frag
+173.0808354,FA 8:1 +2O,FA 8:1 +2O,fatty_acid,frag
+189.07575,FA 8:1 +3O,FA 8:1 +3O,fatty_acid,frag
+139.0753561,FA 8:2,FA 8:2,fatty_acid,frag
+155.0702707,FA 8:2 +1O,FA 8:2 +1O,fatty_acid,frag
+171.0651853,FA 8:2 +2O,FA 8:2 +2O,fatty_acid,frag
+187.0601,FA 8:2 +3O,FA 8:2 +3O,fatty_acid,frag
+157.1223063,FA 9:0,FA 9:0,fatty_acid,frag
+173.117221,FA 9:0 +1O,FA 9:0 +1O,fatty_acid,frag
+189.1121356,FA 9:0 +2O,FA 9:0 +2O,fatty_acid,frag
+205.1070502,FA 9:0 +3O,FA 9:0 +3O,fatty_acid,frag
+155.1066563,FA 9:1,FA 9:1,fatty_acid,frag
+171.1015709,FA 9:1 +1O,FA 9:1 +1O,fatty_acid,frag
+187.0964855,FA 9:1 +2O,FA 9:1 +2O,fatty_acid,frag
+203.0914001,FA 9:1 +3O,FA 9:1 +3O,fatty_acid,frag
+153.0910062,FA 9:2,FA 9:2,fatty_acid,frag
+169.0859208,FA 9:2 +1O,FA 9:2 +1O,fatty_acid,frag
+185.0808354,FA 9:2 +2O,FA 9:2 +2O,fatty_acid,frag
+201.07575,FA 9:2 +3O,FA 9:2 +3O,fatty_acid,frag
+167.1066563,FA 10:2,FA 10:2,fatty_acid,frag
+183.1015709,FA 10:2 +1O,FA 10:2 +1O,fatty_acid,frag
+199.0964855,FA 10:2 +2O,FA 10:2 +2O,fatty_acid,frag
+215.0914001,FA 10:2 +3O,FA 10:2 +3O,fatty_acid,frag
+185.1536065,FA 11:0,FA 11:0,fatty_acid,frag
+201.1485211,FA 11:0 +1O,FA 11:0 +1O,fatty_acid,frag
+217.1434357,FA 11:0 +2O,FA 11:0 +2O,fatty_acid,frag
+233.1383504,FA 11:0 +3O,FA 11:0 +3O,fatty_acid,frag
+183.1379564,FA 11:1,FA 11:1,fatty_acid,frag
+199.132871,FA 11:1 +1O,FA 11:1 +1O,fatty_acid,frag
+215.1277857,FA 11:1 +2O,FA 11:1 +2O,fatty_acid,frag
+231.1227003,FA 11:1 +3O,FA 11:1 +3O,fatty_acid,frag
+181.1223063,FA 11:2,FA 11:2,fatty_acid,frag
+197.117221,FA 11:2 +1O,FA 11:2 +1O,fatty_acid,frag
+213.1121356,FA 11:2 +2O,FA 11:2 +2O,fatty_acid,frag
+229.1070502,FA 11:2 +3O,FA 11:2 +3O,fatty_acid,frag
+199.1692566,FA 12:0,FA 12:0,fatty_acid,frag
+215.1641712,FA 12:0 +1O,FA 12:0 +1O,fatty_acid,frag
+231.1590858,FA 12:0 +2O,FA 12:0 +2O,fatty_acid,frag
+247.1540004,FA 12:0 +3O,FA 12:0 +3O,fatty_acid,frag
+197.1536065,FA 12:1,FA 12:1,fatty_acid,frag
+213.1485211,FA 12:1 +1O,FA 12:1 +1O,fatty_acid,frag
+229.1434357,FA 12:1 +2O,FA 12:1 +2O,fatty_acid,frag
+245.1383504,FA 12:1 +3O,FA 12:1 +3O,fatty_acid,frag
+195.1379564,FA 12:2,FA 12:2,fatty_acid,frag
+211.132871,FA 12:2 +1O,FA 12:2 +1O,fatty_acid,frag
+227.1277857,FA 12:2 +2O,FA 12:2 +2O,fatty_acid,frag
+243.1227003,FA 12:2 +3O,FA 12:2 +3O,fatty_acid,frag
+193.1223063,FA 12:3,FA 12:3,fatty_acid,frag
+209.117221,FA 12:3 +1O,FA 12:3 +1O,fatty_acid,frag
+225.1121356,FA 12:3 +2O,FA 12:3 +2O,fatty_acid,frag
+241.1070502,FA 12:3 +3O,FA 12:3 +3O,fatty_acid,frag
+213.1849067,FA 13:0,FA 13:0,fatty_acid,frag
+229.1798213,FA 13:0 +1O,FA 13:0 +1O,fatty_acid,frag
+245.1747359,FA 13:0 +2O,FA 13:0 +2O,fatty_acid,frag
+261.1696505,FA 13:0 +3O,FA 13:0 +3O,fatty_acid,frag
+211.1692566,FA 13:1,FA 13:1,fatty_acid,frag
+227.1641712,FA 13:1 +1O,FA 13:1 +1O,fatty_acid,frag
+243.1590858,FA 13:1 +2O,FA 13:1 +2O,fatty_acid,frag
+259.1540004,FA 13:1 +3O,FA 13:1 +3O,fatty_acid,frag
+209.1536065,FA 13:2,FA 13:2,fatty_acid,frag
+225.1485211,FA 13:2 +1O,FA 13:2 +1O,fatty_acid,frag
+241.1434357,FA 13:2 +2O,FA 13:2 +2O,fatty_acid,frag
+257.1383504,FA 13:2 +3O,FA 13:2 +3O,fatty_acid,frag
+207.1379564,FA 13:3,FA 13:3,fatty_acid,frag
+223.132871,FA 13:3 +1O,FA 13:3 +1O,fatty_acid,frag
+239.1277857,FA 13:3 +2O,FA 13:3 +2O,fatty_acid,frag
+255.1227003,FA 13:3 +3O,FA 13:3 +3O,fatty_acid,frag
+227.2005567,FA 14:0,FA 14:0,fatty_acid,frag
+243.1954714,FA 14:0 +1O,FA 14:0 +1O,fatty_acid,frag
+259.190386,FA 14:0 +2O,FA 14:0 +2O,fatty_acid,frag
+275.1853006,FA 14:0 +3O,FA 14:0 +3O,fatty_acid,frag
+225.1849067,FA 14:1,FA 14:1,fatty_acid,frag
+241.1798213,FA 14:1 +1O,FA 14:1 +1O,fatty_acid,frag
+257.1747359,FA 14:1 +2O,FA 14:1 +2O,fatty_acid,frag
+273.1696505,FA 14:1 +3O,FA 14:1 +3O,fatty_acid,frag
+223.1692566,FA 14:2,FA 14:2,fatty_acid,frag
+239.1641712,FA 14:2 +1O,FA 14:2 +1O,fatty_acid,frag
+255.1590858,FA 14:2 +2O,FA 14:2 +2O,fatty_acid,frag
+271.1540004,FA 14:2 +3O,FA 14:2 +3O,fatty_acid,frag
+221.1536065,FA 14:3,FA 14:3,fatty_acid,frag
+237.1485211,FA 14:3 +1O,FA 14:3 +1O,fatty_acid,frag
+253.1434357,FA 14:3 +2O,FA 14:3 +2O,fatty_acid,frag
+269.1383504,FA 14:3 +3O,FA 14:3 +3O,fatty_acid,frag
+241.2162068,FA 15:0,FA 15:0,fatty_acid,frag
+257.2111214,FA 15:0 +1O,FA 15:0 +1O,fatty_acid,frag
+273.2060361,FA 15:0 +2O,FA 15:0 +2O,fatty_acid,frag
+289.2009507,FA 15:0 +3O,FA 15:0 +3O,fatty_acid,frag
+239.2005567,FA 15:1,FA 15:1,fatty_acid,frag
+255.1954714,FA 15:1 +1O,FA 15:1 +1O,fatty_acid,frag
+271.190386,FA 15:1 +2O,FA 15:1 +2O,fatty_acid,frag
+287.1853006,FA 15:1 +3O,FA 15:1 +3O,fatty_acid,frag
+237.1849067,FA 15:2,FA 15:2,fatty_acid,frag
+253.1798213,FA 15:2 +1O,FA 15:2 +1O,fatty_acid,frag
+269.1747359,FA 15:2 +2O,FA 15:2 +2O,fatty_acid,frag
+285.1696505,FA 15:2 +3O,FA 15:2 +3O,fatty_acid,frag
+235.1692566,FA 15:3,FA 15:3,fatty_acid,frag
+251.1641712,FA 15:3 +1O,FA 15:3 +1O,fatty_acid,frag
+267.1590858,FA 15:3 +2O,FA 15:3 +2O,fatty_acid,frag
+283.1540004,FA 15:3 +3O,FA 15:3 +3O,fatty_acid,frag
+255.2318569,FA 16:0,FA 16:0,fatty_acid,frag
+271.2267715,FA 16:0 +1O,FA 16:0 +1O,fatty_acid,frag
+287.2216861,FA 16:0 +2O,FA 16:0 +2O,fatty_acid,frag
+303.2166008,FA 16:0 +3O,FA 16:0 +3O,fatty_acid,frag
+253.2162068,FA 16:1,FA 16:1,fatty_acid,frag
+269.2111214,FA 16:1 +1O,FA 16:1 +1O,fatty_acid,frag
+285.2060361,FA 16:1 +2O,FA 16:1 +2O,fatty_acid,frag
+301.2009507,FA 16:1 +3O,FA 16:1 +3O,fatty_acid,frag
+251.2005567,FA 16:2,FA 16:2,fatty_acid,frag
+267.1954714,FA 16:2 +1O,FA 16:2 +1O,fatty_acid,frag
+283.190386,FA 16:2 +2O,FA 16:2 +2O,fatty_acid,frag
+299.1853006,FA 16:2 +3O,FA 16:2 +3O,fatty_acid,frag
+249.1849067,FA 16:3,FA 16:3,fatty_acid,frag
+265.1798213,FA 16:3 +1O,FA 16:3 +1O,fatty_acid,frag
+281.1747359,FA 16:3 +2O,FA 16:3 +2O,fatty_acid,frag
+297.1696505,FA 16:3 +3O,FA 16:3 +3O,fatty_acid,frag
+269.247507,FA 17:0,FA 17:0,fatty_acid,frag
+285.2424216,FA 17:0 +1O,FA 17:0 +1O,fatty_acid,frag
+301.2373362,FA 17:0 +2O,FA 17:0 +2O,fatty_acid,frag
+317.2322508,FA 17:0 +3O,FA 17:0 +3O,fatty_acid,frag
+267.2318569,FA 17:1,FA 17:1,fatty_acid,frag
+283.2267715,FA 17:1 +1O,FA 17:1 +1O,fatty_acid,frag
+299.2216861,FA 17:1 +2O,FA 17:1 +2O,fatty_acid,frag
+315.2166008,FA 17:1 +3O,FA 17:1 +3O,fatty_acid,frag
+265.2162068,FA 17:2,FA 17:2,fatty_acid,frag
+281.2111214,FA 17:2 +1O,FA 17:2 +1O,fatty_acid,frag
+297.2060361,FA 17:2 +2O,FA 17:2 +2O,fatty_acid,frag
+313.2009507,FA 17:2 +3O,FA 17:2 +3O,fatty_acid,frag
+263.2005567,FA 17:3,FA 17:3,fatty_acid,frag
+279.1954714,FA 17:3 +1O,FA 17:3 +1O,fatty_acid,frag
+295.190386,FA 17:3 +2O,FA 17:3 +2O,fatty_acid,frag
+311.1853006,FA 17:3 +3O,FA 17:3 +3O,fatty_acid,frag
+261.1849067,FA 17:4,FA 17:4,fatty_acid,frag
+277.1798213,FA 17:4 +1O,FA 17:4 +1O,fatty_acid,frag
+293.1747359,FA 17:4 +2O,FA 17:4 +2O,fatty_acid,frag
+309.1696505,FA 17:4 +3O,FA 17:4 +3O,fatty_acid,frag
+283.2631571,FA 18:0,FA 18:0,fatty_acid,frag
+299.2580717,FA 18:0 +1O,FA 18:0 +1O,fatty_acid,frag
+315.2529863,FA 18:0 +2O,FA 18:0 +2O,fatty_acid,frag
+331.2479009,FA 18:0 +3O,FA 18:0 +3O,fatty_acid,frag
+281.247507,FA 18:1,FA 18:1,fatty_acid,frag
+297.2424216,FA 18:1 +1O,FA 18:1 +1O,fatty_acid,frag
+313.2373362,FA 18:1 +2O,FA 18:1 +2O,fatty_acid,frag
+329.2322508,FA 18:1 +3O,FA 18:1 +3O,fatty_acid,frag
+279.2318569,FA 18:2,FA 18:2,fatty_acid,frag
+295.2267715,FA 18:2 +1O,FA 18:2 +1O,fatty_acid,frag
+311.2216861,FA 18:2 +2O,FA 18:2 +2O,fatty_acid,frag
+327.2166008,FA 18:2 +3O,FA 18:2 +3O,fatty_acid,frag
+277.2162068,FA 18:3,FA 18:3,fatty_acid,frag
+293.2111214,FA 18:3 +1O,FA 18:3 +1O,fatty_acid,frag
+309.2060361,FA 18:3 +2O,FA 18:3 +2O,fatty_acid,frag
+325.2009507,FA 18:3 +3O,FA 18:3 +3O,fatty_acid,frag
+275.2005567,FA 18:4,FA 18:4,fatty_acid,frag
+291.1954714,FA 18:4 +1O,FA 18:4 +1O,fatty_acid,frag
+307.190386,FA 18:4 +2O,FA 18:4 +2O,fatty_acid,frag
+323.1853006,FA 18:4 +3O,FA 18:4 +3O,fatty_acid,frag
+297.2788071,FA 19:0,FA 19:0,fatty_acid,frag
+313.2737218,FA 19:0 +1O,FA 19:0 +1O,fatty_acid,frag
+329.2686364,FA 19:0 +2O,FA 19:0 +2O,fatty_acid,frag
+345.263551,FA 19:0 +3O,FA 19:0 +3O,fatty_acid,frag
+295.2631571,FA 19:1,FA 19:1,fatty_acid,frag
+311.2580717,FA 19:1 +1O,FA 19:1 +1O,fatty_acid,frag
+327.2529863,FA 19:1 +2O,FA 19:1 +2O,fatty_acid,frag
+343.2479009,FA 19:1 +3O,FA 19:1 +3O,fatty_acid,frag
+293.247507,FA 19:2,FA 19:2,fatty_acid,frag
+309.2424216,FA 19:2 +1O,FA 19:2 +1O,fatty_acid,frag
+325.2373362,FA 19:2 +2O,FA 19:2 +2O,fatty_acid,frag
+341.2322508,FA 19:2 +3O,FA 19:2 +3O,fatty_acid,frag
+291.2318569,FA 19:3,FA 19:3,fatty_acid,frag
+307.2267715,FA 19:3 +1O,FA 19:3 +1O,fatty_acid,frag
+323.2216861,FA 19:3 +2O,FA 19:3 +2O,fatty_acid,frag
+339.2166008,FA 19:3 +3O,FA 19:3 +3O,fatty_acid,frag
+289.2162068,FA 19:4,FA 19:4,fatty_acid,frag
+305.2111214,FA 19:4 +1O,FA 19:4 +1O,fatty_acid,frag
+321.2060361,FA 19:4 +2O,FA 19:4 +2O,fatty_acid,frag
+337.2009507,FA 19:4 +3O,FA 19:4 +3O,fatty_acid,frag
+311.2944572,FA 20:0,FA 20:0,fatty_acid,frag
+327.2893718,FA 20:0 +1O,FA 20:0 +1O,fatty_acid,frag
+343.2842865,FA 20:0 +2O,FA 20:0 +2O,fatty_acid,frag
+359.2792011,FA 20:0 +3O,FA 20:0 +3O,fatty_acid,frag
+309.2788071,FA 20:1,FA 20:1,fatty_acid,frag
+325.2737218,FA 20:1 +1O,FA 20:1 +1O,fatty_acid,frag
+341.2686364,FA 20:1 +2O,FA 20:1 +2O,fatty_acid,frag
+357.263551,FA 20:1 +3O,FA 20:1 +3O,fatty_acid,frag
+307.2631571,FA 20:2,FA 20:2,fatty_acid,frag
+323.2580717,FA 20:2 +1O,FA 20:2 +1O,fatty_acid,frag
+339.2529863,FA 20:2 +2O,FA 20:2 +2O,fatty_acid,frag
+355.2479009,FA 20:2 +3O,FA 20:2 +3O,fatty_acid,frag
+305.247507,FA 20:3,FA 20:3,fatty_acid,frag
+321.2424216,FA 20:3 +1O,FA 20:3 +1O,fatty_acid,frag
+337.2373362,FA 20:3 +2O,FA 20:3 +2O,fatty_acid,frag
+353.2322508,FA 20:3 +3O,FA 20:3 +3O,fatty_acid,frag
+303.2318569,FA 20:4,FA 20:4,fatty_acid,frag
+319.2267715,FA 20:4 +1O,FA 20:4 +1O,fatty_acid,frag
+335.2216861,FA 20:4 +2O,FA 20:4 +2O,fatty_acid,frag
+351.2166008,FA 20:4 +3O,FA 20:4 +3O,fatty_acid,frag
+325.3101073,FA 21:0,FA 21:0,fatty_acid,frag
+341.3050219,FA 21:0 +1O,FA 21:0 +1O,fatty_acid,frag
+357.2999365,FA 21:0 +2O,FA 21:0 +2O,fatty_acid,frag
+373.2948512,FA 21:0 +3O,FA 21:0 +3O,fatty_acid,frag
+323.2944572,FA 21:1,FA 21:1,fatty_acid,frag
+339.2893718,FA 21:1 +1O,FA 21:1 +1O,fatty_acid,frag
+355.2842865,FA 21:1 +2O,FA 21:1 +2O,fatty_acid,frag
+371.2792011,FA 21:1 +3O,FA 21:1 +3O,fatty_acid,frag
+321.2788071,FA 21:2,FA 21:2,fatty_acid,frag
+337.2737218,FA 21:2 +1O,FA 21:2 +1O,fatty_acid,frag
+353.2686364,FA 21:2 +2O,FA 21:2 +2O,fatty_acid,frag
+369.263551,FA 21:2 +3O,FA 21:2 +3O,fatty_acid,frag
+319.2631571,FA 21:3,FA 21:3,fatty_acid,frag
+335.2580717,FA 21:3 +1O,FA 21:3 +1O,fatty_acid,frag
+351.2529863,FA 21:3 +2O,FA 21:3 +2O,fatty_acid,frag
+367.2479009,FA 21:3 +3O,FA 21:3 +3O,fatty_acid,frag
+317.247507,FA 21:4,FA 21:4,fatty_acid,frag
+333.2424216,FA 21:4 +1O,FA 21:4 +1O,fatty_acid,frag
+349.2373362,FA 21:4 +2O,FA 21:4 +2O,fatty_acid,frag
+365.2322508,FA 21:4 +3O,FA 21:4 +3O,fatty_acid,frag
+339.3257574,FA 22:0,FA 22:0,fatty_acid,frag
+355.320672,FA 22:0 +1O,FA 22:0 +1O,fatty_acid,frag
+371.3155866,FA 22:0 +2O,FA 22:0 +2O,fatty_acid,frag
+387.3105012,FA 22:0 +3O,FA 22:0 +3O,fatty_acid,frag
+337.3101073,FA 22:1,FA 22:1,fatty_acid,frag
+353.3050219,FA 22:1 +1O,FA 22:1 +1O,fatty_acid,frag
+369.2999365,FA 22:1 +2O,FA 22:1 +2O,fatty_acid,frag
+385.2948512,FA 22:1 +3O,FA 22:1 +3O,fatty_acid,frag
+335.2944572,FA 22:2,FA 22:2,fatty_acid,frag
+351.2893718,FA 22:2 +1O,FA 22:2 +1O,fatty_acid,frag
+367.2842865,FA 22:2 +2O,FA 22:2 +2O,fatty_acid,frag
+383.2792011,FA 22:2 +3O,FA 22:2 +3O,fatty_acid,frag
+333.2788071,FA 22:3,FA 22:3,fatty_acid,frag
+349.2737218,FA 22:3 +1O,FA 22:3 +1O,fatty_acid,frag
+365.2686364,FA 22:3 +2O,FA 22:3 +2O,fatty_acid,frag
+381.263551,FA 22:3 +3O,FA 22:3 +3O,fatty_acid,frag
+331.2631571,FA 22:4,FA 22:4,fatty_acid,frag
+347.2580717,FA 22:4 +1O,FA 22:4 +1O,fatty_acid,frag
+363.2529863,FA 22:4 +2O,FA 22:4 +2O,fatty_acid,frag
+379.2479009,FA 22:4 +3O,FA 22:4 +3O,fatty_acid,frag
+329.247507,FA 22:5,FA 22:5,fatty_acid,frag
+345.2424216,FA 22:5 +1O,FA 22:5 +1O,fatty_acid,frag
+361.2373362,FA 22:5 +2O,FA 22:5 +2O,fatty_acid,frag
+377.2322508,FA 22:5 +3O,FA 22:5 +3O,fatty_acid,frag
+353.3414075,FA 23:0,FA 23:0,fatty_acid,frag
+369.3363221,FA 23:0 +1O,FA 23:0 +1O,fatty_acid,frag
+385.3312367,FA 23:0 +2O,FA 23:0 +2O,fatty_acid,frag
+401.3261513,FA 23:0 +3O,FA 23:0 +3O,fatty_acid,frag
+351.3257574,FA 23:1,FA 23:1,fatty_acid,frag
+367.320672,FA 23:1 +1O,FA 23:1 +1O,fatty_acid,frag
+383.3155866,FA 23:1 +2O,FA 23:1 +2O,fatty_acid,frag
+399.3105012,FA 23:1 +3O,FA 23:1 +3O,fatty_acid,frag
+349.3101073,FA 23:2,FA 23:2,fatty_acid,frag
+365.3050219,FA 23:2 +1O,FA 23:2 +1O,fatty_acid,frag
+381.2999365,FA 23:2 +2O,FA 23:2 +2O,fatty_acid,frag
+397.2948512,FA 23:2 +3O,FA 23:2 +3O,fatty_acid,frag
+347.2944572,FA 23:3,FA 23:3,fatty_acid,frag
+363.2893718,FA 23:3 +1O,FA 23:3 +1O,fatty_acid,frag
+379.2842865,FA 23:3 +2O,FA 23:3 +2O,fatty_acid,frag
+395.2792011,FA 23:3 +3O,FA 23:3 +3O,fatty_acid,frag
+345.2788071,FA 23:4,FA 23:4,fatty_acid,frag
+361.2737218,FA 23:4 +1O,FA 23:4 +1O,fatty_acid,frag
+377.2686364,FA 23:4 +2O,FA 23:4 +2O,fatty_acid,frag
+393.263551,FA 23:4 +3O,FA 23:4 +3O,fatty_acid,frag
+343.2631571,FA 23:5,FA 23:5,fatty_acid,frag
+359.2580717,FA 23:5 +1O,FA 23:5 +1O,fatty_acid,frag
+375.2529863,FA 23:5 +2O,FA 23:5 +2O,fatty_acid,frag
+391.2479009,FA 23:5 +3O,FA 23:5 +3O,fatty_acid,frag
+367.3570575,FA 24:0,FA 24:0,fatty_acid,frag
+383.3519722,FA 24:0 +1O,FA 24:0 +1O,fatty_acid,frag
+399.3468868,FA 24:0 +2O,FA 24:0 +2O,fatty_acid,frag
+415.3418014,FA 24:0 +3O,FA 24:0 +3O,fatty_acid,frag
+365.3414075,FA 24:1,FA 24:1,fatty_acid,frag
+381.3363221,FA 24:1 +1O,FA 24:1 +1O,fatty_acid,frag
+397.3312367,FA 24:1 +2O,FA 24:1 +2O,fatty_acid,frag
+413.3261513,FA 24:1 +3O,FA 24:1 +3O,fatty_acid,frag
+363.3257574,FA 24:2,FA 24:2,fatty_acid,frag
+379.320672,FA 24:2 +1O,FA 24:2 +1O,fatty_acid,frag
+395.3155866,FA 24:2 +2O,FA 24:2 +2O,fatty_acid,frag
+411.3105012,FA 24:2 +3O,FA 24:2 +3O,fatty_acid,frag
+361.3101073,FA 24:3,FA 24:3,fatty_acid,frag
+377.3050219,FA 24:3 +1O,FA 24:3 +1O,fatty_acid,frag
+393.2999365,FA 24:3 +2O,FA 24:3 +2O,fatty_acid,frag
+409.2948512,FA 24:3 +3O,FA 24:3 +3O,fatty_acid,frag
+359.2944572,FA 24:4,FA 24:4,fatty_acid,frag
+375.2893718,FA 24:4 +1O,FA 24:4 +1O,fatty_acid,frag
+391.2842865,FA 24:4 +2O,FA 24:4 +2O,fatty_acid,frag
+407.2792011,FA 24:4 +3O,FA 24:4 +3O,fatty_acid,frag
+357.2788071,FA 24:5,FA 24:5,fatty_acid,frag
+373.2737218,FA 24:5 +1O,FA 24:5 +1O,fatty_acid,frag
+389.2686364,FA 24:5 +2O,FA 24:5 +2O,fatty_acid,frag
+405.263551,FA 24:5 +3O,FA 24:5 +3O,fatty_acid,frag
+381.3727076,FA 25:0,FA 25:0,fatty_acid,frag
+397.3676222,FA 25:0 +1O,FA 25:0 +1O,fatty_acid,frag
+413.3625369,FA 25:0 +2O,FA 25:0 +2O,fatty_acid,frag
+429.3574515,FA 25:0 +3O,FA 25:0 +3O,fatty_acid,frag
+379.3570575,FA 25:1,FA 25:1,fatty_acid,frag
+395.3519722,FA 25:1 +1O,FA 25:1 +1O,fatty_acid,frag
+411.3468868,FA 25:1 +2O,FA 25:1 +2O,fatty_acid,frag
+427.3418014,FA 25:1 +3O,FA 25:1 +3O,fatty_acid,frag
+377.3414075,FA 25:2,FA 25:2,fatty_acid,frag
+393.3363221,FA 25:2 +1O,FA 25:2 +1O,fatty_acid,frag
+409.3312367,FA 25:2 +2O,FA 25:2 +2O,fatty_acid,frag
+425.3261513,FA 25:2 +3O,FA 25:2 +3O,fatty_acid,frag
+375.3257574,FA 25:3,FA 25:3,fatty_acid,frag
+391.320672,FA 25:3 +1O,FA 25:3 +1O,fatty_acid,frag
+407.3155866,FA 25:3 +2O,FA 25:3 +2O,fatty_acid,frag
+423.3105012,FA 25:3 +3O,FA 25:3 +3O,fatty_acid,frag
+373.3101073,FA 25:4,FA 25:4,fatty_acid,frag
+389.3050219,FA 25:4 +1O,FA 25:4 +1O,fatty_acid,frag
+405.2999365,FA 25:4 +2O,FA 25:4 +2O,fatty_acid,frag
+421.2948512,FA 25:4 +3O,FA 25:4 +3O,fatty_acid,frag
+371.2944572,FA 25:5,FA 25:5,fatty_acid,frag
+387.2893718,FA 25:5 +1O,FA 25:5 +1O,fatty_acid,frag
+403.2842865,FA 25:5 +2O,FA 25:5 +2O,fatty_acid,frag
+419.2792011,FA 25:5 +3O,FA 25:5 +3O,fatty_acid,frag
+395.3883577,FA 26:0,FA 26:0,fatty_acid,frag
+411.3832723,FA 26:0 +1O,FA 26:0 +1O,fatty_acid,frag
+427.3781869,FA 26:0 +2O,FA 26:0 +2O,fatty_acid,frag
+443.3731016,FA 26:0 +3O,FA 26:0 +3O,fatty_acid,frag
+393.3727076,FA 26:1,FA 26:1,fatty_acid,frag
+409.3676222,FA 26:1 +1O,FA 26:1 +1O,fatty_acid,frag
+425.3625369,FA 26:1 +2O,FA 26:1 +2O,fatty_acid,frag
+441.3574515,FA 26:1 +3O,FA 26:1 +3O,fatty_acid,frag
+391.3570575,FA 26:2,FA 26:2,fatty_acid,frag
+407.3519722,FA 26:2 +1O,FA 26:2 +1O,fatty_acid,frag
+423.3468868,FA 26:2 +2O,FA 26:2 +2O,fatty_acid,frag
+439.3418014,FA 26:2 +3O,FA 26:2 +3O,fatty_acid,frag
+389.3414075,FA 26:3,FA 26:3,fatty_acid,frag
+405.3363221,FA 26:3 +1O,FA 26:3 +1O,fatty_acid,frag
+421.3312367,FA 26:3 +2O,FA 26:3 +2O,fatty_acid,frag
+437.3261513,FA 26:3 +3O,FA 26:3 +3O,fatty_acid,frag
+387.3257574,FA 26:4,FA 26:4,fatty_acid,frag
+403.320672,FA 26:4 +1O,FA 26:4 +1O,fatty_acid,frag
+419.3155866,FA 26:4 +2O,FA 26:4 +2O,fatty_acid,frag
+435.3105012,FA 26:4 +3O,FA 26:4 +3O,fatty_acid,frag
+385.3101073,FA 26:5,FA 26:5,fatty_acid,frag
+401.3050219,FA 26:5 +1O,FA 26:5 +1O,fatty_acid,frag
+417.2999365,FA 26:5 +2O,FA 26:5 +2O,fatty_acid,frag
+433.2948512,FA 26:5 +3O,FA 26:5 +3O,fatty_acid,frag
+409.4040078,FA 27:0,FA 27:0,fatty_acid,frag
+425.3989224,FA 27:0 +1O,FA 27:0 +1O,fatty_acid,frag
+441.393837,FA 27:0 +2O,FA 27:0 +2O,fatty_acid,frag
+457.3887516,FA 27:0 +3O,FA 27:0 +3O,fatty_acid,frag
+407.3883577,FA 27:1,FA 27:1,fatty_acid,frag
+423.3832723,FA 27:1 +1O,FA 27:1 +1O,fatty_acid,frag
+439.3781869,FA 27:1 +2O,FA 27:1 +2O,fatty_acid,frag
+455.3731016,FA 27:1 +3O,FA 27:1 +3O,fatty_acid,frag
+405.3727076,FA 27:2,FA 27:2,fatty_acid,frag
+421.3676222,FA 27:2 +1O,FA 27:2 +1O,fatty_acid,frag
+437.3625369,FA 27:2 +2O,FA 27:2 +2O,fatty_acid,frag
+453.3574515,FA 27:2 +3O,FA 27:2 +3O,fatty_acid,frag
+403.3570575,FA 27:3,FA 27:3,fatty_acid,frag
+419.3519722,FA 27:3 +1O,FA 27:3 +1O,fatty_acid,frag
+435.3468868,FA 27:3 +2O,FA 27:3 +2O,fatty_acid,frag
+451.3418014,FA 27:3 +3O,FA 27:3 +3O,fatty_acid,frag
+401.3414075,FA 27:4,FA 27:4,fatty_acid,frag
+417.3363221,FA 27:4 +1O,FA 27:4 +1O,fatty_acid,frag
+433.3312367,FA 27:4 +2O,FA 27:4 +2O,fatty_acid,frag
+449.3261513,FA 27:4 +3O,FA 27:4 +3O,fatty_acid,frag
+399.3257574,FA 27:5,FA 27:5,fatty_acid,frag
+415.320672,FA 27:5 +1O,FA 27:5 +1O,fatty_acid,frag
+431.3155866,FA 27:5 +2O,FA 27:5 +2O,fatty_acid,frag
+447.3105012,FA 27:5 +3O,FA 27:5 +3O,fatty_acid,frag
+397.3101073,FA 27:6,FA 27:6,fatty_acid,frag
+413.3050219,FA 27:6 +1O,FA 27:6 +1O,fatty_acid,frag
+429.2999365,FA 27:6 +2O,FA 27:6 +2O,fatty_acid,frag
+445.2948512,FA 27:6 +3O,FA 27:6 +3O,fatty_acid,frag
+423.4196579,FA 28:0,FA 28:0,fatty_acid,frag
+439.4145725,FA 28:0 +1O,FA 28:0 +1O,fatty_acid,frag
+455.4094871,FA 28:0 +2O,FA 28:0 +2O,fatty_acid,frag
+471.4044017,FA 28:0 +3O,FA 28:0 +3O,fatty_acid,frag
+421.4040078,FA 28:1,FA 28:1,fatty_acid,frag
+437.3989224,FA 28:1 +1O,FA 28:1 +1O,fatty_acid,frag
+453.393837,FA 28:1 +2O,FA 28:1 +2O,fatty_acid,frag
+469.3887516,FA 28:1 +3O,FA 28:1 +3O,fatty_acid,frag
+419.3883577,FA 28:2,FA 28:2,fatty_acid,frag
+435.3832723,FA 28:2 +1O,FA 28:2 +1O,fatty_acid,frag
+451.3781869,FA 28:2 +2O,FA 28:2 +2O,fatty_acid,frag
+467.3731016,FA 28:2 +3O,FA 28:2 +3O,fatty_acid,frag
+417.3727076,FA 28:3,FA 28:3,fatty_acid,frag
+433.3676222,FA 28:3 +1O,FA 28:3 +1O,fatty_acid,frag
+449.3625369,FA 28:3 +2O,FA 28:3 +2O,fatty_acid,frag
+465.3574515,FA 28:3 +3O,FA 28:3 +3O,fatty_acid,frag
+415.3570575,FA 28:4,FA 28:4,fatty_acid,frag
+431.3519722,FA 28:4 +1O,FA 28:4 +1O,fatty_acid,frag
+447.3468868,FA 28:4 +2O,FA 28:4 +2O,fatty_acid,frag
+463.3418014,FA 28:4 +3O,FA 28:4 +3O,fatty_acid,frag
+413.3414075,FA 28:5,FA 28:5,fatty_acid,frag
+429.3363221,FA 28:5 +1O,FA 28:5 +1O,fatty_acid,frag
+445.3312367,FA 28:5 +2O,FA 28:5 +2O,fatty_acid,frag
+461.3261513,FA 28:5 +3O,FA 28:5 +3O,fatty_acid,frag
+411.3257574,FA 28:6,FA 28:6,fatty_acid,frag
+427.320672,FA 28:6 +1O,FA 28:6 +1O,fatty_acid,frag
+443.3155866,FA 28:6 +2O,FA 28:6 +2O,fatty_acid,frag
+459.3105012,FA 28:6 +3O,FA 28:6 +3O,fatty_acid,frag
+437.4353079,FA 29:0,FA 29:0,fatty_acid,frag
+453.4302226,FA 29:0 +1O,FA 29:0 +1O,fatty_acid,frag
+469.4251372,FA 29:0 +2O,FA 29:0 +2O,fatty_acid,frag
+485.4200518,FA 29:0 +3O,FA 29:0 +3O,fatty_acid,frag
+435.4196579,FA 29:1,FA 29:1,fatty_acid,frag
+451.4145725,FA 29:1 +1O,FA 29:1 +1O,fatty_acid,frag
+467.4094871,FA 29:1 +2O,FA 29:1 +2O,fatty_acid,frag
+483.4044017,FA 29:1 +3O,FA 29:1 +3O,fatty_acid,frag
+433.4040078,FA 29:2,FA 29:2,fatty_acid,frag
+449.3989224,FA 29:2 +1O,FA 29:2 +1O,fatty_acid,frag
+465.393837,FA 29:2 +2O,FA 29:2 +2O,fatty_acid,frag
+481.3887516,FA 29:2 +3O,FA 29:2 +3O,fatty_acid,frag
+431.3883577,FA 29:3,FA 29:3,fatty_acid,frag
+447.3832723,FA 29:3 +1O,FA 29:3 +1O,fatty_acid,frag
+463.3781869,FA 29:3 +2O,FA 29:3 +2O,fatty_acid,frag
+479.3731016,FA 29:3 +3O,FA 29:3 +3O,fatty_acid,frag
+429.3727076,FA 29:4,FA 29:4,fatty_acid,frag
+445.3676222,FA 29:4 +1O,FA 29:4 +1O,fatty_acid,frag
+461.3625369,FA 29:4 +2O,FA 29:4 +2O,fatty_acid,frag
+477.3574515,FA 29:4 +3O,FA 29:4 +3O,fatty_acid,frag
+427.3570575,FA 29:5,FA 29:5,fatty_acid,frag
+443.3519722,FA 29:5 +1O,FA 29:5 +1O,fatty_acid,frag
+459.3468868,FA 29:5 +2O,FA 29:5 +2O,fatty_acid,frag
+475.3418014,FA 29:5 +3O,FA 29:5 +3O,fatty_acid,frag
+425.3414075,FA 29:6,FA 29:6,fatty_acid,frag
+441.3363221,FA 29:6 +1O,FA 29:6 +1O,fatty_acid,frag
+457.3312367,FA 29:6 +2O,FA 29:6 +2O,fatty_acid,frag
+473.3261513,FA 29:6 +3O,FA 29:6 +3O,fatty_acid,frag
+451.450958,FA 30:0,FA 30:0,fatty_acid,frag
+467.4458726,FA 30:0 +1O,FA 30:0 +1O,fatty_acid,frag
+483.4407873,FA 30:0 +2O,FA 30:0 +2O,fatty_acid,frag
+499.4357019,FA 30:0 +3O,FA 30:0 +3O,fatty_acid,frag
+449.4353079,FA 30:1,FA 30:1,fatty_acid,frag
+465.4302226,FA 30:1 +1O,FA 30:1 +1O,fatty_acid,frag
+481.4251372,FA 30:1 +2O,FA 30:1 +2O,fatty_acid,frag
+497.4200518,FA 30:1 +3O,FA 30:1 +3O,fatty_acid,frag
+447.4196579,FA 30:2,FA 30:2,fatty_acid,frag
+463.4145725,FA 30:2 +1O,FA 30:2 +1O,fatty_acid,frag
+479.4094871,FA 30:2 +2O,FA 30:2 +2O,fatty_acid,frag
+495.4044017,FA 30:2 +3O,FA 30:2 +3O,fatty_acid,frag
+445.4040078,FA 30:3,FA 30:3,fatty_acid,frag
+461.3989224,FA 30:3 +1O,FA 30:3 +1O,fatty_acid,frag
+477.393837,FA 30:3 +2O,FA 30:3 +2O,fatty_acid,frag
+493.3887516,FA 30:3 +3O,FA 30:3 +3O,fatty_acid,frag
+443.3883577,FA 30:4,FA 30:4,fatty_acid,frag
+459.3832723,FA 30:4 +1O,FA 30:4 +1O,fatty_acid,frag
+475.3781869,FA 30:4 +2O,FA 30:4 +2O,fatty_acid,frag
+491.3731016,FA 30:4 +3O,FA 30:4 +3O,fatty_acid,frag
+441.3727076,FA 30:5,FA 30:5,fatty_acid,frag
+457.3676222,FA 30:5 +1O,FA 30:5 +1O,fatty_acid,frag
+473.3625369,FA 30:5 +2O,FA 30:5 +2O,fatty_acid,frag
+489.3574515,FA 30:5 +3O,FA 30:5 +3O,fatty_acid,frag
+439.3570575,FA 30:6,FA 30:6,fatty_acid,frag
+455.3519722,FA 30:6 +1O,FA 30:6 +1O,fatty_acid,frag
+471.3468868,FA 30:6 +2O,FA 30:6 +2O,fatty_acid,frag
+487.3418014,FA 30:6 +3O,FA 30:6 +3O,fatty_acid,frag

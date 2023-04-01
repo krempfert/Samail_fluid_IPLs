@@ -1,0 +1,448 @@
+---
+title: "IPL Mass Calculator"
+author: "Kaitlin Rempfert and Jon Raberg"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document: 
+    df_print: paged
+    toc: yes
+    toc_depth: 4
+    toc_float: true
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(enviPat)
+library(data.table)
+```
+
+# Setup
+```{r}
+# Import core data
+file_path_cores <- file.path("data/IPL_calculator/IPL_calculator_corechains_updated.csv")
+
+ cores <- file_path_cores %>% read_csv(
+   col_types = cols(
+   core_abbrv = col_character(),
+   core_mz = col_double(),
+   core_formula = col_character()
+ ))
+
+ # Import masses of possible head groups
+ file_path_heads <- file.path("data/IPL_calculator/IPL_calculator_headgroups_updated.csv")
+ heads <- file_path_heads %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character(),
+   Adduct_hierarchy = col_character()
+ ))
+ 
+# Copy heads into heads1 and heads2 so that there can be two independent head groups for monolayers
+ heads1 <- heads %>% dplyr::rename(
+   "HG_name1" = "HG_name",
+   "HG_abbrv1" = "HG_abbrv",
+   "HG_mass1" = "HG_mass",
+   "HG_formula1" = "HG_formula")
+ 
+ heads2 <- heads %>% dplyr::rename(
+   "HG_name2" = "HG_name",
+   "HG_abbrv2" = "HG_abbrv",
+   "HG_mass2" = "HG_mass",
+   "HG_formula2" = "HG_formula")
+ 
+#import ladderane headgroups
+  file_path_heads_ladderane <- file.path("data/IPL_calculator/IPL_calculator_headgroups_ladderane.csv")
+ heads_ladderane <- file_path_heads_ladderane %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character(),
+   Adduct_hierarchy = col_character()
+ ))
+ 
+#import cardiolipin headgroups
+  file_path_heads_CL <- file.path("data/IPL_calculator/IPL_calculator_headgroups_cardiolipins.csv")
+ heads_CL <- file_path_heads_CL %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character(),
+   Adduct_hierarchy = col_character()
+ ))
+ 
+#import methyl headgroup 
+   file_path_heads_Me <- file.path("data/IPL_calculator/IPL_calculator_headgroups_Me.csv")
+ heads_Me <- file_path_heads_Me %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character()
+ )) %>% dplyr::rename(
+   "HG_name2" = "HG_name",
+   "HG_abbrv2" = "HG_abbrv",
+   "HG_mass2" = "HG_mass",
+   "HG_formula2" = "HG_formula")
+ 
+#import PG headgroup
+    file_path_heads_PG <- file.path("data/IPL_calculator/IPL_calculator_headgroups_PG.csv")
+ heads_PG <- file_path_heads_PG %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character()
+ )) %>% dplyr::rename(
+   "HG_name2" = "HG_name",
+   "HG_abbrv2" = "HG_abbrv",
+   "HG_mass2" = "HG_mass",
+   "HG_formula2" = "HG_formula")
+ 
+#import PE headgroup
+     file_path_heads_PE <- file.path("data/IPL_calculator/IPL_calculator_headgroups_PE.csv")
+ heads_PE <- file_path_heads_PE %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character()
+ )) %>% dplyr::rename(
+   "HG_name2" = "HG_name",
+   "HG_abbrv2" = "HG_abbrv",
+   "HG_mass2" = "HG_mass",
+   "HG_formula2" = "HG_formula")
+ 
+#import PI headgroup
+     file_path_heads_PI <- file.path("data/IPL_calculator/IPL_calculator_headgroups_PI.csv")
+ heads_PI <- file_path_heads_PI %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character()
+ )) %>% dplyr::rename(
+   "HG_name2" = "HG_name",
+   "HG_abbrv2" = "HG_abbrv",
+   "HG_mass2" = "HG_mass",
+   "HG_formula2" = "HG_formula")
+ 
+#import 2G headgroup 
+     file_path_heads_2G <- file.path("data/IPL_calculator/IPL_calculator_headgroups_2G.csv")
+ heads_2G <- file_path_heads_2G %>% read_csv(
+   col_types = cols(
+   HG_name = col_character(),
+   HG_abbrv = col_character(),
+   HG_mass = col_double(),
+   HG_formula = col_character()
+ )) %>% dplyr::rename(
+   "HG_name2" = "HG_name",
+   "HG_abbrv2" = "HG_abbrv",
+   "HG_mass2" = "HG_mass",
+   "HG_formula2" = "HG_formula")
+ 
+#import cores 
+ file_path_cores_AR <- file.path("data/IPL_calculator/IPL_calculator_corechains_updated.csv")
+
+ cores_AR <- file_path_cores_AR %>% read_csv(
+   col_types = cols(
+   core_abbrv = col_character(),
+   core_class = col_character(),
+   core_mz = col_double(),
+   core_formula = col_character()
+ )) 
+ 
+ cores_AR <- cores_AR %>% filter(
+   core_class == "archaeol"
+ )
+ 
+ cores_AR1 <- cores_AR %>% dplyr::rename(
+   "core_abbrv1" = "core_abbrv",
+   "core_mz1" = "core_mz",
+   "core_formula1" = "core_formula", 
+   "core_class1" = "core_class", 
+   "DBE1" = "DBE", 
+   "chainC1" = "chainC")
+ 
+cores_AR2 <- cores_AR %>% dplyr::rename(
+   "core_abbrv2" = "core_abbrv",
+   "core_mz2" = "core_mz",
+   "core_formula2" = "core_formula", 
+   "core_class2" = "core_class", 
+   "DBE2"= "DBE",
+  "chainC2" = "chainC") 
+```
+
+
+# Predicted IPLs
+
+Here we'll use the core and HG data we've imported to build a table of all possible combinations.
+
+## Define Functions
+```{r}
+# "Vectorize" takes these functions and makes them work in mutate
+mergeform_v <- Vectorize(mergeform)
+subform_v <- Vectorize(subform)
+```
+
+
+
+## Build table of all permutations
+
+### brGDGTs
+
+```{r, include=FALSE}
+# **Caution: SLOW**
+# Crossing creates all permutations
+class_of_interest <- "brGDGT"
+cores_sub <- cores %>% filter(core_class == class_of_interest)
+
+brGDGTs_H <- crossing(cores_sub, heads) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass - 1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, HG_formula), "H1"),
+    full_name = paste(HG_abbrv, core_abbrv, sep = "_"),
+    species_class = "brGDGT",
+    adduct_hierarchy = Adduct_hierarchy
+    ) %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+
+brGDGTs_Me <- crossing(cores_sub, heads1, heads_Me) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"),
+    full_name = paste(HG_abbrv1, core_abbrv, "Me", sep = "_"),
+    species_class = "brGDGT",
+    adduct_hierarchy = Adduct_hierarchy
+    ) %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+
+brGDGTs_PG <- crossing(cores_sub, heads1, heads_PG) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+     summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"), 
+    full_name = paste(HG_abbrv1, core_abbrv, "PG", sep = "_"),
+    species_class = "brGDGT",
+    adduct_hierarchy = paste(Adduct_hierarchy, "PG", sep = "-")
+    ) 
+brGDGTs_PG <- brGDGTs_PG %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, HG_abbrv1, HG_abbrv2, DBE, chainC) %>%
+  arrange(mz_no_adduct) %>%
+  filter(
+    HG_abbrv1 == "PG" & HG_abbrv2 == "PG" |
+    HG_abbrv1 == "PE" & HG_abbrv2 == "PG" |
+    HG_abbrv1 == "Hp_G" & HG_abbrv2 == "PG"|
+    HG_abbrv1 == "2G" & HG_abbrv2 == "PG"|
+    HG_abbrv1 == "Hp" & HG_abbrv2 == "PG"
+      
+  ) %>% select(-c(HG_abbrv1, HG_abbrv2))
+
+brGDGTs <- bind_rows(brGDGTs_H, brGDGTs_Me, brGDGTs_PG)
+
+```
+
+### isoGDGTs
+
+```{r, include=FALSE}
+# **Caution: SLOW**
+# Crossing creates all permutations
+class_of_interest <- "isoGDGT"
+cores_sub <- cores %>% filter(core_class == class_of_interest)
+
+isoGDGTs_H <- crossing(cores_sub, heads) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass - 1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, HG_formula), "H1"), 
+    full_name = paste(HG_abbrv, core_abbrv, sep = "_"),
+    species_class = "isoGDGT",
+    adduct_hierarchy = Adduct_hierarchy
+    ) %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+
+isoGDGTs_Me <- crossing(cores_sub, heads1, heads_Me) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"),
+    full_name = paste(HG_abbrv1, core_abbrv, "Me", sep = "_"),
+    species_class = "isoGDGT",
+    adduct_hierarchy = Adduct_hierarchy
+    ) %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+
+isoGDGTs_PG <- crossing(cores_sub, heads1, heads_PG) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"), 
+    full_name = paste(HG_abbrv1, core_abbrv, "PG", sep = "_"),
+    species_class = "isoGDGT",
+    adduct_hierarchy = paste(Adduct_hierarchy, "PG", sep = "-")
+    ) 
+isoGDGTs_PG_filt <- isoGDGTs_PG %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, HG_abbrv1, HG_abbrv2, DBE, chainC) %>%
+  arrange(mz_no_adduct) %>%
+  filter(
+    HG_abbrv1 == "PE" & HG_abbrv2 == "PG" |
+    HG_abbrv1 == "Hp_G" & HG_abbrv2 == "PG"|
+    HG_abbrv1 == "PGP" & HG_abbrv2 == "PG"|
+    HG_abbrv1 == "APT" & HG_abbrv2 == "PG"| 
+    HG_abbrv1 == "2G" & HG_abbrv2 == "PG"|
+    HG_abbrv1 == "dG" & HG_abbrv2 == "PG"|
+    HG_abbrv1 == "Hp" & HG_abbrv2 == "PG"
+  ) %>% select(-c(HG_abbrv1, HG_abbrv2))
+
+isoGDGTs_PE <- crossing(cores_sub, heads1, heads_PE) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"), 
+    full_name = paste(HG_abbrv1, core_abbrv, "PE", sep = "_"),
+    species_class = "isoGDGT",
+    adduct_hierarchy = paste(Adduct_hierarchy, "PE", sep = "-")
+    ) 
+isoGDGTs_PE_filt <- isoGDGTs_PE %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, HG_abbrv1, HG_abbrv2, DBE, chainC) %>%
+  arrange(mz_no_adduct) %>%
+  filter(
+    HG_abbrv1 == "PE" & HG_abbrv2 == "PE" |
+    HG_abbrv1 == "PI" & HG_abbrv2 == "PE" |
+    HG_abbrv1 == "1G" & HG_abbrv2 == "PE"| 
+    HG_abbrv1 == "2G" & HG_abbrv2 == "PE"|
+    HG_abbrv1 == "dG" & HG_abbrv2 == "PE"
+  ) %>% select(-c(HG_abbrv1, HG_abbrv2))
+
+isoGDGTs_PI <- crossing(cores_sub, heads1, heads_PI) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"), 
+    full_name = paste(HG_abbrv1, core_abbrv, "PI", sep = "_"),
+    species_class = "isoGDGT",
+    adduct_hierarchy = paste(Adduct_hierarchy, "PI", sep = "-")
+    ) 
+isoGDGTs_PI_filt <- isoGDGTs_PI %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, HG_abbrv1, HG_abbrv2, DBE, chainC) %>%
+  arrange(mz_no_adduct) %>%
+  filter(
+    HG_abbrv1 == "2G" & HG_abbrv2 == "PI"|
+    HG_abbrv1 == "dG" & HG_abbrv2 == "PI"
+  ) %>% select(-c(HG_abbrv1, HG_abbrv2))
+
+isoGDGTs_2G <- crossing(cores_sub, heads1, heads_2G) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass1 + HG_mass2 - 2*1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, mergeform_v(HG_formula1, HG_formula2)), "H2"), 
+    full_name = paste(HG_abbrv1, core_abbrv, "DG", sep = "_"),
+    species_class = "isoGDGT",
+    adduct_hierarchy = paste(Adduct_hierarchy, "DG", sep = "-")
+    ) 
+isoGDGTs_2G_filt <- isoGDGTs_2G %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, HG_abbrv1, HG_abbrv2, DBE, chainC) %>%
+  arrange(mz_no_adduct) %>%
+  filter(
+    HG_abbrv1 == "PME" & HG_abbrv2 == "2G"|
+    HG_abbrv1 == "PS" & HG_abbrv2 == "2G"|
+    HG_abbrv1 == "dG" & HG_abbrv2 == "2G"|
+    HG_abbrv1 == "PA" & HG_abbrv2 == "2G"
+  ) %>% select(-c(HG_abbrv1, HG_abbrv2))
+
+isoGDGTs <- bind_rows(isoGDGTs_H, isoGDGTs_Me, isoGDGTs_PG_filt, isoGDGTs_PE_filt, isoGDGTs_PI_filt, isoGDGTs_2G_filt)
+
+```
+
+
+### brGDDs 
+```{r}
+# Crossing creates all permutations
+class_of_interest <- "brGDD"
+cores_sub <- cores %>% filter(core_class == class_of_interest)
+brGDDs <- crossing(cores_sub, heads) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass - 1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, HG_formula), "H1"), 
+    full_name = paste(HG_abbrv, core_abbrv, sep = "_"),
+    species_class = "brGDD",
+    adduct_hierarchy = Adduct_hierarchy) %>% 
+  select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+```
+
+### isoGDDs 
+```{r}
+# Crossing creates all permutations
+class_of_interest <- "isoGDD"
+cores_sub <- cores %>% filter(core_class == class_of_interest)
+isoGDDs <- crossing(cores_sub, heads) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass - 1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, HG_formula), "H1"),
+    full_name = paste(HG_abbrv, core_abbrv, sep = "_"),
+    species_class = "isoGDD",
+    adduct_hierarchy = Adduct_hierarchy) %>% 
+  select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+```
+
+
+### archaeol 
+```{r}
+# Crossing creates all permutations
+class_of_interest <- "archaeol"
+cores_sub <- cores %>% filter(core_class == class_of_interest)
+archaeol <- crossing(cores_sub, heads) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass - 1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, HG_formula), "H1"), 
+    full_name = paste(HG_abbrv, core_abbrv, sep = "_"),
+    species_class = "archaeol",
+    adduct_hierarchy = Adduct_hierarchy) %>% 
+  select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+```
+
+### cardiolipin 
+```{r}
+# Crossing creates all permutations
+CLs <- crossing(cores_AR1, cores_AR2, heads_CL) %>% 
+  mutate(
+    mz_no_adduct = core_mz1 + core_mz2 + HG_mass- 1.007276467,
+    summed_form = subform_v(mergeform_v(HG_formula, mergeform_v(core_formula1, core_formula2)), "H1"), 
+    full_name = paste(HG_abbrv, core_abbrv1, core_abbrv2, sep = "__"),
+    species_class = "CL",
+    DBE = DBE1 + DBE2,
+    chainC = chainC1 + chainC2,
+    adduct_hierarchy = Adduct_hierarchy
+    ) %>% select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+```
+
+### ladderane 
+```{r}
+# Crossing creates all permutations
+class_of_interest <- "ladderane"
+cores_sub <- cores %>% filter(core_class == class_of_interest)
+ladderane <- crossing(cores_sub, heads_ladderane) %>% 
+  mutate(
+    mz_no_adduct = core_mz + HG_mass - 1.007276467,
+    summed_form = subform_v(mergeform_v(core_formula, HG_formula), "H1"),  
+    full_name = paste(HG_abbrv, core_abbrv, sep = "_"),
+    species_class = "ladderane",
+    adduct_hierarchy = Adduct_hierarchy) %>% 
+  select(full_name, mz_no_adduct, summed_form, species_class, adduct_hierarchy, DBE, chainC)
+```
+
+## combine for export
+```{r}
+unique <- bind_rows(brGDGTs, brGDDs, archaeol, isoGDGTs, isoGDDs, ladderane, CLs)
+
+rt_map <- readxl::read_xlsx("data/IPL_calculator/unique_rt_map.xlsx", sheet = 3)
+
+unique_rt <- unique %>% group_by(adduct_hierarchy) %>% left_join(rt_map) %>% select(c(full_name, rt_win_max, rt_win_min))
+
+
+library(stringr)
+element_matrix <- unique %>% mutate(
+              name=str_extract_all(summed_form,"[A-Za-z]+"),
+              value=str_extract_all(summed_form,"\\d+")) %>%
+   unnest()%>%spread(name,value = value, fill=0) %>% select(-summed_form)
+
+write.csv(element_matrix, "data/IPL_calculator/unique_lipids_em_v3.csv")
+write.csv(unique_rt, "data/IPL_calculator/unique_lipids_rt_v3.csv")
+
+```
+
+
+
+
+

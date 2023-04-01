@@ -1,0 +1,501 @@
+---
+title: "Samail Fluid IPLs annotation"
+author: "Kaitlin Rempfert"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document: 
+    df_print: paged 
+    number_sections: yes 
+    css: stylesheet.css 
+    toc: yes 
+    toc_float: true 
+    toc_depth: 3 
+    code_folding: show 
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+# load required packages
+
+library(MetaboAnalystR)
+library(tidyverse)
+library(ggplot2)
+library(ggpmisc)
+library(tools)
+library(LOBSTAHS)
+library(MSnbase)
+library(sqldf)
+library(xcms)
+library(CAMERA)
+library(rsm)
+library(Hmisc)
+library(data.table)
+
+#load in functions
+source("scripts/lipid_scripts.R")     
+```
+
+
+# Load in raw mzXML files (Note: files too big for Github repo; need to download from Metabolights, convert to mzxml, and then load from the folder below)
+```{r warning=FALSE, eval = FALSE}
+#path to .mzXML files
+dda_folder_fluids_woBA1A = "data/raw/fluids_woBA1A"
+#list all files inside specified folder
+mzXMLfiles_fluids_woBA1A <- list.files(dda_folder_fluids_woBA1A, recursive = TRUE, full.names = TRUE)
+
+#make phenodata dataframe with grouping labels
+label <- c("blank","sample", "sample", "sample", "sample", "blank", "sample", "sample")
+pd_fluids_woBA1A <- data.frame(sample_name = sub(basename(mzXMLfiles_fluids_woBA1A), pattern = ".mzXML", replacement = "", fixed = TRUE), sample_group = label, group_for_grouping = "fluids_woBA1A", stringsAsFactors = FALSE)
+
+#load data with phenodata
+dda_data_fluids_woBA1A <- readMSData(mzXMLfiles_fluids_woBA1A, pdata = new("NAnnotatedDataFrame", pd_fluids_woBA1A), centroided = TRUE, mode = "onDisk")
+
+#check # of peaks in each MS level to ensure files were converted properly
+table(msLevel(dda_data_fluids_woBA1A))
+
+#make sure that precursor intensities are not NA
+dda_data_fluids_woBA1A %>%
+    filterMsLevel(2L) %>%
+    precursorMz() %>%
+    head()
+
+#separate positive and negative scans
+dda_data_fluids_woBA1A_neg <- dda_data_fluids_woBA1A %>% filterPolarity(polarity. = 0)
+dda_data_fluids_woBA1A_pos <- dda_data_fluids_woBA1A %>% filterPolarity(polarity. = 1)
+```
+
+
+## Total Ion Chromatograms
+```{r warning=FALSE, eval = FALSE}
+#get total ion chromatograms from the raw, centroided data
+tis <- chromatogram(dda_data_fluids_woBA1A_pos, aggregationFun = "sum")
+
+#assign colors based on label
+group_colors <- paste0(RColorBrewer::brewer.pal(3, "Dark2"))
+names(group_colors)<- c("blank", "sample")
+
+#plot total ion chromatograms
+plot(tis,  col = group_colors[dda_data_fluids_woBA1A_pos$sample_group], main = "Total Ion Chromatogram")
+legend("topright", legend = c("blank", "sample"), fill = group_colors) 
+```
+
+## Base Peak Chromatograms
+```{r warning=FALSE, eval = FALSE}
+#get base peak chromatograms from the raw, centroided data
+bpis <- chromatogram(dda_data_fluids_woBA1A_pos, aggregationFun = "max")
+
+#plot base peak chromatograms
+plot(bpis, col = group_colors[dda_data_fluids_woBA1A_pos$sample_group], main = "Base Peak Chromatogram")
+legend("topright", legend = c("blank", "sample"), fill = group_colors)
+```
+
+## Total Ion Current
+```{r warning=FALSE, eval = FALSE}
+#Plot up total ion current by file
+
+#extract total ion current for each file
+tc <- split(tic(dda_data_fluids_woBA1A_pos), f = fromFile(dda_data_fluids_woBA1A_pos))
+#plot
+boxplot(tc, ylab = "intensity", col = group_colors[dda_data_fluids_woBA1A_pos$sample_group], main = "Total Ion Current")
+legend("topright", legend = c("blank", "sample"), fill = group_colors)
+```
+
+## Plot up raw Extracted Ion Chromatograms (EICs) for internal standards
+```{r warning=FALSE, cache=TRUE, eval = FALSE}
+#read in database table of masses of most prominent adduct for each compound
+standards <- readxl::read_xlsx("data/standards/internal_standards.xlsx", sheet = 1)  
+standards
+
+#function to plot raw EICs
+raw_XIC_plot <- function(db, raw) {
+  group_colors <- paste0(RColorBrewer::brewer.pal(3, "Dark2"))
+  names(group_colors)<- c("blank", "sample")
+  
+  for (row in 1:nrow(db)){
+    XIC <- xcms::chromatogram(raw, mz = c(db$mz_db[row]-.005, db$mz_db[row]+.005), rt = c(db$rt_db[row]*60 - 240, db$rt_db[row]*60 + 240)) 
+    plot(XIC, col = group_colors[raw$sample_group], main = db$standard[row])
+    legend("topright", legend = c("blank", "sample"), fill = group_colors)
+  }
+}
+
+#plot
+raw_XIC_plot(db = standards, raw = dda_data_fluids_woBA1A_pos)
+```
+
+
+# Pick Peaks
+```{r eval=FALSE}
+#peak picking parameters
+cwp1 <- CentWaveParam(
+                        ppm = centW.ppm,
+                        peakwidth = c(centW.min_peakwidth,centW.max_peakwidth),
+                        fitgauss = centW.fitgauss,
+                        noise = centW.noise,
+                        mzdiff = centW.mzdiff,
+                        verboseColumns = centW.verbose.columns,
+                        snthresh = centW.snthresh,
+                        integrate = centW.integrate,
+                        prefilter = centW.prefilter,
+                        firstBaselineCheck = TRUE,
+                        mzCenterFun = centW.mzCenterFun
+)
+
+
+#pick peaks
+dda_data_fluids_woBA1A_peaks_pos_pp1 <- findChromPeaks(dda_data_fluids_woBA1A_pos, param = cwp1)
+dda_data_fluids_woBA1A_peaks_neg_pp1 <- findChromPeaks(dda_data_fluids_woBA1A_neg, param = cwp1)
+```
+
+
+## Plot up EICs of picked peaks
+```{r warning=FALSE, eval = FALSE}
+#XIC plotting of peaks
+XIC_plot <- function(db, data) {
+  group_colors <- paste0(RColorBrewer::brewer.pal(3, "Dark2"))
+  names(group_colors)<-  c("blank", "sample")
+  
+  for (row in 1:nrow(db)){
+    XIC <- xcms::chromatogram(data, mz = c(db$mz_db[row]-.005, db$mz_db[row]+.005), rt = c(db$rt_db[row]*60 - 240, db$rt_db[row]*60 + 240)) 
+    sample_colors <- group_colors[XIC$sample_group]
+    plot(XIC, col = sample_colors[chromPeaks(XIC)[, "sample"]], lwd = 2, peakBg = sample_colors[chromPeaks(XIC)[, "sample"]], main = db$standard[row])
+    legend("topright", legend = c("blank", "sample"), fill = group_colors)
+  }
+}
+
+#plot extracted chromatograms of picked peaks for standards
+XIC_plot(db = standards, data = dda_data_fluids_woBA1A_peaks_pos_pp1)
+```
+
+
+# Group Peaks and Correct Retention Time 
+```{r eval = FALSE, warning = FALSE}
+#peak grouping parameters
+pdp1 <- PeakDensityParam(
+                sampleGroups = dda_data_fluids_woBA1A$group_for_grouping,
+                bw = density.bw,
+                minFraction = .125,
+                minSamples = density.minsamp,
+                binSize = density.mzwid,
+                maxFeatures = density.max
+)
+
+pgp1 <- PeakGroupsParam(
+  minFraction = density.minfrac,
+  extraPeaks =loess.extra,
+  smooth = "loess",
+  span = loess.span,
+  family = loess.family
+)
+
+#peak correlation and retention time correction 
+#pos pp1
+dda_data_fluids_woBA1A_grouped_pos_pp1 <- groupChromPeaks(dda_data_fluids_woBA1A_peaks_pos_pp1, param = pdp1)
+dda_data_fluids_woBA1A_rt_pos_pp1  <- adjustRtime(dda_data_fluids_woBA1A_grouped_pos_pp1, param = pgp1)
+dda_data_fluids_woBA1A_rt_grouped_pos_pp1  <- groupChromPeaks(dda_data_fluids_woBA1A_rt_pos_pp1, param = pdp1)
+#neg pp1
+dda_data_fluids_woBA1A_grouped_neg_pp1 <- groupChromPeaks(dda_data_fluids_woBA1A_peaks_neg_pp1, param = pdp1)
+dda_data_fluids_woBA1A_rt_neg_pp1  <-adjustRtime(dda_data_fluids_woBA1A_grouped_neg_pp1, param = pgp1)
+dda_data_fluids_woBA1A_rt_grouped_neg_pp1  <- groupChromPeaks(dda_data_fluids_woBA1A_rt_neg_pp1, param = pdp1)
+
+#filter retention time to exclude features that elute in first 1.5 minutes
+dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1 <- dda_data_fluids_woBA1A_rt_grouped_pos_pp1 %>% filterRt(rt= c(150, 1500))
+dda_data_fluids_woBA1A_rtfilt_grouped_neg_pp1 <- dda_data_fluids_woBA1A_rt_grouped_neg_pp1 %>% filterRt(rt= c(150, 1500))
+```
+
+## Visualize Grouping and Retention Time Adjustments
+```{r warning=FALSE, eval = FALSE}
+#visualize alignment 
+plotAdjustedRtime(dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1, col = group_colors[dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1$sample_group],
+                  peakGroupsCol = "grey", peakGroupsPch = 1)
+legend("bottomright", legend = c("blank", "sample"), fill = group_colors)
+
+#QC on picked peaks- is intensity normalized?
+boxplot(featureValues(dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1, value="into") +1, 
+        log="y", las=2, col = group_colors[dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1$sample_group], ylab = "intensity", main = "Peak Intensities")
+legend("topright", inset=c(-0.2,0), legend = c("blank", "sample"), fill = group_colors)
+```
+
+
+# Fill Peaks
+```{r eval = FALSE}
+dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1 <- readRDS("fluids_woBA1A_pp1_pos_grouped_rtfilt.rds")
+#filter to just MS1 for positive
+dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1_ms1 <- dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1 %>% filterMsLevel(msLevel. = 1)
+#fill peaks
+fpp <- FillChromPeaksParam(ppm = 5, expandRt = .1)
+fluids_woBA1A_fill = fillChromPeaks(dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1_ms1, param = fpp)
+```
+
+
+```{r eval = FALSE}
+#Applying CAMERA to identify isotopic peaks, create xsAnnotate object, and create CAMERA pseudospectra using correlation of xcms peak groups between and within samples. These pseudospectra are the groups within which the adduct hierarchy and retention time screening criteria will be applied using LOBSTAHS
+
+#need to convert MSnExp to an xset for import into CAMERA 
+fluids_woBA1A_ddms2_xset <- as(fluids_woBA1A_fill, "xcmsSet")
+#need to manually bring over sample names and groups
+sampnames(fluids_woBA1A_ddms2_xset) <- pData(dda_data_fluids_woBA1A)$sample_name
+sampclass(fluids_woBA1A_ddms2_xset) <- pData(dda_data_fluids_woBA1A)$group_for_grouping
+
+
+#fillPeaks on xset to remove NAs for CAMERA (changing NAs to 0 within xset structure)
+fluids_woBA1A_ddms2_xset <- fillPeaks(fluids_woBA1A_ddms2_xset)
+
+# first, a necessary workaround to avoid a import error; see https://support.bioconductor.org/p/69414/
+imports = parent.env(getNamespace("CAMERA"
+                                  ))
+unlockBinding("groups", imports)
+imports[["groups"]] = xcms::groups
+lockBinding("groups", imports)
+
+# create annotated xset using wrapper annotate(), allowing us to perform all CAMERA tasks at once
+fluids_woBA1A_ddms2_xset_a <- CAMERA::annotate(fluids_woBA1A_ddms2_xset,
+
+                  quick=FALSE, # set to FALSE because we want to run groupCorr; will also cause CAMERA to run adduct annotation. while LOBSTAHS will do its own adduct identification later, it doesn't hurt to do this now if it lets CAMERA create better pseudospectra
+                  sample= NA, # use all samples
+                  nSlaves=4, # use 4 sockets
+
+                  # group FWHM settings
+                  # using defaults for now
+
+                  sigma=6,
+                  perfwhm=0.6,
+
+                  # groupCorr settings
+                  # using defaults for now
+
+                  cor_eic_th=0.75,
+                  graphMethod="hcs",
+                  pval=0.05,
+                  calcCiS=TRUE,
+                  calcIso=TRUE,
+                  calcCaS=FALSE, # weird results with this set to TRUE
+
+                  # findIsotopes settings
+
+                  maxcharge=4,
+                  maxiso=4,
+                  minfrac=0.5, # 0.25?
+
+                  # adduct annotation settings
+
+                  psg_list=NULL,
+                  rules=NULL,
+                  polarity=subset.polarity,
+                  multiplier=3,
+                  max_peaks=100,
+
+                  # common to multiple tasks
+
+                  intval="into",
+                  ppm=2.5,
+                  mzabs=0.0015
+
+                  )
+
+cleanParallel(fluids_woBA1A_ddms2_xset_a) # kill sockets
+
+
+print(fluids_woBA1A_ddms2_xset_a)
+saveRDS(fluids_woBA1A_ddms2_xset_a, "output/processing/fluids_woBA1A_ddms2_xset_a.RDS")
+```
+
+
+# Identification of Peaks Using LOBSTAHS
+```{r eval = FALSE}
+fluids_woBA1A_ddms2_xset_a <- readRDS("output/processing/fluids_woBA1A_ddms2_xset_a.RDS")
+
+#load in LOBSTAHS database
+LOBdbase_updated <- loadLOBdbase("LOBSTAHS_db_generation/Full_database/LOBSTAHS_lipid-oxy_DB_pos_2021-01-13T11-44-48_PM-0700_updated_1_22_21.csv", polarity = "positive")
+
+#screen annotated dataset against database
+LOBset_fluids_woBA1A_ddms2_2 <- doLOBscreen(fluids_woBA1A_ddms2_xset_a, polarity = "positive", database = LOBdbase_updated, remove.iso = TRUE, rt.restrict = TRUE, rt.windows = "LOBSTAHS_db_generation/Full_database/LOBSTAHS_rt.windows_arch.csv", exclude.oddFA = FALSE, match.ppm = 15, retain.unidentified = TRUE)
+
+#diagnostics of screening
+LOBscreen_diagnostics(LOBset_fluids_woBA1A_ddms2_2)
+
+#get peaklist
+fluids_woBA1A_ddms2_peaklist <- getLOBpeaklist(LOBset_fluids_woBA1A_ddms2_2, include.iso = TRUE, include.unidentified = TRUE, gen.csv = TRUE)
+saveRDS(fluids_woBA1A_ddms2_peaklist, "output/processing/fluids_woBA1A_ddms2_peaklist.rds")
+```
+
+
+# MS2 Peak Extraction 
+```{r}
+#positive
+#extract MS2 spectra for features (peak groups) 
+dda_spectra_fluids_woBA1A_pos_pp1 <- featureSpectra(dda_data_fluids_woBA1A_rt_grouped_rtfilt_pos_pp1)
+#clean spectra
+dda_spectra_fluids_woBA1A_pos_pp1 <- clean(dda_spectra_fluids_woBA1A_pos_pp1, all = TRUE)
+#combine spectra for same feature_id
+dda_combined_fluids_woBA1A_pos_pp1 <- combineSpectra(dda_spectra_fluids_woBA1A_pos_pp1, fcol = "feature_id", method = consensusSpectrum, mzd = 0.005, minProp = 0.05, weighted = FALSE,intensityFun = median, mzFun = median)
+
+#negative
+dda_spectra_fluids_woBA1A_neg_pp1 <- featureSpectra(dda_data_fluids_woBA1A_rt_grouped_rtfilt_neg_pp1)
+dda_spectra_fluids_woBA1A_neg_pp1 <- clean(dda_spectra_fluids_woBA1A_neg_pp1, all = TRUE)
+dda_combined_fluids_woBA1A_neg_pp1 <- combineSpectra(dda_spectra_fluids_woBA1A_neg_pp1, fcol = "feature_id", method = consensusSpectrum, mzd = 0.005, minProp = 0.05, weighted = FALSE,intensityFun = median, mzFun = median)
+```
+
+
+# MS2 verification of LOBSTAHS identifications 
+
+## Load Relevant Databases
+```{r}
+#load relevant databases
+fragments_pos <- read.csv("data/fragment_databases/Fragments_pos_v3.csv")
+nl_pos <- read.csv("data/fragment_databses/Neutral_losses_pos_v5.csv")
+background_pos <- read.csv("data/fragment_databases/background_pos.csv")
+
+fragments_neg <- read.csv("data/fragment_databases/Fragments_neg.csv")
+background_neg <- read.csv("data/fragment_databases/background_neg.csv")
+nl_neg <- read.csv("data/fragment_databases/Neutral_losses_neg.csv")
+
+#load relevant databases
+fragments_pos_core <- read.csv("data/fragment_databases/Fragments_pos_core.csv")
+nl_pos_core <- read.csv("data/fragment_databases/Neutral_losses_pos_core.csv")
+background_pos_core <- read.csv("data/fragment_databases/background_pos_core.csv")
+```
+
+## Plot annotated spectra for manual inspection 
+```{r}
+plot_spectra_annotate(spectra = dda_combined_fluids_woBA1A_pos_pp1, fragment_db = fragments_pos, nl_db = nl_pos, background_db = background_pos, to_include = NULL)
+```
+
+## Annotate peaklist
+```{r eval=FALSE}
+#load peaklist
+#load .csv files with headgroup information for each lipid species and metadata
+fluids_woBA1A_ddms2_peaklist <- readRDS("output/processing/fluids_woBA1A_ddms2_peaklist.rds") 
+hg <- read.csv("data/annotation/LOBSTAHS_hg.csv")
+hg_meta <- read.csv("data/annotation/hg_meta_3.csv")
+
+#join hg metadata with peaklist
+peaklist_w_hg <- left_join(fluids_woBA1A_ddms2_peaklist, hg, by = "species")
+peaklist_w_hg_meta <- left_join(peaklist_w_hg, hg_meta, by = "hg_response")
+peaklist_w_hg_meta <- peaklist_w_hg_meta %>% rownames_to_column("match_ID2")
+
+#hg annotation of spectra
+ms2_features_hg_pos  <- ms2_annotate(spectra = dda_combined_fluids_woBA1A_pos_pp1, fragment_db = fragments_pos, nl_db = nl_pos, background_db = background_pos, intensity_filter = .1)
+
+#note, CANNOT join by feature_id because MS2 feature_id does not correlate with MS1; instead join by mass and retention time range
+#extract peaklist columns for joining
+peaklist_dt <- peaklist_w_hg_meta %>% select(c("peakgroup_mz", "peakgroup_rt", "match_ID2", "xcms_peakgroup"))
+#extract annotation columns for joining
+ms2_dt <- ms2_features_hg_pos 
+
+#join with sql allowing multiple matches
+id1 <- sqldf("select *
+from peaklist_dt peak
+left join ms2_dt ms2 on abs(ms2.ms2_precursor - peak.peakgroup_mz) < 0.05
+	and abs(ms2.ms2_rt - peak.peakgroup_rt) < 15.0")
+
+#filter ms2 id table to only include unique ms2 ids per xcms peakgroup
+id1_filt <- id1 %>% filter(!is.na(ms2_precursor)) %>% select(-c("match_ID2", "peakgroup_rt", "peakgroup_mz", "mtc")) %>% unique() %>% dplyr::rename(id_hg = id) 
+
+#join ms2 data with peaklist and filter to include only compounds that have ms2 data
+peaklist_hg <- left_join(peaklist_w_hg_meta, id1_filt, by = "xcms_peakgroup") %>% filter(!is.na(id_hg))
+#calculate which peaks have areas at least ten times greater than the blank average
+peaklist_hg_blank <- peaklist_hg %>% dplyr::rename(blank_1 = QEF6213_KRR_IPLs_DCM_MeOH_blank_Sep2020opt_dual_ddMS2, blank_2 = QEF6218_KRR_IPLs_DCM_MeOH_blank_Sep2020opt_dual_ddMS2) %>% 
+  mutate(
+  blank = rowMeans(select(., starts_with("blank")), na.rm = TRUE)) %>% rowwise() %>% mutate(background = ifelse(any(c_across(starts_with("QEF")) > 10*blank), NA, "background")) %>% ungroup()
+  
+#filter out background peaks and select only peaks that have a hg from LOBSTAHS that matches a hg id from MS2
+peaklist_hg_backgroundremoved_match <- peaklist_hg_blank %>% filter(is.na(background)) %>% filter(hg == id_hg)
+#peaks that have a MS2 and are not background, but do not match compound in database
+peaklist_hg_backgroundremoved_nomatch <- peaklist_hg_blank %>% filter(is.na(background)) %>% filter(is.na(hg))
+#add negative precursor mass for peaks
+peaklist_hg_backgroundremoved_match <- peaklist_hg_backgroundremoved_match  %>% mutate(neg_precursor_mass = case_when(neg_adduct == "formate" ~ as.numeric(LOBdbase_exact_parent_neutral_mass) + 44.99765, neg_adduct == "hydrogen" ~ as.numeric(LOBdbase_exact_parent_neutral_mass) - 1.00783, TRUE ~ NA_real_))
+
+#negative mode core annotation
+ms2_features_neg  <- ms2_annotate(spectra = dda_combined_fluids_woBA1A_neg_pp1, fragment_db = fragments_neg, nl_db = nl_neg, background_db = background_neg, intensity_filter = .1)
+
+#prepare peaklist for matching with negative mode annotation
+peaklist_dt2 <- peaklist_hg_backgroundremoved_match %>% select(c("neg_precursor_mass", "peakgroup_rt", "match_ID2"))
+ms2_dt2 <- ms2_features_neg %>% dplyr::rename(id_neg = id)
+
+id2 <- sqldf("select *
+from peaklist_dt2 peak
+left join ms2_dt2 ms2 on abs(ms2.ms2_precursor - peak.neg_precursor_mass) < 0.05
+	and abs(ms2.ms2_rt - peak.peakgroup_rt) < 15.0")
+
+#filter ms2 id table to only include unique ms2 ids per xcms peakgroup
+id2_filt <- id2 %>% filter(!is.na(ms2_precursor) & !is.na(id_neg)) %>% select(-c("match_ID2")) %>% unique() %>% select(-c(peakgroup_rt, ms2_rt, ms2_precursor, ms2_feature_id)) %>% dplyr::rename(mtc_neg_core_frag = mtc)
+
+#rejoin with peaklist
+peaklist_hg_backgroundremoved_match_neg <- left_join(peaklist_hg_backgroundremoved_match, id2_filt, by = "neg_precursor_mass") 
+
+#ms2 positive mode annotation of cores
+ms2_features_pos_core <- ms2_annotate(spectra = dda_combined_fluids_woBA1A_pos_pp1, fragment_db = fragments_pos_core, nl_db = nl_pos_core, background_db = background_pos_core, intensity_filter = .1)
+
+#prepare peaklist for matching with positive mode core annotation
+peaklist_dt3 <- peaklist_hg_backgroundremoved_match_neg %>% select(c("peakgroup_mz", "peakgroup_rt", "match_ID2"))
+ms2_dt3 <- ms2_features_pos_core %>% dplyr::rename(id_pos_core = id)
+
+#join with sql allowing multiple matches
+id3 <- sqldf("select *
+from peaklist_dt3 peak
+left join ms2_dt3 ms2 on abs(ms2.ms2_precursor - peak.peakgroup_mz) < 0.05
+	and abs(ms2.ms2_rt - peak.peakgroup_rt) < 15.0")
+
+#filter ms2 id table to only include unique ms2 ids per xcms peakgroup 
+id3_filt <- id3 %>% filter(!is.na(ms2_precursor) & !is.na(id_pos_core)) %>% select(-c("match_ID2")) %>% unique() %>% select(-c(peakgroup_rt, ms2_rt, ms2_precursor, ms2_feature_id)) %>% dplyr::rename(mtc_pos_core_frag = mtc)
+
+#rejoin with peaklist
+peaklist_hg_backgroundremoved_match_neg_poscore <- left_join(peaklist_hg_backgroundremoved_match_neg, id3_filt, by = "peakgroup_mz") 
+
+#manually annotate 
+peaklist_for_annotate <- peaklist_hg_backgroundremoved_match %>% select(c(compound_name, LOBdbase_mz, LOBdbase_ppm_match, peakgroup_mz, peakgroup_rt, xcms_peakgroup, ms2_precursor, ms2_rt, id_hg))
+write.csv(peaklist_for_annotate, "output/annotation/fluids_woBA1A_for_annotation.csv")
+```
+
+
+# Upload Manually Curated Peaklist and Join with Full Peaklist
+```{r eval = FALSE}
+#import manually annotated peaklist
+annotations <- readxl::read_excel("output/annotation/fluids_woBA1A_annotated_KRR_1_24_21.xlsx")
+#select necessary compounds for joining
+annotations <- annotations %>% filter(manually_identified == "yes")
+annotations$id_hg <- as.factor(annotations$id_hg)
+
+peaklist_annotated <- merge(peaklist_hg_backgroundremoved_match, annotations, by.y = c("compound_name", "LOBdbase_mz", "peakgroup_mz", "LOBdbase_ppm_match", "peakgroup_rt", "xcms_peakgroup", "ms2_precursor", "ms2_rt", "id_hg")) 
+
+peaklist_annotated$ms2_feature_id<- recode(peaklist_annotated$ms2_feature_id, "FT09778" = "FT09766", "FT08244" = "FT08225")
+annotated_list <- peaklist_annotated$ms2_feature_id
+
+write.csv(peaklist_annotated, "output/annotation/fluids_woBA1A_annotated_peaklist.csv")
+```
+
+
+# Manually Check Identified Peaks
+```{r eval = FALSE}
+#table of identified compounds for plotting 
+peaklist_annotated <- read.csv("output/annotation/fluids_woBA1A_annotated_peaklist.csv")
+identified_compounds <- peaklist_annotated %>% select(c("compound_name", "peakgroup_mz", "peakgroup_rt")) 
+#rename columns to work with function that requires columns named mz and rt 
+identified_compounds <- identified_compounds %>% dplyr::rename(mz_db = peakgroup_mz, rt_db = "peakgroup_rt")
+ 
+#define colors for sample groups
+group_colors <- paste0(brewer.pal(3, "Dark2")[1:2], "60")
+names(group_colors)<- c("blank", "sample")
+
+#function to plot raw EICs
+raw_XIC_plot <- function(db, raw) {
+  group_colors <- paste0(RColorBrewer::brewer.pal(5, "Dark2"))
+  names(group_colors)<- c("blank", "sample")
+  
+  for (row in 1:nrow(db)){
+    XIC <- xcms::chromatogram(raw, mz = c(db$mz_db[row]-.005, db$mz_db[row]+.005), rt = c(db$rt_db[row] - 240, db$rt_db[row] + 240)) 
+   plot(XIC, col = group_colors[raw$sample_group], main = db$compound_name[row])
+    legend("topright", legend = c("blank", "sample"), fill = group_colors)
+  }
+}
+
+#plot
+raw_XIC_plot(db = identified_compounds, raw = dda_data_fluids_woBA1A_pos)
+```
+
+# Plot spectra from identified features
+```{r eval = FALSE}
+plot_spectra_annotate(spectra = dda_combined_fluids_woBA1A_pos_pp1, fragment_db = fragments_pos, nl_db = nl_pos, background_db = background_pos, to_include = annotated_list)
+```
+

@@ -1,0 +1,58 @@
+HG_name,HG_abbrv,HG_mass,HG_formula,Adduct_hierarchy
+Monoglycosyl,1G,163.060645,C6H11N0O5P0S0,MG
+Diglycosyl,2G,325.113475,C12H21N0O10P0S0,DG
+Triglycosyl ,3G,487.166295,C18H31N0O15P0S0,TG
+Tetraglycosyl,4G,649.2191191,C24H41N0O20P0S0,QG
+Monoglycosyl phosphate (phosphatidyl hexose),1G_P,243.026979,C6H12N0O8P1S0,MG-P
+Diglycosyl phosphate,2G_P,405.0798025,C12H22N0O13P1S0,DG-P
+Triglycosyl phosphate,3G_P,567.132626,C18H32N0O18P1S0,TG-P
+Tetraglycosyl phosphate,4G_P,729.1854495,C24H42N0O23P1S0,QG-P
+Deoxyglycosyl,dG,147.06573,C6H11N0O4P0S0,dG
+Deoxyglycosyl monoglycosyl,dG_G,309.11856,C12H21N0O9P0S0,dG-MG
+Glycuronic acid,GA,177.03991,C6H9N0O6P0S0,GA
+Phosphatidylglycerol,PG,155.01093,C3H8N0O5P1S0,PG
+Phosphotidylserine,PS,168.00618,C3H7N1O5P1S0,PS
+Phosphotidylinositol,PI,243.02698,C6H12N0O8P1S0,PI
+Phosphotidylethanolamine,PE,124.01635,C2H7N1O3P1S0,PE
+Phosphatidylcholine,PC,166.0633,C5H13N1O3P1S0,PC
+Phosphotidic Acid,PA,80.97416,C0H2N0O3P1S0,PA
+Phosphotidylglycerol phosphate,PGP,234.97727,C3H9N0O8P2S0,PGP
+Phosphatidylethanolamine monoglycosyl phosphate,GPE,366.03551,C8H18N1O11P2S0,GPE
+Glycosyl phosphatidylserine,G-PS,330.05901,C9H17N1O10P1S0,MG-PS
+Phosphotidylmethylethanolamine,PME,138.032,C3H9N1O3P1S0,PME
+Phosphotidyldimethylthanolamine,PDME,152.04765,C4H11N1O3P1S0,PDME
+Methylmonoglycosyl,MeG,177.0763,C7H13N0O5P0S0,MeG
+Methylmonoglycosyl monoglycosyl,MeG_G,339.12912,C13H23N0O10P0S0,MeG-MG
+Methylmonoglycosyl diglycosyl,MeG_2G,501.18195,C19H33N0O15P0S0,MeG-DG
+Monoglycosyl glycoronic acid,G_GA,339.09274,C12H19N0O11P0S0,MG-GA
+Monoglycosyl (N)glycosamine,G_NG,324.12946,C12H22N1O9P0S0,MG-NG
+(N)glyucosamine,NG,162.07663,C6H12N1O4P0S0,NG
+(N)glycosaminyl glycoronic acid,NG_GA,338.10872,C12H20N1O10P0S0,NG-GA
+Glycosyl (N-methyl) glycosaminyl glycosyl phosphate,G_MeNG_G_P,580.16426,C19H35N1O17P1S0,MG-MeNG-MG-P
+Glycosyl (N)glycosaminyl glycosyl phosphate,G_NG_G_P,566.14861,C18H33N1O17P1S0,MG-NG-MG-P
+(N-methyl)glycosaminyl glycosyl phosphate,MeNG_G_P,418.11144,C13H25N1O12P1S0,MeNG-MG-P
+(N)glycosaminyl monoglycosyl phosphate,NG_G_P,404.09579,C12H23N1O12P1S0,NG-MG-P
+Heptose,Hp,193.07121,C7H13N0O6P0S0,Hp
+Heptose monoglycosyl ,Hp_G,355.12404,C13H23N0O11P0S0,Hp-MG
+Phosphatidylglycerosulfate,PGS,234.96775,C3H8N0O8S1P1,PGS
+Phosphatidylglycerophosphate methyl ester,MePGP,248.99292,C4H11N0O8P2S0,MePGP
+Phosphatidylglyceromonoglycosyl methyl ester,MePG_G,331.07941,C10H20N0O10P1S0,MePG-MG
+Monoglycosyl_Phosphatidylglycerol,PG_G,317.06376,C9H18N0O10P1S0,PG-MG
+Phosphatidylglycerol phosphatidylglycerol,PG_PG,309.01404,C6H15N0O10P2S0,PG-PG
+novelS1,Bale_S1,422.09684,C12H24N1O13P0S1,BaleS1
+novelS2,Bale_S2,502.05365,C12H24N1O16P0S2,BaleS2
+NNNtrimethyl_aminopentanetetrol or NNdimethyl_aminopentanemethoxytriol,3MeAPT,256.095,C8H19N1O6P1S0,TMeAPT
+NNdimethyl_aminopentanetetrol or Nmonomethyl_aminopentanemethoxytriol,2MeAPT,242.07935,C7H17N1O6P1S0,DMeAPT
+Nmonomethyl_aminopentanetetrol or aminopentanemehtyoxytriol ,MeAPT,228.0637,C6H15N1O6P1S0,MeAPT
+NNNtrimethyl_aminopentanemethoxytriol,4MeAPT,270.11065,C9H21N1O6P1S0,QMeAPT
+aminopentanetetrol,APT,214.04805,C5H13N1O6P1S0,APT
+glycerolglycosyl,gG,237.09743,C9H17N0O7P0S0,gG
+acetylglycosyl,GAc,205.07121,C8H13N0O6P0S0,GAc
+glycerolglycosyl monoglycosyl,gG_G,399.15025,C15H27N0O12P0S0,gG-MG
+glycerolglycosyl acetylglycosyl,gG_GAc,441.16082,C17H29N0O13P0S0,gG-GAc
+acetylglycosyl monoglycosyl ,GAc_G,367.12404,C14H23N0O11P0S0,GAc-MG
+Phosphatidyl-N-acetylglycosaminyl,PGNAc,284.05353,C8H15N1O8P1S0,PGNAc
+Deoxydiglycosyl,d2G,293.12364,C12H21N0O8P0S0,dDG
+Deoxytriglycosyl,d3G,439.18155,C18H31N0O12P0S0,dTG
+sulfated triglycosyl,S_3G,567.12311,C18H31N0O18P0S1,S-TG
+sulfate diglycosyl ,S_2G,389.07537,C12H21N0O12P0S1,S-DG

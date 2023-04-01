@@ -1,0 +1,28 @@
+---
+title: "LOBSTAHS database generation"
+author: "Katie Rempfert"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(LOBSTAHS)
+
+#track memory usage and trash unnecessary components to free up space
+gc(verbose = getOption("verbose"), reset = FALSE, full = TRUE)
+
+#load in functions
+source(file.path("scripts", "LOBSTAHS_db_generation.R"))
+```
+
+## Generate database 
+```{r}
+generateLOBdbase_exp(polarity = "positive", gen.csv = TRUE,
+                         component.defs = "data/LOBSTAHS_db_generation/Full_database/LOBSTAHS_componentCompTable_arch2.csv", AIH.defs = "data/LOBSTAHS_db_generation/Full_database/LOBSTAHS_adductHierarchies.csv", acyl.ranges = "data/LOBSTAHS_db_generation/Full_database/LOBSTAHS_acylRanges.csv", oxy.ranges = "data/LOBSTAHS_db_generation/Full_database/LOBSTAHS_oxyRanges.csv")
+
+#load in LOBSTAHS database after generating
+LOBdbase_updated <- loadLOBdbase("LOBSTAHS_lipid-oxy_DB_pos_2021-01-13T11-44-48_PM-0700_updated_1_22_21.csv", polarity = "positive")
+```
+

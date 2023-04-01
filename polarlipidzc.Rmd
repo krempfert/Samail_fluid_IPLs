@@ -1,0 +1,189 @@
+---
+title: "Zc Carbon Oxidation Calculations"
+author: "Katie Rempfert"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    css: stylesheet.css
+    toc: yes
+    toc_float: yes
+    toc_depth: 3
+    code_folding: show
+subtitle: Starting from annotated peaklist
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+# load required packages
+library(tidyverse)
+library(ggplot2)
+library(readxl)
+library(CHNOSZ)
+
+#load in functions
+source("scripts/polarlipidzc_scripts_IPL_functions.R")
+
+knitr::opts_chunk$set(echo = TRUE, cache = F)
+```
+
+
+# Zc Calculations 
+```{r}
+# IPL processing parameters
+quant_sample_order <- c("WAB188", "WAB105", "WAB104",
+  "WAB55", "WAB71", "NSHQ14")
+
+GDGTs <- c("GDGTs subcat: 2G-GDGT", "GDGTs subcat: GAc-G-GDGT")
+
+IPLs_noGDGTs <- c(
+ "AR-IPLs subcat: 2G-AR", 
+  "3Me-OL", "PG-DAG", "PE-Cer", "PC-MEG", "PC-AEG",
+  "PC-DEG", "PC-DAG", "OL", "NAcG-G-DEG", "NAcG-P-DEG",
+  "DGCC-DAG", "DGTS-DGTA-DAG", "1G-GA-DAG", "2G-DEG", "1G-DEG",
+  "2G-Cer", "1G-Cer")
+
+IPLs_no_archaeal <- c(
+  "3Me-OL", "PG-DAG", "PE-Cer", "PC-MEG", "PC-AEG",
+  "PC-DEG", "PC-DAG", "OL", "NAcG-G-DEG", "NAcG-P-DEG",
+  "DGCC-DAG", "DGTS-DGTA-DAG", "1G-GA-DAG", "2G-DEG", "1G-DEG",
+  "2G-Cer", "1G-Cer")
+
+all_IPLs <- c(GDGTs, IPLs_noGDGTs)
+
+subgroup_colname <- "Headgroup"
+workbook_name <- "IPL_data_KRR_no1G_AR.xlsx"
+IPLworkbook_directory <- "data/polarlipidzc/"
+
+# Create save the 'IPL_master' object
+IPL_grouping <- list(c(all_IPLs))
+
+IPL_master <- IPL_process(IPL_grouping, workbook_name, quant_sample_order,
+                          IPLworkbook_directory, subgroup_colname)
+
+
+saveRDS(IPL_master, "output/polarlipidzc/IPL_master.rds")
+
+
+# Create save the 'IPL_master_noGDGT' object 
+IPL_grouping <- list(c(IPLs_noGDGTs))
+
+IPL_master_noGDGT <- IPL_process(IPL_grouping, workbook_name, quant_sample_order,
+                                 IPLworkbook_directory, subgroup_colname)
+
+saveRDS(IPL_master_noGDGT, "output/polarlipidzc/IPL_master_no_GDGTs.rds")
+
+
+# Create save the 'IPL_master_GDGT' object 
+IPL_grouping <- list(c(GDGTs))
+
+IPL_master_GDGT <- IPL_process(IPL_grouping, workbook_name, quant_sample_order,
+                                 IPLworkbook_directory, subgroup_colname)
+
+saveRDS(IPL_master_GDGT, "output/polarlipidzc/IPL_master_GDGTs.rds")
+
+
+# Create save the 'IPL_master_no_archaeal' object 
+IPL_grouping <- list(c(IPLs_no_archaeal))
+
+IPL_master_no_archaeal <- IPL_process(IPL_grouping, workbook_name, quant_sample_order,
+                                 IPLworkbook_directory, subgroup_colname)
+
+saveRDS(IPL_master_no_archaeal, "output/polarlipidzc/IPL_master_no_archaeal.rds")
+```
+
+
+# Create Observation Matrix .csv
+```{r}
+# This code creates a .csv containing names, masses, and observation details
+
+# load current IPL_master(s)
+IPL_master <- readRDS("output/polarlipidzc/IPL_master.rds")
+
+mas <- IPL_master[[length(IPL_master)]]
+
+IPL_names <- rownames(mas[["IPLareasRFmol"]])
+IPL_names <- sub("C.* ", "", IPL_names) # trim off chain information from name
+
+max_across_samples <- apply(mas[["IPLareasRFmol"]], MARGIN = 1, max)
+
+data <- data.frame(names = IPL_names, nC = mas[["nC_raw"]], nUnsat = mas[["nUnsat_raw"]], mass = mas[["masses"]])
+
+data_areas <- cbind(data, mas[["IPLareasRFmol"]])
+
+# delete IPL names as rownames (not needed)
+rownames(data_areas) <- c()
+
+#add column for nOH
+data_areas <- data_areas %>% mutate(
+  nOH = case_when(
+    grepl("OH", names) ~ 1, 
+    TRUE ~ 0
+  ), 
+  names = case_when(
+    grepl("3Me-OL-1OH", names) ~ "3Me-OL", 
+    grepl("NAcG-G-DEG-1OH", names) ~ "NAcG-G-DEG", 
+    grepl("1G-Cer-1OH", names) ~ "1G-Cer", 
+    TRUE ~ names
+  )
+)
+
+# specify adduct for each IPL
+NH4 <- c("2G-GDGT-0", "GAc-G-GDGT-0", "2G-AR", "1G-DEG", "2G-DEG", "PG-DAG", "1G-GA-DAG")
+
+H   <- c("1G-Cer", "2G-Cer", "NAcG-P-DEG", "NAcG-G-DEG", "PE-Cer")
+
+none <- c("DGCC-DAG", "DGTS-DGTA-DAG", "PC-DAG", "PC-DEG", "PC-MEG", "PC-AEG", "OL", "3Me-OL")
+
+
+data_areas[, "adduct"] <- character()
+
+for (IPL in NH4){
+  data_areas[data_areas[, "names"] == IPL, "adduct"] <- "NH4+"
+}
+for (IPL in H){
+  data_areas[data_areas[, "names"] == IPL, "adduct"] <- "H+"
+}
+for (IPL in none){
+  data_areas[data_areas[, "names"] == IPL, "adduct"] <- "none"
+}
+
+data_areas <- data_areas[, c(1:3, 11:12, 4:10)]
+
+# write .csv of data
+write.csv(data_areas, "output/polarlipidzc/IPL_abund.csv")
+```
+
+
+```{r}
+# load current IPL_master
+IPL_master <- readRDS("output/polarlipidzc/IPL_master.rds")
+
+IPL_ZC_full <- IPL_master[[length(IPL_master)]][["IPL_ZCave"]]
+IPL_ZC_head_only <- IPL_master[[length(IPL_master)]][["weighted_head_ZC"]]
+IPL_ZC_backbone_only <- IPL_master[[length(IPL_master)]][["weighted_backbone_ZC"]]
+IPL_ZC_chain_only <- IPL_master[[length(IPL_master)]][["weighted_chain_ZC"]]
+ether <- IPL_master[[length(IPL_master)]][["y_frac_ether"]] + IPL_master[[length(IPL_master)]][["y_frac_GDGT"]] + IPL_master[[length(IPL_master)]][["y_frac_AR"]]
+ester <- IPL_master[[length(IPL_master)]][["y_frac_ester"]]
+amide <- IPL_master[[length(IPL_master)]][["y_frac_amide"]]
+nonlinkage <- IPL_master[[length(IPL_master)]][["y_frac_nonlinkage"]]
+mean_nC <- IPL_master[[length(IPL_master)]][["y_mean_nCith"]]
+mean_nUns <- IPL_master[[length(IPL_master)]][["y_mean_nUnsatith"]]
+
+
+IPL_df <- data.frame(IPL_ZC_full = c(IPL_ZC_full),
+                     IPL_ZC_head_only = c(IPL_ZC_head_only),
+                     IPL_ZC_backbone_only = c(IPL_ZC_backbone_only),
+                     IPL_ZC_chain_only = c(IPL_ZC_chain_only),
+                     mean_nC = c(mean_nC),
+                     mean_nUns = c(mean_nUns), 
+                     ether = c(ether), 
+                     ester = c(ester), 
+                     amide = c(amide), 
+                     cc = c(nonlinkage)
+                     ) 
+saveRDS(IPL_df, "output/polarlipidzc/fluids_lipid_Zc.Rds")
+```

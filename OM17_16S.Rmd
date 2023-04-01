@@ -1,0 +1,427 @@
+---
+title: "Oman 2017 16S exploration"
+output:
+  html_document:
+    css: stylesheet.css
+    fig_caption: yes
+    number_sections: no
+    toc: yes
+    toc_float: true
+    toc_depth: 3
+    code_folding: show
+    df_print: paged
+subtitle: "Source file: OM17_re_demux_taxa_exploration.Rmd"
+author: "Kaitlin Rempfert + Daniel Nothaft"
+editor_options:
+  chunk_output_type: console
+date: "`r Sys.Date()`"
+---
+`
+
+```{r setup}
+library(tidyverse)
+library(mctoolsr)
+library(rlang)
+library(glue)
+library(latex2exp)
+library(scales)
+```
+
+
+# Load data
+Load DADA2 output data from Nothaft 2022 https://doi.org/10.1029/2021JG006319
+```{r load-data}
+seqtab_OM17 <- read_rds("data/DNA/seqtab_nochim_OM17_processed_20200929_3.rds")
+taxtab_OM17 <- read_rds("data/DNA/taxa_OM17_processed_20200929_2.rds")
+```
+
+## Load metadata
+```{r load-metada, warning = FALSE}
+meta_map_OM17 <- read_delim("data/DNA/map_OM17.txt", delim = "\t",
+                            col_types = cols(
+  sample_id = col_character(),
+  barcode_sequence = col_character(),
+  forward_linker_primer_sequence = col_character(),
+  reverse_primer_sequence = col_character(),
+  sample_type = col_character(),
+  nucleic_acid_type = col_character(),
+  sampling_site = col_character(),
+  year_sampled = col_double(),
+  month_sampled = col_double(),
+  day_sampled = col_double(),
+  depth_fluid_intake_mbct = col_double(),
+  notes = col_character(),
+  sampling_method = col_character(),
+  upper_packer_inflated = col_logical(),
+  upper_packer_depth_mbct = col_double(),
+  lower_packer_inflated = col_logical(),
+  lower_packer_depth_mbct = col_double(),
+  well_depth_mbgl = col_double(),
+  casing_extent_mbct = col_double(),
+  casing_height_magl = col_double(),
+  screened_interval_mbct = col_character(),
+  depth_to_water_mbct = col_double()
+)
+)
+```
+
+# Format output for mctoolsr (courtesy of Fierer lab script)
+```{r}
+# Flip table
+seqtab.t <- as.data.frame(t(seqtab_OM17))
+
+# Pull out ASV repset
+rep_set_ASVs <- as.data.frame(rownames(seqtab.t))
+rep_set_ASVs <- mutate(rep_set_ASVs, ASV_ID = 1:n())
+rep_set_ASVs$ASV_ID <- sub("^", "ASV_", rep_set_ASVs$ASV_ID)
+rep_set_ASVs$ASV <- rep_set_ASVs$`rownames(seqtab.t)` 
+rep_set_ASVs$`rownames(seqtab.t)` <- NULL
+
+# Add ASV numbers to table
+rownames(seqtab.t) <- rep_set_ASVs$ASV_ID
+
+# Add ASV numbers to taxonomy
+taxonomy <- as.data.frame(taxtab_OM17)
+taxonomy$ASV <- as.factor(rownames(taxonomy))
+taxonomy <- merge(rep_set_ASVs, taxonomy, by = "ASV")
+rownames(taxonomy) <- taxonomy$ASV_ID
+taxonomy_for_mctoolsr <- unite_(taxonomy, "taxonomy", 
+                                c("Kingdom", "Phylum", "Class", "Order","Family", "Genus", "ASV_ID"),
+                                sep = ";")
+taxonomy_for_mctoolsr2 <- unite_(taxonomy, "taxonomy", 
+                                c("Kingdom", "Phylum", "Class", "Order","Family", "Genus"),
+                                sep = "_")
+taxonomy_for_mctoolsr3 <- unite_(taxonomy, "taxonomy", 
+                                c("Kingdom", "Phylum", "Class"),
+                                sep = "_")
+taxonomy_for_mctoolsr4 <- unite_(taxonomy, "taxonomy", 
+                                c("Kingdom", "Phylum", "Class", "Order","Family", "Genus", "Species", "ASV_ID"),
+                                sep = "_")
+
+
+# Write repset to fasta file
+# create a function that writes fasta sequences
+writeRepSetFasta<-function(data, filename){
+  fastaLines = c()
+  for (rowNum in 1:nrow(data)){
+    fastaLines = c(fastaLines, as.character(paste(">", data[rowNum,"name"], sep = "")))
+    fastaLines = c(fastaLines,as.character(data[rowNum,"seq"]))
+  }
+  fileConn<-file(filename)
+  writeLines(fastaLines, fileConn)
+  close(fileConn)
+}
+
+# Arrange the taxonomy dataframe for the writeRepSetFasta function
+taxonomy_for_fasta <- taxonomy %>%
+  unite("TaxString", c("Kingdom", "Phylum", "Class", "Order","Family", "Genus", "ASV_ID"), 
+        sep = ";", remove = FALSE) %>%
+  unite("name", c("ASV_ID", "TaxString"), 
+        sep = " ", remove = TRUE) %>%
+  select(ASV, name) %>%
+  dplyr::rename(seq = ASV)
+
+# write fasta file
+writeRepSetFasta(taxonomy_for_fasta, "data/DNA/repset.fasta")
+
+# Merge taxonomy and table
+seqtab_wTax <- merge(seqtab.t, taxonomy_for_mctoolsr, by = 0)
+seqtab_wTax <- seqtab_wTax %>% column_to_rownames("Row.names") %>% select(-c(Species))
+#without ASV
+seqtab_wTax2 <- merge(seqtab.t, taxonomy_for_mctoolsr2, by = 0)
+seqtab_wTax2$ASV <- NULL 
+seqtab_wTax2 <- seqtab_wTax2  %>% select(-c(Species, ASV_ID, Row.names))
+saveRDS(seqtab_wTax2, "data/DNA/sequence_table_OM17.rds")
+
+seqtab_wTax3 <- merge(seqtab.t, taxonomy_for_mctoolsr3, by = 0)
+seqtab_wTax3$ASV <- NULL 
+seqtab_wTax3 <- seqtab_wTax3  %>% select(-c(Species, Genus, Family, Order, ASV_ID, Row.names))
+saveRDS(seqtab_wTax3, "data/DNA/sequence_table_OM17_class.rds")
+
+seqtab_wTax4 <- merge(seqtab.t, taxonomy_for_mctoolsr4, by = 0)
+seqtab_wTax4$ASV <- NULL 
+seqtab_wTax4 <- seqtab_wTax4  %>% select(-c(Row.names))
+saveRDS(seqtab_wTax4, "data/DNA/sequence_table_OM17_ASV.rds")
+
+# Set name of table in mctoolsr format and save
+out_fp <- "data/DNA/seqtab_wTax_mctoolsr.txt"
+names(seqtab_wTax)[1] = "#ASV_ID"
+write("#Exported for mctoolsr", out_fp)
+suppressWarnings(write.table(seqtab_wTax, out_fp, sep = "\t", row.names = FALSE, append = TRUE))
+
+# Set name of table in mctoolsr format and save (without ASV)
+out_fp2 <- "data/DNA/seqtab_wTax_mctoolsr2.txt"
+write("#Exported for mctoolsr", out_fp2)
+suppressWarnings(write.table(seqtab_wTax2, out_fp2, sep = "\t", row.names = FALSE, append = TRUE))
+
+# Also export files as .txt
+write.table(seqtab.t, file = "data/DNA/seqtab_final.txt",
+            sep = "\t", row.names = TRUE, col.names = NA)
+write.table(taxtab_OM17, file = "data/DNA/tax_final.txt", 
+            sep = "\t", row.names = TRUE, col.names = NA)
+```
+
+# Use mctoolsr package to remove chloroplast, mitochondria, and eukaryota reads and taxa
+```{r}
+tax_table_fp = 'data/DNA/seqtab_wTax_mctoolsr.txt'
+tax_table_fp2 = 'data/DNA/seqtab_wTax_mctoolsr2.txt'
+map_fp = 'data/DNA/map_OM17.txt'
+input = load_taxa_table(tax_table_fp, map_fp)
+input2 = load_taxa_table(tax_table_fp2, map_fp)
+
+input_filt <- filter_taxa_from_input(input, taxa_to_remove = c("Chloroplast","Mitochondria", "Eukaryota"))
+input_filt <- filter_taxa_from_input(input_filt, at_spec_level = 2, taxa_to_remove = "NA")
+
+
+input_filt2 <- filter_taxa_from_input(input2, taxa_to_remove = c("Chloroplast","Mitochondria", "Eukaryota"))
+input_filt2 <- filter_taxa_from_input(input_filt2, at_spec_level = 2, taxa_to_remove = "NA")
+
+reads <- data.frame(sort(colSums(input$data_loaded)))
+
+#input_rar_filt <- single_rarefy(input = input_filt, depth = 6500) # CHANGE ME to desired depth.
+
+export_taxa_table(input_filt, "data/DNA/otu_table_export.txt")
+export_taxa_table(input_filt2, "data/DNA/otu_table_export2.txt")
+```
+
+
+# Figure 5
+```{r}
+otu_table <- readxl::read_excel("data/DNA/otu_table.xlsx")
+
+to_keep <- c("104.1", "104.2", "104.3", "104.RNA1", "104.RNA2","104.RNA3", "105.1", "105.2", "105.3", "105.RNA1", "105.RNA2","105.RNA3", "14B.1", "14B.2", "14B.3", "14B.4", "14B.RNA1", "14B.RNA2", "14B.RNA3", "14B.RNA4", "188.1", "188.2", "188.3", "188.4", "188.5", "188.6", "188.7","188.RNA1", "188.RNA2", "188.RNA3", "188.RNA4", "188.RNA5", "188.RNA6", "188.RNA7", "55.1", "55.2", "55.3", "55.4", "55.RNA1", "55.RNA2", "55.RNA3", "55.RNA4", "71A.1", "71A.2", "71A.3", "71A.RNA1", "71A.RNA2", "71A.RNA3", "taxonomy")
+
+otus <- otu_table %>% select(-ASV) %>% select(c(to_keep)) 
+otus_sum <- otus %>% mutate(
+  WAB105_cDNA = rowSums(select(., starts_with("105") & contains("RNA")), na.rm = TRUE),
+  WAB105 = rowSums(select(., starts_with("105") & !contains("RNA")), na.rm = TRUE),
+  WAB104_cDNA = rowSums(select(., starts_with("104") & contains("RNA")), na.rm = TRUE),
+  WAB104 = rowSums(select(., starts_with("104") & !contains("RNA")), na.rm = TRUE),
+  WAB188_cDNA = rowSums(select(., starts_with("188") & contains("RNA")), na.rm = TRUE),
+  WAB188 = rowSums(select(., starts_with("188") & !contains("RNA")), na.rm = TRUE),
+  WAB55_cDNA = rowSums(select(., starts_with("55") & contains("RNA")), na.rm = TRUE),
+  WAB55 = rowSums(select(., starts_with("55") & !contains("RNA")), na.rm = TRUE),
+  WAB71_cDNA = rowSums(select(., starts_with("71") & contains("RNA")), na.rm = TRUE),
+  WAB71 = rowSums(select(., starts_with("71") & !contains("RNA")), na.rm = TRUE),
+  NSHQ14_cDNA = rowSums(select(., starts_with("14") & contains("RNA")), na.rm = TRUE),
+  NSHQ14 = rowSums(select(., starts_with("14") & !contains("RNA")), na.rm = TRUE)
+  ) %>% select(WAB105, WAB105_cDNA, WAB104, WAB104_cDNA, WAB188, WAB188_cDNA, WAB55, WAB55_cDNA, WAB71, WAB71_cDNA, NSHQ14, NSHQ14_cDNA, taxonomy) %>% column_to_rownames("taxonomy")
+ 
+#calculate relative abundances
+otus.rel = apply(otus_sum, 2, function(x) (x/sum(x))*100)
+
+#pick top 20 ASVs
+otus.rel_n20 <- as.data.frame(otus.rel) %>% rownames_to_column(var = "taxonomy") %>% mutate(
+  sumAbundance = rowSums(select(., WAB105:NSHQ14_cDNA)), 
+  maxAbundance = pmax(WAB105, WAB105_cDNA, WAB104, WAB104_cDNA, WAB188, WAB188_cDNA, WAB55, WAB55_cDNA, WAB71, WAB71_cDNA, NSHQ14, NSHQ14_cDNA)
+) %>% arrange(desc(sumAbundance)) %>% top_n(20, sumAbundance) %>% arrange(maxAbundance) %>% column_to_rownames("taxonomy") %>% select(-c(sumAbundance, maxAbundance))
+
+#create "other" for relative abundances 
+taxa_order <- rownames(otus.rel_n20)
+otus.rel_n20["Other" ,] <- 100 -colSums(otus.rel_n20)
+taxa_order <- append("Other", taxa_order)
+otus.rel_n20<- as.matrix(otus.rel_n20)
+
+otus.melt = reshape::melt(otus.rel_n20)
+
+#convert relative abundances to clean labels, and create factors of taxa and wells 
+otus.melt <- otus.melt %>% mutate(
+  well = case_when(
+    grepl("WAB71", X2) ~ "WAB71", 
+    grepl("NSHQ14", X2) ~ "NSHQ14", 
+    grepl("WAB105", X2) ~ "WAB105", 
+    grepl("WAB104", X2) ~ "WAB104", 
+    grepl("WAB188", X2) ~ "WAB188", 
+    grepl("WAB55", X2) ~ "WAB55" 
+    ),
+  type = case_when(
+    grepl("cDNA", X2) ~ "cDNA",
+    TRUE ~ "DNA"),
+  value_label = case_when(value < 1 & value != 0 ~ "<1", value == 0 ~ "n.d.", TRUE ~ as.character(round(value, 0))), 
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")),
+  X1 = factor(X1, levels =  taxa_order))
+
+#relabel taxa for plotting
+otus.melt_relabeled <- otus.melt %>% mutate(ASV = gsub(".*ASV","", X1))  %>% mutate_at("X1", str_replace, "; NA.*", "") %>% mutate_at("X1", str_replace, "; ASV.*", "") %>% mutate(species_ASV = paste0(X1, "; ASV", ASV), species_ASV = ifelse(species_ASV == "Other; ASVOther", "Other", species_ASV))
+
+#heatmap of top 20 ASVs
+ p <- otus.melt_relabeled %>% mutate(value = value/100) %>% ggplot(aes(x = well, y = species_ASV, fill = value))+
+  geom_tile(stat = "identity", aes(fill = value))+
+   facet_grid(. ~ type) +
+   geom_text(aes(label = value_label), size = 2.7, fontface = "bold") +
+  scale_fill_gradient(name = "Relative abundance [%]", low = "white", high = "blue", labels = scales::label_percent(accuracy = 1, suffix = "")) +
+  scale_x_discrete(name = "Well", expand = c(0,0)) +
+  scale_y_discrete(name = "Taxa", expand = c(0,0), limits = rev) +
+  theme_bw() +
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 90, vjust = .5, hjust = 1)
+        )
+ p
+```
+
+
+
+# OM17
+```{r OM17-calc-rel-abund}
+# calculate relative abundance
+ampli_data_OM17_rel_abund <- ampli_data_OM17 %>% ampli_calc_rel_abund()
+
+# remove samples with less than 1000 reads
+ampli_data_OM17_rel_abund_above_1000_reads <- ampli_data_OM17_rel_abund %>% filter(reads_sum > 1000)
+
+# Filter out mitochondria, chloroplasts, eukaryotes, and sequences not assigned taxonomy at the the domain level
+ampli_data_OM17_rel_abund_above_1000_reads_tax_filt <- ampli_data_OM17_rel_abund_above_1000_reads %>%  ampli_filter_strings(col_to_filter = taxonomy, strings_to_filter =   c("Chloroplast", "Mitochondria", "Eukaryota", "k__NA"), detection_method = "substring", action = "remove")
+```
+
+```{r plot-OM17-sample-id, fig.height=9, fig.width=20}
+ampli_data_OM17_rel_abund_above_1000_reads_tax_filt %>% ampli_heat_map(x_sample_group_col = sample_id, facet_grid_sample_group_col = nucleic_acid_type,  top_n = 30, y_taxa_arrangement = "abund", text_label_scalar = 100, text_label_decimal_places = 0) +
+  # plot geometry
+  geom_text(parse = FALSE, size = 2.7) +
+
+  # plot styling
+  scale_fill_gradient(name = "Read relative abundance / [%]", low = "white", high = "red", labels = label_percent(accuracy = 1, suffix = "")) +
+  scale_x_discrete(name = "Well", expand = c(0,0)) +
+  scale_y_discrete(name = NULL, expand = c(0,0)) +
+
+  theme_bw(base_size = 9) +
+
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 90, vjust = .5, hjust = 1)
+        )
+```
+
+# Focus on DNA data of highest interest, all years
+## Filter for only desired samples
+
+```{r focus-samples, warning = FALSE}
+# define sample set ID's
+samples_to_keep <- c("104.1", "104.2", "104.3", "105.1", "105.2", "105.3", "14B.1", "14B.2", "14B.3", "14B.4", "14C.1", "14C.2", "14C.3", "14NP", "188.1", "188.2", "188.3", "188.4", "188.5", "188.6", "188.7", "55.1", "55.2", "55.3", "55.4", "71A.1", "71A.2", "71A.3", "71B.1", "A108", "A30", "A41", "B56", "B71", "CM2A_45_9D", "D102", "D45", "4.1", "4.2", "NSHQ14_45_7J", "NSHQ4_S_11D", "WAB103_45_10J", "WAB104_45_5C", "WAB105_45_6D", "WAB188_45_4J", "WAB55_45_8C", "WAB71_45_3D")
+
+ampli_OM_17_18_19_focus_samples <- ampli_OM_17_18_19 %>% ampli_filter_strings(col_to_filter = sample_id, strings_to_filter = samples_to_keep, detection_method = "complete", action = "keep")
+```
+
+
+## Filter out unwanted taxa
+Filter out mitochondria, chloroplasts, eukaryotes, and sequences not assigned taxonomy at the the domain level
+
+```{r filter-unwanted-taxa-OM17-18-19}
+ampli_OM_17_18_19_focus_samples_taxa_filtered <- ampli_OM_17_18_19_focus_samples %>% ampli_filter_strings(col_to_filter = taxonomy, strings_to_filter =   c("Chloroplast", "Mitochondria", "Eukaryota", "k__NA"), detection_method = "substring", action = "remove")
+```
+
+## Read counts, filtered dataset
+
+Tally reads per sample
+
+```{r read-counts-filtered}
+ampli_OM_17_18_19_focus_samples_taxa_filtered_sum <- ampli_OM_17_18_19_focus_samples_taxa_filtered %>% ampli_tally_reads(c("year_sampled","sample_type"))
+
+# sort by read counts
+ampli_OM_17_18_19_focus_samples_taxa_filtered_sum %>% arrange(desc(reads_sum))
+
+# generate summary stats of read counts
+summary(ampli_OM_17_18_19_focus_samples_taxa_filtered_sum %>% select(reads_sum))
+```
+
+Plot read counts
+```{r plot-read-counts-OM17-18-19-filt, fig.width=10, fig.height=4}
+plot_reads_sums_2 <- ampli_OM_17_18_19_focus_samples_taxa_filtered_sum %>% ggplot(aes(
+  x = fct_reorder(sample_id, desc(reads_sum)),
+  y = reads_sum#,
+  # fill = sample_type
+)) +
+  geom_bar(stat = "identity") +
+  facet_grid(cols = vars(year_sampled), scales = "free_x", space = "free_x") +
+  theme_bw(base_size = 8)+
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = .5, hjust = 1),
+    legend.position = "bottom"
+  )
+
+plot_reads_sums_2
+```
+
+## Calculate relative abundances
+```{r calc-rel-abund-OM17-18-19}
+ampli_OM_17_18_19_focus_samples_taxa_filtered <- ampli_OM_17_18_19_focus_samples_taxa_filtered %>% ampli_calc_rel_abund()
+
+ampli_OM_17_18_19_focus_samples_taxa_filtered %>% head()
+```
+
+# Make Oman sample groupings
+
+## Make more specific names
+```{r make-sample-groupings}
+# if packers were used, generate names for packed intervals
+# in this code, the packer sample sites have their intervals separated by a new line character. This is for plotting clarity.
+ampli_OM_17_18_19_focus_samples_taxa_filtered <- ampli_OM_17_18_19_focus_samples_taxa_filtered %>% mutate(site_packer_interval = if_else(str_detect(sampling_method, "packer") == FALSE, sampling_site, paste0(sampling_site, "\n", if_else(upper_packer_inflated == FALSE, 0, upper_packer_depth_mbct), "-", if_else(lower_packer_inflated == FALSE, well_depth_mbgl, lower_packer_depth_mbct))))
+
+```
+
+```{r print-sample-group-summ}
+# print summary of sample groupings. Note: there were many sample replicates in 2017. Also, I have grouped together NSHQ14 50 m and 75 m sampling in 2017 here.
+ampli_OM_17_18_19_focus_samples_taxa_filtered_sum <- ampli_OM_17_18_19_focus_samples_taxa_filtered %>% group_by(site_packer_interval, year_sampled) %>% summarise(year_sampled = mean(year_sampled), site_packer_interval = first(site_packer_interval), samples_per_site_packer_interval_per_year = n_distinct(sample_id), .groups = "drop") %>% arrange(desc(year_sampled))
+
+ampli_OM_17_18_19_focus_samples_taxa_filtered_sum %>% knitr::kable()
+```
+
+```{r join-sample-summ}
+# Join the summarized column samples_per_site_packer_interval_per_year to main tbl
+ampli_OM_17_18_19_focus_samples_taxa_filtered_n_reps <- ampli_OM_17_18_19_focus_samples_taxa_filtered %>% left_join(ampli_OM_17_18_19_focus_samples_taxa_filtered_sum, by = c("site_packer_interval", "year_sampled"))
+```
+
+```{r print-joined-site-packer-interval}
+# print a selection of columns from new data frame showing that samples_per_site_packer_interval_per_year has been added
+ampli_OM_17_18_19_focus_samples_taxa_filtered_n_reps %>% select(sample_id, site_packer_interval, year_sampled, samples_per_site_packer_interval_per_year) %>% head()
+
+ampli_OM_17_18_19_focus_samples_taxa_filtered_n_reps %>% select(sample_id, site_packer_interval, year_sampled, samples_per_site_packer_interval_per_year) %>% tail()
+```
+
+## Group by site_packer_interval and year_sampled, summarize relative abundance of each taxonomic grouping
+```{r group-site-packer-interval-calc-rel-abund}
+ampli_OM_17_18_19_focus_samples_taxa_filtered_grouped_site_packer_interval <- ampli_OM_17_18_19_focus_samples_taxa_filtered_n_reps %>% group_by(site_packer_interval, year_sampled, taxonomy) %>% summarise(rel_abund = sum(rel_abund/samples_per_site_packer_interval_per_year), .groups = "drop")
+
+ampli_OM_17_18_19_focus_samples_taxa_filtered_grouped_site_packer_interval %>% head()
+```
+
+# Heat map, full dataset
+## ampli_heat_map
+
+```{r heat-OM17-18-19-facet-site-packer-interval, fig.height=5, fig.width=21}
+ampli_OM_17_18_19_focus_samples_taxa_filtered %>% ampli_heat_map(x_sample_group_col = year_sampled, facet_grid_sample_group_col = site_packer_interval, top_n = 20, text_label_scalar = 100, text_label_decimal_places = 0) +
+ # plot geometry
+  geom_text(parse = FALSE) +
+  
+  # plot styling
+  scale_fill_gradient(name = "Read relative abundance / [%]", low = "white", high = "red", labels = label_percent(accuracy = 1, suffix = "")) +
+  scale_x_discrete(name = "Year of sampling grouped by well", expand = c(0,0)) +
+  scale_y_discrete(name = NULL, expand = c(0,0)) +
+
+  theme_bw(base_size = 9) +
+
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank()
+        )
+```
+
+```{r heat-OM17-18-19-facet-year, fig.height=6, fig.width=21}
+ampli_OM_17_18_19_focus_samples_taxa_filtered %>% ampli_heat_map(x_sample_group_col = site_packer_interval, facet_grid_sample_group_col = year_sampled, top_n = 20, y_taxa_arrangement = "abund", text_label_scalar = 100, text_label_decimal_places = 0) +
+  # plot geometry
+  geom_text(parse = FALSE) +
+  
+  # plot styling
+  scale_fill_gradient(name = "Read relative abundance / [%]", low = "white", high = "red", labels = label_percent(accuracy = 1, suffix = "")) +
+  scale_x_discrete(name = "Year of sampling grouped by well", expand = c(0,0)) +
+  scale_y_discrete(name = NULL, expand = c(0,0)) +
+
+  theme_bw(base_size = 9) +
+
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank()
+        )
+```

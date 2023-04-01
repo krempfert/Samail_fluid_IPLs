@@ -1,0 +1,7 @@
+HG_name,HG_abbrv,HG_mass,HG_formula,Adduct_hierarchy
+Phosphatidylcholine _C20[5]_ladderane_etherR1,PC_ether_ladderane,528.3454,C28H51N1O6P1S0,PC
+Phosphatidylcholine _C20[5]_ladderane_esterR1,PC_ester_ladderane,544.34031,C28H51N1O7P1S0,PC
+Phosphonylethanolamine_C20[5]_ladderane_etherR1,PE_ether_ladderane,485.29063,C25H44N1O6P1S0,PE
+Phosphonylethanolamine_C20[5]_ladderane_esterR1,PE_ester_ladderane,501.28554,C25H44N1O7P1S0,PE
+Phosphatidylglycerol_C20[5]_ladderane_etherR1,PG_ether_ladderane,500.29029,C26H45N0O7P1S0,PG
+Phosphatidylglycerol_C20[5]_ladderane_esterR1,PG_ester_ladderane,516.28521,C26H45N0O8P1S0,PG

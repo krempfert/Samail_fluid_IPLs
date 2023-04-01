@@ -1,0 +1,150 @@
+mass,note,id,diagnostic,type1,type2
+0,precursor,precursor,precursor,intact,intact
+162.1,NL G,NL MG,MG,nl,hg
+179.1,NL 1G + NH3,NL MG,MG,nl,hg
+179.1,NL 1G + NH3,NL MG_P,MG_P,nl,hg
+341.1,NL 2G + NH3,NL DG,DG,nl,hg
+341.1,NL 2G + NH3,NL DG_P,DG_P,nl,hg
+324.1,NL 2G,NL DG,DG,nl,hg
+503.2,NL 3G + NH3,NL TG,TG,nl,hg
+503.2,NL 3G + NH3,NL TG_P,TG_P,nl,hg
+665.2,NL 4G + NH3,NL QG,QG,nl,hg
+665.2,NL 4G + NH3,NL QG_P,QG_P,nl,hg
+147.1,NL dG ,NL dG,dG,nl,hg
+163.1,NL dG + NH3,NL dG,dG,nl,hg
+325.1,NL dG-G + NH3,NL dG_MG,dG_MG,nl,hg
+309.1,NL d2G + NH3,NL d2G,d2G,nl,hg
+455.2,NL d3G + NH3,NL d3G,d3G,nl,hg
+193.1,NL MeG + NH3,NL MeG,MeG,nl,hg
+355.1,NL MeG-G + NH3,NL MeG_MG,MeG_MG,nl,hg
+517.2,NL MeG-2G + NH3,NL MeG_DG,MeG_DG,nl,hg
+164.1,NL 1G without loss of 2H,NL MG,MG,nl,hg
+193.1,NL GA + NH3,NL GA,GA,nl,hg
+209.1,NL GA + O + NH3,NL GA,GA,nl,hg
+161.1,NL NG ,NL NG,NG,nl,hg
+373.1,NL G-GA + O + NH3,NL MG_GA,MG_GA,nl,hg
+357.1,NL G-GA +NH3,NL MG_GA,MG_GA,nl,hg
+323.1,NL G-NG ,NL MG_NG,MG_NG,nl,hg
+338.1,NL NG-GA ,NL NG_GA,NG_GA,nl,hg
+354.1,NL NG-GA + O,NL NG_GA,NG_GA,nl,hg
+209.1,NL Hp + NH3,NL Hp,Hp,nl,hg
+371.2,NL Hp-G + NH3,NL Hp_G,Hp_G,nl,hg
+253.1,NL gG + NH3,NL gG,gG,nl,hg
+415.2,NL gG-G + NH3,NL gG_MG,gG_MG,nl,hg
+221.1,NL GAc + NH3,NL GAc,GAc,nl,hg
+457.2,NL gG-GAc + NH3,NL gG_GAc,gG_GAc,nl,hg
+383.1,NL GAc-G + NH3,NL GAc_MG,GAc_MG,nl,hg
+261.1,NL SQ,NL SQ,SQ,nl,hg
+115.1,NL PA,NL PA,PA,nl,hg
+259.1,NL G + SO3 + NH3,NL hexose-sulfate-containing,S_MG,nl,hg
+339.1,NL G + 2*SO3 + NH3,NL hexose-sulfate-containing,S-MG,nl,hg
+583.1,NL S-3G + NH3,NL S_TG,S_TG,nl,hg
+421.1,NL S-2G + NH3,NL S_DG,S_DG,nl,hg
+437.1,NL BaleS1,NL BaleS1,BaleS1,nl,hg
+518.1,NL BaleS2,NL BaleS2,BaleS2,nl,hg
+175.1,NL MeNG,NL MeNG_MG_P,MeNG_MG_P,nl,hg
+337.1,NL G-MeNG,NL MG_MeNG_MG_P,MG_MeNG_MG_P,nl,hg
+499.2,NL G-MeNG-G,NL MG_MeNG_MG_P,MG_MeNG_MG_P,nl,hg
+485.2,NL G-NG-G ,NL MG_NG_MG_P,MG_NG_MG_P,nl,hg
+337.1,NL MeNG-G,NL MeNG_MG_P,MeNG_MG_P,nl,hg
+203.1,NL NAcG,NL PGNAc,PGNAc,nl,hg
+203.1,NL NAcG,NL NAcG_P,NAcG_P,nl,hg
+323.1,NL NG-G,NL NG_MG_P,NG_MG_P,nl,hg
+277.1,NL PI + NH3,NL PI,PI,nl,hg
+260.1,NL PI - O + NH3 or NL PI,NL PI,PI,nl,hg
+133.1,NL APT,NL APT_ether,APT,nl,hg
+231.1,NL phosphoAPT,NL APT_ester,APT,nl,hg
+316.1,NL PG-G hg,NL PG_MG,PG_MG,nl,hg
+236.1,NL PG-G hg without loss of phosphate,NL PG_MG,PG_MG,nl,hg
+234.1,NL PGP hg ,NL PGP,PGP,nl,hg
+154.1,NL PG hg,NL PG,PG,nl,hg
+105.1,NL serine + NH3,NL serine_DPG,serine_DPG,nl,hg
+43.1,NL ethanolamine,NL PE_ether,PE,nl,hg
+43.1,NL ethanolamine,NL PAGPE,PAGPE,nl,hg
+43.1,NL ethanolamine,NL GPE,GPE,nl,hg
+141.1,NL PE hg,NL PE_ester,PE,nl,hg
+141.1,NL PE hg,NL PAGPE,PAGPE,nl,hg
+300.1,NL LPG hg,NL LPG,LPG,nl,hg
+243.1,NL AlPG hg,NL AlPG,AlPG,nl,hg
+328.1,NL ArPG hg,NL ArPG,ArPG,nl,hg
+286.1,NL OPG hg,NL OPG,OPG,nl,hg
+183.1,NL NAcPE hg,NL NAcPE,NAcPE,nl,hg
+169.1,NL PDME hg,NL PDME,PDME,nl,hg
+71.1,NL dimethylethanolamine,NL PDME,PDME,nl,hg
+155.1,NL PME hg,NL PME,PME,nl,hg
+57.1,NL methylethanolamine,NL PME,PME,nl,hg
+189.1,NL PG + NH3 ,NL PG,PG,nl,hg
+171.1,NL PG ,NL PG,PG,nl,hg
+154.1,NL PG - O ,NL PG,PG,nl,hg
+173.1,NL PG - O + NH3,NL PG,PG,nl,hg
+185.1,NL PS hg,NL PS,PS,nl,hg
+87.1,NL serine from hg,NL PS,PS,nl,hg
+74.1,NL glycerol,NL PG,PG,nl,hg
+75.1,NL glycerol ,NL PG,PG,nl,hg
+180.11,NL G + H2O,NL G,MG,nl,hydroxyl_hg
+197.11,NL 1G + NH3 + H2O,NL MG + H2O,MG,nl,hydroxyl_hg
+197.11,NL 1G + NH3 + H2O,NL MG_P + H2O,MG_P,nl,hydroxyl_hg
+359.11,NL 2G + NH3 + H2O,NL DG + H2O,DG,nl,hydroxyl_hg
+359.11,NL 2G + NH3 + H2O,NL DG_P + H2O,DG_P,nl,hydroxyl_hg
+342.11,NL 2G + H2O,NL DG + H2O,DG,nl,hydroxyl_hg
+521.21,NL 3G + NH3 + H2O,NL TG + H2O,TG,nl,hydroxyl_hg
+521.21,NL 3G + NH3 + H2O,NL TG_P + H2O,TG_P,nl,hydroxyl_hg
+683.21,NL 4G + NH3 + H2O,NL QG + H2O,QG,nl,hydroxyl_hg
+683.21,NL 4G + NH3 + H2O,NL QG_P + H2O,QG_P,nl,hydroxyl_hg
+165.11,NL dG + H2O,NL dG + H2O,dG,nl,hydroxyl_hg
+181.11,NL dG + NH3 + H2O,NL dG + H2O,dG,nl,hydroxyl_hg
+343.11,NL dG-G + NH3 + H2O,NL dG_MG + H2O,dG_MG,nl,hydroxyl_hg
+327.11,NL d2G + NH3 + H2O,NL d2G + H2O,d2G,nl,hydroxyl_hg
+473.21,NL d3G + NH3 + H2O,NL d3G + H2O,d3G,nl,hydroxyl_hg
+211.11,NL MeG + NH3 + H2O,NL MeG + H2O,MeG,nl,hydroxyl_hg
+373.11,NL MeG-G + NH3 + H2O,NL MeG_MG + H2O,MeG_MG,nl,hydroxyl_hg
+535.21,NL MeG-2G + NH3 + H2O,NL MeG_DG + H2O ,MeG_DG,nl,hydroxyl_hg
+182.11,NL 1G + H2O,NL MG + H2O,MG,nl,hydroxyl_hg
+211.11,NL GA + NH3 + H2O,NL GA + H2O ,GA,nl,hydroxyl_hg
+227.11,NL GA + O + NH3 + H2O,NL GA + H2O ,GA,nl,hydroxyl_hg
+179.11,NL NG + H2O,NL NG + H2O ,NG,nl,hydroxyl_hg
+391.11,NL G-GA + O + NH3 + H2O,NL MG_GA + H2O,MG_GA,nl,hydroxyl_hg
+375.11,NL G-GA + NH3 + H2O,NL MG_GA + H2O,MG_GA,nl,hydroxyl_hg
+341.11,NL G-NG + H2O,NL MG_NG + H2O,MG_NG,nl,hydroxyl_hg
+356.11,NL NG-GA + H2O,NL NG_GA + H2O,NG_GA,nl,hydroxyl_hg
+372.11,NL NG-GA + O + H2O,NL NG_GA + H2O,NG_GA,nl,hydroxyl_hg
+227.11,NL Hp + NH3 + H2O,NL Hp + H2O,Hp,nl,hydroxyl_hg
+389.21,NL Hp-G + NH3 + H2O,NL Hp_G + H2O,Hp_G,nl,hydroxyl_hg
+271.11,NL gG + NH3 + H2O,NL gG + H2O,gG,nl,hydroxyl_hg
+433.21,NL gG-G + NH3 + H2O,NL gG_MG + H2O,gG_MG,nl,hydroxyl_hg
+239.11,NL GAc + NH3 + H2O,NL GAc + H2O ,GAc,nl,hydroxyl_hg
+475.21,NL gG-GAc + NH3 + H2O,NL gG_GAc + H2O,gG_GAc,nl,hydroxyl_hg
+401.11,NL GAc-G + NH3 + H2O,NL GAc_MG + H2O,GAc_MG,nl,hydroxyl_hg
+279.11,NL SQ + H2O,NL SQ + H2O,SQ,nl,hydroxyl_hg
+133.11,NL PA + H2O,NL PA + H2O,PA,nl,hydroxyl_hg
+601.11,NL S-3G + NH3 + H2O,NL S_TG + H2O,S_TG,nl,hydroxyl_hg
+439.11,NL S-2G + NH3 + H2O,NL S_DG +  H2O,S_DG,nl,hydroxyl_hg
+455.11,NL BaleS1 + H2O,NL BaleS1 + H2O,BaleS1,nl,hydroxyl_hg
+536.11,NL BaleS2 + H2O,NL BaleS2 + H2O,BaleS2,nl,hydroxyl_hg
+193.11,NL MeNG + H2O,NL MeNG_MG_P + H2O,MeNG_MG_P,nl,hydroxyl_hg
+355.11,NL G-MeNG + H2O,NL MG_MeNG_MG_P + H2O,MG_MeNG_MG_P,nl,hydroxyl_hg
+517.21,NL G-MeNG-G + H2O,NL MG_MeNG_MG_P + H2O,MG_MeNG_MG_P,nl,hydroxyl_hg
+503.21,NL G-NG-G + H2O,NL MG_NG_MG_P + H2O,MG_NG_MG_P,nl,hydroxyl_hg
+355.11,NL MeNG-G + H2O,NL MeNG_MG_P + H2O,MeNG_MG_P,nl,hydroxyl_hg
+221.11,NL NAcG + H2O,NL PGNAc + H2O,PGNAc,nl,hydroxyl_hg
+221.11,NL NAcG + H2O,NL NAcG_P + H2O,NAcG_P,nl,hydroxyl_hg
+341.11,NL NG-G + H2O,NL NG_MG_P + H2O,NG_MG_P,nl,hydroxyl_hg
+295.01,NL PI + NH3 + H2O,NL PI + H2O,PI,nl,hydroxyl_hg
+278.01,NL PI - O + NH3 or NL PI (+H2O),NL PI + H2O,PI,nl,hydroxyl_hg
+151.11,NL APT + H2O,NL APT_ether + H2O,APT,nl,hydroxyl_hg
+249.11,NL phosphoAPT + H2O,NL APT_ester _+ H2O,APT,nl,hydroxyl_hg
+334.11,NL PG-G hg,NL PG_MG + H2O,PG_MG,nl,hydroxyl_hg
+254.11,NL PG-G hg without loss of phosphate + H2O,NL PG_MG + H2O,PG_MG,nl,hydroxyl_hg
+252.11,NL PGP hg + H2O,NL PGP + H2O,PGP,nl,hydroxyl_hg
+172.11,NL PG hg + H2O,NL PG + H2O,PG,nl,hydroxyl_hg
+159.11,NL PE hg + H2O,NL PE_ester + H2O,PE,nl,hydroxyl_hg
+159.11,NL PE hg + H2O,NL PAGPE + H2O,PAGPE,nl,hydroxyl_hg
+318.11,NL LPG hg + H2O,NL LPG + H2O,LPG,nl,hydroxyl_hg
+261.11,NL AlPG hg + H2O,NL AlPG + H2O,AlPG,nl,hydroxyl_hg
+346.11,NL ArPG hg + H2O,NL ArPG + H2O,ArPG,nl,hydroxyl_hg
+304.11,NL OPG hg + H2O,NL OPG + H2O,OPG,nl,hydroxyl_hg
+201.11,NL NAcPE hg + H2O,NL NAcPE + H2O,NAcPE,nl,hydroxyl_hg
+187.11,NL PDME hg + H2O,NL PDME + H2O,PDME,nl,hydroxyl_hg
+173.11,NL PME hg + H2O,NL PME + H2O,PME,nl,hydroxyl_hg
+207.11,NL PG + NH3 + H2O,NL PG + H2O,PG,nl,hydroxyl_hg
+203.11,NL PS hg + H2O,NL PS + H2O,PS,nl,hydroxyl_hg

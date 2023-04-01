@@ -1,0 +1,1321 @@
+mtc,id,diagnostic,type2,type1
+43.01784116,FA 2:0,FA 2:0,fatty_acid_RCO,frag
+59.01275578,FA 2:0 +1O,FA 2:0 +1O,fatty_acid_RCO,frag
+75.0076704,FA 2:0 +2O,FA 2:0 +2O,fatty_acid_RCO,frag
+91.00258498,FA 2:0 +3O,FA 2:0 +3O,fatty_acid_RCO,frag
+41.00219108,FA 2:1,FA 2:1,fatty_acid_RCO,frag
+56.9971057,FA 2:1 +1O,FA 2:1 +1O,fatty_acid_RCO,frag
+72.99202032,FA 2:1 +2O,FA 2:1 +2O,fatty_acid_RCO,frag
+88.98693498,FA 2:1 +3O,FA 2:1 +3O,fatty_acid_RCO,frag
+57.03349124,FA 3:0,FA 3:0,fatty_acid_RCO,frag
+73.02840586,FA 3:0 +1O,FA 3:0 +1O,fatty_acid_RCO,frag
+89.02332048,FA 3:0 +2O,FA 3:0 +2O,fatty_acid_RCO,frag
+105.0182351,FA 3:0 +3O,FA 3:0 +3O,fatty_acid_RCO,frag
+55.01784116,FA 3:1,FA 3:1,fatty_acid_RCO,frag
+71.01275578,FA 3:1 +1O,FA 3:1 +1O,fatty_acid_RCO,frag
+87.00767038,FA 3:1 +2O,FA 3:1 +2O,fatty_acid_RCO,frag
+103.002585,FA 3:1 +3O,FA 3:1 +3O,fatty_acid_RCO,frag
+71.04914132,FA 4:0,FA 4:0,fatty_acid_RCO,frag
+87.04405598,FA 4:0 +1O,FA 4:0 +1O,fatty_acid_RCO,frag
+103.0389706,FA 4:0 +2O,FA 4:0 +2O,fatty_acid_RCO,frag
+119.0338852,FA 4:0 +3O,FA 4:0 +3O,fatty_acid_RCO,frag
+69.03349124,FA 4:1,FA 4:1,fatty_acid_RCO,frag
+85.02840588,FA 4:1 +1O,FA 4:1 +1O,fatty_acid_RCO,frag
+101.0233205,FA 4:1 +2O,FA 4:1 +2O,fatty_acid_RCO,frag
+117.0182351,FA 4:1 +3O,FA 4:1 +3O,fatty_acid_RCO,frag
+85.06479138,FA 5:0,FA 5:0,fatty_acid_RCO,frag
+101.059706,FA 5:0 +1O,FA 5:0 +1O,fatty_acid_RCO,frag
+117.0546207,FA 5:0 +2O,FA 5:0 +2O,fatty_acid_RCO,frag
+133.0495353,FA 5:0 +3O,FA 5:0 +3O,fatty_acid_RCO,frag
+83.04914132,FA 5:1,FA 5:1,fatty_acid_RCO,frag
+99.04405598,FA 5:1 +1O,FA 5:1 +1O,fatty_acid_RCO,frag
+115.0389706,FA 5:1 +2O,FA 5:1 +2O,fatty_acid_RCO,frag
+131.0338852,FA 5:1 +3O,FA 5:1 +3O,fatty_acid_RCO,frag
+99.08044148,FA 6:0,FA 6:0,fatty_acid_RCO,frag
+115.0753561,FA 6:0 +1O,FA 6:0 +1O,fatty_acid_RCO,frag
+131.0702707,FA 6:0 +2O,FA 6:0 +2O,fatty_acid_RCO,frag
+147.0651854,FA 6:0 +3O,FA 6:0 +3O,fatty_acid_RCO,frag
+97.06479138,FA 6:1,FA 6:1,fatty_acid_RCO,frag
+113.059706,FA 6:1 +1O,FA 6:1 +1O,fatty_acid_RCO,frag
+129.0546207,FA 6:1 +2O,FA 6:1 +2O,fatty_acid_RCO,frag
+145.0495353,FA 6:1 +3O,FA 6:1 +3O,fatty_acid_RCO,frag
+113.0960916,FA 7:0,FA 7:0,fatty_acid_RCO,frag
+129.0910062,FA 7:0 +1O,FA 7:0 +1O,fatty_acid_RCO,frag
+145.0859208,FA 7:0 +2O,FA 7:0 +2O,fatty_acid_RCO,frag
+161.0808354,FA 7:0 +3O,FA 7:0 +3O,fatty_acid_RCO,frag
+111.0804415,FA 7:1,FA 7:1,fatty_acid_RCO,frag
+127.0753561,FA 7:1 +1O,FA 7:1 +1O,fatty_acid_RCO,frag
+143.0702707,FA 7:1 +2O,FA 7:1 +2O,fatty_acid_RCO,frag
+159.0651854,FA 7:1 +3O,FA 7:1 +3O,fatty_acid_RCO,frag
+109.0647914,FA 7:2,FA 7:2,fatty_acid_RCO,frag
+125.059706,FA 7:2 +1O,FA 7:2 +1O,fatty_acid_RCO,frag
+141.0546207,FA 7:2 +2O,FA 7:2 +2O,fatty_acid_RCO,frag
+157.0495353,FA 7:2 +3O,FA 7:2 +3O,fatty_acid_RCO,frag
+127.1117417,FA 8:0,FA 8:0,fatty_acid_RCO,frag
+143.1066563,FA 8:0 +1O,FA 8:0 +1O,fatty_acid_RCO,frag
+159.1015709,FA 8:0 +2O,FA 8:0 +2O,fatty_acid_RCO,frag
+175.0964855,FA 8:0 +3O,FA 8:0 +3O,fatty_acid_RCO,frag
+125.0960916,FA 8:1,FA 8:1,fatty_acid_RCO,frag
+141.0910062,FA 8:1 +1O,FA 8:1 +1O,fatty_acid_RCO,frag
+157.0859208,FA 8:1 +2O,FA 8:1 +2O,fatty_acid_RCO,frag
+173.0808354,FA 8:1 +3O,FA 8:1 +3O,fatty_acid_RCO,frag
+123.0804415,FA 8:2,FA 8:2,fatty_acid_RCO,frag
+139.0753561,FA 8:2 +1O,FA 8:2 +1O,fatty_acid_RCO,frag
+155.0702707,FA 8:2 +2O,FA 8:2 +2O,fatty_acid_RCO,frag
+171.0651854,FA 8:2 +3O,FA 8:2 +3O,fatty_acid_RCO,frag
+141.1273917,FA 9:0,FA 9:0,fatty_acid_RCO,frag
+157.1223064,FA 9:0 +1O,FA 9:0 +1O,fatty_acid_RCO,frag
+173.117221,FA 9:0 +2O,FA 9:0 +2O,fatty_acid_RCO,frag
+189.1121356,FA 9:0 +3O,FA 9:0 +3O,fatty_acid_RCO,frag
+139.1117417,FA 9:1,FA 9:1,fatty_acid_RCO,frag
+155.1066563,FA 9:1 +1O,FA 9:1 +1O,fatty_acid_RCO,frag
+171.1015709,FA 9:1 +2O,FA 9:1 +2O,fatty_acid_RCO,frag
+187.0964855,FA 9:1 +3O,FA 9:1 +3O,fatty_acid_RCO,frag
+137.0960916,FA 9:2,FA 9:2,fatty_acid_RCO,frag
+153.0910062,FA 9:2 +1O,FA 9:2 +1O,fatty_acid_RCO,frag
+169.0859208,FA 9:2 +2O,FA 9:2 +2O,fatty_acid_RCO,frag
+185.0808354,FA 9:2 +3O,FA 9:2 +3O,fatty_acid_RCO,frag
+151.1117417,FA 10:2,FA 10:2,fatty_acid_RCO,frag
+167.1066563,FA 10:2 +1O,FA 10:2 +1O,fatty_acid_RCO,frag
+183.1015709,FA 10:2 +2O,FA 10:2 +2O,fatty_acid_RCO,frag
+199.0964855,FA 10:2 +3O,FA 10:2 +3O,fatty_acid_RCO,frag
+169.1586919,FA 11:0,FA 11:0,fatty_acid_RCO,frag
+185.1536065,FA 11:0 +1O,FA 11:0 +1O,fatty_acid_RCO,frag
+201.1485211,FA 11:0 +2O,FA 11:0 +2O,fatty_acid_RCO,frag
+217.1434358,FA 11:0 +3O,FA 11:0 +3O,fatty_acid_RCO,frag
+167.1430418,FA 11:1,FA 11:1,fatty_acid_RCO,frag
+183.1379564,FA 11:1 +1O,FA 11:1 +1O,fatty_acid_RCO,frag
+199.1328711,FA 11:1 +2O,FA 11:1 +2O,fatty_acid_RCO,frag
+215.1277857,FA 11:1 +3O,FA 11:1 +3O,fatty_acid_RCO,frag
+165.1273917,FA 11:2,FA 11:2,fatty_acid_RCO,frag
+181.1223064,FA 11:2 +1O,FA 11:2 +1O,fatty_acid_RCO,frag
+197.117221,FA 11:2 +2O,FA 11:2 +2O,fatty_acid_RCO,frag
+213.1121356,FA 11:2 +3O,FA 11:2 +3O,fatty_acid_RCO,frag
+183.174342,FA 12:0,FA 12:0,fatty_acid_RCO,frag
+199.1692566,FA 12:0 +1O,FA 12:0 +1O,fatty_acid_RCO,frag
+215.1641712,FA 12:0 +2O,FA 12:0 +2O,fatty_acid_RCO,frag
+231.1590858,FA 12:0 +3O,FA 12:0 +3O,fatty_acid_RCO,frag
+181.1586919,FA 12:1,FA 12:1,fatty_acid_RCO,frag
+197.1536065,FA 12:1 +1O,FA 12:1 +1O,fatty_acid_RCO,frag
+213.1485211,FA 12:1 +2O,FA 12:1 +2O,fatty_acid_RCO,frag
+229.1434358,FA 12:1 +3O,FA 12:1 +3O,fatty_acid_RCO,frag
+179.1430418,FA 12:2,FA 12:2,fatty_acid_RCO,frag
+195.1379564,FA 12:2 +1O,FA 12:2 +1O,fatty_acid_RCO,frag
+211.1328711,FA 12:2 +2O,FA 12:2 +2O,fatty_acid_RCO,frag
+227.1277857,FA 12:2 +3O,FA 12:2 +3O,fatty_acid_RCO,frag
+177.1273917,FA 12:3,FA 12:3,fatty_acid_RCO,frag
+193.1223064,FA 12:3 +1O,FA 12:3 +1O,fatty_acid_RCO,frag
+209.117221,FA 12:3 +2O,FA 12:3 +2O,fatty_acid_RCO,frag
+225.1121356,FA 12:3 +3O,FA 12:3 +3O,fatty_acid_RCO,frag
+197.1899921,FA 13:0,FA 13:0,fatty_acid_RCO,frag
+213.1849067,FA 13:0 +1O,FA 13:0 +1O,fatty_acid_RCO,frag
+229.1798213,FA 13:0 +2O,FA 13:0 +2O,fatty_acid_RCO,frag
+245.1747359,FA 13:0 +3O,FA 13:0 +3O,fatty_acid_RCO,frag
+195.174342,FA 13:1,FA 13:1,fatty_acid_RCO,frag
+211.1692566,FA 13:1 +1O,FA 13:1 +1O,fatty_acid_RCO,frag
+227.1641712,FA 13:1 +2O,FA 13:1 +2O,fatty_acid_RCO,frag
+243.1590858,FA 13:1 +3O,FA 13:1 +3O,fatty_acid_RCO,frag
+193.1586919,FA 13:2,FA 13:2,fatty_acid_RCO,frag
+209.1536065,FA 13:2 +1O,FA 13:2 +1O,fatty_acid_RCO,frag
+225.1485211,FA 13:2 +2O,FA 13:2 +2O,fatty_acid_RCO,frag
+241.1434358,FA 13:2 +3O,FA 13:2 +3O,fatty_acid_RCO,frag
+191.1430418,FA 13:3,FA 13:3,fatty_acid_RCO,frag
+207.1379564,FA 13:3 +1O,FA 13:3 +1O,fatty_acid_RCO,frag
+223.1328711,FA 13:3 +2O,FA 13:3 +2O,fatty_acid_RCO,frag
+239.1277857,FA 13:3 +3O,FA 13:3 +3O,fatty_acid_RCO,frag
+211.2056421,FA 14:0,FA 14:0,fatty_acid_RCO,frag
+227.2005568,FA 14:0 +1O,FA 14:0 +1O,fatty_acid_RCO,frag
+243.1954714,FA 14:0 +2O,FA 14:0 +2O,fatty_acid_RCO,frag
+259.190386,FA 14:0 +3O,FA 14:0 +3O,fatty_acid_RCO,frag
+209.1899921,FA 14:1,FA 14:1,fatty_acid_RCO,frag
+225.1849067,FA 14:1 +1O,FA 14:1 +1O,fatty_acid_RCO,frag
+241.1798213,FA 14:1 +2O,FA 14:1 +2O,fatty_acid_RCO,frag
+257.1747359,FA 14:1 +3O,FA 14:1 +3O,fatty_acid_RCO,frag
+207.174342,FA 14:2,FA 14:2,fatty_acid_RCO,frag
+223.1692566,FA 14:2 +1O,FA 14:2 +1O,fatty_acid_RCO,frag
+239.1641712,FA 14:2 +2O,FA 14:2 +2O,fatty_acid_RCO,frag
+255.1590858,FA 14:2 +3O,FA 14:2 +3O,fatty_acid_RCO,frag
+205.1586919,FA 14:3,FA 14:3,fatty_acid_RCO,frag
+221.1536065,FA 14:3 +1O,FA 14:3 +1O,fatty_acid_RCO,frag
+237.1485211,FA 14:3 +2O,FA 14:3 +2O,fatty_acid_RCO,frag
+253.1434358,FA 14:3 +3O,FA 14:3 +3O,fatty_acid_RCO,frag
+225.2212922,FA 15:0,FA 15:0,fatty_acid_RCO,frag
+241.2162068,FA 15:0 +1O,FA 15:0 +1O,fatty_acid_RCO,frag
+257.2111215,FA 15:0 +2O,FA 15:0 +2O,fatty_acid_RCO,frag
+273.2060361,FA 15:0 +3O,FA 15:0 +3O,fatty_acid_RCO,frag
+223.2056421,FA 15:1,FA 15:1,fatty_acid_RCO,frag
+239.2005568,FA 15:1 +1O,FA 15:1 +1O,fatty_acid_RCO,frag
+255.1954714,FA 15:1 +2O,FA 15:1 +2O,fatty_acid_RCO,frag
+271.190386,FA 15:1 +3O,FA 15:1 +3O,fatty_acid_RCO,frag
+221.1899921,FA 15:2,FA 15:2,fatty_acid_RCO,frag
+237.1849067,FA 15:2 +1O,FA 15:2 +1O,fatty_acid_RCO,frag
+253.1798213,FA 15:2 +2O,FA 15:2 +2O,fatty_acid_RCO,frag
+269.1747359,FA 15:2 +3O,FA 15:2 +3O,fatty_acid_RCO,frag
+219.174342,FA 15:3,FA 15:3,fatty_acid_RCO,frag
+235.1692566,FA 15:3 +1O,FA 15:3 +1O,fatty_acid_RCO,frag
+251.1641712,FA 15:3 +2O,FA 15:3 +2O,fatty_acid_RCO,frag
+267.1590858,FA 15:3 +3O,FA 15:3 +3O,fatty_acid_RCO,frag
+239.2369423,FA 16:0,FA 16:0,fatty_acid_RCO,frag
+255.2318569,FA 16:0 +1O,FA 16:0 +1O,fatty_acid_RCO,frag
+271.2267715,FA 16:0 +2O,FA 16:0 +2O,fatty_acid_RCO,frag
+287.2216862,FA 16:0 +3O,FA 16:0 +3O,fatty_acid_RCO,frag
+237.2212922,FA 16:1,FA 16:1,fatty_acid_RCO,frag
+253.2162068,FA 16:1 +1O,FA 16:1 +1O,fatty_acid_RCO,frag
+269.2111215,FA 16:1 +2O,FA 16:1 +2O,fatty_acid_RCO,frag
+285.2060361,FA 16:1 +3O,FA 16:1 +3O,fatty_acid_RCO,frag
+235.2056421,FA 16:2,FA 16:2,fatty_acid_RCO,frag
+251.2005568,FA 16:2 +1O,FA 16:2 +1O,fatty_acid_RCO,frag
+267.1954714,FA 16:2 +2O,FA 16:2 +2O,fatty_acid_RCO,frag
+283.190386,FA 16:2 +3O,FA 16:2 +3O,fatty_acid_RCO,frag
+233.1899921,FA 16:3,FA 16:3,fatty_acid_RCO,frag
+249.1849067,FA 16:3 +1O,FA 16:3 +1O,fatty_acid_RCO,frag
+265.1798213,FA 16:3 +2O,FA 16:3 +2O,fatty_acid_RCO,frag
+281.1747359,FA 16:3 +3O,FA 16:3 +3O,fatty_acid_RCO,frag
+253.2525924,FA 17:0,FA 17:0,fatty_acid_RCO,frag
+269.247507,FA 17:0 +1O,FA 17:0 +1O,fatty_acid_RCO,frag
+285.2424216,FA 17:0 +2O,FA 17:0 +2O,fatty_acid_RCO,frag
+301.2373362,FA 17:0 +3O,FA 17:0 +3O,fatty_acid_RCO,frag
+251.2369423,FA 17:1,FA 17:1,fatty_acid_RCO,frag
+267.2318569,FA 17:1 +1O,FA 17:1 +1O,fatty_acid_RCO,frag
+283.2267715,FA 17:1 +2O,FA 17:1 +2O,fatty_acid_RCO,frag
+299.2216862,FA 17:1 +3O,FA 17:1 +3O,fatty_acid_RCO,frag
+249.2212922,FA 17:2,FA 17:2,fatty_acid_RCO,frag
+265.2162068,FA 17:2 +1O,FA 17:2 +1O,fatty_acid_RCO,frag
+281.2111215,FA 17:2 +2O,FA 17:2 +2O,fatty_acid_RCO,frag
+297.2060361,FA 17:2 +3O,FA 17:2 +3O,fatty_acid_RCO,frag
+247.2056421,FA 17:3,FA 17:3,fatty_acid_RCO,frag
+263.2005568,FA 17:3 +1O,FA 17:3 +1O,fatty_acid_RCO,frag
+279.1954714,FA 17:3 +2O,FA 17:3 +2O,fatty_acid_RCO,frag
+295.190386,FA 17:3 +3O,FA 17:3 +3O,fatty_acid_RCO,frag
+245.1899921,FA 17:4,FA 17:4,fatty_acid_RCO,frag
+261.1849067,FA 17:4 +1O,FA 17:4 +1O,fatty_acid_RCO,frag
+277.1798213,FA 17:4 +2O,FA 17:4 +2O,fatty_acid_RCO,frag
+293.1747359,FA 17:4 +3O,FA 17:4 +3O,fatty_acid_RCO,frag
+267.2682425,FA 18:0,FA 18:0,fatty_acid_RCO,frag
+283.2631571,FA 18:0 +1O,FA 18:0 +1O,fatty_acid_RCO,frag
+299.2580717,FA 18:0 +2O,FA 18:0 +2O,fatty_acid_RCO,frag
+315.2529863,FA 18:0 +3O,FA 18:0 +3O,fatty_acid_RCO,frag
+265.2525924,FA 18:1,FA 18:1,fatty_acid_RCO,frag
+281.247507,FA 18:1 +1O,FA 18:1 +1O,fatty_acid_RCO,frag
+297.2424216,FA 18:1 +2O,FA 18:1 +2O,fatty_acid_RCO,frag
+313.2373362,FA 18:1 +3O,FA 18:1 +3O,fatty_acid_RCO,frag
+263.2369423,FA 18:2,FA 18:2,fatty_acid_RCO,frag
+279.2318569,FA 18:2 +1O,FA 18:2 +1O,fatty_acid_RCO,frag
+295.2267715,FA 18:2 +2O,FA 18:2 +2O,fatty_acid_RCO,frag
+311.2216862,FA 18:2 +3O,FA 18:2 +3O,fatty_acid_RCO,frag
+261.2212922,FA 18:3,FA 18:3,fatty_acid_RCO,frag
+277.2162068,FA 18:3 +1O,FA 18:3 +1O,fatty_acid_RCO,frag
+293.2111215,FA 18:3 +2O,FA 18:3 +2O,fatty_acid_RCO,frag
+309.2060361,FA 18:3 +3O,FA 18:3 +3O,fatty_acid_RCO,frag
+259.2056421,FA 18:4,FA 18:4,fatty_acid_RCO,frag
+275.2005568,FA 18:4 +1O,FA 18:4 +1O,fatty_acid_RCO,frag
+291.1954714,FA 18:4 +2O,FA 18:4 +2O,fatty_acid_RCO,frag
+307.190386,FA 18:4 +3O,FA 18:4 +3O,fatty_acid_RCO,frag
+281.2838925,FA 19:0,FA 19:0,fatty_acid_RCO,frag
+297.2788072,FA 19:0 +1O,FA 19:0 +1O,fatty_acid_RCO,frag
+313.2737218,FA 19:0 +2O,FA 19:0 +2O,fatty_acid_RCO,frag
+329.2686364,FA 19:0 +3O,FA 19:0 +3O,fatty_acid_RCO,frag
+279.2682425,FA 19:1,FA 19:1,fatty_acid_RCO,frag
+295.2631571,FA 19:1 +1O,FA 19:1 +1O,fatty_acid_RCO,frag
+311.2580717,FA 19:1 +2O,FA 19:1 +2O,fatty_acid_RCO,frag
+327.2529863,FA 19:1 +3O,FA 19:1 +3O,fatty_acid_RCO,frag
+277.2525924,FA 19:2,FA 19:2,fatty_acid_RCO,frag
+293.247507,FA 19:2 +1O,FA 19:2 +1O,fatty_acid_RCO,frag
+309.2424216,FA 19:2 +2O,FA 19:2 +2O,fatty_acid_RCO,frag
+325.2373362,FA 19:2 +3O,FA 19:2 +3O,fatty_acid_RCO,frag
+275.2369423,FA 19:3,FA 19:3,fatty_acid_RCO,frag
+291.2318569,FA 19:3 +1O,FA 19:3 +1O,fatty_acid_RCO,frag
+307.2267715,FA 19:3 +2O,FA 19:3 +2O,fatty_acid_RCO,frag
+323.2216862,FA 19:3 +3O,FA 19:3 +3O,fatty_acid_RCO,frag
+273.2212922,FA 19:4,FA 19:4,fatty_acid_RCO,frag
+289.2162068,FA 19:4 +1O,FA 19:4 +1O,fatty_acid_RCO,frag
+305.2111215,FA 19:4 +2O,FA 19:4 +2O,fatty_acid_RCO,frag
+321.2060361,FA 19:4 +3O,FA 19:4 +3O,fatty_acid_RCO,frag
+295.2995426,FA 20:0,FA 20:0,fatty_acid_RCO,frag
+311.2944572,FA 20:0 +1O,FA 20:0 +1O,fatty_acid_RCO,frag
+327.2893719,FA 20:0 +2O,FA 20:0 +2O,fatty_acid_RCO,frag
+343.2842865,FA 20:0 +3O,FA 20:0 +3O,fatty_acid_RCO,frag
+293.2838925,FA 20:1,FA 20:1,fatty_acid_RCO,frag
+309.2788072,FA 20:1 +1O,FA 20:1 +1O,fatty_acid_RCO,frag
+325.2737218,FA 20:1 +2O,FA 20:1 +2O,fatty_acid_RCO,frag
+341.2686364,FA 20:1 +3O,FA 20:1 +3O,fatty_acid_RCO,frag
+291.2682425,FA 20:2,FA 20:2,fatty_acid_RCO,frag
+307.2631571,FA 20:2 +1O,FA 20:2 +1O,fatty_acid_RCO,frag
+323.2580717,FA 20:2 +2O,FA 20:2 +2O,fatty_acid_RCO,frag
+339.2529863,FA 20:2 +3O,FA 20:2 +3O,fatty_acid_RCO,frag
+289.2525924,FA 20:3,FA 20:3,fatty_acid_RCO,frag
+305.247507,FA 20:3 +1O,FA 20:3 +1O,fatty_acid_RCO,frag
+321.2424216,FA 20:3 +2O,FA 20:3 +2O,fatty_acid_RCO,frag
+337.2373362,FA 20:3 +3O,FA 20:3 +3O,fatty_acid_RCO,frag
+287.2369423,FA 20:4,FA 20:4,fatty_acid_RCO,frag
+303.2318569,FA 20:4 +1O,FA 20:4 +1O,fatty_acid_RCO,frag
+319.2267715,FA 20:4 +2O,FA 20:4 +2O,fatty_acid_RCO,frag
+335.2216862,FA 20:4 +3O,FA 20:4 +3O,fatty_acid_RCO,frag
+309.3151927,FA 21:0,FA 21:0,fatty_acid_RCO,frag
+325.3101073,FA 21:0 +1O,FA 21:0 +1O,fatty_acid_RCO,frag
+341.3050219,FA 21:0 +2O,FA 21:0 +2O,fatty_acid_RCO,frag
+357.2999366,FA 21:0 +3O,FA 21:0 +3O,fatty_acid_RCO,frag
+307.2995426,FA 21:1,FA 21:1,fatty_acid_RCO,frag
+323.2944572,FA 21:1 +1O,FA 21:1 +1O,fatty_acid_RCO,frag
+339.2893719,FA 21:1 +2O,FA 21:1 +2O,fatty_acid_RCO,frag
+355.2842865,FA 21:1 +3O,FA 21:1 +3O,fatty_acid_RCO,frag
+305.2838925,FA 21:2,FA 21:2,fatty_acid_RCO,frag
+321.2788072,FA 21:2 +1O,FA 21:2 +1O,fatty_acid_RCO,frag
+337.2737218,FA 21:2 +2O,FA 21:2 +2O,fatty_acid_RCO,frag
+353.2686364,FA 21:2 +3O,FA 21:2 +3O,fatty_acid_RCO,frag
+303.2682425,FA 21:3,FA 21:3,fatty_acid_RCO,frag
+319.2631571,FA 21:3 +1O,FA 21:3 +1O,fatty_acid_RCO,frag
+335.2580717,FA 21:3 +2O,FA 21:3 +2O,fatty_acid_RCO,frag
+351.2529863,FA 21:3 +3O,FA 21:3 +3O,fatty_acid_RCO,frag
+301.2525924,FA 21:4,FA 21:4,fatty_acid_RCO,frag
+317.247507,FA 21:4 +1O,FA 21:4 +1O,fatty_acid_RCO,frag
+333.2424216,FA 21:4 +2O,FA 21:4 +2O,fatty_acid_RCO,frag
+349.2373362,FA 21:4 +3O,FA 21:4 +3O,fatty_acid_RCO,frag
+323.3308428,FA 22:0,FA 22:0,fatty_acid_RCO,frag
+339.3257574,FA 22:0 +1O,FA 22:0 +1O,fatty_acid_RCO,frag
+355.320672,FA 22:0 +2O,FA 22:0 +2O,fatty_acid_RCO,frag
+371.3155866,FA 22:0 +3O,FA 22:0 +3O,fatty_acid_RCO,frag
+321.3151927,FA 22:1,FA 22:1,fatty_acid_RCO,frag
+337.3101073,FA 22:1 +1O,FA 22:1 +1O,fatty_acid_RCO,frag
+353.3050219,FA 22:1 +2O,FA 22:1 +2O,fatty_acid_RCO,frag
+369.2999366,FA 22:1 +3O,FA 22:1 +3O,fatty_acid_RCO,frag
+319.2995426,FA 22:2,FA 22:2,fatty_acid_RCO,frag
+335.2944572,FA 22:2 +1O,FA 22:2 +1O,fatty_acid_RCO,frag
+351.2893719,FA 22:2 +2O,FA 22:2 +2O,fatty_acid_RCO,frag
+367.2842865,FA 22:2 +3O,FA 22:2 +3O,fatty_acid_RCO,frag
+317.2838925,FA 22:3,FA 22:3,fatty_acid_RCO,frag
+333.2788072,FA 22:3 +1O,FA 22:3 +1O,fatty_acid_RCO,frag
+349.2737218,FA 22:3 +2O,FA 22:3 +2O,fatty_acid_RCO,frag
+365.2686364,FA 22:3 +3O,FA 22:3 +3O,fatty_acid_RCO,frag
+315.2682425,FA 22:4,FA 22:4,fatty_acid_RCO,frag
+331.2631571,FA 22:4 +1O,FA 22:4 +1O,fatty_acid_RCO,frag
+347.2580717,FA 22:4 +2O,FA 22:4 +2O,fatty_acid_RCO,frag
+363.2529863,FA 22:4 +3O,FA 22:4 +3O,fatty_acid_RCO,frag
+313.2525924,FA 22:5,FA 22:5,fatty_acid_RCO,frag
+329.247507,FA 22:5 +1O,FA 22:5 +1O,fatty_acid_RCO,frag
+345.2424216,FA 22:5 +2O,FA 22:5 +2O,fatty_acid_RCO,frag
+361.2373362,FA 22:5 +3O,FA 22:5 +3O,fatty_acid_RCO,frag
+337.3464929,FA 23:0,FA 23:0,fatty_acid_RCO,frag
+353.3414075,FA 23:0 +1O,FA 23:0 +1O,fatty_acid_RCO,frag
+369.3363221,FA 23:0 +2O,FA 23:0 +2O,fatty_acid_RCO,frag
+385.3312367,FA 23:0 +3O,FA 23:0 +3O,fatty_acid_RCO,frag
+335.3308428,FA 23:1,FA 23:1,fatty_acid_RCO,frag
+351.3257574,FA 23:1 +1O,FA 23:1 +1O,fatty_acid_RCO,frag
+367.320672,FA 23:1 +2O,FA 23:1 +2O,fatty_acid_RCO,frag
+383.3155866,FA 23:1 +3O,FA 23:1 +3O,fatty_acid_RCO,frag
+333.3151927,FA 23:2,FA 23:2,fatty_acid_RCO,frag
+349.3101073,FA 23:2 +1O,FA 23:2 +1O,fatty_acid_RCO,frag
+365.3050219,FA 23:2 +2O,FA 23:2 +2O,fatty_acid_RCO,frag
+381.2999366,FA 23:2 +3O,FA 23:2 +3O,fatty_acid_RCO,frag
+331.2995426,FA 23:3,FA 23:3,fatty_acid_RCO,frag
+347.2944572,FA 23:3 +1O,FA 23:3 +1O,fatty_acid_RCO,frag
+363.2893719,FA 23:3 +2O,FA 23:3 +2O,fatty_acid_RCO,frag
+379.2842865,FA 23:3 +3O,FA 23:3 +3O,fatty_acid_RCO,frag
+329.2838925,FA 23:4,FA 23:4,fatty_acid_RCO,frag
+345.2788072,FA 23:4 +1O,FA 23:4 +1O,fatty_acid_RCO,frag
+361.2737218,FA 23:4 +2O,FA 23:4 +2O,fatty_acid_RCO,frag
+377.2686364,FA 23:4 +3O,FA 23:4 +3O,fatty_acid_RCO,frag
+327.2682425,FA 23:5,FA 23:5,fatty_acid_RCO,frag
+343.2631571,FA 23:5 +1O,FA 23:5 +1O,fatty_acid_RCO,frag
+359.2580717,FA 23:5 +2O,FA 23:5 +2O,fatty_acid_RCO,frag
+375.2529863,FA 23:5 +3O,FA 23:5 +3O,fatty_acid_RCO,frag
+351.3621429,FA 24:0,FA 24:0,fatty_acid_RCO,frag
+367.3570576,FA 24:0 +1O,FA 24:0 +1O,fatty_acid_RCO,frag
+383.3519722,FA 24:0 +2O,FA 24:0 +2O,fatty_acid_RCO,frag
+399.3468868,FA 24:0 +3O,FA 24:0 +3O,fatty_acid_RCO,frag
+349.3464929,FA 24:1,FA 24:1,fatty_acid_RCO,frag
+365.3414075,FA 24:1 +1O,FA 24:1 +1O,fatty_acid_RCO,frag
+381.3363221,FA 24:1 +2O,FA 24:1 +2O,fatty_acid_RCO,frag
+397.3312367,FA 24:1 +3O,FA 24:1 +3O,fatty_acid_RCO,frag
+347.3308428,FA 24:2,FA 24:2,fatty_acid_RCO,frag
+363.3257574,FA 24:2 +1O,FA 24:2 +1O,fatty_acid_RCO,frag
+379.320672,FA 24:2 +2O,FA 24:2 +2O,fatty_acid_RCO,frag
+395.3155866,FA 24:2 +3O,FA 24:2 +3O,fatty_acid_RCO,frag
+345.3151927,FA 24:3,FA 24:3,fatty_acid_RCO,frag
+361.3101073,FA 24:3 +1O,FA 24:3 +1O,fatty_acid_RCO,frag
+377.3050219,FA 24:3 +2O,FA 24:3 +2O,fatty_acid_RCO,frag
+393.2999366,FA 24:3 +3O,FA 24:3 +3O,fatty_acid_RCO,frag
+343.2995426,FA 24:4,FA 24:4,fatty_acid_RCO,frag
+359.2944572,FA 24:4 +1O,FA 24:4 +1O,fatty_acid_RCO,frag
+375.2893719,FA 24:4 +2O,FA 24:4 +2O,fatty_acid_RCO,frag
+391.2842865,FA 24:4 +3O,FA 24:4 +3O,fatty_acid_RCO,frag
+341.2838925,FA 24:5,FA 24:5,fatty_acid_RCO,frag
+357.2788072,FA 24:5 +1O,FA 24:5 +1O,fatty_acid_RCO,frag
+373.2737218,FA 24:5 +2O,FA 24:5 +2O,fatty_acid_RCO,frag
+389.2686364,FA 24:5 +3O,FA 24:5 +3O,fatty_acid_RCO,frag
+365.377793,FA 25:0,FA 25:0,fatty_acid_RCO,frag
+381.3727076,FA 25:0 +1O,FA 25:0 +1O,fatty_acid_RCO,frag
+397.3676223,FA 25:0 +2O,FA 25:0 +2O,fatty_acid_RCO,frag
+413.3625369,FA 25:0 +3O,FA 25:0 +3O,fatty_acid_RCO,frag
+363.3621429,FA 25:1,FA 25:1,fatty_acid_RCO,frag
+379.3570576,FA 25:1 +1O,FA 25:1 +1O,fatty_acid_RCO,frag
+395.3519722,FA 25:1 +2O,FA 25:1 +2O,fatty_acid_RCO,frag
+411.3468868,FA 25:1 +3O,FA 25:1 +3O,fatty_acid_RCO,frag
+361.3464929,FA 25:2,FA 25:2,fatty_acid_RCO,frag
+377.3414075,FA 25:2 +1O,FA 25:2 +1O,fatty_acid_RCO,frag
+393.3363221,FA 25:2 +2O,FA 25:2 +2O,fatty_acid_RCO,frag
+409.3312367,FA 25:2 +3O,FA 25:2 +3O,fatty_acid_RCO,frag
+359.3308428,FA 25:3,FA 25:3,fatty_acid_RCO,frag
+375.3257574,FA 25:3 +1O,FA 25:3 +1O,fatty_acid_RCO,frag
+391.320672,FA 25:3 +2O,FA 25:3 +2O,fatty_acid_RCO,frag
+407.3155866,FA 25:3 +3O,FA 25:3 +3O,fatty_acid_RCO,frag
+357.3151927,FA 25:4,FA 25:4,fatty_acid_RCO,frag
+373.3101073,FA 25:4 +1O,FA 25:4 +1O,fatty_acid_RCO,frag
+389.3050219,FA 25:4 +2O,FA 25:4 +2O,fatty_acid_RCO,frag
+405.2999366,FA 25:4 +3O,FA 25:4 +3O,fatty_acid_RCO,frag
+355.2995426,FA 25:5,FA 25:5,fatty_acid_RCO,frag
+371.2944572,FA 25:5 +1O,FA 25:5 +1O,fatty_acid_RCO,frag
+387.2893719,FA 25:5 +2O,FA 25:5 +2O,fatty_acid_RCO,frag
+403.2842865,FA 25:5 +3O,FA 25:5 +3O,fatty_acid_RCO,frag
+379.3934431,FA 26:0,FA 26:0,fatty_acid_RCO,frag
+395.3883577,FA 26:0 +1O,FA 26:0 +1O,fatty_acid_RCO,frag
+411.3832723,FA 26:0 +2O,FA 26:0 +2O,fatty_acid_RCO,frag
+427.378187,FA 26:0 +3O,FA 26:0 +3O,fatty_acid_RCO,frag
+377.377793,FA 26:1,FA 26:1,fatty_acid_RCO,frag
+393.3727076,FA 26:1 +1O,FA 26:1 +1O,fatty_acid_RCO,frag
+409.3676223,FA 26:1 +2O,FA 26:1 +2O,fatty_acid_RCO,frag
+425.3625369,FA 26:1 +3O,FA 26:1 +3O,fatty_acid_RCO,frag
+375.3621429,FA 26:2,FA 26:2,fatty_acid_RCO,frag
+391.3570576,FA 26:2 +1O,FA 26:2 +1O,fatty_acid_RCO,frag
+407.3519722,FA 26:2 +2O,FA 26:2 +2O,fatty_acid_RCO,frag
+423.3468868,FA 26:2 +3O,FA 26:2 +3O,fatty_acid_RCO,frag
+373.3464929,FA 26:3,FA 26:3,fatty_acid_RCO,frag
+389.3414075,FA 26:3 +1O,FA 26:3 +1O,fatty_acid_RCO,frag
+405.3363221,FA 26:3 +2O,FA 26:3 +2O,fatty_acid_RCO,frag
+421.3312367,FA 26:3 +3O,FA 26:3 +3O,fatty_acid_RCO,frag
+371.3308428,FA 26:4,FA 26:4,fatty_acid_RCO,frag
+387.3257574,FA 26:4 +1O,FA 26:4 +1O,fatty_acid_RCO,frag
+403.320672,FA 26:4 +2O,FA 26:4 +2O,fatty_acid_RCO,frag
+419.3155866,FA 26:4 +3O,FA 26:4 +3O,fatty_acid_RCO,frag
+369.3151927,FA 26:5,FA 26:5,fatty_acid_RCO,frag
+385.3101073,FA 26:5 +1O,FA 26:5 +1O,fatty_acid_RCO,frag
+401.3050219,FA 26:5 +2O,FA 26:5 +2O,fatty_acid_RCO,frag
+417.2999366,FA 26:5 +3O,FA 26:5 +3O,fatty_acid_RCO,frag
+393.4090932,FA 27:0,FA 27:0,fatty_acid_RCO,frag
+409.4040078,FA 27:0 +1O,FA 27:0 +1O,fatty_acid_RCO,frag
+425.3989224,FA 27:0 +2O,FA 27:0 +2O,fatty_acid_RCO,frag
+441.393837,FA 27:0 +3O,FA 27:0 +3O,fatty_acid_RCO,frag
+391.3934431,FA 27:1,FA 27:1,fatty_acid_RCO,frag
+407.3883577,FA 27:1 +1O,FA 27:1 +1O,fatty_acid_RCO,frag
+423.3832723,FA 27:1 +2O,FA 27:1 +2O,fatty_acid_RCO,frag
+439.378187,FA 27:1 +3O,FA 27:1 +3O,fatty_acid_RCO,frag
+389.377793,FA 27:2,FA 27:2,fatty_acid_RCO,frag
+405.3727076,FA 27:2 +1O,FA 27:2 +1O,fatty_acid_RCO,frag
+421.3676223,FA 27:2 +2O,FA 27:2 +2O,fatty_acid_RCO,frag
+437.3625369,FA 27:2 +3O,FA 27:2 +3O,fatty_acid_RCO,frag
+387.3621429,FA 27:3,FA 27:3,fatty_acid_RCO,frag
+403.3570576,FA 27:3 +1O,FA 27:3 +1O,fatty_acid_RCO,frag
+419.3519722,FA 27:3 +2O,FA 27:3 +2O,fatty_acid_RCO,frag
+435.3468868,FA 27:3 +3O,FA 27:3 +3O,fatty_acid_RCO,frag
+385.3464929,FA 27:4,FA 27:4,fatty_acid_RCO,frag
+401.3414075,FA 27:4 +1O,FA 27:4 +1O,fatty_acid_RCO,frag
+417.3363221,FA 27:4 +2O,FA 27:4 +2O,fatty_acid_RCO,frag
+433.3312367,FA 27:4 +3O,FA 27:4 +3O,fatty_acid_RCO,frag
+383.3308428,FA 27:5,FA 27:5,fatty_acid_RCO,frag
+399.3257574,FA 27:5 +1O,FA 27:5 +1O,fatty_acid_RCO,frag
+415.320672,FA 27:5 +2O,FA 27:5 +2O,fatty_acid_RCO,frag
+431.3155866,FA 27:5 +3O,FA 27:5 +3O,fatty_acid_RCO,frag
+381.3151927,FA 27:6,FA 27:6,fatty_acid_RCO,frag
+397.3101073,FA 27:6 +1O,FA 27:6 +1O,fatty_acid_RCO,frag
+413.3050219,FA 27:6 +2O,FA 27:6 +2O,fatty_acid_RCO,frag
+429.2999366,FA 27:6 +3O,FA 27:6 +3O,fatty_acid_RCO,frag
+407.4247433,FA 28:0,FA 28:0,fatty_acid_RCO,frag
+423.4196579,FA 28:0 +1O,FA 28:0 +1O,fatty_acid_RCO,frag
+439.4145725,FA 28:0 +2O,FA 28:0 +2O,fatty_acid_RCO,frag
+455.4094871,FA 28:0 +3O,FA 28:0 +3O,fatty_acid_RCO,frag
+405.4090932,FA 28:1,FA 28:1,fatty_acid_RCO,frag
+421.4040078,FA 28:1 +1O,FA 28:1 +1O,fatty_acid_RCO,frag
+437.3989224,FA 28:1 +2O,FA 28:1 +2O,fatty_acid_RCO,frag
+453.393837,FA 28:1 +3O,FA 28:1 +3O,fatty_acid_RCO,frag
+403.3934431,FA 28:2,FA 28:2,fatty_acid_RCO,frag
+419.3883577,FA 28:2 +1O,FA 28:2 +1O,fatty_acid_RCO,frag
+435.3832723,FA 28:2 +2O,FA 28:2 +2O,fatty_acid_RCO,frag
+451.378187,FA 28:2 +3O,FA 28:2 +3O,fatty_acid_RCO,frag
+401.377793,FA 28:3,FA 28:3,fatty_acid_RCO,frag
+417.3727076,FA 28:3 +1O,FA 28:3 +1O,fatty_acid_RCO,frag
+433.3676223,FA 28:3 +2O,FA 28:3 +2O,fatty_acid_RCO,frag
+449.3625369,FA 28:3 +3O,FA 28:3 +3O,fatty_acid_RCO,frag
+399.3621429,FA 28:4,FA 28:4,fatty_acid_RCO,frag
+415.3570576,FA 28:4 +1O,FA 28:4 +1O,fatty_acid_RCO,frag
+431.3519722,FA 28:4 +2O,FA 28:4 +2O,fatty_acid_RCO,frag
+447.3468868,FA 28:4 +3O,FA 28:4 +3O,fatty_acid_RCO,frag
+397.3464929,FA 28:5,FA 28:5,fatty_acid_RCO,frag
+413.3414075,FA 28:5 +1O,FA 28:5 +1O,fatty_acid_RCO,frag
+429.3363221,FA 28:5 +2O,FA 28:5 +2O,fatty_acid_RCO,frag
+445.3312367,FA 28:5 +3O,FA 28:5 +3O,fatty_acid_RCO,frag
+395.3308428,FA 28:6,FA 28:6,fatty_acid_RCO,frag
+411.3257574,FA 28:6 +1O,FA 28:6 +1O,fatty_acid_RCO,frag
+427.320672,FA 28:6 +2O,FA 28:6 +2O,fatty_acid_RCO,frag
+443.3155866,FA 28:6 +3O,FA 28:6 +3O,fatty_acid_RCO,frag
+421.4403933,FA 29:0,FA 29:0,fatty_acid_RCO,frag
+437.435308,FA 29:0 +1O,FA 29:0 +1O,fatty_acid_RCO,frag
+453.4302226,FA 29:0 +2O,FA 29:0 +2O,fatty_acid_RCO,frag
+469.4251372,FA 29:0 +3O,FA 29:0 +3O,fatty_acid_RCO,frag
+419.4247433,FA 29:1,FA 29:1,fatty_acid_RCO,frag
+435.4196579,FA 29:1 +1O,FA 29:1 +1O,fatty_acid_RCO,frag
+451.4145725,FA 29:1 +2O,FA 29:1 +2O,fatty_acid_RCO,frag
+467.4094871,FA 29:1 +3O,FA 29:1 +3O,fatty_acid_RCO,frag
+417.4090932,FA 29:2,FA 29:2,fatty_acid_RCO,frag
+433.4040078,FA 29:2 +1O,FA 29:2 +1O,fatty_acid_RCO,frag
+449.3989224,FA 29:2 +2O,FA 29:2 +2O,fatty_acid_RCO,frag
+465.393837,FA 29:2 +3O,FA 29:2 +3O,fatty_acid_RCO,frag
+415.3934431,FA 29:3,FA 29:3,fatty_acid_RCO,frag
+431.3883577,FA 29:3 +1O,FA 29:3 +1O,fatty_acid_RCO,frag
+447.3832723,FA 29:3 +2O,FA 29:3 +2O,fatty_acid_RCO,frag
+463.378187,FA 29:3 +3O,FA 29:3 +3O,fatty_acid_RCO,frag
+413.377793,FA 29:4,FA 29:4,fatty_acid_RCO,frag
+429.3727076,FA 29:4 +1O,FA 29:4 +1O,fatty_acid_RCO,frag
+445.3676223,FA 29:4 +2O,FA 29:4 +2O,fatty_acid_RCO,frag
+461.3625369,FA 29:4 +3O,FA 29:4 +3O,fatty_acid_RCO,frag
+411.3621429,FA 29:5,FA 29:5,fatty_acid_RCO,frag
+427.3570576,FA 29:5 +1O,FA 29:5 +1O,fatty_acid_RCO,frag
+443.3519722,FA 29:5 +2O,FA 29:5 +2O,fatty_acid_RCO,frag
+459.3468868,FA 29:5 +3O,FA 29:5 +3O,fatty_acid_RCO,frag
+409.3464929,FA 29:6,FA 29:6,fatty_acid_RCO,frag
+425.3414075,FA 29:6 +1O,FA 29:6 +1O,fatty_acid_RCO,frag
+441.3363221,FA 29:6 +2O,FA 29:6 +2O,fatty_acid_RCO,frag
+457.3312367,FA 29:6 +3O,FA 29:6 +3O,fatty_acid_RCO,frag
+435.4560434,FA 30:0,FA 30:0,fatty_acid_RCO,frag
+451.450958,FA 30:0 +1O,FA 30:0 +1O,fatty_acid_RCO,frag
+467.4458727,FA 30:0 +2O,FA 30:0 +2O,fatty_acid_RCO,frag
+483.4407873,FA 30:0 +3O,FA 30:0 +3O,fatty_acid_RCO,frag
+433.4403933,FA 30:1,FA 30:1,fatty_acid_RCO,frag
+449.435308,FA 30:1 +1O,FA 30:1 +1O,fatty_acid_RCO,frag
+465.4302226,FA 30:1 +2O,FA 30:1 +2O,fatty_acid_RCO,frag
+481.4251372,FA 30:1 +3O,FA 30:1 +3O,fatty_acid_RCO,frag
+431.4247433,FA 30:2,FA 30:2,fatty_acid_RCO,frag
+447.4196579,FA 30:2 +1O,FA 30:2 +1O,fatty_acid_RCO,frag
+463.4145725,FA 30:2 +2O,FA 30:2 +2O,fatty_acid_RCO,frag
+479.4094871,FA 30:2 +3O,FA 30:2 +3O,fatty_acid_RCO,frag
+429.4090932,FA 30:3,FA 30:3,fatty_acid_RCO,frag
+445.4040078,FA 30:3 +1O,FA 30:3 +1O,fatty_acid_RCO,frag
+461.3989224,FA 30:3 +2O,FA 30:3 +2O,fatty_acid_RCO,frag
+477.393837,FA 30:3 +3O,FA 30:3 +3O,fatty_acid_RCO,frag
+427.3934431,FA 30:4,FA 30:4,fatty_acid_RCO,frag
+443.3883577,FA 30:4 +1O,FA 30:4 +1O,fatty_acid_RCO,frag
+459.3832723,FA 30:4 +2O,FA 30:4 +2O,fatty_acid_RCO,frag
+475.378187,FA 30:4 +3O,FA 30:4 +3O,fatty_acid_RCO,frag
+425.377793,FA 30:5,FA 30:5,fatty_acid_RCO,frag
+441.3727076,FA 30:5 +1O,FA 30:5 +1O,fatty_acid_RCO,frag
+457.3676223,FA 30:5 +2O,FA 30:5 +2O,fatty_acid_RCO,frag
+473.3625369,FA 30:5 +3O,FA 30:5 +3O,fatty_acid_RCO,frag
+423.3621429,FA 30:6,FA 30:6,fatty_acid_RCO,frag
+439.3570576,FA 30:6 +1O,FA 30:6 +1O,fatty_acid_RCO,frag
+455.3519722,FA 30:6 +2O,FA 30:6 +2O,fatty_acid_RCO,frag
+471.3468868,FA 30:6 +3O,FA 30:6 +3O,fatty_acid_RCO,frag
+117.0546212,FA 2:0,FA 2:0,fatty_acid_RCO_glycerol,frag
+133.0495358,FA 2:0 +1O,FA 2:0 +1O,fatty_acid_RCO_glycerol,frag
+149.0444504,FA 2:0 +2O,FA 2:0 +2O,fatty_acid_RCO_glycerol,frag
+165.039365,FA 2:0 +3O,FA 2:0 +3O,fatty_acid_RCO_glycerol,frag
+115.0389711,FA 2:1,FA 2:1,fatty_acid_RCO_glycerol,frag
+131.0338857,FA 2:1 +1O,FA 2:1 +1O,fatty_acid_RCO_glycerol,frag
+147.0288003,FA 2:1 +2O,FA 2:1 +2O,fatty_acid_RCO_glycerol,frag
+163.023715,FA 2:1 +3O,FA 2:1 +3O,fatty_acid_RCO_glycerol,frag
+131.0702712,FA 3:0,FA 3:0,fatty_acid_RCO_glycerol,frag
+147.0651859,FA 3:0 +1O,FA 3:0 +1O,fatty_acid_RCO_glycerol,frag
+163.0601005,FA 3:0 +2O,FA 3:0 +2O,fatty_acid_RCO_glycerol,frag
+179.0550151,FA 3:0 +3O,FA 3:0 +3O,fatty_acid_RCO_glycerol,frag
+129.0546212,FA 3:1,FA 3:1,fatty_acid_RCO_glycerol,frag
+145.0495358,FA 3:1 +1O,FA 3:1 +1O,fatty_acid_RCO_glycerol,frag
+161.0444504,FA 3:1 +2O,FA 3:1 +2O,fatty_acid_RCO_glycerol,frag
+177.039365,FA 3:1 +3O,FA 3:1 +3O,fatty_acid_RCO_glycerol,frag
+145.0859213,FA 4:0,FA 4:0,fatty_acid_RCO_glycerol,frag
+161.080836,FA 4:0 +1O,FA 4:0 +1O,fatty_acid_RCO_glycerol,frag
+177.0757506,FA 4:0 +2O,FA 4:0 +2O,fatty_acid_RCO_glycerol,frag
+193.0706652,FA 4:0 +3O,FA 4:0 +3O,fatty_acid_RCO_glycerol,frag
+143.0702712,FA 4:1,FA 4:1,fatty_acid_RCO_glycerol,frag
+159.0651859,FA 4:1 +1O,FA 4:1 +1O,fatty_acid_RCO_glycerol,frag
+175.0601005,FA 4:1 +2O,FA 4:1 +2O,fatty_acid_RCO_glycerol,frag
+191.0550151,FA 4:1 +3O,FA 4:1 +3O,fatty_acid_RCO_glycerol,frag
+159.1015714,FA 5:0,FA 5:0,fatty_acid_RCO_glycerol,frag
+175.096486,FA 5:0 +1O,FA 5:0 +1O,fatty_acid_RCO_glycerol,frag
+191.0914007,FA 5:0 +2O,FA 5:0 +2O,fatty_acid_RCO_glycerol,frag
+207.0863153,FA 5:0 +3O,FA 5:0 +3O,fatty_acid_RCO_glycerol,frag
+157.0859213,FA 5:1,FA 5:1,fatty_acid_RCO_glycerol,frag
+173.080836,FA 5:1 +1O,FA 5:1 +1O,fatty_acid_RCO_glycerol,frag
+189.0757506,FA 5:1 +2O,FA 5:1 +2O,fatty_acid_RCO_glycerol,frag
+205.0706652,FA 5:1 +3O,FA 5:1 +3O,fatty_acid_RCO_glycerol,frag
+173.1172215,FA 6:0,FA 6:0,fatty_acid_RCO_glycerol,frag
+189.1121361,FA 6:0 +1O,FA 6:0 +1O,fatty_acid_RCO_glycerol,frag
+205.1070507,FA 6:0 +2O,FA 6:0 +2O,fatty_acid_RCO_glycerol,frag
+221.1019654,FA 6:0 +3O,FA 6:0 +3O,fatty_acid_RCO_glycerol,frag
+171.1015714,FA 6:1,FA 6:1,fatty_acid_RCO_glycerol,frag
+187.096486,FA 6:1 +1O,FA 6:1 +1O,fatty_acid_RCO_glycerol,frag
+203.0914007,FA 6:1 +2O,FA 6:1 +2O,fatty_acid_RCO_glycerol,frag
+219.0863153,FA 6:1 +3O,FA 6:1 +3O,fatty_acid_RCO_glycerol,frag
+187.1328716,FA 7:0,FA 7:0,fatty_acid_RCO_glycerol,frag
+203.1277862,FA 7:0 +1O,FA 7:0 +1O,fatty_acid_RCO_glycerol,frag
+219.1227008,FA 7:0 +2O,FA 7:0 +2O,fatty_acid_RCO_glycerol,frag
+235.1176154,FA 7:0 +3O,FA 7:0 +3O,fatty_acid_RCO_glycerol,frag
+185.1172215,FA 7:1,FA 7:1,fatty_acid_RCO_glycerol,frag
+201.1121361,FA 7:1 +1O,FA 7:1 +1O,fatty_acid_RCO_glycerol,frag
+217.1070507,FA 7:1 +2O,FA 7:1 +2O,fatty_acid_RCO_glycerol,frag
+233.1019654,FA 7:1 +3O,FA 7:1 +3O,fatty_acid_RCO_glycerol,frag
+183.1015714,FA 7:2,FA 7:2,fatty_acid_RCO_glycerol,frag
+199.096486,FA 7:2 +1O,FA 7:2 +1O,fatty_acid_RCO_glycerol,frag
+215.0914007,FA 7:2 +2O,FA 7:2 +2O,fatty_acid_RCO_glycerol,frag
+231.0863153,FA 7:2 +3O,FA 7:2 +3O,fatty_acid_RCO_glycerol,frag
+201.1485217,FA 8:0,FA 8:0,fatty_acid_RCO_glycerol,frag
+217.1434363,FA 8:0 +1O,FA 8:0 +1O,fatty_acid_RCO_glycerol,frag
+233.1383509,FA 8:0 +2O,FA 8:0 +2O,fatty_acid_RCO_glycerol,frag
+249.1332655,FA 8:0 +3O,FA 8:0 +3O,fatty_acid_RCO_glycerol,frag
+199.1328716,FA 8:1,FA 8:1,fatty_acid_RCO_glycerol,frag
+215.1277862,FA 8:1 +1O,FA 8:1 +1O,fatty_acid_RCO_glycerol,frag
+231.1227008,FA 8:1 +2O,FA 8:1 +2O,fatty_acid_RCO_glycerol,frag
+247.1176154,FA 8:1 +3O,FA 8:1 +3O,fatty_acid_RCO_glycerol,frag
+197.1172215,FA 8:2,FA 8:2,fatty_acid_RCO_glycerol,frag
+213.1121361,FA 8:2 +1O,FA 8:2 +1O,fatty_acid_RCO_glycerol,frag
+229.1070507,FA 8:2 +2O,FA 8:2 +2O,fatty_acid_RCO_glycerol,frag
+245.1019654,FA 8:2 +3O,FA 8:2 +3O,fatty_acid_RCO_glycerol,frag
+215.1641717,FA 9:0,FA 9:0,fatty_acid_RCO_glycerol,frag
+231.1590864,FA 9:0 +1O,FA 9:0 +1O,fatty_acid_RCO_glycerol,frag
+247.154001,FA 9:0 +2O,FA 9:0 +2O,fatty_acid_RCO_glycerol,frag
+263.1489156,FA 9:0 +3O,FA 9:0 +3O,fatty_acid_RCO_glycerol,frag
+213.1485217,FA 9:1,FA 9:1,fatty_acid_RCO_glycerol,frag
+229.1434363,FA 9:1 +1O,FA 9:1 +1O,fatty_acid_RCO_glycerol,frag
+245.1383509,FA 9:1 +2O,FA 9:1 +2O,fatty_acid_RCO_glycerol,frag
+261.1332655,FA 9:1 +3O,FA 9:1 +3O,fatty_acid_RCO_glycerol,frag
+211.1328716,FA 9:2,FA 9:2,fatty_acid_RCO_glycerol,frag
+227.1277862,FA 9:2 +1O,FA 9:2 +1O,fatty_acid_RCO_glycerol,frag
+243.1227008,FA 9:2 +2O,FA 9:2 +2O,fatty_acid_RCO_glycerol,frag
+259.1176154,FA 9:2 +3O,FA 9:2 +3O,fatty_acid_RCO_glycerol,frag
+225.1485217,FA 10:2,FA 10:2,fatty_acid_RCO_glycerol,frag
+241.1434363,FA 10:2 +1O,FA 10:2 +1O,fatty_acid_RCO_glycerol,frag
+257.1383509,FA 10:2 +2O,FA 10:2 +2O,fatty_acid_RCO_glycerol,frag
+273.1332655,FA 10:2 +3O,FA 10:2 +3O,fatty_acid_RCO_glycerol,frag
+243.1954719,FA 11:0,FA 11:0,fatty_acid_RCO_glycerol,frag
+259.1903865,FA 11:0 +1O,FA 11:0 +1O,fatty_acid_RCO_glycerol,frag
+275.1853011,FA 11:0 +2O,FA 11:0 +2O,fatty_acid_RCO_glycerol,frag
+291.1802158,FA 11:0 +3O,FA 11:0 +3O,fatty_acid_RCO_glycerol,frag
+241.1798218,FA 11:1,FA 11:1,fatty_acid_RCO_glycerol,frag
+257.1747364,FA 11:1 +1O,FA 11:1 +1O,fatty_acid_RCO_glycerol,frag
+273.1696511,FA 11:1 +2O,FA 11:1 +2O,fatty_acid_RCO_glycerol,frag
+289.1645657,FA 11:1 +3O,FA 11:1 +3O,fatty_acid_RCO_glycerol,frag
+239.1641717,FA 11:2,FA 11:2,fatty_acid_RCO_glycerol,frag
+255.1590864,FA 11:2 +1O,FA 11:2 +1O,fatty_acid_RCO_glycerol,frag
+271.154001,FA 11:2 +2O,FA 11:2 +2O,fatty_acid_RCO_glycerol,frag
+287.1489156,FA 11:2 +3O,FA 11:2 +3O,fatty_acid_RCO_glycerol,frag
+257.211122,FA 12:0,FA 12:0,fatty_acid_RCO_glycerol,frag
+273.2060366,FA 12:0 +1O,FA 12:0 +1O,fatty_acid_RCO_glycerol,frag
+289.2009512,FA 12:0 +2O,FA 12:0 +2O,fatty_acid_RCO_glycerol,frag
+305.1958658,FA 12:0 +3O,FA 12:0 +3O,fatty_acid_RCO_glycerol,frag
+255.1954719,FA 12:1,FA 12:1,fatty_acid_RCO_glycerol,frag
+271.1903865,FA 12:1 +1O,FA 12:1 +1O,fatty_acid_RCO_glycerol,frag
+287.1853011,FA 12:1 +2O,FA 12:1 +2O,fatty_acid_RCO_glycerol,frag
+303.1802158,FA 12:1 +3O,FA 12:1 +3O,fatty_acid_RCO_glycerol,frag
+253.1798218,FA 12:2,FA 12:2,fatty_acid_RCO_glycerol,frag
+269.1747364,FA 12:2 +1O,FA 12:2 +1O,fatty_acid_RCO_glycerol,frag
+285.1696511,FA 12:2 +2O,FA 12:2 +2O,fatty_acid_RCO_glycerol,frag
+301.1645657,FA 12:2 +3O,FA 12:2 +3O,fatty_acid_RCO_glycerol,frag
+251.1641717,FA 12:3,FA 12:3,fatty_acid_RCO_glycerol,frag
+267.1590864,FA 12:3 +1O,FA 12:3 +1O,fatty_acid_RCO_glycerol,frag
+283.154001,FA 12:3 +2O,FA 12:3 +2O,fatty_acid_RCO_glycerol,frag
+299.1489156,FA 12:3 +3O,FA 12:3 +3O,fatty_acid_RCO_glycerol,frag
+271.2267721,FA 13:0,FA 13:0,fatty_acid_RCO_glycerol,frag
+287.2216867,FA 13:0 +1O,FA 13:0 +1O,fatty_acid_RCO_glycerol,frag
+303.2166013,FA 13:0 +2O,FA 13:0 +2O,fatty_acid_RCO_glycerol,frag
+319.2115159,FA 13:0 +3O,FA 13:0 +3O,fatty_acid_RCO_glycerol,frag
+269.211122,FA 13:1,FA 13:1,fatty_acid_RCO_glycerol,frag
+285.2060366,FA 13:1 +1O,FA 13:1 +1O,fatty_acid_RCO_glycerol,frag
+301.2009512,FA 13:1 +2O,FA 13:1 +2O,fatty_acid_RCO_glycerol,frag
+317.1958658,FA 13:1 +3O,FA 13:1 +3O,fatty_acid_RCO_glycerol,frag
+267.1954719,FA 13:2,FA 13:2,fatty_acid_RCO_glycerol,frag
+283.1903865,FA 13:2 +1O,FA 13:2 +1O,fatty_acid_RCO_glycerol,frag
+299.1853011,FA 13:2 +2O,FA 13:2 +2O,fatty_acid_RCO_glycerol,frag
+315.1802158,FA 13:2 +3O,FA 13:2 +3O,fatty_acid_RCO_glycerol,frag
+265.1798218,FA 13:3,FA 13:3,fatty_acid_RCO_glycerol,frag
+281.1747364,FA 13:3 +1O,FA 13:3 +1O,fatty_acid_RCO_glycerol,frag
+297.1696511,FA 13:3 +2O,FA 13:3 +2O,fatty_acid_RCO_glycerol,frag
+313.1645657,FA 13:3 +3O,FA 13:3 +3O,fatty_acid_RCO_glycerol,frag
+285.2424221,FA 14:0,FA 14:0,fatty_acid_RCO_glycerol,frag
+301.2373368,FA 14:0 +1O,FA 14:0 +1O,fatty_acid_RCO_glycerol,frag
+317.2322514,FA 14:0 +2O,FA 14:0 +2O,fatty_acid_RCO_glycerol,frag
+333.227166,FA 14:0 +3O,FA 14:0 +3O,fatty_acid_RCO_glycerol,frag
+283.2267721,FA 14:1,FA 14:1,fatty_acid_RCO_glycerol,frag
+299.2216867,FA 14:1 +1O,FA 14:1 +1O,fatty_acid_RCO_glycerol,frag
+315.2166013,FA 14:1 +2O,FA 14:1 +2O,fatty_acid_RCO_glycerol,frag
+331.2115159,FA 14:1 +3O,FA 14:1 +3O,fatty_acid_RCO_glycerol,frag
+281.211122,FA 14:2,FA 14:2,fatty_acid_RCO_glycerol,frag
+297.2060366,FA 14:2 +1O,FA 14:2 +1O,fatty_acid_RCO_glycerol,frag
+313.2009512,FA 14:2 +2O,FA 14:2 +2O,fatty_acid_RCO_glycerol,frag
+329.1958658,FA 14:2 +3O,FA 14:2 +3O,fatty_acid_RCO_glycerol,frag
+279.1954719,FA 14:3,FA 14:3,fatty_acid_RCO_glycerol,frag
+295.1903865,FA 14:3 +1O,FA 14:3 +1O,fatty_acid_RCO_glycerol,frag
+311.1853011,FA 14:3 +2O,FA 14:3 +2O,fatty_acid_RCO_glycerol,frag
+327.1802158,FA 14:3 +3O,FA 14:3 +3O,fatty_acid_RCO_glycerol,frag
+299.2580722,FA 15:0,FA 15:0,fatty_acid_RCO_glycerol,frag
+315.2529868,FA 15:0 +1O,FA 15:0 +1O,fatty_acid_RCO_glycerol,frag
+331.2479015,FA 15:0 +2O,FA 15:0 +2O,fatty_acid_RCO_glycerol,frag
+347.2428161,FA 15:0 +3O,FA 15:0 +3O,fatty_acid_RCO_glycerol,frag
+297.2424221,FA 15:1,FA 15:1,fatty_acid_RCO_glycerol,frag
+313.2373368,FA 15:1 +1O,FA 15:1 +1O,fatty_acid_RCO_glycerol,frag
+329.2322514,FA 15:1 +2O,FA 15:1 +2O,fatty_acid_RCO_glycerol,frag
+345.227166,FA 15:1 +3O,FA 15:1 +3O,fatty_acid_RCO_glycerol,frag
+295.2267721,FA 15:2,FA 15:2,fatty_acid_RCO_glycerol,frag
+311.2216867,FA 15:2 +1O,FA 15:2 +1O,fatty_acid_RCO_glycerol,frag
+327.2166013,FA 15:2 +2O,FA 15:2 +2O,fatty_acid_RCO_glycerol,frag
+343.2115159,FA 15:2 +3O,FA 15:2 +3O,fatty_acid_RCO_glycerol,frag
+293.211122,FA 15:3,FA 15:3,fatty_acid_RCO_glycerol,frag
+309.2060366,FA 15:3 +1O,FA 15:3 +1O,fatty_acid_RCO_glycerol,frag
+325.2009512,FA 15:3 +2O,FA 15:3 +2O,fatty_acid_RCO_glycerol,frag
+341.1958658,FA 15:3 +3O,FA 15:3 +3O,fatty_acid_RCO_glycerol,frag
+313.2737223,FA 16:0,FA 16:0,fatty_acid_RCO_glycerol,frag
+329.2686369,FA 16:0 +1O,FA 16:0 +1O,fatty_acid_RCO_glycerol,frag
+345.2635515,FA 16:0 +2O,FA 16:0 +2O,fatty_acid_RCO_glycerol,frag
+361.2584662,FA 16:0 +3O,FA 16:0 +3O,fatty_acid_RCO_glycerol,frag
+311.2580722,FA 16:1,FA 16:1,fatty_acid_RCO_glycerol,frag
+327.2529868,FA 16:1 +1O,FA 16:1 +1O,fatty_acid_RCO_glycerol,frag
+343.2479015,FA 16:1 +2O,FA 16:1 +2O,fatty_acid_RCO_glycerol,frag
+359.2428161,FA 16:1 +3O,FA 16:1 +3O,fatty_acid_RCO_glycerol,frag
+309.2424221,FA 16:2,FA 16:2,fatty_acid_RCO_glycerol,frag
+325.2373368,FA 16:2 +1O,FA 16:2 +1O,fatty_acid_RCO_glycerol,frag
+341.2322514,FA 16:2 +2O,FA 16:2 +2O,fatty_acid_RCO_glycerol,frag
+357.227166,FA 16:2 +3O,FA 16:2 +3O,fatty_acid_RCO_glycerol,frag
+307.2267721,FA 16:3,FA 16:3,fatty_acid_RCO_glycerol,frag
+323.2216867,FA 16:3 +1O,FA 16:3 +1O,fatty_acid_RCO_glycerol,frag
+339.2166013,FA 16:3 +2O,FA 16:3 +2O,fatty_acid_RCO_glycerol,frag
+355.2115159,FA 16:3 +3O,FA 16:3 +3O,fatty_acid_RCO_glycerol,frag
+327.2893724,FA 17:0,FA 17:0,fatty_acid_RCO_glycerol,frag
+343.284287,FA 17:0 +1O,FA 17:0 +1O,fatty_acid_RCO_glycerol,frag
+359.2792016,FA 17:0 +2O,FA 17:0 +2O,fatty_acid_RCO_glycerol,frag
+375.2741162,FA 17:0 +3O,FA 17:0 +3O,fatty_acid_RCO_glycerol,frag
+325.2737223,FA 17:1,FA 17:1,fatty_acid_RCO_glycerol,frag
+341.2686369,FA 17:1 +1O,FA 17:1 +1O,fatty_acid_RCO_glycerol,frag
+357.2635515,FA 17:1 +2O,FA 17:1 +2O,fatty_acid_RCO_glycerol,frag
+373.2584662,FA 17:1 +3O,FA 17:1 +3O,fatty_acid_RCO_glycerol,frag
+323.2580722,FA 17:2,FA 17:2,fatty_acid_RCO_glycerol,frag
+339.2529868,FA 17:2 +1O,FA 17:2 +1O,fatty_acid_RCO_glycerol,frag
+355.2479015,FA 17:2 +2O,FA 17:2 +2O,fatty_acid_RCO_glycerol,frag
+371.2428161,FA 17:2 +3O,FA 17:2 +3O,fatty_acid_RCO_glycerol,frag
+321.2424221,FA 17:3,FA 17:3,fatty_acid_RCO_glycerol,frag
+337.2373368,FA 17:3 +1O,FA 17:3 +1O,fatty_acid_RCO_glycerol,frag
+353.2322514,FA 17:3 +2O,FA 17:3 +2O,fatty_acid_RCO_glycerol,frag
+369.227166,FA 17:3 +3O,FA 17:3 +3O,fatty_acid_RCO_glycerol,frag
+319.2267721,FA 17:4,FA 17:4,fatty_acid_RCO_glycerol,frag
+335.2216867,FA 17:4 +1O,FA 17:4 +1O,fatty_acid_RCO_glycerol,frag
+351.2166013,FA 17:4 +2O,FA 17:4 +2O,fatty_acid_RCO_glycerol,frag
+367.2115159,FA 17:4 +3O,FA 17:4 +3O,fatty_acid_RCO_glycerol,frag
+341.3050225,FA 18:0,FA 18:0,fatty_acid_RCO_glycerol,frag
+357.2999371,FA 18:0 +1O,FA 18:0 +1O,fatty_acid_RCO_glycerol,frag
+373.2948517,FA 18:0 +2O,FA 18:0 +2O,fatty_acid_RCO_glycerol,frag
+389.2897663,FA 18:0 +3O,FA 18:0 +3O,fatty_acid_RCO_glycerol,frag
+339.2893724,FA 18:1,FA 18:1,fatty_acid_RCO_glycerol,frag
+355.284287,FA 18:1 +1O,FA 18:1 +1O,fatty_acid_RCO_glycerol,frag
+371.2792016,FA 18:1 +2O,FA 18:1 +2O,fatty_acid_RCO_glycerol,frag
+387.2741162,FA 18:1 +3O,FA 18:1 +3O,fatty_acid_RCO_glycerol,frag
+337.2737223,FA 18:2,FA 18:2,fatty_acid_RCO_glycerol,frag
+353.2686369,FA 18:2 +1O,FA 18:2 +1O,fatty_acid_RCO_glycerol,frag
+369.2635515,FA 18:2 +2O,FA 18:2 +2O,fatty_acid_RCO_glycerol,frag
+385.2584662,FA 18:2 +3O,FA 18:2 +3O,fatty_acid_RCO_glycerol,frag
+335.2580722,FA 18:3,FA 18:3,fatty_acid_RCO_glycerol,frag
+351.2529868,FA 18:3 +1O,FA 18:3 +1O,fatty_acid_RCO_glycerol,frag
+367.2479015,FA 18:3 +2O,FA 18:3 +2O,fatty_acid_RCO_glycerol,frag
+383.2428161,FA 18:3 +3O,FA 18:3 +3O,fatty_acid_RCO_glycerol,frag
+333.2424221,FA 18:4,FA 18:4,fatty_acid_RCO_glycerol,frag
+349.2373368,FA 18:4 +1O,FA 18:4 +1O,fatty_acid_RCO_glycerol,frag
+365.2322514,FA 18:4 +2O,FA 18:4 +2O,fatty_acid_RCO_glycerol,frag
+381.227166,FA 18:4 +3O,FA 18:4 +3O,fatty_acid_RCO_glycerol,frag
+355.3206725,FA 19:0,FA 19:0,fatty_acid_RCO_glycerol,frag
+371.3155872,FA 19:0 +1O,FA 19:0 +1O,fatty_acid_RCO_glycerol,frag
+387.3105018,FA 19:0 +2O,FA 19:0 +2O,fatty_acid_RCO_glycerol,frag
+403.3054164,FA 19:0 +3O,FA 19:0 +3O,fatty_acid_RCO_glycerol,frag
+353.3050225,FA 19:1,FA 19:1,fatty_acid_RCO_glycerol,frag
+369.2999371,FA 19:1 +1O,FA 19:1 +1O,fatty_acid_RCO_glycerol,frag
+385.2948517,FA 19:1 +2O,FA 19:1 +2O,fatty_acid_RCO_glycerol,frag
+401.2897663,FA 19:1 +3O,FA 19:1 +3O,fatty_acid_RCO_glycerol,frag
+351.2893724,FA 19:2,FA 19:2,fatty_acid_RCO_glycerol,frag
+367.284287,FA 19:2 +1O,FA 19:2 +1O,fatty_acid_RCO_glycerol,frag
+383.2792016,FA 19:2 +2O,FA 19:2 +2O,fatty_acid_RCO_glycerol,frag
+399.2741162,FA 19:2 +3O,FA 19:2 +3O,fatty_acid_RCO_glycerol,frag
+349.2737223,FA 19:3,FA 19:3,fatty_acid_RCO_glycerol,frag
+365.2686369,FA 19:3 +1O,FA 19:3 +1O,fatty_acid_RCO_glycerol,frag
+381.2635515,FA 19:3 +2O,FA 19:3 +2O,fatty_acid_RCO_glycerol,frag
+397.2584662,FA 19:3 +3O,FA 19:3 +3O,fatty_acid_RCO_glycerol,frag
+347.2580722,FA 19:4,FA 19:4,fatty_acid_RCO_glycerol,frag
+363.2529868,FA 19:4 +1O,FA 19:4 +1O,fatty_acid_RCO_glycerol,frag
+379.2479015,FA 19:4 +2O,FA 19:4 +2O,fatty_acid_RCO_glycerol,frag
+395.2428161,FA 19:4 +3O,FA 19:4 +3O,fatty_acid_RCO_glycerol,frag
+369.3363226,FA 20:0,FA 20:0,fatty_acid_RCO_glycerol,frag
+385.3312372,FA 20:0 +1O,FA 20:0 +1O,fatty_acid_RCO_glycerol,frag
+401.3261519,FA 20:0 +2O,FA 20:0 +2O,fatty_acid_RCO_glycerol,frag
+417.3210665,FA 20:0 +3O,FA 20:0 +3O,fatty_acid_RCO_glycerol,frag
+367.3206725,FA 20:1,FA 20:1,fatty_acid_RCO_glycerol,frag
+383.3155872,FA 20:1 +1O,FA 20:1 +1O,fatty_acid_RCO_glycerol,frag
+399.3105018,FA 20:1 +2O,FA 20:1 +2O,fatty_acid_RCO_glycerol,frag
+415.3054164,FA 20:1 +3O,FA 20:1 +3O,fatty_acid_RCO_glycerol,frag
+365.3050225,FA 20:2,FA 20:2,fatty_acid_RCO_glycerol,frag
+381.2999371,FA 20:2 +1O,FA 20:2 +1O,fatty_acid_RCO_glycerol,frag
+397.2948517,FA 20:2 +2O,FA 20:2 +2O,fatty_acid_RCO_glycerol,frag
+413.2897663,FA 20:2 +3O,FA 20:2 +3O,fatty_acid_RCO_glycerol,frag
+363.2893724,FA 20:3,FA 20:3,fatty_acid_RCO_glycerol,frag
+379.284287,FA 20:3 +1O,FA 20:3 +1O,fatty_acid_RCO_glycerol,frag
+395.2792016,FA 20:3 +2O,FA 20:3 +2O,fatty_acid_RCO_glycerol,frag
+411.2741162,FA 20:3 +3O,FA 20:3 +3O,fatty_acid_RCO_glycerol,frag
+361.2737223,FA 20:4,FA 20:4,fatty_acid_RCO_glycerol,frag
+377.2686369,FA 20:4 +1O,FA 20:4 +1O,fatty_acid_RCO_glycerol,frag
+393.2635515,FA 20:4 +2O,FA 20:4 +2O,fatty_acid_RCO_glycerol,frag
+409.2584662,FA 20:4 +3O,FA 20:4 +3O,fatty_acid_RCO_glycerol,frag
+383.3519727,FA 21:0,FA 21:0,fatty_acid_RCO_glycerol,frag
+399.3468873,FA 21:0 +1O,FA 21:0 +1O,fatty_acid_RCO_glycerol,frag
+415.3418019,FA 21:0 +2O,FA 21:0 +2O,fatty_acid_RCO_glycerol,frag
+431.3367166,FA 21:0 +3O,FA 21:0 +3O,fatty_acid_RCO_glycerol,frag
+381.3363226,FA 21:1,FA 21:1,fatty_acid_RCO_glycerol,frag
+397.3312372,FA 21:1 +1O,FA 21:1 +1O,fatty_acid_RCO_glycerol,frag
+413.3261519,FA 21:1 +2O,FA 21:1 +2O,fatty_acid_RCO_glycerol,frag
+429.3210665,FA 21:1 +3O,FA 21:1 +3O,fatty_acid_RCO_glycerol,frag
+379.3206725,FA 21:2,FA 21:2,fatty_acid_RCO_glycerol,frag
+395.3155872,FA 21:2 +1O,FA 21:2 +1O,fatty_acid_RCO_glycerol,frag
+411.3105018,FA 21:2 +2O,FA 21:2 +2O,fatty_acid_RCO_glycerol,frag
+427.3054164,FA 21:2 +3O,FA 21:2 +3O,fatty_acid_RCO_glycerol,frag
+377.3050225,FA 21:3,FA 21:3,fatty_acid_RCO_glycerol,frag
+393.2999371,FA 21:3 +1O,FA 21:3 +1O,fatty_acid_RCO_glycerol,frag
+409.2948517,FA 21:3 +2O,FA 21:3 +2O,fatty_acid_RCO_glycerol,frag
+425.2897663,FA 21:3 +3O,FA 21:3 +3O,fatty_acid_RCO_glycerol,frag
+375.2893724,FA 21:4,FA 21:4,fatty_acid_RCO_glycerol,frag
+391.284287,FA 21:4 +1O,FA 21:4 +1O,fatty_acid_RCO_glycerol,frag
+407.2792016,FA 21:4 +2O,FA 21:4 +2O,fatty_acid_RCO_glycerol,frag
+423.2741162,FA 21:4 +3O,FA 21:4 +3O,fatty_acid_RCO_glycerol,frag
+397.3676228,FA 22:0,FA 22:0,fatty_acid_RCO_glycerol,frag
+413.3625374,FA 22:0 +1O,FA 22:0 +1O,fatty_acid_RCO_glycerol,frag
+429.357452,FA 22:0 +2O,FA 22:0 +2O,fatty_acid_RCO_glycerol,frag
+445.3523666,FA 22:0 +3O,FA 22:0 +3O,fatty_acid_RCO_glycerol,frag
+395.3519727,FA 22:1,FA 22:1,fatty_acid_RCO_glycerol,frag
+411.3468873,FA 22:1 +1O,FA 22:1 +1O,fatty_acid_RCO_glycerol,frag
+427.3418019,FA 22:1 +2O,FA 22:1 +2O,fatty_acid_RCO_glycerol,frag
+443.3367166,FA 22:1 +3O,FA 22:1 +3O,fatty_acid_RCO_glycerol,frag
+393.3363226,FA 22:2,FA 22:2,fatty_acid_RCO_glycerol,frag
+409.3312372,FA 22:2 +1O,FA 22:2 +1O,fatty_acid_RCO_glycerol,frag
+425.3261519,FA 22:2 +2O,FA 22:2 +2O,fatty_acid_RCO_glycerol,frag
+441.3210665,FA 22:2 +3O,FA 22:2 +3O,fatty_acid_RCO_glycerol,frag
+391.3206725,FA 22:3,FA 22:3,fatty_acid_RCO_glycerol,frag
+407.3155872,FA 22:3 +1O,FA 22:3 +1O,fatty_acid_RCO_glycerol,frag
+423.3105018,FA 22:3 +2O,FA 22:3 +2O,fatty_acid_RCO_glycerol,frag
+439.3054164,FA 22:3 +3O,FA 22:3 +3O,fatty_acid_RCO_glycerol,frag
+389.3050225,FA 22:4,FA 22:4,fatty_acid_RCO_glycerol,frag
+405.2999371,FA 22:4 +1O,FA 22:4 +1O,fatty_acid_RCO_glycerol,frag
+421.2948517,FA 22:4 +2O,FA 22:4 +2O,fatty_acid_RCO_glycerol,frag
+437.2897663,FA 22:4 +3O,FA 22:4 +3O,fatty_acid_RCO_glycerol,frag
+387.2893724,FA 22:5,FA 22:5,fatty_acid_RCO_glycerol,frag
+403.284287,FA 22:5 +1O,FA 22:5 +1O,fatty_acid_RCO_glycerol,frag
+419.2792016,FA 22:5 +2O,FA 22:5 +2O,fatty_acid_RCO_glycerol,frag
+435.2741162,FA 22:5 +3O,FA 22:5 +3O,fatty_acid_RCO_glycerol,frag
+411.3832729,FA 23:0,FA 23:0,fatty_acid_RCO_glycerol,frag
+427.3781875,FA 23:0 +1O,FA 23:0 +1O,fatty_acid_RCO_glycerol,frag
+443.3731021,FA 23:0 +2O,FA 23:0 +2O,fatty_acid_RCO_glycerol,frag
+459.3680167,FA 23:0 +3O,FA 23:0 +3O,fatty_acid_RCO_glycerol,frag
+409.3676228,FA 23:1,FA 23:1,fatty_acid_RCO_glycerol,frag
+425.3625374,FA 23:1 +1O,FA 23:1 +1O,fatty_acid_RCO_glycerol,frag
+441.357452,FA 23:1 +2O,FA 23:1 +2O,fatty_acid_RCO_glycerol,frag
+457.3523666,FA 23:1 +3O,FA 23:1 +3O,fatty_acid_RCO_glycerol,frag
+407.3519727,FA 23:2,FA 23:2,fatty_acid_RCO_glycerol,frag
+423.3468873,FA 23:2 +1O,FA 23:2 +1O,fatty_acid_RCO_glycerol,frag
+439.3418019,FA 23:2 +2O,FA 23:2 +2O,fatty_acid_RCO_glycerol,frag
+455.3367166,FA 23:2 +3O,FA 23:2 +3O,fatty_acid_RCO_glycerol,frag
+405.3363226,FA 23:3,FA 23:3,fatty_acid_RCO_glycerol,frag
+421.3312372,FA 23:3 +1O,FA 23:3 +1O,fatty_acid_RCO_glycerol,frag
+437.3261519,FA 23:3 +2O,FA 23:3 +2O,fatty_acid_RCO_glycerol,frag
+453.3210665,FA 23:3 +3O,FA 23:3 +3O,fatty_acid_RCO_glycerol,frag
+403.3206725,FA 23:4,FA 23:4,fatty_acid_RCO_glycerol,frag
+419.3155872,FA 23:4 +1O,FA 23:4 +1O,fatty_acid_RCO_glycerol,frag
+435.3105018,FA 23:4 +2O,FA 23:4 +2O,fatty_acid_RCO_glycerol,frag
+451.3054164,FA 23:4 +3O,FA 23:4 +3O,fatty_acid_RCO_glycerol,frag
+401.3050225,FA 23:5,FA 23:5,fatty_acid_RCO_glycerol,frag
+417.2999371,FA 23:5 +1O,FA 23:5 +1O,fatty_acid_RCO_glycerol,frag
+433.2948517,FA 23:5 +2O,FA 23:5 +2O,fatty_acid_RCO_glycerol,frag
+449.2897663,FA 23:5 +3O,FA 23:5 +3O,fatty_acid_RCO_glycerol,frag
+425.3989229,FA 24:0,FA 24:0,fatty_acid_RCO_glycerol,frag
+441.3938376,FA 24:0 +1O,FA 24:0 +1O,fatty_acid_RCO_glycerol,frag
+457.3887522,FA 24:0 +2O,FA 24:0 +2O,fatty_acid_RCO_glycerol,frag
+473.3836668,FA 24:0 +3O,FA 24:0 +3O,fatty_acid_RCO_glycerol,frag
+423.3832729,FA 24:1,FA 24:1,fatty_acid_RCO_glycerol,frag
+439.3781875,FA 24:1 +1O,FA 24:1 +1O,fatty_acid_RCO_glycerol,frag
+455.3731021,FA 24:1 +2O,FA 24:1 +2O,fatty_acid_RCO_glycerol,frag
+471.3680167,FA 24:1 +3O,FA 24:1 +3O,fatty_acid_RCO_glycerol,frag
+421.3676228,FA 24:2,FA 24:2,fatty_acid_RCO_glycerol,frag
+437.3625374,FA 24:2 +1O,FA 24:2 +1O,fatty_acid_RCO_glycerol,frag
+453.357452,FA 24:2 +2O,FA 24:2 +2O,fatty_acid_RCO_glycerol,frag
+469.3523666,FA 24:2 +3O,FA 24:2 +3O,fatty_acid_RCO_glycerol,frag
+419.3519727,FA 24:3,FA 24:3,fatty_acid_RCO_glycerol,frag
+435.3468873,FA 24:3 +1O,FA 24:3 +1O,fatty_acid_RCO_glycerol,frag
+451.3418019,FA 24:3 +2O,FA 24:3 +2O,fatty_acid_RCO_glycerol,frag
+467.3367166,FA 24:3 +3O,FA 24:3 +3O,fatty_acid_RCO_glycerol,frag
+417.3363226,FA 24:4,FA 24:4,fatty_acid_RCO_glycerol,frag
+433.3312372,FA 24:4 +1O,FA 24:4 +1O,fatty_acid_RCO_glycerol,frag
+449.3261519,FA 24:4 +2O,FA 24:4 +2O,fatty_acid_RCO_glycerol,frag
+465.3210665,FA 24:4 +3O,FA 24:4 +3O,fatty_acid_RCO_glycerol,frag
+415.3206725,FA 24:5,FA 24:5,fatty_acid_RCO_glycerol,frag
+431.3155872,FA 24:5 +1O,FA 24:5 +1O,fatty_acid_RCO_glycerol,frag
+447.3105018,FA 24:5 +2O,FA 24:5 +2O,fatty_acid_RCO_glycerol,frag
+463.3054164,FA 24:5 +3O,FA 24:5 +3O,fatty_acid_RCO_glycerol,frag
+439.414573,FA 25:0,FA 25:0,fatty_acid_RCO_glycerol,frag
+455.4094876,FA 25:0 +1O,FA 25:0 +1O,fatty_acid_RCO_glycerol,frag
+471.4044023,FA 25:0 +2O,FA 25:0 +2O,fatty_acid_RCO_glycerol,frag
+487.3993169,FA 25:0 +3O,FA 25:0 +3O,fatty_acid_RCO_glycerol,frag
+437.3989229,FA 25:1,FA 25:1,fatty_acid_RCO_glycerol,frag
+453.3938376,FA 25:1 +1O,FA 25:1 +1O,fatty_acid_RCO_glycerol,frag
+469.3887522,FA 25:1 +2O,FA 25:1 +2O,fatty_acid_RCO_glycerol,frag
+485.3836668,FA 25:1 +3O,FA 25:1 +3O,fatty_acid_RCO_glycerol,frag
+435.3832729,FA 25:2,FA 25:2,fatty_acid_RCO_glycerol,frag
+451.3781875,FA 25:2 +1O,FA 25:2 +1O,fatty_acid_RCO_glycerol,frag
+467.3731021,FA 25:2 +2O,FA 25:2 +2O,fatty_acid_RCO_glycerol,frag
+483.3680167,FA 25:2 +3O,FA 25:2 +3O,fatty_acid_RCO_glycerol,frag
+433.3676228,FA 25:3,FA 25:3,fatty_acid_RCO_glycerol,frag
+449.3625374,FA 25:3 +1O,FA 25:3 +1O,fatty_acid_RCO_glycerol,frag
+465.357452,FA 25:3 +2O,FA 25:3 +2O,fatty_acid_RCO_glycerol,frag
+481.3523666,FA 25:3 +3O,FA 25:3 +3O,fatty_acid_RCO_glycerol,frag
+431.3519727,FA 25:4,FA 25:4,fatty_acid_RCO_glycerol,frag
+447.3468873,FA 25:4 +1O,FA 25:4 +1O,fatty_acid_RCO_glycerol,frag
+463.3418019,FA 25:4 +2O,FA 25:4 +2O,fatty_acid_RCO_glycerol,frag
+479.3367166,FA 25:4 +3O,FA 25:4 +3O,fatty_acid_RCO_glycerol,frag
+429.3363226,FA 25:5,FA 25:5,fatty_acid_RCO_glycerol,frag
+445.3312372,FA 25:5 +1O,FA 25:5 +1O,fatty_acid_RCO_glycerol,frag
+461.3261519,FA 25:5 +2O,FA 25:5 +2O,fatty_acid_RCO_glycerol,frag
+477.3210665,FA 25:5 +3O,FA 25:5 +3O,fatty_acid_RCO_glycerol,frag
+453.4302231,FA 26:0,FA 26:0,fatty_acid_RCO_glycerol,frag
+469.4251377,FA 26:0 +1O,FA 26:0 +1O,fatty_acid_RCO_glycerol,frag
+485.4200523,FA 26:0 +2O,FA 26:0 +2O,fatty_acid_RCO_glycerol,frag
+501.414967,FA 26:0 +3O,FA 26:0 +3O,fatty_acid_RCO_glycerol,frag
+451.414573,FA 26:1,FA 26:1,fatty_acid_RCO_glycerol,frag
+467.4094876,FA 26:1 +1O,FA 26:1 +1O,fatty_acid_RCO_glycerol,frag
+483.4044023,FA 26:1 +2O,FA 26:1 +2O,fatty_acid_RCO_glycerol,frag
+499.3993169,FA 26:1 +3O,FA 26:1 +3O,fatty_acid_RCO_glycerol,frag
+449.3989229,FA 26:2,FA 26:2,fatty_acid_RCO_glycerol,frag
+465.3938376,FA 26:2 +1O,FA 26:2 +1O,fatty_acid_RCO_glycerol,frag
+481.3887522,FA 26:2 +2O,FA 26:2 +2O,fatty_acid_RCO_glycerol,frag
+497.3836668,FA 26:2 +3O,FA 26:2 +3O,fatty_acid_RCO_glycerol,frag
+447.3832729,FA 26:3,FA 26:3,fatty_acid_RCO_glycerol,frag
+463.3781875,FA 26:3 +1O,FA 26:3 +1O,fatty_acid_RCO_glycerol,frag
+479.3731021,FA 26:3 +2O,FA 26:3 +2O,fatty_acid_RCO_glycerol,frag
+495.3680167,FA 26:3 +3O,FA 26:3 +3O,fatty_acid_RCO_glycerol,frag
+445.3676228,FA 26:4,FA 26:4,fatty_acid_RCO_glycerol,frag
+461.3625374,FA 26:4 +1O,FA 26:4 +1O,fatty_acid_RCO_glycerol,frag
+477.357452,FA 26:4 +2O,FA 26:4 +2O,fatty_acid_RCO_glycerol,frag
+493.3523666,FA 26:4 +3O,FA 26:4 +3O,fatty_acid_RCO_glycerol,frag
+443.3519727,FA 26:5,FA 26:5,fatty_acid_RCO_glycerol,frag
+459.3468873,FA 26:5 +1O,FA 26:5 +1O,fatty_acid_RCO_glycerol,frag
+475.3418019,FA 26:5 +2O,FA 26:5 +2O,fatty_acid_RCO_glycerol,frag
+491.3367166,FA 26:5 +3O,FA 26:5 +3O,fatty_acid_RCO_glycerol,frag
+467.4458732,FA 27:0,FA 27:0,fatty_acid_RCO_glycerol,frag
+483.4407878,FA 27:0 +1O,FA 27:0 +1O,fatty_acid_RCO_glycerol,frag
+499.4357024,FA 27:0 +2O,FA 27:0 +2O,fatty_acid_RCO_glycerol,frag
+515.430617,FA 27:0 +3O,FA 27:0 +3O,fatty_acid_RCO_glycerol,frag
+465.4302231,FA 27:1,FA 27:1,fatty_acid_RCO_glycerol,frag
+481.4251377,FA 27:1 +1O,FA 27:1 +1O,fatty_acid_RCO_glycerol,frag
+497.4200523,FA 27:1 +2O,FA 27:1 +2O,fatty_acid_RCO_glycerol,frag
+513.414967,FA 27:1 +3O,FA 27:1 +3O,fatty_acid_RCO_glycerol,frag
+463.414573,FA 27:2,FA 27:2,fatty_acid_RCO_glycerol,frag
+479.4094876,FA 27:2 +1O,FA 27:2 +1O,fatty_acid_RCO_glycerol,frag
+495.4044023,FA 27:2 +2O,FA 27:2 +2O,fatty_acid_RCO_glycerol,frag
+511.3993169,FA 27:2 +3O,FA 27:2 +3O,fatty_acid_RCO_glycerol,frag
+461.3989229,FA 27:3,FA 27:3,fatty_acid_RCO_glycerol,frag
+477.3938376,FA 27:3 +1O,FA 27:3 +1O,fatty_acid_RCO_glycerol,frag
+493.3887522,FA 27:3 +2O,FA 27:3 +2O,fatty_acid_RCO_glycerol,frag
+509.3836668,FA 27:3 +3O,FA 27:3 +3O,fatty_acid_RCO_glycerol,frag
+459.3832729,FA 27:4,FA 27:4,fatty_acid_RCO_glycerol,frag
+475.3781875,FA 27:4 +1O,FA 27:4 +1O,fatty_acid_RCO_glycerol,frag
+491.3731021,FA 27:4 +2O,FA 27:4 +2O,fatty_acid_RCO_glycerol,frag
+507.3680167,FA 27:4 +3O,FA 27:4 +3O,fatty_acid_RCO_glycerol,frag
+457.3676228,FA 27:5,FA 27:5,fatty_acid_RCO_glycerol,frag
+473.3625374,FA 27:5 +1O,FA 27:5 +1O,fatty_acid_RCO_glycerol,frag
+489.357452,FA 27:5 +2O,FA 27:5 +2O,fatty_acid_RCO_glycerol,frag
+505.3523666,FA 27:5 +3O,FA 27:5 +3O,fatty_acid_RCO_glycerol,frag
+455.3519727,FA 27:6,FA 27:6,fatty_acid_RCO_glycerol,frag
+471.3468873,FA 27:6 +1O,FA 27:6 +1O,fatty_acid_RCO_glycerol,frag
+487.3418019,FA 27:6 +2O,FA 27:6 +2O,fatty_acid_RCO_glycerol,frag
+503.3367166,FA 27:6 +3O,FA 27:6 +3O,fatty_acid_RCO_glycerol,frag
+481.4615233,FA 28:0,FA 28:0,fatty_acid_RCO_glycerol,frag
+497.4564379,FA 28:0 +1O,FA 28:0 +1O,fatty_acid_RCO_glycerol,frag
+513.4513525,FA 28:0 +2O,FA 28:0 +2O,fatty_acid_RCO_glycerol,frag
+529.4462671,FA 28:0 +3O,FA 28:0 +3O,fatty_acid_RCO_glycerol,frag
+479.4458732,FA 28:1,FA 28:1,fatty_acid_RCO_glycerol,frag
+495.4407878,FA 28:1 +1O,FA 28:1 +1O,fatty_acid_RCO_glycerol,frag
+511.4357024,FA 28:1 +2O,FA 28:1 +2O,fatty_acid_RCO_glycerol,frag
+527.430617,FA 28:1 +3O,FA 28:1 +3O,fatty_acid_RCO_glycerol,frag
+477.4302231,FA 28:2,FA 28:2,fatty_acid_RCO_glycerol,frag
+493.4251377,FA 28:2 +1O,FA 28:2 +1O,fatty_acid_RCO_glycerol,frag
+509.4200523,FA 28:2 +2O,FA 28:2 +2O,fatty_acid_RCO_glycerol,frag
+525.414967,FA 28:2 +3O,FA 28:2 +3O,fatty_acid_RCO_glycerol,frag
+475.414573,FA 28:3,FA 28:3,fatty_acid_RCO_glycerol,frag
+491.4094876,FA 28:3 +1O,FA 28:3 +1O,fatty_acid_RCO_glycerol,frag
+507.4044023,FA 28:3 +2O,FA 28:3 +2O,fatty_acid_RCO_glycerol,frag
+523.3993169,FA 28:3 +3O,FA 28:3 +3O,fatty_acid_RCO_glycerol,frag
+473.3989229,FA 28:4,FA 28:4,fatty_acid_RCO_glycerol,frag
+489.3938376,FA 28:4 +1O,FA 28:4 +1O,fatty_acid_RCO_glycerol,frag
+505.3887522,FA 28:4 +2O,FA 28:4 +2O,fatty_acid_RCO_glycerol,frag
+521.3836668,FA 28:4 +3O,FA 28:4 +3O,fatty_acid_RCO_glycerol,frag
+471.3832729,FA 28:5,FA 28:5,fatty_acid_RCO_glycerol,frag
+487.3781875,FA 28:5 +1O,FA 28:5 +1O,fatty_acid_RCO_glycerol,frag
+503.3731021,FA 28:5 +2O,FA 28:5 +2O,fatty_acid_RCO_glycerol,frag
+519.3680167,FA 28:5 +3O,FA 28:5 +3O,fatty_acid_RCO_glycerol,frag
+469.3676228,FA 28:6,FA 28:6,fatty_acid_RCO_glycerol,frag
+485.3625374,FA 28:6 +1O,FA 28:6 +1O,fatty_acid_RCO_glycerol,frag
+501.357452,FA 28:6 +2O,FA 28:6 +2O,fatty_acid_RCO_glycerol,frag
+517.3523666,FA 28:6 +3O,FA 28:6 +3O,fatty_acid_RCO_glycerol,frag
+495.4771733,FA 29:0,FA 29:0,fatty_acid_RCO_glycerol,frag
+511.472088,FA 29:0 +1O,FA 29:0 +1O,fatty_acid_RCO_glycerol,frag
+527.4670026,FA 29:0 +2O,FA 29:0 +2O,fatty_acid_RCO_glycerol,frag
+543.4619172,FA 29:0 +3O,FA 29:0 +3O,fatty_acid_RCO_glycerol,frag
+493.4615233,FA 29:1,FA 29:1,fatty_acid_RCO_glycerol,frag
+509.4564379,FA 29:1 +1O,FA 29:1 +1O,fatty_acid_RCO_glycerol,frag
+525.4513525,FA 29:1 +2O,FA 29:1 +2O,fatty_acid_RCO_glycerol,frag
+541.4462671,FA 29:1 +3O,FA 29:1 +3O,fatty_acid_RCO_glycerol,frag
+491.4458732,FA 29:2,FA 29:2,fatty_acid_RCO_glycerol,frag
+507.4407878,FA 29:2 +1O,FA 29:2 +1O,fatty_acid_RCO_glycerol,frag
+523.4357024,FA 29:2 +2O,FA 29:2 +2O,fatty_acid_RCO_glycerol,frag
+539.430617,FA 29:2 +3O,FA 29:2 +3O,fatty_acid_RCO_glycerol,frag
+489.4302231,FA 29:3,FA 29:3,fatty_acid_RCO_glycerol,frag
+505.4251377,FA 29:3 +1O,FA 29:3 +1O,fatty_acid_RCO_glycerol,frag
+521.4200523,FA 29:3 +2O,FA 29:3 +2O,fatty_acid_RCO_glycerol,frag
+537.414967,FA 29:3 +3O,FA 29:3 +3O,fatty_acid_RCO_glycerol,frag
+487.414573,FA 29:4,FA 29:4,fatty_acid_RCO_glycerol,frag
+503.4094876,FA 29:4 +1O,FA 29:4 +1O,fatty_acid_RCO_glycerol,frag
+519.4044023,FA 29:4 +2O,FA 29:4 +2O,fatty_acid_RCO_glycerol,frag
+535.3993169,FA 29:4 +3O,FA 29:4 +3O,fatty_acid_RCO_glycerol,frag
+485.3989229,FA 29:5,FA 29:5,fatty_acid_RCO_glycerol,frag
+501.3938376,FA 29:5 +1O,FA 29:5 +1O,fatty_acid_RCO_glycerol,frag
+517.3887522,FA 29:5 +2O,FA 29:5 +2O,fatty_acid_RCO_glycerol,frag
+533.3836668,FA 29:5 +3O,FA 29:5 +3O,fatty_acid_RCO_glycerol,frag
+483.3832729,FA 29:6,FA 29:6,fatty_acid_RCO_glycerol,frag
+499.3781875,FA 29:6 +1O,FA 29:6 +1O,fatty_acid_RCO_glycerol,frag
+515.3731021,FA 29:6 +2O,FA 29:6 +2O,fatty_acid_RCO_glycerol,frag
+531.3680167,FA 29:6 +3O,FA 29:6 +3O,fatty_acid_RCO_glycerol,frag
+509.4928234,FA 30:0,FA 30:0,fatty_acid_RCO_glycerol,frag
+525.487738,FA 30:0 +1O,FA 30:0 +1O,fatty_acid_RCO_glycerol,frag
+541.4826527,FA 30:0 +2O,FA 30:0 +2O,fatty_acid_RCO_glycerol,frag
+557.4775673,FA 30:0 +3O,FA 30:0 +3O,fatty_acid_RCO_glycerol,frag
+507.4771733,FA 30:1,FA 30:1,fatty_acid_RCO_glycerol,frag
+523.472088,FA 30:1 +1O,FA 30:1 +1O,fatty_acid_RCO_glycerol,frag
+539.4670026,FA 30:1 +2O,FA 30:1 +2O,fatty_acid_RCO_glycerol,frag
+555.4619172,FA 30:1 +3O,FA 30:1 +3O,fatty_acid_RCO_glycerol,frag
+505.4615233,FA 30:2,FA 30:2,fatty_acid_RCO_glycerol,frag
+521.4564379,FA 30:2 +1O,FA 30:2 +1O,fatty_acid_RCO_glycerol,frag
+537.4513525,FA 30:2 +2O,FA 30:2 +2O,fatty_acid_RCO_glycerol,frag
+553.4462671,FA 30:2 +3O,FA 30:2 +3O,fatty_acid_RCO_glycerol,frag
+503.4458732,FA 30:3,FA 30:3,fatty_acid_RCO_glycerol,frag
+519.4407878,FA 30:3 +1O,FA 30:3 +1O,fatty_acid_RCO_glycerol,frag
+535.4357024,FA 30:3 +2O,FA 30:3 +2O,fatty_acid_RCO_glycerol,frag
+551.430617,FA 30:3 +3O,FA 30:3 +3O,fatty_acid_RCO_glycerol,frag
+501.4302231,FA 30:4,FA 30:4,fatty_acid_RCO_glycerol,frag
+517.4251377,FA 30:4 +1O,FA 30:4 +1O,fatty_acid_RCO_glycerol,frag
+533.4200523,FA 30:4 +2O,FA 30:4 +2O,fatty_acid_RCO_glycerol,frag
+549.414967,FA 30:4 +3O,FA 30:4 +3O,fatty_acid_RCO_glycerol,frag
+499.414573,FA 30:5,FA 30:5,fatty_acid_RCO_glycerol,frag
+515.4094876,FA 30:5 +1O,FA 30:5 +1O,fatty_acid_RCO_glycerol,frag
+531.4044023,FA 30:5 +2O,FA 30:5 +2O,fatty_acid_RCO_glycerol,frag
+547.3993169,FA 30:5 +3O,FA 30:5 +3O,fatty_acid_RCO_glycerol,frag
+497.3989229,FA 30:6,FA 30:6,fatty_acid_RCO_glycerol,frag
+513.3938376,FA 30:6 +1O,FA 30:6 +1O,fatty_acid_RCO_glycerol,frag
+529.3887522,FA 30:6 +2O,FA 30:6 +2O,fatty_acid_RCO_glycerol,frag
+545.3836668,FA 30:6 +3O,FA 30:6 +3O,fatty_acid_RCO_glycerol,frag
+238.25349,LCB C16:0 - H2O,d16:0,ceramide,frag
+236.23784,LCB C16:1 - H2O,d16:1,ceramide,frag
+234.22219,LCB C16:2 - H2O,d16:2,ceramide,frag
+232.20654,LCB C16:3 - H2O,d16:3,ceramide,frag
+230.19089,LCB C16:4 - H2O,d16:4,ceramide,frag
+228.17524,LCB C16:5 - H2O,d16:5,ceramide,frag
+226.15959,LCB C16:6 - H2O,d16:6,ceramide,frag
+224.14394,LCB C16:7 - H2O,d16:7,ceramide,frag
+222.12829,LCB C16:8 - H2O,d16:8,ceramide,frag
+252.26914,LCB C17:0 - H2O,d17:0,ceramide,frag
+250.25349,LCB C17:1 - H2O,d17:1,ceramide,frag
+248.23784,LCB C17:2 - H2O,d17:2,ceramide,frag
+246.22219,LCB C17:3 - H2O,d17:3,ceramide,frag
+244.20654,LCB C17:4 - H2O,d17:4,ceramide,frag
+242.19089,LCB C17:5 - H2O,d17:5,ceramide,frag
+240.17524,LCB C17:6 - H2O,d17:6,ceramide,frag
+238.15959,LCB C17:7 - H2O,d17:7,ceramide,frag
+236.14394,LCB C17:8 - H2O,d17:8,ceramide,frag
+266.28479,LCB C18:0 - H2O,d18:0,ceramide,frag
+264.26914,LCB C18:1 - H2O,d18:1,ceramide,frag
+262.25349,LCB C18:2 - H2O,d18:2,ceramide,frag
+260.23784,LCB C18:3 - H2O,d18:3,ceramide,frag
+258.22219,LCB C18:4 - H2O,d18:4,ceramide,frag
+256.20654,LCB C18:5 - H2O,d18:5,ceramide,frag
+254.19089,LCB C18:6 - H2O,d18:6,ceramide,frag
+252.17524,LCB C18:7 - H2O,d18:7,ceramide,frag
+250.15959,LCB C18:8 - H2O,d18:8,ceramide,frag
+248.14394,LCB C18:9 - H2O,d18:9,ceramide,frag
+280.30044,LCB C19:0 - H2O,d19:0,ceramide,frag
+278.28479,LCB C19:1 - H2O,d19:1,ceramide,frag
+276.26914,LCB C19:2 - H2O,d19:2,ceramide,frag
+274.25349,LCB C19:3 - H2O,d19:3,ceramide,frag
+272.23784,LCB C19:4 - H2O,d19:4,ceramide,frag
+270.22219,LCB C19:5 - H2O,d19:5,ceramide,frag
+268.20654,LCB C19:6 - H2O,d19:6,ceramide,frag
+266.19089,LCB C19:7 - H2O,d19:7,ceramide,frag
+264.17524,LCB C19:8 - H2O,d19:8,ceramide,frag
+262.15959,LCB C19:9 - H2O,d19:9,ceramide,frag
+294.31609,LCB C20:0 - H2O,d20:0,ceramide,frag
+292.30044,LCB C20:1 - H2O,d20:1,ceramide,frag
+290.28479,LCB C20:2 - H2O,d20:2,ceramide,frag
+288.26914,LCB C20:3 - H2O,d20:3,ceramide,frag
+286.25349,LCB C20:4 - H2O,d20:4,ceramide,frag
+284.23784,LCB C20:5 - H2O,d20:5,ceramide,frag
+282.22219,LCB C20:6 - H2O,d20:6,ceramide,frag
+280.20654,LCB C20:7 - H2O,d20:7,ceramide,frag
+278.19089,LCB C20:8 - H2O,d20:8,ceramide,frag
+276.17524,LCB C20:9 - H2O,d20:9,ceramide,frag
+274.15959,LCB C20:10 - H2O,d20:10,ceramide,frag
+322.34739,LCB C22:0 - H2O,d22:0,ceramide,frag
+320.33174,LCB C22:1 - H2O,d22:1,ceramide,frag
+318.31609,LCB C22:2 - H2O,d22:2,ceramide,frag
+316.30044,LCB C22:3 - H2O,d22:3,ceramide,frag
+314.28479,LCB C22:4 - H2O,d22:4,ceramide,frag
+312.26914,LCB C22:5 - H2O,d22:5,ceramide,frag
+310.25349,LCB C22:6 - H2O,d22:6,ceramide,frag
+308.23784,LCB C22:7 - H2O,d22:7,ceramide,frag
+306.22219,LCB C22:8 - H2O,d22:8,ceramide,frag
+304.20654,LCB C22:9 - H2O,d22:9,ceramide,frag
+302.19089,LCB C22:10 - H2O,d22:10,ceramide,frag
+350.37869,LCB C24:0 - H2O,d24:0,ceramide,frag
+348.36304,LCB C24:1 - H2O,d24:1,ceramide,frag
+346.34739,LCB C24:2 - H2O,d24:2,ceramide,frag
+344.33174,LCB C24:3 - H2O,d24:3,ceramide,frag
+342.31609,LCB C24:4 - H2O,d24:4,ceramide,frag
+340.30044,LCB C24:5 - H2O,d24:5,ceramide,frag
+338.28479,LCB C24:6 - H2O,d24:6,ceramide,frag
+336.26914,LCB C24:7 - H2O,d24:7,ceramide,frag
+334.25349,LCB C24:8 - H2O,d24:8,ceramide,frag
+332.23784,LCB C24:9 - H2O,d24:9,ceramide,frag
+330.22219,LCB C24:10 - H2O,d24:10,ceramide,frag
+378.40999,LCB C26:0 - H2O,d26:0,ceramide,frag
+376.39434,LCB C26:1 - H2O,d26:1,ceramide,frag
+374.37869,LCB C26:2 - H2O,d26:2,ceramide,frag
+372.36304,LCB C26:3 - H2O,d26:3,ceramide,frag
+370.34739,LCB C26:4 - H2O,d26:4,ceramide,frag
+368.33174,LCB C26:5 - H2O,d26:5,ceramide,frag
+366.31609,LCB C26:6 - H2O,d26:6,ceramide,frag
+364.30044,LCB C26:7 - H2O,d26:7,ceramide,frag
+362.28479,LCB C26:8 - H2O,d26:8,ceramide,frag
+360.26914,LCB C26:9 - H2O,d26:9,ceramide,frag
+358.25349,LCB C26:10 - H2O,d26:10,ceramide,frag
+406.44129,LCB C28:0 - H2O,d28:0,ceramide,frag
+404.42564,LCB C28:1 - H2O,d28:1,ceramide,frag
+402.40999,LCB C28:2 - H2O,d28:2,ceramide,frag
+400.39434,LCB C28:3 - H2O,d28:3,ceramide,frag
+398.37869,LCB C28:4 - H2O,d28:4,ceramide,frag
+396.36304,LCB C28:5 - H2O,d28:5,ceramide,frag
+394.34739,LCB C28:6 - H2O,d28:6,ceramide,frag
+392.33174,LCB C28:7 - H2O,d28:7,ceramide,frag
+390.31609,LCB C28:8 - H2O,d28:8,ceramide,frag
+388.30044,LCB C28:9 - H2O,d28:9,ceramide,frag
+386.28479,LCB C28:10 - H2O,d28:10,ceramide,frag
+434.47259,LCB C30:0 - H2O,d30:0,ceramide,frag
+432.45694,LCB C30:1 - H2O,d30:1,ceramide,frag
+430.44129,LCB C30:2 - H2O,d30:2,ceramide,frag
+428.42564,LCB C30:3 - H2O,d30:3,ceramide,frag
+426.40999,LCB C30:4 - H2O,d30:4,ceramide,frag
+424.39434,LCB C30:5 - H2O,d30:5,ceramide,frag
+422.37869,LCB C30:6 - H2O,d30:6,ceramide,frag
+420.36304,LCB C30:7 - H2O,d30:7,ceramide,frag
+418.34739,LCB C30:8 - H2O,d30:8,ceramide,frag
+416.33174,LCB C30:9 - H2O,d30:9,ceramide,frag
+414.31609,LCB C30:10 - H2O,d30:10,ceramide,frag
+256.26405,LCB C16:0,d16:0,ceramide,frag
+254.2484,LCB C16:1,d16:1,ceramide,frag
+252.23275,LCB C16:2,d16:2,ceramide,frag
+250.2171,LCB C16:3,d16:3,ceramide,frag
+248.20145,LCB C16:4,d16:4,ceramide,frag
+246.1858,LCB C16:5,d16:5,ceramide,frag
+244.17015,LCB C16:6,d16:6,ceramide,frag
+242.1545,LCB C16:7,d16:7,ceramide,frag
+240.13885,LCB C16:8,d16:8,ceramide,frag
+270.2797,LCB C17:0,d17:0,ceramide,frag
+268.26405,LCB C17:1,d17:1,ceramide,frag
+266.2484,LCB C17:2,d17:2,ceramide,frag
+264.23275,LCB C17:3,d17:3,ceramide,frag
+262.2171,LCB C17:4,d17:4,ceramide,frag
+260.20145,LCB C17:5,d17:5,ceramide,frag
+258.1858,LCB C17:6,d17:6,ceramide,frag
+256.17015,LCB C17:7,d17:7,ceramide,frag
+254.1545,LCB C17:8,d17:8,ceramide,frag
+284.29535,LCB C18:0,d18:0,ceramide,frag
+282.2797,LCB C18:1,d18:1,ceramide,frag
+280.26405,LCB C18:2,d18:2,ceramide,frag
+278.2484,LCB C18:3,d18:3,ceramide,frag
+276.23275,LCB C18:4,d18:4,ceramide,frag
+274.2171,LCB C18:5,d18:5,ceramide,frag
+272.20145,LCB C18:6,d18:6,ceramide,frag
+270.1858,LCB C18:7,d18:7,ceramide,frag
+268.17015,LCB C18:8,d18:8,ceramide,frag
+266.1545,LCB C18:9,d18:9,ceramide,frag
+298.311,LCB C19:0,d19:0,ceramide,frag
+296.29535,LCB C19:1,d19:1,ceramide,frag
+294.2797,LCB C19:2,d19:2,ceramide,frag
+292.26405,LCB C19:3,d19:3,ceramide,frag
+290.2484,LCB C19:4,d19:4,ceramide,frag
+288.23275,LCB C19:5,d19:5,ceramide,frag
+286.2171,LCB C19:6,d19:6,ceramide,frag
+284.20145,LCB C19:7,d19:7,ceramide,frag
+282.1858,LCB C19:8,d19:8,ceramide,frag
+280.17015,LCB C19:9,d19:9,ceramide,frag
+312.32665,LCB C20:0,d20:0,ceramide,frag
+310.311,LCB C20:1,d20:1,ceramide,frag
+308.29535,LCB C20:2,d20:2,ceramide,frag
+306.2797,LCB C20:3,d20:3,ceramide,frag
+304.26405,LCB C20:4,d20:4,ceramide,frag
+302.2484,LCB C20:5,d20:5,ceramide,frag
+300.23275,LCB C20:6,d20:6,ceramide,frag
+298.2171,LCB C20:7,d20:7,ceramide,frag
+296.20145,LCB C20:8,d20:8,ceramide,frag
+294.1858,LCB C20:9,d20:9,ceramide,frag
+292.17015,LCB C20:10,d20:10,ceramide,frag
+340.35795,LCB C22:0,d22:0,ceramide,frag
+338.3423,LCB C22:1,d22:1,ceramide,frag
+336.32665,LCB C22:2,d22:2,ceramide,frag
+334.311,LCB C22:3,d22:3,ceramide,frag
+332.29535,LCB C22:4,d22:4,ceramide,frag
+330.2797,LCB C22:5,d22:5,ceramide,frag
+328.26405,LCB C22:6,d22:6,ceramide,frag
+326.2484,LCB C22:7,d22:7,ceramide,frag
+324.23275,LCB C22:8,d22:8,ceramide,frag
+322.2171,LCB C22:9,d22:9,ceramide,frag
+320.20145,LCB C22:10,d22:10,ceramide,frag
+368.38925,LCB C24:0,d24:0,ceramide,frag
+366.3736,LCB C24:1,d24:1,ceramide,frag
+364.35795,LCB C24:2,d24:2,ceramide,frag
+362.3423,LCB C24:3,d24:3,ceramide,frag
+360.32665,LCB C24:4,d24:4,ceramide,frag
+358.311,LCB C24:5,d24:5,ceramide,frag
+356.29535,LCB C24:6,d24:6,ceramide,frag
+354.2797,LCB C24:7,d24:7,ceramide,frag
+352.26405,LCB C24:8,d24:8,ceramide,frag
+350.2484,LCB C24:9,d24:9,ceramide,frag
+348.23275,LCB C24:10,d24:10,ceramide,frag
+396.42055,LCB C26:0,d26:0,ceramide,frag
+394.4049,LCB C26:1,d26:1,ceramide,frag
+392.38925,LCB C26:2,d26:2,ceramide,frag
+390.3736,LCB C26:3,d26:3,ceramide,frag
+388.35795,LCB C26:4,d26:4,ceramide,frag
+386.3423,LCB C26:5,d26:5,ceramide,frag
+384.32665,LCB C26:6,d26:6,ceramide,frag
+382.311,LCB C26:7,d26:7,ceramide,frag
+380.29535,LCB C26:8,d26:8,ceramide,frag
+378.2797,LCB C26:9,d26:9,ceramide,frag
+376.26405,LCB C26:10,d26:10,ceramide,frag
+424.45185,LCB C28:0,d28:0,ceramide,frag
+422.4362,LCB C28:1,d28:1,ceramide,frag
+420.42055,LCB C28:2,d28:2,ceramide,frag
+418.4049,LCB C28:3,d28:3,ceramide,frag
+416.38925,LCB C28:4,d28:4,ceramide,frag
+414.3736,LCB C28:5,d28:5,ceramide,frag
+412.35795,LCB C28:6,d28:6,ceramide,frag
+410.3423,LCB C28:7,d28:7,ceramide,frag
+408.32665,LCB C28:8,d28:8,ceramide,frag
+406.311,LCB C28:9,d28:9,ceramide,frag
+404.29535,LCB C28:10,d28:10,ceramide,frag
+452.48315,LCB C30:0,d30:0,ceramide,frag
+450.4675,LCB C30:1,d30:1,ceramide,frag
+448.45185,LCB C30:2,d30:2,ceramide,frag
+446.4362,LCB C30:3,d30:3,ceramide,frag
+444.42055,LCB C30:4,d30:4,ceramide,frag
+442.4049,LCB C30:5,d30:5,ceramide,frag
+440.38925,LCB C30:6,d30:6,ceramide,frag
+438.3736,LCB C30:7,d30:7,ceramide,frag
+436.35795,LCB C30:8,d30:8,ceramide,frag
+434.3423,LCB C30:9,d30:9,ceramide,frag
+432.32665,LCB C30:10,d30:10,ceramide,frag
+220.24293,LCB C16:0 - 2H2O,d16:0,ceramide,frag
+218.22728,LCB C16:1 - 2H2O,d16:1,ceramide,frag
+216.21163,LCB C16:2 - 2H2O,d16:2,ceramide,frag
+214.19598,LCB C16:3 - 2H2O,d16:3,ceramide,frag
+212.18033,LCB C16:4 - 2H2O,d16:4,ceramide,frag
+210.16468,LCB C16:5 - 2H2O,d16:5,ceramide,frag
+208.14903,LCB C16:6 - 2H2O,d16:6,ceramide,frag
+206.13338,LCB C16:7 - 2H2O,d16:7,ceramide,frag
+204.11773,LCB C16:8 - 2H2O,d16:8,ceramide,frag
+234.25858,LCB C17:0 - 2H2O,d17:0,ceramide,frag
+232.24293,LCB C17:1 - 2H2O,d17:1,ceramide,frag
+230.22728,LCB C17:2 - 2H2O,d17:2,ceramide,frag
+228.21163,LCB C17:3 - 2H2O,d17:3,ceramide,frag
+226.19598,LCB C17:4 - 2H2O,d17:4,ceramide,frag
+224.18033,LCB C17:5 - 2H2O,d17:5,ceramide,frag
+222.16468,LCB C17:6 - 2H2O,d17:6,ceramide,frag
+220.14903,LCB C17:7 - 2H2O,d17:7,ceramide,frag
+218.13338,LCB C17:8 - 2H2O,d17:8,ceramide,frag
+248.27423,LCB C18:0 - 2H2O,d18:0,ceramide,frag
+246.25858,LCB C18:1 - 2H2O,d18:1,ceramide,frag
+244.24293,LCB C18:2 - 2H2O,d18:2,ceramide,frag
+242.22728,LCB C18:3 - 2H2O,d18:3,ceramide,frag
+240.21163,LCB C18:4 - 2H2O,d18:4,ceramide,frag
+238.19598,LCB C18:5 - 2H2O,d18:5,ceramide,frag
+236.18033,LCB C18:6 - 2H2O,d18:6,ceramide,frag
+234.16468,LCB C18:7 - 2H2O,d18:7,ceramide,frag
+232.14903,LCB C18:8 - 2H2O,d18:8,ceramide,frag
+230.13338,LCB C18:9 - 2H2O,d18:9,ceramide,frag
+262.28988,LCB C19:0 - 2H2O,d19:0,ceramide,frag
+260.27423,LCB C19:1 - 2H2O,d19:1,ceramide,frag
+258.25858,LCB C19:2 - 2H2O,d19:2,ceramide,frag
+256.24293,LCB C19:3 - 2H2O,d19:3,ceramide,frag
+254.22728,LCB C19:4 - 2H2O,d19:4,ceramide,frag
+252.21163,LCB C19:5 - 2H2O,d19:5,ceramide,frag
+250.19598,LCB C19:6 - 2H2O,d19:6,ceramide,frag
+248.18033,LCB C19:7 - 2H2O,d19:7,ceramide,frag
+246.16468,LCB C19:8 - 2H2O,d19:8,ceramide,frag
+244.14903,LCB C19:9 - 2H2O,d19:9,ceramide,frag
+276.30553,LCB C20:0 - 2H2O,d20:0,ceramide,frag
+274.28988,LCB C20:1 - 2H2O,d20:1,ceramide,frag
+272.27423,LCB C20:2 - 2H2O,d20:2,ceramide,frag
+270.25858,LCB C20:3 - 2H2O,d20:3,ceramide,frag
+268.24293,LCB C20:4 - 2H2O,d20:4,ceramide,frag
+266.22728,LCB C20:5 - 2H2O,d20:5,ceramide,frag
+264.21163,LCB C20:6 - 2H2O,d20:6,ceramide,frag
+262.19598,LCB C20:7 - 2H2O,d20:7,ceramide,frag
+260.18033,LCB C20:8 - 2H2O,d20:8,ceramide,frag
+258.16468,LCB C20:9 - 2H2O,d20:9,ceramide,frag
+256.14903,LCB C20:10 - 2H2O,d20:10,ceramide,frag
+304.33683,LCB C22:0 - 2H2O,d22:0,ceramide,frag
+302.32118,LCB C22:1 - 2H2O,d22:1,ceramide,frag
+300.30553,LCB C22:2 - 2H2O,d22:2,ceramide,frag
+298.28988,LCB C22:3 - 2H2O,d22:3,ceramide,frag
+296.27423,LCB C22:4 - 2H2O,d22:4,ceramide,frag
+294.25858,LCB C22:5 - 2H2O,d22:5,ceramide,frag
+292.24293,LCB C22:6 - 2H2O,d22:6,ceramide,frag
+290.22728,LCB C22:7 - 2H2O,d22:7,ceramide,frag
+288.21163,LCB C22:8 - 2H2O,d22:8,ceramide,frag
+286.19598,LCB C22:9 - 2H2O,d22:9,ceramide,frag
+284.18033,LCB C22:10 - 2H2O,d22:10,ceramide,frag
+332.36813,LCB C24:0 - 2H2O,d24:0,ceramide,frag
+330.35248,LCB C24:1 - 2H2O,d24:1,ceramide,frag
+328.33683,LCB C24:2 - 2H2O,d24:2,ceramide,frag
+326.32118,LCB C24:3 - 2H2O,d24:3,ceramide,frag
+324.30553,LCB C24:4 - 2H2O,d24:4,ceramide,frag
+322.28988,LCB C24:5 - 2H2O,d24:5,ceramide,frag
+320.27423,LCB C24:6 - 2H2O,d24:6,ceramide,frag
+318.25858,LCB C24:7 - 2H2O,d24:7,ceramide,frag
+316.24293,LCB C24:8 - 2H2O,d24:8,ceramide,frag
+314.22728,LCB C24:9 - 2H2O,d24:9,ceramide,frag
+312.21163,LCB C24:10 - 2H2O,d24:10,ceramide,frag
+360.39943,LCB C26:0 - 2H2O,d26:0,ceramide,frag
+358.38378,LCB C26:1 - 2H2O,d26:1,ceramide,frag
+356.36813,LCB C26:2 - 2H2O,d26:2,ceramide,frag
+354.35248,LCB C26:3 - 2H2O,d26:3,ceramide,frag
+352.33683,LCB C26:4 - 2H2O,d26:4,ceramide,frag
+350.32118,LCB C26:5 - 2H2O,d26:5,ceramide,frag
+348.30553,LCB C26:6 - 2H2O,d26:6,ceramide,frag
+346.28988,LCB C26:7 - 2H2O,d26:7,ceramide,frag
+344.27423,LCB C26:8 - 2H2O,d26:8,ceramide,frag
+342.25858,LCB C26:9 - 2H2O,d26:9,ceramide,frag
+340.24293,LCB C26:10 - 2H2O,d26:10,ceramide,frag
+388.43073,LCB C28:0 - 2H2O,d28:0,ceramide,frag
+386.41508,LCB C28:1 - 2H2O,d28:1,ceramide,frag
+384.39943,LCB C28:2 - 2H2O,d28:2,ceramide,frag
+382.38378,LCB C28:3 - 2H2O,d28:3,ceramide,frag
+380.36813,LCB C28:4 - 2H2O,d28:4,ceramide,frag
+378.35248,LCB C28:5 - 2H2O,d28:5,ceramide,frag
+376.33683,LCB C28:6 - 2H2O,d28:6,ceramide,frag
+374.32118,LCB C28:7 - 2H2O,d28:7,ceramide,frag
+372.30553,LCB C28:8 - 2H2O,d28:8,ceramide,frag
+370.28988,LCB C28:9 - 2H2O,d28:9,ceramide,frag
+368.27423,LCB C28:10 - 2H2O,d28:10,ceramide,frag
+416.46203,LCB C30:0 - 2H2O,d30:0,ceramide,frag
+414.44638,LCB C30:1 - 2H2O,d30:1,ceramide,frag
+412.43073,LCB C30:2 - 2H2O,d30:2,ceramide,frag
+410.41508,LCB C30:3 - 2H2O,d30:3,ceramide,frag
+408.39943,LCB C30:4 - 2H2O,d30:4,ceramide,frag
+406.38378,LCB C30:5 - 2H2O,d30:5,ceramide,frag
+404.36813,LCB C30:6 - 2H2O,d30:6,ceramide,frag
+402.35248,LCB C30:7 - 2H2O,d30:7,ceramide,frag
+400.33683,LCB C30:8 - 2H2O,d30:8,ceramide,frag
+398.32118,LCB C30:9 - 2H2O,d30:9,ceramide,frag
+396.30553,LCB C30:10 - 2H2O,d30:10,ceramide,frag

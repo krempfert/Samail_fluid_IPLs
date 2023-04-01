@@ -1,0 +1,820 @@
+---
+title: "Oman fluids exploratory figures"
+author: "Katie Rempfert"
+date: "`r format(Sys.Date(), '%d %b %Y')`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    css: stylesheet.css
+    toc: yes
+    toc_float: yes
+    toc_depth: 3
+    code_folding: show
+subtitle: Starting from annotated peaklist
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, echo = TRUE, message=FALSE, warning=FALSE}
+# load required packages
+library(tidyverse)
+library(ggplot2)
+library(scales)
+library(vegan)
+library(knitr)
+library(ggord)
+library(ggrepel)
+
+knitr::opts_chunk$set(echo = TRUE, cache = F)
+```
+
+
+# Apply response factors, correct for matrix effects, and calculate relative abundances
+```{r}
+#import annotated peaklist and standard response factors
+annotated <- read.csv("output/annotation/fluids_woBA1A_annotated_peaklist.csv")
+annotated_1 <- annotated %>% group_by(compound_name) %>% summarise_at(vars(starts_with("QEF") | starts_with("blank")), funs(sum))
+annotated_2 <- annotated %>% select(c(compound_name, LOBdbase_mz, id_hg, elem_formula, lipid_class, species, major_adduct, FA_total_no_C, FA_total_no_DB, degree_oxidation, hg, hg_response, hg.label, standard, response_standard)) %>% distinct()
+annotated_3 <- inner_join(annotated_1, annotated_2)
+
+#import response factors
+response_factor <- readRDS("output/calibration/response_factors_9_18_20.rds")
+
+#extract response of matrix effect standard d9-DGTS
+response <- response_factor %>% column_to_rownames("standard")
+d9_DGTS_response <- response["DGTS-DAG-d9","estimate"]
+C16_PAF_response <- response["PC-DAG-PAF","estimate"]
+
+#estimated peak area for 1 ng added to insert (resuspended in 200 uL and 10 uL injection) 
+expected_DGTS <- d9_DGTS_response * .05
+#estimated peak area for 200 ng added to insert (resuspended in 200 uL and 10 uL injection) 
+expected_C16PAF <- C16_PAF_response * 10
+
+#blank subtraction 
+annotated_blank_subtracted <- annotated_3 %>% mutate_at(vars(starts_with("QEF")), list(blank_subtracted = ~ . - blank))
+#if area is negative after blank subtraction, change to 0 
+annotated_blank_subtracted <- annotated_blank_subtracted %>% mutate_at(vars(contains("blank_subtracted")), ~replace(., . < 0, 0))
+
+#calculate matrix effect for each sample using d9-DGTS standard
+matrix_subset <- annotated_blank_subtracted %>% select(contains("blank_subtracted") | starts_with("compound_name") | starts_with("species")) %>% filter(species == "d9_DGTS") %>% select(-species) %>% column_to_rownames("compound_name") %>% t() %>% data.frame() %>% rownames_to_column("sample")
+matrix_subset <- matrix_subset %>% mutate(matrix.effect = d9_DGTS/expected_DGTS) %>% select(-d9_DGTS) 
+
+#Apply matrix correction
+annotated_for_matrix_correction <- annotated_blank_subtracted %>% select(c(compound_name, contains("blank_subtracted"))) %>% pivot_longer(-compound_name, names_to = "sample", values_to = "area") %>% pivot_wider(names_from = compound_name, values_from = area)
+
+annotated_for_matrix_correction_joined <- left_join(annotated_for_matrix_correction, matrix_subset)
+annotated_matrix_corrected <- annotated_for_matrix_correction_joined %>% mutate_at(vars(contains("_")), ~.*(1/(matrix.effect))) %>% select(-c(matrix.effect)) %>% column_to_rownames("sample") %>% t() %>% data.frame() %>% rownames_to_column("compound_name")
+  
+annotated_matrix_corrected_joined <- left_join(annotated_3, annotated_matrix_corrected) 
+
+#extract response factors for each standard 
+responses <- response_factor %>% select(c(estimate, standard)) %>% spread(standard, estimate) %>% mutate(
+  "PC-average" = mean(c_across(starts_with("PC"))),
+  "PE-average" = mean(c_across(starts_with("PE"))),
+  "PG-average" = mean(c_across("PG-DEG":"PG-MAG"))
+) %>% 
+  gather(standard, estimate)
+
+response_error_lower <- response_factor %>% select(c(estimate, standard, std.error)) %>% mutate(estimate.lower = estimate - std.error) %>% select(-c(estimate, std.error)) %>% spread(standard, estimate.lower) %>% mutate(
+  "PC-average" = mean(c_across(starts_with("PC"))),
+  "PE-average" = mean(c_across(starts_with("PE"))),
+  "PG-average" = mean(c_across("PG-DEG":"PG-MAG"))
+) %>% 
+  gather(standard, estimate.lower)
+
+response_error_upper <- response_factor %>% select(c(estimate, standard, std.error)) %>% mutate(estimate.upper = estimate + std.error) %>% select(-c(estimate, std.error)) %>% spread(standard, estimate.upper) %>% mutate(
+  "PC-average" = mean(c_across(starts_with("PC"))),
+  "PE-average" = mean(c_across(starts_with("PE"))),
+  "PG-average" = mean(c_across("PG-DEG":"PG-MAG"))
+) %>% 
+  gather(standard, estimate.upper)
+  
+#apply response factors
+annotated_subset <- annotated_matrix_corrected_joined %>% select(contains("blank_subtracted") | starts_with("response_standard") | starts_with("lipid_class") | starts_with("species") | starts_with("compound_name") | starts_with("hg.label")) 
+annotated_subset.response  <- left_join(annotated_subset, responses, by = c("response_standard" = "standard")) 
+annotated_subset.lower  <- left_join(annotated_subset, response_error_lower, by = c("response_standard" = "standard")) 
+annotated_subset.upper  <- left_join(annotated_subset, response_error_upper, by = c("response_standard" = "standard")) 
+annotated_response_corrected <- annotated_subset.response %>% mutate_at(vars(contains("blank_subtracted")), ~.*(1/estimate))
+annotated_response_corrected.lower <- annotated_subset.lower %>% mutate_at(vars(contains("blank_subtracted")), ~.*(1/estimate.lower))
+annotated_response_corrected.upper <- annotated_subset.upper %>% mutate_at(vars(contains("blank_subtracted")), ~.*(1/estimate.upper))
+
+#import meta data
+meta <- read.csv("data/geochem/2017_fluid_geochem.csv")
+#extract L filtered from meta and join with response_corrected data
+L <- meta %>% select(c(sample, L_filtered))
+matrix_subset <- left_join(matrix_subset, L)
+#% of sample injected
+percent_sample <- .05
+
+#transpose response corrected data for joining
+annotated_for_ng_l <- annotated_response_corrected %>% select(c(compound_name, contains("blank_subtracted"))) %>% pivot_longer(-compound_name, names_to = "sample", values_to = "area") %>% pivot_wider(names_from = compound_name, values_from = area)
+annotated_for_ng_l.lower <- annotated_response_corrected.lower %>% select(c(compound_name, contains("blank_subtracted"))) %>% pivot_longer(-compound_name, names_to = "sample", values_to = "area") %>% pivot_wider(names_from = compound_name, values_from = area)
+annotated_for_ng_l.upper <- annotated_response_corrected.upper  %>% select(c(compound_name, contains("blank_subtracted"))) %>% pivot_longer(-compound_name, names_to = "sample", values_to = "area") %>% pivot_wider(names_from = compound_name, values_from = area)
+#join with ng/L and calculate the extraction yield
+annotated_for_ng_l <- left_join(annotated_for_ng_l, L) %>% mutate(
+  #200 ng of standard suspended in 200 uL; injection of 10 uL = 10 ng on column 
+  extraction_yield = C16PAF/10
+)
+annotated_for_ng_l.lower <- left_join(annotated_for_ng_l.lower, L) %>% mutate(
+  #200 ng of standard suspended in 200 uL; injection of 10 uL = 10 ng on column 
+  extraction_yield = C16PAF/10
+)
+annotated_for_ng_l.upper <- left_join(annotated_for_ng_l.upper, L) %>% mutate(
+  #200 ng of standard suspended in 200 uL; injection of 10 uL = 10 ng on column 
+  extraction_yield = C16PAF/10
+)
+
+#correct for extraction, correct from ng on column to ng per sample and then divide by L filtered to get ng/L
+annotated_ng_L <- annotated_for_ng_l %>% mutate_at(vars(contains("QEF")), ~.*(1/(extraction_yield *percent_sample * L_filtered))) %>% select(-c(extraction_yield, L_filtered)) %>% column_to_rownames("sample") %>% t() %>% data.frame() %>% rownames_to_column("compound_name")
+annotated_ng_L.lower <- annotated_for_ng_l.lower %>% mutate_at(vars(contains("QEF")), ~.*(1/(extraction_yield *percent_sample * L_filtered))) %>% select(-c(extraction_yield, L_filtered)) %>% column_to_rownames("sample") %>% t() %>% data.frame() %>% rownames_to_column("compound_name")
+annotated_ng_L.upper <- annotated_for_ng_l.upper %>% mutate_at(vars(contains("QEF")), ~.*(1/(extraction_yield *percent_sample * L_filtered))) %>% select(-c(extraction_yield, L_filtered)) %>% column_to_rownames("sample") %>% t() %>% data.frame() %>% rownames_to_column("compound_name")
+
+#rejoin with main dataframe
+annotated_ng_L_joined <- left_join(annotated_3, annotated_ng_L) 
+annotated_ng_L_joined.lower <- left_join(annotated_3, annotated_ng_L.lower) 
+annotated_ng_L_joined.upper <- left_join(annotated_3, annotated_ng_L.upper) 
+#clean up dataframe
+#edit lipid class for archaeal lipid, remove standards, select columns for downstream analysis
+annotated_ng_L_joined <- annotated_ng_L_joined  %>% mutate_at(vars(lipid_class), funs(case_when(lipid_class == "MG" ~ "archaeal", lipid_class == "DG" ~ "archaeal", TRUE ~ .))) %>% filter(lipid_class != "internal_standard") %>% select(contains("blank_subtracted") | starts_with("compound_name") | starts_with("species") | starts_with("hg.label") | starts_with("lipid_class"))
+annotated_ng_L_joined.lower <- annotated_ng_L_joined.lower  %>% mutate_at(vars(lipid_class), funs(case_when(lipid_class == "MG" ~ "archaeal", lipid_class == "DG" ~ "archaeal", TRUE ~ .))) %>% filter(lipid_class != "internal_standard") %>% select(contains("blank_subtracted") | starts_with("compound_name") | starts_with("species") | starts_with("hg.label") | starts_with("lipid_class"))
+annotated_ng_L_joined.upper <- annotated_ng_L_joined.upper  %>% mutate_at(vars(lipid_class), funs(case_when(lipid_class == "MG" ~ "archaeal", lipid_class == "DG" ~ "archaeal", TRUE ~ .))) %>% filter(lipid_class != "internal_standard") %>% select(contains("blank_subtracted") | starts_with("compound_name") | starts_with("species") | starts_with("hg.label") | starts_with("lipid_class"))
+
+subset_for_species_plot <- annotated_ng_L_joined %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) %>% column_to_rownames("species")
+
+subset_for_hg_plot <- annotated_ng_L_joined %>% select(-c(compound_name, lipid_class, species)) %>% group_by(hg.label) %>% summarise_all(funs(sum)) %>% column_to_rownames("hg.label")
+
+subset_for_class_plot <- annotated_ng_L_joined %>% select(-c(compound_name, hg.label, species)) %>% group_by(lipid_class) %>% summarise_all(funs(sum)) %>% column_to_rownames("lipid_class")
+
+subset_for_archaeal_plot <- annotated_ng_L_joined %>% filter(lipid_class == "archaeal") %>% select(-c(lipid_class, hg.label, species)) %>% group_by(compound_name) %>% summarise_all(funs(sum)) %>% column_to_rownames("compound_name")
+
+subset_for_bacterial_plot <- annotated_ng_L_joined %>% filter(lipid_class != "archaeal") %>% select(-c(lipid_class, compound_name, species)) %>% group_by(hg.label) %>% summarise_all(funs(sum)) %>% column_to_rownames("hg.label")
+
+subset_for_compound_plot <- annotated_ng_L_joined %>% select(-c(species, lipid_class, hg.label)) %>% group_by(compound_name) %>% summarise_all(funs(sum)) %>% column_to_rownames("compound_name") 
+
+subset_for_compound_no1G_AR_plot <- annotated_ng_L_joined %>% select(-c(species, lipid_class, hg.label)) %>% group_by(compound_name) %>% summarise_all(funs(sum)) %>% filter(compound_name != "1G_AR") %>% column_to_rownames("compound_name") 
+
+#calculate relative abundance matrix
+subset_species.rel = apply(subset_for_species_plot, 2, function(x) (x/sum(x))*100)
+subset_hg.rel = apply(subset_for_hg_plot, 2, function(x) (x/sum(x))*100)
+subset_class.rel = apply(subset_for_class_plot, 2, function(x) (x/sum(x))*100)
+subset_archaeal.rel = apply(subset_for_archaeal_plot, 2, function(x) (x/sum(x))*100)
+subset_bacterial.rel = apply(subset_for_bacterial_plot, 2, function(x) (x/sum(x))*100)
+subset_compound.rel = apply(subset_for_compound_plot, 2, function(x) (x/sum(x))*100)
+subset_compound_no1G_AR.rel = apply(subset_for_compound_no1G_AR_plot, 2, function(x) (x/sum(x))*100)
+
+#select only the top 20 lipid compounds
+subset_compound.rel_n20 <- as.data.frame(subset_compound.rel) %>% rownames_to_column(var = "compound_name") %>% mutate(meanAbundance = rowMeans(select(., starts_with("QEF")))) %>% arrange(desc(meanAbundance)) %>% top_n(20, meanAbundance) %>% arrange(compound_name) %>% column_to_rownames("compound_name") %>% select(-meanAbundance) 
+
+subset_compound_no1G_AR.rel_n20 <- as.data.frame(subset_compound_no1G_AR.rel) %>% rownames_to_column(var = "compound_name") %>% mutate(meanAbundance = rowMeans(select(., starts_with("QEF")))) %>% arrange(desc(meanAbundance)) %>% top_n(20, meanAbundance) %>% arrange(compound_name) %>% column_to_rownames("compound_name") %>% select(-meanAbundance) 
+
+
+#create "other" for relative abundances 
+subset_compound.rel_n20["Other" ,] <- 100 -colSums(subset_compound.rel_n20)
+subset_compound_no1G_AR.rel_n20["Other" ,] <- 100 -colSums(subset_compound_no1G_AR.rel_n20)
+compound_order <- rownames(subset_compound.rel_n20)
+compound_order_no1G_AR <- rownames(subset_compound_no1G_AR.rel_n20)
+
+subset_compound.rel_n20<- as.matrix(subset_compound.rel_n20)
+subset_compound_no1G_AR.rel_n20<- as.matrix(subset_compound_no1G_AR.rel_n20)
+
+# Melt dataframes for plotting
+subset_species.melt = reshape::melt(subset_species.rel)
+subset_hg.melt = reshape::melt(subset_hg.rel)
+subset_class.melt = reshape::melt(subset_class.rel)
+subset_archaeal.melt = reshape::melt(subset_archaeal.rel)
+subset_bacterial.melt = reshape::melt(subset_bacterial.rel)
+subset_compound.melt = reshape::melt(subset_compound.rel_n20)
+subset_compound_no1G_AR.melt = reshape::melt(subset_compound_no1G_AR.rel_n20)
+
+#Assign well column based on QEF filename, convert relative abundances to clean labels, and create factors of compounds and wells 
+subset_compound.melt <- subset_compound.melt %>% mutate(
+  well = case_when(
+    grepl("WAB71", X2) ~ "WAB71", 
+    grepl("NSHQ14", X2) ~ "NSHQ14", 
+    grepl("WAB105", X2) ~ "WAB105", 
+    grepl("WAB104", X2) ~ "WAB104", 
+    grepl("WAB188", X2) ~ "WAB188", 
+    grepl("WAB55", X2) ~ "WAB55" 
+    ),
+  value_label = case_when(value < 1 & value != 0 ~ "<1", value == 0 ~ "n.d.", TRUE ~ as.character(round(value, 0))), 
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")),
+  X1 = factor(X1, levels =  compound_order),
+  X1 = factor(X1, levels =  rev(levels(X1)))
+  )
+
+subset_compound_no1G_AR.melt <- subset_compound_no1G_AR.melt %>% mutate(
+  well = case_when(
+    grepl("WAB71", X2) ~ "WAB71", 
+    grepl("NSHQ14", X2) ~ "NSHQ14", 
+    grepl("WAB105", X2) ~ "WAB105", 
+    grepl("WAB104", X2) ~ "WAB104", 
+    grepl("WAB188", X2) ~ "WAB188", 
+    grepl("WAB55", X2) ~ "WAB55" 
+    ),
+  value_label = case_when(value < 1 & value != 0 ~ "<1", value == 0 ~ "n.d.", TRUE ~ as.character(round(value, 0))), 
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")),
+  X1 = factor(X1, levels =  compound_order_no1G_AR),
+  X1 = factor(X1, levels =  rev(levels(X1)))
+  )
+```
+
+
+# Figure 2
+```{r}
+#heatmap of top 20 lipids
+ p <- subset_compound.melt %>% mutate(value = value/100) %>% ggplot(aes(x = well, y = X1, fill = value))+
+  geom_tile(stat = "identity", aes(fill = value))+
+   geom_text(aes(label = value_label), size = 2.7, fontface = "bold") +
+  scale_fill_gradient(name = "Relative abundance [%]", low = "white", high = "blue", labels = scales::label_percent(accuracy = 1, suffix = "")) +
+  scale_x_discrete(name = "Well", expand = c(0,0)) +
+  scale_y_discrete(name = "Lipid", expand = c(0,0)) +
+  theme_bw() +
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank(),
+    #axis.text.x = element_text(angle = 90, vjust = .5, hjust = 1)
+        )
+ p
+ ggsave("Figure_2.tiff", path = "plots/", width = 7.08661, height = 7.08661, device='tiff', dpi=300)
+```
+
+
+# Figure 3 
+```{r}
+#need to convert to ng lipid/L for barplot
+
+#select compounds of interest 
+subset_for_species_plot <- annotated_ng_L_joined %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) %>% column_to_rownames("species")
+ng_L_total <- subset_for_compound_plot %>% summarise(across(where(is.numeric), sum))
+ng_L_1G_diether <- subset_for_compound_plot %>% rownames_to_column("compound_name") %>% filter(compound_name == "1G_AR" | compound_name == "1G_DEG 32:1" | compound_name == "1G_DEG 33:1") %>% column_to_rownames("compound_name") %>% summarise(across(where(is.numeric), sum))
+
+species <- annotated_ng_L_joined %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) 
+#add total to species 
+species.total <- c(species="Total", apply(species[,-1], FUN=sum, MAR=2))
+species <- rbind(species, species.total)
+#filter just total, 1G-DEG and 1G-AR
+species <- species %>% filter(species == "1G_AR" | species == "1G_DEG" | species == "Total")
+#gather for plotting
+species <- species %>% gather(key = "sample", value = "ng_L", -species) 
+#repeat for .lower and .upper
+species.lower <- annotated_ng_L_joined.lower %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) 
+species.total.lower <- c(species="Total", apply(species.lower[,-1], FUN=sum, MAR=2))
+species.lower <- rbind(species.lower, species.total.lower)
+species.lower <- species.lower %>% filter(species == "1G_AR" | species == "1G_DEG" | species == "Total")
+species.lower  <- species.lower %>% gather(key = "sample", value = "upper", -species) 
+species.upper <- annotated_ng_L_joined.upper %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) 
+species.total.upper <- c(species="Total", apply(species.upper[,-1], FUN=sum, MAR=2))
+species.upper <- rbind(species.upper, species.total.upper)
+species.upper <- species.upper %>% filter(species == "1G_AR" | species == "1G_DEG" | species == "Total")
+species.upper  <- species.upper %>% gather(key = "sample", value = "lower", -species) 
+
+
+species.combined <- left_join(species, species.lower)
+species.combined <- left_join(species.combined, species.upper)
+
+for_ng_L_barplot <- species.combined %>% mutate(
+  well = case_when(
+    grepl("WAB71", sample) ~ "WAB71", 
+    grepl("NSHQ14", sample) ~ "NSHQ14", 
+    grepl("WAB105", sample) ~ "WAB105", 
+    grepl("WAB104", sample) ~ "WAB104", 
+    grepl("WAB188", sample) ~ "WAB188", 
+    grepl("WAB55", sample) ~ "WAB55" 
+    ), 
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")),
+  ng_L = as.numeric(ng_L),
+  ng_L_sn = formatC(ng_L, format = "e", digits = 1),
+  upper = as.numeric(upper),
+  lower = as.numeric(lower),
+  ng_L_label = case_when(ng_L == 0 ~ "n.d.", TRUE ~ as.character(ng_L_sn)), 
+  species = factor(species, levels = c("1G_DEG", "1G_AR", "Total"))
+  )
+
+cells <- meta %>% select(c(well, cells_mL, cells_mL_sd))
+for_ng_L_barplot2 <- left_join(for_ng_L_barplot, cells) %>% filter(!is.na(cells_mL)) %>% mutate(
+  ng_mL = ng_L/1000, 
+  ng_mL.lower = lower/1000,
+  ng_mL.upper = upper/1000,
+  ng_cell = ng_mL/cells_mL,
+  ng_cell.lower = ng_mL.upper/(cells_mL - cells_mL_sd),
+  ng_cell.upper = ng_mL.lower/(cells_mL + cells_mL_sd)
+)
+
+cbPalette <- c("#332288", "#117733", "#44AA99", "#88CCEE", "#DDCC77", "#882255")
+cbPalette2 <- c("#332288", "#88CCEE", "#882255")
+
+#library(ggforce)
+ bp1 <- ggplot(for_ng_L_barplot, aes(fill=species, y=ng_L, x=species)) + 
+   geom_bar(position="dodge", stat="identity") +
+   facet_wrap(. ~ well, scales ="free_y") +
+   geom_errorbar(aes(ymin = lower, ymax = upper), width=0.2, position=position_dodge(.9))+
+   #scale_y_free(labels = function(ng_L) format(ng_L, scientific = TRUE)) +
+     scale_y_continuous(breaks = function(x) seq(from = x[1], 
+                                              to = x[2], 
+                                              length.out = 3), 
+                     expand = c(0, 0), labels = scales::label_scientific(digits = 2)) +
+   scale_fill_manual(values=cbPalette2)+
+   theme_bw() + 
+   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), ) +
+   labs(y = "ng lipid/L", fill = "", x = "")
+ bp1
+ggsave("Figure_3.tiff", path = "plots/", width = 7.08661, height = 4.7, device='tiff', dpi=300)
+```
+
+
+# Figure 4
+```{r}
+lipid_type <- annotated_3 %>% select(c(compound_name, hg.label, species)) %>% filter(species != "C16PAF") %>% filter(species != "d9_DGTS") %>% mutate(
+  category = case_when(grepl("NAcG", hg.label) ~ "NAcG", grepl("DG", hg.label) ~ "BL", TRUE ~ hg.label))
+
+subset_compound.rel = apply(subset_for_compound_plot, 2, function(x) (x/sum(x))*100)
+
+#create subset with no 1G diethers 
+subset_for_compound_plot_no1G_diether <- subset_for_compound_plot %>% rownames_to_column("compound_name") %>% filter(compound_name != "1G_AR" & compound_name != "1G_DEG 32:1" & compound_name != "1G_DEG 33:1") %>% column_to_rownames("compound_name")
+subset_compound_no1G_diether.rel = apply(subset_for_compound_plot_no1G_diether, 2, function(x) (x/sum(x))*100)
+
+subset_compound.melt  <- reshape::melt(subset_compound.rel)
+subset_compound_no1G_diether.melt  <- reshape::melt(subset_compound_no1G_diether.rel)
+
+#add well column
+subset_compound.melt <- subset_compound.melt %>% mutate(
+  well = case_when(
+    grepl("WAB71", X2) ~ "WAB71", 
+    grepl("NSHQ14", X2) ~ "NSHQ14", 
+    grepl("WAB105", X2) ~ "WAB105", 
+    grepl("WAB104", X2) ~ "WAB104", 
+    grepl("WAB188", X2) ~ "WAB188", 
+    grepl("WAB55", X2) ~ "WAB55" 
+    ),
+  rel_abundance_all = value,
+  compound_name = X1
+  ) %>% select(c(well, rel_abundance_all, compound_name)) 
+
+subset_compound_no1G_diether.melt <- subset_compound_no1G_diether.melt %>% mutate(
+  well = case_when(
+    grepl("WAB71", X2) ~ "WAB71", 
+    grepl("NSHQ14", X2) ~ "NSHQ14", 
+    grepl("WAB105", X2) ~ "WAB105", 
+    grepl("WAB104", X2) ~ "WAB104", 
+    grepl("WAB188", X2) ~ "WAB188", 
+    grepl("WAB55", X2) ~ "WAB55" 
+    ),
+  rel_abundance_no1G_diether = value,
+  compound_name = X1
+  ) %>% select(c(well, rel_abundance_no1G_diether, compound_name)) 
+
+#join the non-ether and total relative abundance dataframes
+melt <- left_join(subset_compound.melt, subset_compound_no1G_diether.melt)
+#gather for plotting
+melt.gathered <- melt %>% gather(key = "type_rel", value = "rel", -well, -compound_name) %>% mutate(type = case_when(grepl("all", type_rel) ~ "All", grepl("1G", type_rel) ~ "No 1G Diethers"))
+
+# join with lipid_type
+j.melt <- left_join(melt.gathered, lipid_type) %>% mutate(well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")), category = as.factor(category))
+
+j.melt.summary <- j.melt %>% filter(type_rel == "rel_abundance_all") %>% select(c(rel, species, well)) %>% group_by(well, species) %>% summarize(total = sum(rel))
+
+
+#relative abundance bar plot
+bp <- j.melt %>% group_by(type) %>%
+ggplot(aes(x = rel, y = well))+
+  geom_bar(stat = "identity", aes(fill = category))+
+  facet_grid(type ~ .) + 
+  labs(fill = "Headgroup")+xlab("Relative Abundance (%)")+ylab("Well")+
+  scale_fill_brewer(palette = "Paired") +
+  theme_bw()+theme(text = element_text(size = 14),
+                   panel.grid = element_blank()) 
+
+bp
+ggsave("Figure_4.tiff", path = "plots/", width = 7.08661, height = 7.08661, device='tiff', dpi=300)
+```
+
+
+# Figure 6
+```{r}
+#DNA
+#read in ASV table
+otu_table <- readRDS("data/DNA/sequence_table_OM17_ASV.rds")
+
+to_keep <- c("104.1", "104.2", "104.3", "104.RNA1", "104.RNA2","104.RNA3", "105.1", "105.2", "105.3", "105.RNA1", "105.RNA2","105.RNA3", "14B.1", "14B.2", "14B.3", "14B.4", "14B.RNA1", "14B.RNA2", "14B.RNA3", "14B.RNA4", "188.1", "188.2", "188.3", "188.4", "188.5", "188.6", "188.7","188.RNA1", "188.RNA2", "188.RNA3", "188.RNA4", "188.RNA5", "188.RNA6", "188.RNA7", "55.1", "55.2", "55.3", "55.4", "55.RNA1", "55.RNA2", "55.RNA3", "55.RNA4", "71A.1", "71A.2", "71A.3", "71A.RNA1", "71A.RNA2", "71A.RNA3", "taxonomy")
+
+otus_ <- otu_table %>% select(c(to_keep)) %>% group_by(taxonomy) %>% summarize_all(sum)
+otus_sum <- otus_ %>% mutate(
+  WAB105_cDNA = rowSums(select(., starts_with("105") & contains("RNA")), na.rm = TRUE),
+  WAB105 = rowSums(select(., starts_with("105") & !contains("RNA")), na.rm = TRUE),
+  WAB104_cDNA = rowSums(select(., starts_with("104") & contains("RNA")), na.rm = TRUE),
+  WAB104 = rowSums(select(., starts_with("104") & !contains("RNA")), na.rm = TRUE),
+  WAB188_cDNA = rowSums(select(., starts_with("188") & contains("RNA")), na.rm = TRUE),
+  WAB188 = rowSums(select(., starts_with("188") & !contains("RNA")), na.rm = TRUE),
+  WAB55_cDNA = rowSums(select(., starts_with("55") & contains("RNA")), na.rm = TRUE),
+  WAB55 = rowSums(select(., starts_with("55") & !contains("RNA")), na.rm = TRUE),
+  WAB71_cDNA = rowSums(select(., starts_with("71") & contains("RNA")), na.rm = TRUE),
+  WAB71 = rowSums(select(., starts_with("71") & !contains("RNA")), na.rm = TRUE),
+  NSHQ14_cDNA = rowSums(select(., starts_with("14") & contains("RNA")), na.rm = TRUE),
+  NSHQ14 = rowSums(select(., starts_with("14") & !contains("RNA")), na.rm = TRUE)
+  ) %>% select(WAB105, WAB105_cDNA, WAB104, WAB104_cDNA, WAB188, WAB188_cDNA, WAB55, WAB55_cDNA, WAB71, WAB71_cDNA, NSHQ14, NSHQ14_cDNA, taxonomy) %>% column_to_rownames("taxonomy") %>% filter_all(any_vars(. != 0)) %>% rownames_to_column("taxonomy") %>% filter(!grepl("Chloroplast",taxonomy)) %>% filter(!grepl("Mitochondria",taxonomy)) %>% filter(!grepl("Eukaryota",taxonomy))  %>% column_to_rownames("taxonomy")
+  
+#calculate relative abundances
+otus.rel = apply(otus_sum, 2, function(x) (x/sum(x)))
+#calculate archaeal relative abundances
+otus.rel.archaeal <- data.frame(taxonomy = row.names(otus.rel), otus.rel) %>% filter(grepl("Archaea",taxonomy)) %>% select(-taxonomy) %>% summarize_all(sum) %>% gather(key = "sample", value = "rel_abund_archaeal_DNA")
+otus.rel.archaeal2 <- data.frame(taxonomy = row.names(otus.rel), otus.rel) %>% filter(grepl("Archaea",taxonomy)) %>% t()
+
+otus.rel.archaeal.fj <- otus.rel.archaeal %>% mutate(
+  well = case_when(
+    grepl("WAB71", sample) ~ "WAB71", 
+    grepl("NSHQ14", sample) ~ "NSHQ14", 
+    grepl("WAB105", sample) ~ "WAB105", 
+    grepl("WAB104", sample) ~ "WAB104", 
+    grepl("WAB188", sample) ~ "WAB188", 
+    grepl("WAB55", sample) ~ "WAB55" 
+  ), 
+  dna_type = case_when(
+    grepl("cDNA", sample) ~ "cDNA", 
+    TRUE ~ "DNA"
+  )
+)
+
+#Lipids
+#create lipid matrix using individual compounds
+compounds <- subset_for_compound_plot  %>% rownames_to_column("compound_name") %>% gather(key = "sample", value = "ng_L", -compound_name)
+compounds_no_1G_AR <- subset_for_compound_plot  %>% rownames_to_column("compound_name") %>% filter(compound_name != "1G_AR") %>% gather(key = "sample", value = "ng_L", -compound_name)
+
+compounds <- compounds %>% mutate(
+  well = case_when(
+    grepl("WAB71", sample) ~ "WAB71", 
+    grepl("NSHQ14", sample) ~ "NSHQ14", 
+    grepl("WAB105", sample) ~ "WAB105", 
+    grepl("WAB104", sample) ~ "WAB104", 
+    grepl("WAB188", sample) ~ "WAB188", 
+    grepl("WAB55", sample) ~ "WAB55" 
+    ))
+
+compounds_no_1G_AR <- compounds_no_1G_AR %>% mutate(
+  well = case_when(
+    grepl("WAB71", sample) ~ "WAB71", 
+    grepl("NSHQ14", sample) ~ "NSHQ14", 
+    grepl("WAB105", sample) ~ "WAB105", 
+    grepl("WAB104", sample) ~ "WAB104", 
+    grepl("WAB188", sample) ~ "WAB188", 
+    grepl("WAB55", sample) ~ "WAB55" 
+    ))
+
+compounds<- compounds %>% select(c(compound_name, well, ng_L)) %>% spread(well, ng_L) %>% column_to_rownames("compound_name")
+compounds_no_1G_AR <- compounds_no_1G_AR %>% select(c(compound_name, well, ng_L)) %>% spread(well, ng_L) %>% column_to_rownames("compound_name")
+
+compounds.rel = apply(compounds, 2, function(x) (x/sum(x)))
+compounds.rel_no_1G_AR = apply(compounds_no_1G_AR, 2, function(x) (x/sum(x)))
+compounds.rel.archaeal <- data.frame(compound_name = row.names(compounds.rel), compounds.rel) %>% filter(compound_name == "1G_AR" | compound_name == "2G_AR" | compound_name == "2G_GDGT-0" | compound_name == "GAc_G_GDGT-0") %>% select(-compound_name) %>% summarize_all(sum) %>% gather(key = "well", value = "rel_abund_archaeal_lipid")
+compounds.rel.archaeal_no_1G_AR <- data.frame(compound_name = row.names(compounds.rel_no_1G_AR), compounds.rel_no_1G_AR) %>% filter(compound_name == "1G_AR" | compound_name == "2G_AR" | compound_name == "2G_GDGT-0" | compound_name == "GAc_G_GDGT-0") %>% select(-compound_name) %>% summarize_all(sum) %>% gather(key = "well", value = "rel_abund_archaeal_lipid")
+  
+joined_rel_abund_archaeal <- left_join(otus.rel.archaeal.fj, compounds.rel.archaeal) %>% mutate(well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")))
+joined_rel_abund_archaeal2 <- left_join(otus.rel.archaeal.fj, compounds.rel.archaeal_no_1G_AR) %>% mutate(well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")))
+
+atp <- joined_rel_abund_archaeal2 %>% ggplot(aes(y = rel_abund_archaeal_lipid, x = rel_abund_archaeal_DNA, color = well, shape = dna_type)) +
+  geom_point(size= 3)+
+  geom_abline(slope = 1, linetype = 2) +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  scale_color_brewer(palette = "Dark2") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(size = .5, linetype = "solid"), axis.title=element_text(size="10"), axis.text=element_text(size="8"), legend.title = element_text(size = 10), legend.text = element_text( size = 8)) +
+    labs(y="Archaeal Lipid Relative Abundances", x="Archaeal ASV Relative Abundances", shape ="ASV type",  col = "Well")
+  
+atp
+ggsave("Figure_6.tiff", path = "plots", width = 7.08661, height = 5, device='tiff', dpi=300)
+```
+
+
+# Figure 7
+```{r}
+#filter out 1G-AR
+compounds_no_1G_AR <- subset_for_compound_plot  %>% rownames_to_column("compound_name") %>% filter(compound_name != "1G_AR") %>% gather(key = "sample", value = "ng_L", -compound_name)
+compounds<- subset_for_compound_plot  %>% rownames_to_column("compound_name")  %>% gather(key = "sample", value = "ng_L", -compound_name)
+
+#add well data
+compounds_no_1G_AR <- compounds_no_1G_AR %>% mutate(
+  well = case_when(
+    grepl("WAB71", sample) ~ "WAB71", 
+    grepl("NSHQ14", sample) ~ "NSHQ14", 
+    grepl("WAB105", sample) ~ "WAB105", 
+    grepl("WAB104", sample) ~ "WAB104", 
+    grepl("WAB188", sample) ~ "WAB188", 
+    grepl("WAB55", sample) ~ "WAB55" 
+    ), 
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")))
+
+#spread data for transformation
+compounds_no_1G_AR <- compounds_no_1G_AR %>% select(c(compound_name, well, ng_L)) %>% spread(compound_name, ng_L) %>% column_to_rownames("well")
+
+#hellinger transform the compound matrix 
+compounds.hel <- decostand(compounds_no_1G_AR, "hellinger")
+
+#get chemical data for ordination 
+meta <- read.csv("data/geochem/2017_fluid_geochem.csv")
+chem <- meta %>% select(-c(sample, L_filtered)) %>% mutate(well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")), log_DIC = log10(DIC)) %>% column_to_rownames("well")
+#remove NA
+chem[is.na(chem)] <- 0
+
+#make sure rownames in the compounds and chem matrices match
+all.equal(rownames(compounds.hel), rownames(chem))
+
+
+simpleRDA <- rda(compounds.hel ~ pH + CH4 + SO4, data = chem)
+rankindex(chem, compounds.hel, indices = c("euc", "man", "gow",
+"bra", "kul"),stepacross= FALSE, method = "spearman")
+
+#run capscale analysis 
+dbRDA <- capscale(compounds.hel ~ pH + CH4 + SO4, data = chem, distance = "gower")
+
+#check variance inflation factors
+vif.cca(dbRDA)
+
+#run anova for capscale analysis with 9999 permutations 
+anova(dbRDA, permutations = how(nperm=9999))
+
+#pull out r-squared
+R2 <- RsquareAdj(dbRDA)$r.squared
+#pull out adjusted r-squared
+R2adj <- RsquareAdj(dbRDA)$adj.r.squared
+
+# plot the RDA using ggplot (ggord package)
+ggord(dbRDA) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) # looking at the raw code, this is plotting the 'wa scores', the blue dots are different species 
+
+#fortify results of rda to dataframe
+rda_fortify <- fortify(dbRDA, axes = 1:2)
+
+#take components needed
+take.comp <- c('CAP1', 'CAP2')
+
+#extract sites (add grouping here if I want to)
+rda_sites <- rda_fortify %>% 
+  filter(Score == "sites") 
+
+#add lipid type info
+lipid_type <- annotated_3 %>% select(c(compound_name, hg.label, species)) %>% filter(species != "C16PAF") %>% filter(species != "d9_DGTS") %>% mutate(
+  category = case_when(grepl("NAcG", hg.label) ~ "NAcG", grepl("DG", hg.label) ~ "BL", TRUE ~ hg.label))
+
+#extract compounds
+rda_species <- rda_fortify %>% 
+  filter(Score == "species") %>% 
+  full_join(., lipid_type, by = c("Label" = "compound_name"))
+rda_species <- dplyr::rename(rda_species, lipid_type = category)
+rda_species$lipid_type <- as.factor(rda_species$lipid_type)
+
+#extract geochemical arrows
+arrows.rda <- subset(rda_fortify, Score == 'biplot')
+## multiplier for arrows to scale them to the plot range
+mul <- ggvegan:::arrowMul(arrows.rda[, take.comp],
+                          subset(rda_fortify, select = take.comp, Score == 'sites'))
+arrows.rda[, take.comp] <- arrows.rda[, take.comp] * mul  # scale biplot arrows
+
+#plot
+ g <- ggplot() +
+  geom_point(data = rda_species, aes(x = CAP1, y = CAP2, color = lipid_type), size = 2) +  
+  geom_vline(xintercept = c(0), color = "grey70", linetype = 2) +
+  geom_hline(yintercept = c(0), color = "grey70", linetype = 2) +
+  geom_segment(data = arrows.rda, aes(x = 0, y = 0, xend = CAP1, yend = CAP2),
+               arrow = arrow(length = unit(0.01, "npc")), color = "darkblue") +
+  geom_text(data = arrows.rda, aes(label = Label, x = CAP1, y = CAP2, hjust = 0.5*(1 - sign(CAP1)), vjust = 0.5*(1-sign(CAP2))), color = "darkblue") +
+  geom_point(data = rda_sites, aes(x = CAP1, y = CAP2), color = "black", fill = "black", shape = 22, size = 3) +
+  coord_fixed() +
+   theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"), legend.key = element_rect(fill = "white", color = NA)) +
+  geom_text_repel(data = rda_sites, aes(label = Label, x = CAP1, y = CAP2)) +
+  scale_x_continuous(expand = c(.1, .1)) +
+  scale_y_continuous(expand = c(.1, .1)) +
+  scale_color_brewer(palette = "Paired") +
+  labs(x = "CAP1",
+       y = "CAP2", color = "Lipid class")
+ g
+  ggsave("Figure_7.tiff", path = "plots/", width = 7.08661, height = 7.08661, device='tiff', dpi=300)
+```
+
+
+# Figure 8
+```{r}
+chem_zc <- meta %>% select(-c(sample, L_filtered, cells_mL, cells_mL_sd))
+
+#read in data from polarlipidzc rmd
+fluids_lipid_Zc <- readRDS("output/polarlipidzc/fluids_lipid_Zc.Rds")
+fluids_lipid_Zc <- fluids_lipid_Zc %>% rownames_to_column("well")
+zc <- left_join(fluids_lipid_Zc, chem_zc)
+
+zc <- zc %>% mutate(
+  well = factor(well, levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14"))
+)
+
+structure_palette <- c("#648FFF", "#785EF0", "#DC267F", "#FFB000")
+
+zc_for_plot <- zc %>% select(starts_with("IPL") | starts_with("well") | starts_with("Eh")) %>% gather("id", "Zc", 1:4) %>% mutate(
+  id = factor(id, levels = c("IPL_ZC_backbone_only", "IPL_ZC_full", "IPL_ZC_head_only", "IPL_ZC_chain_only"))
+)
+library(ggpmisc)
+zsc <- ggplot(zc_for_plot, aes(x=Eh, y=Zc, color=id)) +
+    geom_point(shape=1, size = 2) +
+    scale_color_manual(values=structure_palette)+
+    scale_fill_manual(values=structure_palette, labels = c("Backbone", "Full Lipid", "Headgroup", "Chains"), name = "")+
+    scale_y_continuous(limits=c(-2, .75)) +
+    geom_smooth(method=lm, aes(fill = id))+
+    stat_cor(show.legend = NA)+
+    theme_classic() +
+    labs(x = "Eh", y = "Weighted Zc") + 
+    guides(color = FALSE)
+zsc
+ggsave("Figure_8.tiff", path = "plots/", width = 7.08661, height = 7.08661, device='tiff', dpi=300)
+```
+
+
+# Figure S2
+```{r}
+species <- annotated_ng_L_joined %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) %>% gather(key = "sample" , value = "ng_L", -species) %>% spread(species, ng_L)
+#add total to species
+species.total <- species %>% mutate(
+  total = rowSums(across(2:22)), 
+  diether = select(. , contains("DEG") | contains("AR") | contains("GDGT")) %>% apply(1, sum, na.rm=TRUE), 
+  non_diether = total - diether) %>% select(c(sample, total, non_diether)) %>% gather(key = "type", value = "ng_L", - sample) 
+#repeat for lower and upper
+species.lower <- annotated_ng_L_joined.lower %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) %>% gather(key = "sample" , value = "ng_L", -species) %>% spread(species, ng_L)
+species.total.upper <- species.lower %>% mutate(
+  total.upper= rowSums(across(2:22)), 
+  diether.upper = select(. , contains("DEG") | contains("AR") | contains("GDGT")) %>% apply(1, sum, na.rm=TRUE), 
+  non_diether.upper = total.upper - diether.upper) %>% select(c(sample, total.upper, non_diether.upper)) %>% gather(key = "category", value = "ng_L_upper", - sample) %>% mutate(type = case_when(grepl("diether", category) ~ "non_diether", grepl("total", category) ~ "total"))
+species.upper <- annotated_ng_L_joined.upper %>% select(-c(compound_name, lipid_class, hg.label)) %>% group_by(species) %>% summarise_all(funs(sum)) %>% gather(key = "sample" , value = "ng_L", -species) %>% spread(species, ng_L)
+species.total.lower <- species.upper %>% mutate(
+  total.lower= rowSums(across(2:22)), 
+  diether.lower = select(. , contains("DEG") | contains("AR") | contains("GDGT")) %>% apply(1, sum, na.rm=TRUE), 
+  non_diether.lower = total.lower - diether.lower) %>% select(c(sample, total.lower, non_diether.lower))%>% gather(key = "category", value = "ng_L_lower", - sample) %>% mutate(type = case_when(grepl("diether", category) ~ "non_diether", grepl("total", category) ~ "total")) 
+
+species.combined <- left_join(species.total, species.total.lower) %>% select(-category)
+species.combined <- left_join(species.combined, species.total.upper) %>% select(-category)
+
+
+meta_scatter <- meta %>% select(c(sample, well, cells_mL, cells_mL_sd, Eh))
+for_ng_L_scatter <- left_join(species.combined, meta_scatter) %>% mutate(
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14"))) %>% filter(!is.na(cells_mL)) 
+
+for_ng_L_scatter$type <- as.factor(for_ng_L_scatter$type) 
+levels(for_ng_L_scatter$type) <- c("Non-diether IPLs", "All IPLs")
+
+
+dark2_noWAB188 <- c("#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02")
+
+scn <- for_ng_L_scatter %>% filter(type=="All IPLs") %>% 
+ggplot(aes(x = ng_L, y = cells_mL, color = well))+
+  geom_point(size = 3)+
+  #facet_wrap(type ~ ., scales = "free_x") +
+  geom_errorbar(aes(ymin = cells_mL - cells_mL_sd, ymax = cells_mL + cells_mL_sd)) +
+  geom_errorbarh(aes(xmin = ng_L_lower, xmax = ng_L_upper)) +
+  scale_x_continuous(labels = scales::label_scientific(digits = 1)) +
+  scale_y_continuous(labels = scales::label_scientific(digits = 1)) +
+  scale_color_manual(values = dark2_noWAB188) +
+    labs(
+       x = "ng/L IPL",
+       y = "Cells/mL",
+       colour = "Well") +
+  theme_bw()
+scn
+ggsave("Figure_S2.tiff", path = "plots/supplemental/", width = 7.08661, height = 4.5, device='tiff', dpi=300)
+```
+
+
+# Figure S3
+```{r}
+#prep for lipid-dna correlations
+#create lipid matrix using individual compounds
+compounds_no_archaea_no_DEG <- subset_for_compound_plot  %>% rownames_to_column("compound_name") %>% filter(compound_name != "1G_AR" & compound_name != "2G_AR" & compound_name != "2G_GDGT-0" & compound_name != "GAc_G_GDGT-0" & compound_name != "1G_DEG 32:1" & compound_name != "1G_DEG 33:1") %>% filter(!grepl("DEG",compound_name))  %>% gather(key = "sample", value = "ng_L", -compound_name)
+
+compounds_no_1G_AR <- subset_for_compound_plot  %>% rownames_to_column("compound_name") %>% filter(compound_name != "1G_AR")%>% gather(key = "sample", value = "ng_L", -compound_name)
+
+compounds_no_archaea <- subset_for_compound_plot  %>% rownames_to_column("compound_name") %>% filter(compound_name != "1G_AR" & compound_name != "2G_AR" & compound_name != "2G_GDGT-0" & compound_name != "GAc_G_GDGT-0") %>% gather(key = "sample", value = "ng_L", -compound_name)
+
+compounds_network <- compounds_no_archaea %>% mutate(
+  well = case_when(
+    grepl("WAB71", sample) ~ "WAB71", 
+    grepl("NSHQ14", sample) ~ "NSHQ14", 
+    grepl("WAB105", sample) ~ "WAB105", 
+    grepl("WAB104", sample) ~ "WAB104", 
+    grepl("WAB188", sample) ~ "WAB188", 
+    grepl("WAB55", sample) ~ "WAB55" 
+    ), 
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")), 
+  compound_name = str_replace(compound_name, " ", "_"))
+
+compounds_network <- compounds_network %>% select(c(compound_name, well, ng_L)) %>% spread(well, ng_L) %>% column_to_rownames("compound_name")
+
+compounds_network.rel = apply(compounds_network, 2, function(x) (x/sum(x)))
+compounds.rel.sorted <- data.frame(compound_name = row.names(compounds_network.rel), compounds_network.rel) %>% rowwise() %>% mutate(max = max(c_across(WAB188:NSHQ14))) %>% arrange(desc(max)) %>% select(-max) %>% column_to_rownames("compound_name")
+write.table(compounds.rel.sorted, file="output/lipid_dna_correlation/lipids_compound_noarchaea.txt", row.names=TRUE, col.names=TRUE, sep = "\t")
+
+
+#create microbial matrix 
+otu_table <- readRDS("data/DNA/sequence_table_OM17_ASV.rds")
+
+to_keep <- c("104.RNA1", "104.RNA2","104.RNA3", "105.RNA1", "105.RNA2","105.RNA3", "14B.RNA1", "14B.RNA2", "14B.RNA3", "14B.RNA4", "188.RNA1", "188.RNA2", "188.RNA3", "188.RNA4", "188.RNA5", "188.RNA6", "188.RNA7",  "55.RNA1", "55.RNA2", "55.RNA3", "55.RNA4", "71A.RNA1", "71A.RNA2", "71A.RNA3", "taxonomy")
+
+otus <- otu_table  %>% select(c(to_keep)) 
+otus_sum <- otus %>% mutate(
+  WAB188 = rowSums(select(., starts_with("188") & contains("RNA")), na.rm = TRUE),
+  WAB105 = rowSums(select(., starts_with("105") & contains("RNA")), na.rm = TRUE),
+  WAB104 = rowSums(select(., starts_with("104") & contains("RNA")), na.rm = TRUE),
+  WAB55 = rowSums(select(., starts_with("55") & contains("RNA")), na.rm = TRUE),
+  WAB71 = rowSums(select(., starts_with("71") & contains("RNA")), na.rm = TRUE),
+  NSHQ14 = rowSums(select(., starts_with("14") & contains("RNA")), na.rm = TRUE)
+  ) %>% select(WAB188, WAB105, WAB104, WAB55, WAB71, NSHQ14, taxonomy) %>% column_to_rownames("taxonomy") %>% filter_all(any_vars(. != 0)) %>% rownames_to_column("taxonomy")  %>% filter(!grepl("Chloroplast",taxonomy)) %>% filter(!grepl("Mitochondria",taxonomy)) %>% filter(!grepl("Eukaryota",taxonomy)) %>% filter(!grepl("Archaea",taxonomy)) %>% column_to_rownames("taxonomy")
+
+#calculate relative abundances
+otus.rel = apply(otus_sum, 2, function(x) (x/sum(x)))
+otus.rel.sorted <- data.frame(taxonomy = row.names(otus.rel), otus.rel) %>% rowwise() %>% mutate(max = max(c_across(WAB188:NSHQ14))) %>% arrange(desc(max)) %>% select(-max) %>% column_to_rownames("taxonomy") %>% filter_all(any_vars(. > .005))
+write.table(otus.rel.sorted, file="output/lipid_dna_correlation/cDNA_all_filt_ASV.txt", row.names=TRUE, col.names=TRUE, sep = "\t")
+
+#Modifying Alex Probst's code
+library(gplots)
+m1 <- c("output/lipid_dna_correlation/lipids_compound_noarchaea.txt")
+m2 <- c("output/lipid_dna_correlation/cDNA_all_filt_ASV.txt") # SORTED BY MAX VALUE OF EACH SPECIES ACROSS ALL SAMPLES ! ! !
+dat1=t(read.table(m1, sep="\t", row.names=1, header=T))
+dat2=t(read.table(m2, sep="\t", row.names=1, header=T))
+#cormethod=c("pearson")
+
+lipids=c()
+species=c()
+cor_vals=c()
+q_vals=c()
+p_vals=c()
+scores=c()
+max_abds=c()
+
+for (spc1 in 1:length(dat1[1,])) {
+  for (spc2 in 1:length(dat2[1,])) {
+    correlation = cor.test(dat1[,spc1],dat2[,spc2])
+    cor_val = as.vector(correlation$estimate)
+    p_val = correlation$p.value
+    q_val = p_val*length(dat2[1,]) # Bonferroni correction
+    max_abd = max(dat2[,spc2])
+    score = q_val/(max_abd)
+    #if ( (q_val < 0.05) && (cor_val > 0) ) {
+      #print(q_val)
+      lipids[length(lipids)+1] = colnames(dat1)[spc1]
+      species[length(species)+1] = colnames(dat2)[spc2]
+      cor_vals[length(cor_vals)+1] = cor_val
+      q_vals[length(q_vals)+1] = q_val
+      p_vals[length(p_vals)+1] = p_val
+      scores[length(scores)+1] = score
+      max_abds[length(max_abds)+1] = max_abd
+   # }
+  }
+}
+
+final_matrix=t(rbind(species,lipids,cor_vals,scores,q_vals,max_abds,p_vals))
+saveRDS(final_matrix, "output/lipid_dna_correlation/correlation_matrix.rds")
+
+#filter significant data; add significance annotation 
+final_matrix_filt <- final_matrix %>% as.data.frame() %>% group_by(species) %>% filter(any(cor_vals > 0 & q_vals < .05 & p_vals <.05)) %>% ungroup() %>% group_by(lipids) %>% filter(any(cor_vals > 0 & q_vals < .05 & p_vals < .05)) %>% mutate(annotate_sig = ifelse(p_vals < .05 & q_vals < .05 & cor_vals > 0, T, F), r_if_sig = ifelse(p_vals < .05 & q_vals < .05 & cor_vals > 0, "*", NA), cor_vals = as.numeric(cor_vals))
+write.csv(final_matrix_filt, "output/lipid_dna_correlation/correlation_matrix_filt.csv")
+
+final_matrix_filt_relabeled <- final_matrix_filt %>% mutate(ASV = gsub(".*ASV","",species)) %>% mutate_at("species", str_replace, "Bacteria_", "") %>% mutate_at("species", str_replace, "_NA.*", "") %>% mutate_at("species", str_replace, "_ASV.*", "") %>% mutate(species_ASV = paste0(species, "_ASV", ASV))
+
+cp <- final_matrix_filt_relabeled %>% 
+ ggplot(aes(x=lipids, y=species_ASV, fill=cor_vals, label=r_if_sig)) +
+ geom_tile() +
+ scale_fill_gradient(low="white",high="#A63446", limits=c(-1,1)) +
+ labs(x = "Intact Polar Lipid", y = "Bacterial ASV", fill = "Pearson's\nCorrelation", title="Correlations of Bacterial ASVs to IPLs", subtitle="Significant Pearson's correlation coefficients shown with *")+
+ scale_x_discrete(expand=c(0,0)) +
+ scale_y_discrete(expand=c(0,0)) +
+ geom_text() +
+ theme_classic() +
+#coord_fixed(.75) +
+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+cp
+```
+
+
+# Figure S4
+```{r}
+fluids_lipid_Zc <- readRDS("output/polarlipidzc/fluids_lipid_Zc.Rds")
+fluids_lipid_Zc_p <- fluids_lipid_Zc %>% rownames_to_column("well") %>% select(c(well, ether, ester, amide, cc)) %>% gather("bond_type", "rel", 2:5) %>% mutate(
+  well = factor(well,levels = c("WAB188", "WAB105", "WAB104", "WAB55", "WAB71", "NSHQ14")), 
+  bond_type = factor(bond_type, levels = c("ether", "ester", "amide", "cc"))
+)
+
+bond_palette <- c("#44AA99", "#DDCC77", "#CC6677", "#88CCEE")
+
+#relative abundance bar plot
+bb <- fluids_lipid_Zc_p %>% 
+ggplot(aes(x = rel, y = well))+
+  geom_bar(stat = "identity", aes(fill = bond_type))+
+  labs(fill = "Backbone type")+xlab("Relative Abundance (%)")+ylab("Well")+
+  scale_fill_manual(values = bond_palette, labels = c("Ether", "Ester", "Amide", "C-C"))+
+  theme_bw()+theme(text = element_text(size = 14),
+                   axis.text.x = element_text(colour = "black", angle = 90, vjust = 0.5, hjust = 1),
+                   axis.text.y = element_text(colour = "black"),
+                   panel.grid = element_blank()) 
+
+bb
+ggsave("Figure_S4.tiff", path = "plots/supplemental/", width = 7.08661, height = 7.08661, device='tiff', dpi=300)
+```
+
+
+
+
+
