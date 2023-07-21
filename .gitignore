@@ -13,11 +13,14 @@
 *.xlsx
 *.csv
 *cache/**/*
-output/**/*
 plots/**/*
+
 
 # explicitly allow all files in data (by default)
 !data/**/*
+
+#explicitly allow all files in output (by default)
+!output/**/*
 
 # allow all files in documents (by default)
 !documents/**/*
