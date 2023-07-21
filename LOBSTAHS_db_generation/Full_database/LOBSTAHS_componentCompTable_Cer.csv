@@ -1,0 +1,15 @@
+,C,H,H_plus,N,O,P,S,Na,Cl,K,e_minus,ACN,Ac_minus,Mg,Si,D,C_thirteen,Species_class,Adduct_hierarchy_lookup_class,DB_gen_compound_type
+PC_Cer,9,23,0,2,6,1,0,0,0,0,0,0,0,0,0,0,0,IP_Cer,PC_Cer,DB_acyl_iteration
+2G_Cer,16,31,0,1,13,0,0,0,0,0,0,0,0,0,0,0,0,IP_Cer,DG_Cer,DB_acyl_iteration
+1G_Cer,10,21,0,1,8,0,0,0,0,0,0,0,0,0,0,0,0,IP_Cer,MG_Cer,DB_acyl_iteration
+PE_Cer,6,19,0,2,6,1,0,0,0,0,0,0,0,0,0,0,0,IP_Cer,PE_Cer,DB_acyl_iteration
+PG_Cer,7,18,0,1,8,1,0,0,0,0,0,0,0,0,0,0,0,IP_Cer,PG_Cer,DB_acyl_iteration
+PI_Cer,10,22,0,1,11,1,0,0,0,0,0,0,0,0,0,0,0,IP_Cer,PI_Cer,DB_acyl_iteration
+ACN,2,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,basic_component,,basic_component
+Ac-,2,3,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,basic_component,,basic_component
+[M+H]+,0,1,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,adduct_pos,,adduct_pos
+[M+K]+,0,0,0,0,0,0,0,0,0,1,-1,0,0,0,0,0,0,adduct_pos,,adduct_pos
+[M+Na]+,0,0,0,0,0,0,0,1,0,0,-1,0,0,0,0,0,0,adduct_pos,,adduct_pos
+[M+NH4+ACN]+,0,4,0,1,0,0,0,0,0,0,-1,1,0,0,0,0,0,adduct_pos,,adduct_pos
+[M+NH4]+,0,4,0,1,0,0,0,0,0,0,-1,0,0,0,0,0,0,adduct_pos,,adduct_pos
+[M+2Na-H]+,0,-1,0,0,0,0,0,2,0,0,-1,0,0,0,0,0,0,adduct_pos,,adduct_pos

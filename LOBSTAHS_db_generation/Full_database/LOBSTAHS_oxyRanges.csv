@@ -1,0 +1,3 @@
+Additional oxygen atoms to be considered by lipid class,,,,,,,,,,,,,,,,,,,
+IP_DAG_min,IP_DAG_max,IP_MAG_min,IP_MAG_max,IP_AEG_min,IP_AEG_max,IP_MEG_min,IP_MEG_max,IP_DEG_min,IP_DEG_max,IP_FA_min,IP_FA_max,IP_QAG_min,IP_QAG_max,IP_QEG_min,IP_QEG_max,IP_TC_min,IP_TC_max,IP_Cer_min,IP_Cer_max
+0,6,0,3,0,6,0,3,0,6,0,6,0,12,0,12,0,9,0,6

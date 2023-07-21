@@ -10,8 +10,6 @@
 *.jpg
 *.pptx
 *.docx
-*.xlsx
-*.csv
 *cache/**/*
 plots/**/*
 
